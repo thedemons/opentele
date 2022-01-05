@@ -7,7 +7,7 @@ It helps you:
 - Many more features are waiting to be added
 
 ## Installation
-- This library was created with the help of [telethon](https://github.com/LonamiWebs/Telethon) and [tgcrypto](https://github.com/pyrogram/tgcrypto)
+- This library was created with the help of [telethon](https://github.com/LonamiWebs/Telethon), [tgcrypto](https://github.com/pyrogram/tgcrypto) and [pyQt5](https://www.riverbankcomputing.com/software/pyqt/)
 - Just run this command to install it
 ```
 pip install --upgrade opentele
