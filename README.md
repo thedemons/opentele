@@ -4,7 +4,8 @@ OpenTele is a python library created to make life easier for Telegram API Develo
 It helps you:
 - Process [tdesktop](https://github.com/telegramdesktop/tdesktop)'s tdata information
 - Convert between tdata and [telethon](https://github.com/LonamiWebs/Telethon) sessions
-- Many more features are waiting to be added
+- Use [telethon](https://github.com/LonamiWebs/Telethon) with [official API_ID and API_HASH]() to avoid spam detection
+- Many more features are [waiting to be added](https://github.com/thedemons/opentele#Incoming%20Features)
 
 ## Installation
 - This library was created with the help of [telethon](https://github.com/LonamiWebs/Telethon), [tgcrypto](https://github.com/pyrogram/tgcrypto) and [pyQt5](https://www.riverbankcomputing.com/software/pyqt/)
@@ -36,8 +37,25 @@ async def main():
 
 asyncio.get_event_loop().run_until_complete(main())
 ```
+
+## Authorization
+OpenTele offers the ability to use the **official API_ID and API_HASH**, which are also used by official apps. You can check that out [here](https://github.com/thedemons/opentele/blob/main/opentele/opentele.py#L54).
+<br>
+According to [Telegram TOS](https://core.telegram.org/api/obtaining_api_id#using-the-api-id): all accounts that sign up or log in using unofficial Telegram API clients are automatically put under observation to avoid violations of the Terms of Service.
+<br>
+<br>
+It also uses the **official [lang_pack](https://core.telegram.org/method/initConnection)** parameter, of which [telethon can't use](https://github.com/LonamiWebs/Telethon/blob/master/telethon/client/telegrambaseclient.py#L375) because it's only for official apps.
+<br>
+Therefore, **there are no differences** between using OpenTele and official apps, the server can't tell you apart.
+
+
+## Incoming Features
+- Writing data to tdata for converting telethon sessions to tdesktop
+- Random device information for [initConnection](https://core.telegram.org/method/initConnection) to perform mass registeration without being detected
+
 ## Documentation
 _to be added_
+
 ## License
 
 MIT
