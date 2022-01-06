@@ -5,7 +5,7 @@ It helps you:
 - Process [tdesktop](https://github.com/telegramdesktop/tdesktop)'s tdata information
 - Convert between tdata and [telethon](https://github.com/LonamiWebs/Telethon) sessions
 - Use [telethon](https://github.com/LonamiWebs/Telethon) with the [official API_ID and API_HASH](https://github.com/thedemons/opentele#Authorization) to avoid spam detection
-- Many more features are [waiting to be added](https://github.com/thedemons/opentele#Incoming%20Features)
+- Many more features are [waiting to be added](https://github.com/thedemons/opentele#incoming-features)
 
 ## Installation
 - This library was created with the help of [telethon](https://github.com/LonamiWebs/Telethon), [tgcrypto](https://github.com/pyrogram/tgcrypto) and [pyQt5](https://www.riverbankcomputing.com/software/pyqt/)
