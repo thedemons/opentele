@@ -4,7 +4,7 @@ OpenTele is a python library created to make life easier for Telegram API Develo
 It helps you:
 - Process [tdesktop](https://github.com/telegramdesktop/tdesktop)'s tdata information
 - Convert between tdata and [telethon](https://github.com/LonamiWebs/Telethon) sessions
-- Use [telethon](https://github.com/LonamiWebs/Telethon) with [official API_ID and API_HASH]() to avoid spam detection
+- Use [telethon](https://github.com/LonamiWebs/Telethon) with [https://github.com/thedemons/opentele#Authorization]() to avoid spam detection
 - Many more features are [waiting to be added](https://github.com/thedemons/opentele#Incoming%20Features)
 
 ## Installation
