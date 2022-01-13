@@ -48,11 +48,11 @@ renderer:
       - stylesheets/extra.css
 
     repo_url: https://github.com/thedemons/opentele
-    edit_uri: https://github.com/thedemons/opentele/tree/main
+    edit_uri: https://github.com/thedemons/opentele/tree/main/docs/content
   
   pages:
     - title: Home
-      name: index
+      name: README
       source: README.md
     - title: API Documentation
       children:

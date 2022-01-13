@@ -1,5 +1,5 @@
 docs_dir: content
-edit_uri: https://github.com/thedemons/opentele/tree/main
+edit_uri: https://github.com/thedemons/opentele/tree/main/docs/content
 extra_css:
 - stylesheets/extra.css
 markdown_extensions:
@@ -18,7 +18,7 @@ markdown_extensions:
     anchor_linenums: true
 - pymdownx.superfences
 nav:
-- Home: index.md
+- Home: README.md
 - API Documentation:
   - auth: api-documentation/auth.md
 repo_url: https://github.com/thedemons/opentele
