@@ -19,8 +19,9 @@ markdown_extensions:
 - pymdownx.superfences
 nav:
 - Home: README.md
-- API Documentation:
-  - auth: api-documentation/auth.md
+- TDesktop:
+  - Account: tdesktop/account.md
+  - AuthKey: tdesktop/authkey.md
 repo_url: https://github.com/thedemons/opentele
 site_name: OpenTele
 theme:

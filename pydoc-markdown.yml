@@ -11,11 +11,12 @@ renderer:
   markdown:
     source_linker:
       type: github
-      repo: thedemons/desktop-tutorial
+      repo: thedemons/opentele
 
   output_directory: docs
 
   mkdocs_config:
+
     site_name: OpenTele
     theme:
       name: 'material'
@@ -28,6 +29,8 @@ renderer:
           toggle:
             icon: material/toggle-switch
             name: Switch to light mode
+
+
     markdown_extensions:
       - abbr
       - admonition
@@ -54,14 +57,9 @@ renderer:
     - title: Home
       name: README
       source: README.md
-    - title: API Documentation
+    - title: TDesktop
       children:
-        - title: OpenTele
-          contents: [ OpenTele ]
-      children:
-        - title: auth
+        - title: Account
+          contents: [ src.td.account.Account.* ]
+        - title: AuthKey
           contents: [ src.td.auth.*]
-        # - title: TDesktop
-        #   contents: [ src.td.tdesktop.*]
-        # - title: Account
-        #   contents: [ src.td.account.* ]

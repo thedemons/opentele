@@ -1,3 +1,4 @@
 md5 05b904a01b77a6b1aa76848e0efb5706 content\README.md
-md5 cf090f0d4e06819203c158ab2fa0cd20 content\api-documentation\auth.md
-md5 e4b817f3a74a97ee96c86f78f2a0d7b4 mkdocs.yml
+md5 15f49a039a138a449642cc5e36557413 content\tdesktop\account.md
+md5 47346f4ace5909ed54dceeabc3208686 content\tdesktop\authkey.md
+md5 ec488c2e031e36a79edb00a0324697c6 mkdocs.yml

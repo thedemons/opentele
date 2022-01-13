@@ -509,12 +509,21 @@ class StorageAccount(BaseObject):
         self.writeMtpData(baseGlobalPath, dataNameKey)
 
 class Account(BaseObject):
-    '''
-    TDesktop Account
-    '''
+    """
+    Telegram Desktop account
+
+    Attributes:
+        api (APIData):      The API this acount is using
+        basePath (str):     The folder where tdata is stored
+        owner (TDesktop):   TDesktop client owner of this account
+        localKey (AuthKey): Key used to encrypt and decrypt tdata
+        authKey (AuthKey):  The actual key used to authorize this acocunt
+        UserId (int):       User ID of this account
+        MainDcId (DcId):    The main Data Center ID this account connects to
+
+    """
 
     kWideIdsTag : int = int(~0)
-    'uint64'
 
     def __init__(self, 
                 owner    : td.TDesktop,
@@ -522,6 +531,21 @@ class Account(BaseObject):
                 api      : Union[Type[APIData], APIData] = APITemplate.TelegramDesktop,
                 keyFile  : str = None,
                 index    : int = 0) -> None:
+        """
+        Setup a tdesktop account
+
+        [extended_summary]
+
+        Args:
+            owner (td.TDesktop): TDesktop client owner of this account
+            basePath (str, optional): The folder where tdata is stored. Defaults to None.
+            api (Union[Type[APIData], APIData], optional): [description]. Defaults to APITemplate.TelegramDesktop.
+            keyFile (str, optional): [description]. Defaults to None.
+            index (int, optional): [description]. Defaults to 0.
+
+        Remark:
+            prepareToStart() must be call after initalizing the object
+        """
 
         self.__owner = owner
         self.__localKey = None
@@ -576,9 +600,7 @@ class Account(BaseObject):
    
     @localKey.setter
     def localKey(self, value):
-        """
-        localKey setter is intended for internal usage
-        """
+        # Intended for internal usage only
         self.__localKey = value
         self._local.localKey = value
 
@@ -619,10 +641,7 @@ class Account(BaseObject):
         return self.__MtpConfig
     
     def _setMtpAuthorizationCustom(self, dcId : DcId, userId : int, mtpKeys : List[td.AuthKey], mtpKeysToDestroy : List[td.AuthKey] = []):
-        '''
-        For internal usage only, don't mesh with this
-        '''
-        
+        # Intended for internal usage only
         self.__MainDcId = dcId
         self.__UserId = userId
         self.__mtpKeys = mtpKeys
@@ -636,9 +655,7 @@ class Account(BaseObject):
         self.__isLoaded = True
 
     def _setMtpAuthorization(self, serialized : QByteArray):
-        '''
-        For internal usage only, don't mesh with this
-        '''
+        # Intended for internal usage only
         stream = QDataStream(serialized)
         stream.setVersion(QDataStream.Version.Qt_5_1)
 
@@ -685,6 +702,7 @@ class Account(BaseObject):
 
 
     def serializeMtpAuthorization(self) -> QByteArray:
+        # Intended for internal usage only
         Expects(self.isLoaded(), "Account data not loaded yet")
 
         def keysSize(list : typing.List[td.AuthKey]):
@@ -709,27 +727,38 @@ class Account(BaseObject):
         return result
     
     def _writeData(self, baseGlobalPath : str, keyFile : str = None) -> None:
-        """Warning: For internal usage only"""
+        # Intended for internal usage only
         
         self._local._writeData(baseGlobalPath, keyFile)
 
     def SaveTData(self, basePath : str = None, passcode : str = None, keyFile : str = None) -> None:
-        """Save account to tdata folder
-        
-        ### Optional
-            1. basePath (str | None, default=None):\n
-                Folder to save to
-        
-        ### Examples
-        #### Add an account to `tdesktop` and save it to `tdata`:
-        ```python
-            telethonClient = TelegramClient("sessionFile", API_ID, API_HASH)
-            td = TDesktop("new_tdata")
-            account = Account.FromTelethon(telethonClient, owner=td) # add this account to td
-            td.SaveTData()
-        ```
+        """
+        Save this account to a folder
+
+        [extended_summary]
+
+        Args:
+            basePath (str, optional): The path to the folder. Defaults to None.
+            passcode (str, optional): Lock the data with a passcode. Defaults to None.
+            keyFile (str, optional): [description]. Defaults to None.
         """
         
+        
+        # """Save account to tdata folder
+        
+        # ### Optional
+        #     1. basePath (str | None, default=None):\n
+        #         Folder to save to
+        
+        # ### Examples
+        # #### Add an account to `tdesktop` and save it to `tdata`:
+        # ```python
+        #     telethonClient = TelegramClient("sessionFile", API_ID, API_HASH)
+        #     td = TDesktop("new_tdata")
+        #     account = Account.FromTelethon(telethonClient, owner=td) # add this account to td
+        #     td.SaveTData()
+        # ```
+        # """
         if basePath == None:
             basePath = self.basePath
 

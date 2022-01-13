@@ -2,7 +2,7 @@
 
 # src.td.auth
 
-[[view_source]](https://github.com/thedemons/desktop-tutorial/blob/4995d67e88268ff635fe9d7620c9d89cafe549a5/src\td\auth.py#L1)
+[[view_source]](https://github.com/thedemons/opentele/blob/ca94141ac7bb35c6a36367d753dfd868ebb5929b/src\td\auth.py#L1)
 
 <a id="src.td.auth.AuthKey"></a>
 
@@ -12,7 +12,7 @@
 class AuthKey(BaseObject)
 ```
 
-[[view_source]](https://github.com/thedemons/desktop-tutorial/blob/4995d67e88268ff635fe9d7620c9d89cafe549a5/src\td\auth.py#L10)
+[[view_source]](https://github.com/thedemons/opentele/blob/ca94141ac7bb35c6a36367d753dfd868ebb5929b/src\td\auth.py#L10)
 
 Authorization key
 
