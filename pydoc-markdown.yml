@@ -13,6 +13,8 @@ renderer:
       type: github
       repo: thedemons/desktop-tutorial
 
+  output_directory: docs
+
   mkdocs_config:
     site_name: OpenTele
     theme:
@@ -45,8 +47,8 @@ renderer:
     extra_css:
       - stylesheets/extra.css
 
-    repo_url: https://github.com/thedemons/desktop-tutorial
-    edit_uri: https://github.com/NiklasRosenstein/pydoc-markdown/tree/develop/docs
+    repo_url: https://github.com/thedemons/opentele
+    edit_uri: https://github.com/thedemons/opentele/tree/main
   
   pages:
     - title: Home

@@ -8,6 +8,15 @@ import hashlib
 #     from ..opentele import *
 
 class AuthKey(BaseObject):
+    """
+    Authorization key
+
+    Attributes:
+        DcId (DcId): Data Center ID (from 1 to 5)
+        type (AuthKey.Type): Type of the key
+        key (bytes): The actual key, 256 bytes in length
+
+    """
 
     kSize = 256
 
