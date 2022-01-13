@@ -1,0 +1,36 @@
+docs_dir: content
+edit_uri: https://github.com/NiklasRosenstein/pydoc-markdown/tree/develop/docs
+extra_css:
+- stylesheets/extra.css
+markdown_extensions:
+- abbr
+- admonition
+- attr_list
+- def_list
+- footnotes
+- meta
+- md_in_html
+- toc:
+    permalink: true
+- pymdownx.arithmatex:
+    generic: true
+- pymdownx.highlight:
+    anchor_linenums: true
+- pymdownx.superfences
+nav:
+- Home: index.md
+- API Documentation:
+  - auth: api-documentation/auth.md
+repo_url: https://github.com/thedemons/desktop-tutorial
+site_name: OpenTele
+theme:
+  name: material
+  palette:
+  - scheme: default
+    toggle:
+      icon: material/toggle-switch-off-outline
+      name: Switch to dark mode
+  - scheme: slate
+    toggle:
+      icon: material/toggle-switch
+      name: Switch to light mode

@@ -1,0 +1,65 @@
+loaders:
+  - type: python
+  
+processors:
+  - type: filter
+  - type: smart
+  - type: crossref
+
+renderer:
+  type: mkdocs
+  markdown:
+    source_linker:
+      type: github
+      repo: thedemons/desktop-tutorial
+
+  mkdocs_config:
+    site_name: OpenTele
+    theme:
+      name: 'material'
+      palette: 
+        - scheme: default
+          toggle:
+            icon: material/toggle-switch-off-outline
+            name: Switch to dark mode
+        - scheme: slate 
+          toggle:
+            icon: material/toggle-switch
+            name: Switch to light mode
+    markdown_extensions:
+      - abbr
+      - admonition
+      - attr_list
+      - def_list
+      - footnotes
+      - meta
+      - md_in_html
+      - toc:
+          permalink: true
+      - pymdownx.arithmatex:
+          generic: true
+      - pymdownx.highlight:
+          anchor_linenums: true
+      - pymdownx.superfences 
+
+    extra_css:
+      - stylesheets/extra.css
+
+    repo_url: https://github.com/thedemons/desktop-tutorial
+    edit_uri: https://github.com/NiklasRosenstein/pydoc-markdown/tree/develop/docs
+  
+  pages:
+    - title: Home
+      name: index
+      source: README.md
+    - title: API Documentation
+      children:
+        - title: OpenTele
+          contents: [ OpenTele ]
+      children:
+        - title: auth
+          contents: [ src.td.auth.*]
+        # - title: TDesktop
+        #   contents: [ src.td.tdesktop.*]
+        # - title: Account
+        #   contents: [ src.td.account.* ]
