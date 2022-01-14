@@ -1,6 +1,6 @@
 .vscode/*
 src/tests.py
 tests.py
-test.py
+test*
 __pycache__/
  *.pyc
