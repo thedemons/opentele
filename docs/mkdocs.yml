@@ -22,11 +22,12 @@ nav:
   - Account: tdesktop/account.md
   - AuthKey: tdesktop/authkey.md
   - MTP: tdesktop/mtp.md
+- APIData: apidata.md
 - Exceptions: exceptions.md
 repo_url: https://github.com/thedemons/opentele
 site_name: OpenTele
 theme:
-  name: readthedocs
+  name: material
   palette:
   - scheme: default
     toggle:

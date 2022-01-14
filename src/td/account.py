@@ -511,15 +511,32 @@ class StorageAccount(BaseObject):
 class Account(BaseObject):
     """
     Telegram Desktop account
+    Pro account
+    Test New
 
-    Attributes:
-        api (APIData):      The API this acount is using
-        basePath (str):     The folder where tdata is stored
-        owner (TDesktop):   TDesktop client owner of this account
-        localKey (AuthKey): Key used to encrypt and decrypt tdata
-        authKey (AuthKey):  The actual key used to authorize this acocunt
-        UserId (int):       User ID of this account
-        MainDcId (DcId):    The main Data Center ID this account connects to
+    ### Arguments:
+        api (`APIData`):
+            The API this acount is using
+        basePath (`str`):
+            The folder where tdata is stored
+
+        owner (`TDesktop`):
+            TDesktop client owner of this account
+
+        localKey (`AuthKey`):
+            Key used to encrypt and decrypt tdata
+
+        authKey (`AuthKey`):
+            The actual key used to authorize this acocunt
+
+        UserId (`int`):
+            User ID of this account
+
+        MainDcId (`DcId`):
+            The main Data Center ID this account connects to
+
+    ### Raises:
+        `OpenTeleException`: Failed
 
     """
 
@@ -534,19 +551,26 @@ class Account(BaseObject):
         """
         Setup a tdesktop account
 
-        [extended_summary]
-
-        Args:
-            owner (td.TDesktop): TDesktop client owner of this account
-            basePath (str, optional): The folder where tdata is stored. Defaults to None.
-            api (Union[Type[APIData], APIData], optional): [description]. Defaults to APITemplate.TelegramDesktop.
-            keyFile (str, optional): [description]. Defaults to None.
-            index (int, optional): [description]. Defaults to 0.
-
-        Remark:
-            prepareToStart() must be call after initalizing the object
+        ### Arguments:
+            owner (`td.TDesktop`):
+                TDesktop client owner of this account
+        
+            basePath (`str` | `None`):
+                The folder where tdata is stored
+        
+            api (`Type[APIData]` | `APIData` | `APITemplate.TelegramDesktop`):
+                The `APIData` to use
+        
+            keyFile (`str` | `None`):
+                [description]
+        
+            index (`int` | `0`):
+                [description]
+        
+        ### Remarks:
+            - Notes: `prepareToStart()` must be call after initalizing the object.
+            - Notes: `prepareToStart()` must be call after initalizing the object.
         """
-
         self.__owner = owner
         self.__localKey = None
         self.__authKey = None
@@ -637,6 +661,16 @@ class Account(BaseObject):
         return self.isAuthorized()
 
     def prepareToStart(self, localKey : td.AuthKey) -> td.MTP.Config:
+        """
+        Prepare the account before starting it
+
+        ### Arguments:
+            localKey (`td.AuthKey`):
+                `APIData`
+        
+        ### Returns:
+            `td.MTP.Config`: [description]
+        """
 
         self.__localKey = localKey
         self.__MtpConfig = self._local.start(localKey)
@@ -767,8 +801,8 @@ class Account(BaseObject):
     
 
 
-@extend_class
-class Account(Account):
+# @extend_class
+# class Account(Account):
 
     @typing.overload
     async def ToTelethon(   self,

@@ -4,7 +4,6 @@
 |----------|---------|----------------------------------|---|---|
 | api      | APIDATA | api to use                       |   |   |
 | basePath | str     | The folder where tdata is stored |   |   |
-|          |         |                                  |   |   |
 
 [[view_source]](../../new)
 

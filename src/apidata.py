@@ -52,6 +52,36 @@ class BaseAPIMetaClass(type):
 
 
 class APIData(object, metaclass=BaseAPIMetaClass):
+    """
+    API configuration to connect to `TelegramClient` and `TDesktop`
+    ### Attributes:
+        api_id (`int`):
+            API_ID
+
+        api_hash (`str`):
+            API_HASH
+
+        device_model (`str`):
+            Device model name
+
+        system_version (`str`):
+            Operating System version
+
+        app_version (`str`):
+            Current app version
+
+        lang_code (`str`):
+            Language code of the client
+
+        system_lang_code (`str`):
+            Language code of operating system
+
+        lang_pack (`str`):
+            Language pack
+    
+    ### Methods:
+        `Generate()`: Generate random device model and system version
+    """
     CustomInitConnectionList : List[APIData] = []
 
     api_id : int           = None
@@ -166,6 +196,19 @@ class APIData(object, metaclass=BaseAPIMetaClass):
     
     @classmethod
     def Generate(cls : Type[_T], id : str = None) -> _T:
+        """
+        Generate random device model and system version
+
+        ### Arguments:
+            id (`str` | `None`):
+                description
+        
+        ### Raises:
+            `NotImplementedError`: Not supported for web browser yet
+
+        ### Returns:
+            `APIData`: Return a copy of the api with random data
+        """
 
         if cls == APITemplate.TelegramAndroid:
             deviceInfo = AndroidDevice.RandomDevice(id)

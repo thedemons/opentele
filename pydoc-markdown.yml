@@ -29,7 +29,7 @@ renderer:
 
     site_name: OpenTele
     theme:
-      name: 'readthedocs'
+      name: 'material'
       palette: 
         - scheme: default
           toggle:
@@ -81,7 +81,10 @@ renderer:
           contents: [ td.auth.*]
 
         - title: MTP
-          contents: [ td.auth.*]
+          contents: [ td.mtp.*]
+
+    - title: APIData
+      contents: [apidata.*]
 
     - title: Exceptions
       contents: [exception.*]
