@@ -28,17 +28,23 @@ renderer:
   mkdocs_config:
 
     site_name: OpenTele
+    site_description: A python library created to make life easier for Telegram API Developers.
+    site_author: thedemons
     theme:
       name: 'material'
       palette: 
-        - scheme: default
-          toggle:
-            icon: material/toggle-switch-off-outline
-            name: Switch to dark mode
         - scheme: slate 
+          primary: light blue
+          accent: purple
           toggle:
             icon: material/toggle-switch
             name: Switch to light mode
+        - scheme: default
+          primary: blue
+          accent: purple
+          toggle:
+            icon: material/toggle-switch-off-outline
+            name: Switch to dark mode
 
 
     markdown_extensions:
@@ -49,11 +55,21 @@ renderer:
       - footnotes
       - meta
       - md_in_html
+      - pymdownx.caret
+      - pymdownx.mark
+      - pymdownx.tilde
+      - pymdownx.smartsymbols
       - toc:
           permalink: true
       - pymdownx.arithmatex:
           generic: true
       - pymdownx.highlight:
+          noclasses: true
+          # pygments_style: material
+          # pygments_style: vs
+          # pygments_style: dracula
+          pygments_style: one-dark
+          use_pygments: true
           anchor_linenums: true
       - pymdownx.superfences 
 

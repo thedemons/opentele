@@ -8,12 +8,19 @@ markdown_extensions:
 - footnotes
 - meta
 - md_in_html
+- pymdownx.caret
+- pymdownx.mark
+- pymdownx.tilde
+- pymdownx.smartsymbols
 - toc:
     permalink: true
 - pymdownx.arithmatex:
     generic: true
 - pymdownx.highlight:
     anchor_linenums: true
+    noclasses: true
+    pygments_style: one-dark
+    use_pygments: true
 - pymdownx.superfences
 nav:
 - Home: README.md
@@ -25,15 +32,21 @@ nav:
 - APIData: apidata.md
 - Exceptions: exceptions.md
 repo_url: https://github.com/thedemons/opentele
+site_author: thedemons
+site_description: A python library created to make life easier for Telegram API Developers.
 site_name: OpenTele
 theme:
   name: material
   palette:
-  - scheme: default
-    toggle:
-      icon: material/toggle-switch-off-outline
-      name: Switch to dark mode
-  - scheme: slate
+  - accent: purple
+    primary: light blue
+    scheme: slate
     toggle:
       icon: material/toggle-switch
       name: Switch to light mode
+  - accent: purple
+    primary: blue
+    scheme: default
+    toggle:
+      icon: material/toggle-switch-off-outline
+      name: Switch to dark mode

@@ -39,37 +39,37 @@
 
 # exception
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\exception.py#L1)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\exception.py#L1)
 
 <a id="exception.annotations"></a>
 
 ## annotations
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\exception.py#L1)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\exception.py#L1)
 
 <a id="exception.inspect"></a>
 
 ## inspect
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\exception.py#L2)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\exception.py#L2)
 
 <a id="exception.types"></a>
 
 ## types
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\exception.py#L3)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\exception.py#L3)
 
 <a id="exception.typing"></a>
 
 ## typing
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\exception.py#L4)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\exception.py#L4)
 
 <a id="exception.QDataStream"></a>
 
 ## QDataStream
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\exception.py#L5)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\exception.py#L5)
 
 <a id="exception.FileNotFound"></a>
 
@@ -79,7 +79,7 @@
 class FileNotFound(OpenTeleException)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\exception.py#L60)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\exception.py#L60)
 
 Could not find or open the file
 
@@ -91,7 +91,7 @@ Could not find or open the file
 class TDataInvalidMagic(OpenTeleException)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\exception.py#L65)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\exception.py#L65)
 
 TData file has an invalid magic data, which is the first 4 bytes of the file\n
 This usually mean that the file is corrupted or not in the supported formats
@@ -104,7 +104,7 @@ This usually mean that the file is corrupted or not in the supported formats
 class TDataInvalidCheckSum(OpenTeleException)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\exception.py#L71)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\exception.py#L71)
 
 TData file has an invalid checksum\n
 This usually mean that the file is corrupted or not in the supported formats
@@ -117,7 +117,7 @@ This usually mean that the file is corrupted or not in the supported formats
 class TDataBadDecryptKey(OpenTeleException)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\exception.py#L77)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\exception.py#L77)
 
 Could not decrypt the data with this key\n
 This usually mean that the file is password-encrypted
@@ -130,7 +130,7 @@ This usually mean that the file is password-encrypted
 class TDataWrongPasscode(OpenTeleException)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\exception.py#L83)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\exception.py#L83)
 
 Wrong passcode to decrypt tdata folder\n
 
@@ -142,7 +142,7 @@ Wrong passcode to decrypt tdata folder\n
 class TDataBadEncryptedDataSize(OpenTeleException)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\exception.py#L88)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\exception.py#L88)
 
 The encrypted data size part of the file is corrupted
 
@@ -154,7 +154,7 @@ The encrypted data size part of the file is corrupted
 class TDataBadDecryptedDataSize(OpenTeleException)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\exception.py#L92)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\exception.py#L92)
 
 The decrypted data size part of the file is corrupted
 
@@ -166,7 +166,7 @@ The decrypted data size part of the file is corrupted
 class TDataBadConfigData(OpenTeleException)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\exception.py#L96)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\exception.py#L96)
 
 TData contains bad config data that couldn't be parsed
 
@@ -178,7 +178,7 @@ TData contains bad config data that couldn't be parsed
 class QDataStreamFailed(OpenTeleException)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\exception.py#L101)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\exception.py#L101)
 
 Could not stream data from QDataStream\n
 Please check the QDataStream.status() for more information
@@ -191,7 +191,7 @@ Please check the QDataStream.status() for more information
 class AccountAuthKeyNotFound(OpenTeleException)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\exception.py#L107)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\exception.py#L107)
 
 Account.authKey is missing, something went wrong
 
@@ -203,7 +203,7 @@ Account.authKey is missing, something went wrong
 class TDataReadMapDataFailed(OpenTeleException)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\exception.py#L112)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\exception.py#L112)
 
 Could not read map data
 
@@ -215,7 +215,7 @@ Could not read map data
 class TDataReadMapDataIncorrectPasscode(OpenTeleException)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\exception.py#L116)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\exception.py#L116)
 
 Could not read map data because of incorrect passcode
 
@@ -227,7 +227,7 @@ Could not read map data because of incorrect passcode
 class TDataAuthKeyNotFound(OpenTeleException)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\exception.py#L120)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\exception.py#L120)
 
 Could not find authKey in TData
 
@@ -239,7 +239,7 @@ Could not find authKey in TData
 class MaxAccountLimit(OpenTeleException)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\exception.py#L124)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\exception.py#L124)
 
 Maxed out limit for accounts per tdesktop client
 
@@ -251,7 +251,7 @@ Maxed out limit for accounts per tdesktop client
 class TDesktopUnauthorized(OpenTeleException)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\exception.py#L129)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\exception.py#L129)
 
 TDesktop client is unauthorized
 
@@ -263,7 +263,7 @@ TDesktop client is unauthorized
 class TelethonUnauthorized(OpenTeleException)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\exception.py#L134)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\exception.py#L134)
 
 Telethon client is unauthorized
 
@@ -275,7 +275,7 @@ Telethon client is unauthorized
 class TDataSaveFailed(OpenTeleException)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\exception.py#L139)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\exception.py#L139)
 
 Could not save TDesktop to tdata folder
 
@@ -287,7 +287,7 @@ Could not save TDesktop to tdata folder
 class TDesktopNotLoaded(OpenTeleException)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\exception.py#L144)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\exception.py#L144)
 
 TDesktop instance has no account
 
@@ -299,7 +299,7 @@ TDesktop instance has no account
 class TDesktopHasNoAccount(OpenTeleException)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\exception.py#L148)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\exception.py#L148)
 
 TDesktop instance has no account
 
@@ -311,7 +311,7 @@ TDesktop instance has no account
 class TDAccountNotLoaded(OpenTeleException)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\exception.py#L153)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\exception.py#L153)
 
 TDesktop account hasn't been loaded yet
 
@@ -323,7 +323,7 @@ TDesktop account hasn't been loaded yet
 class NoPasswordProvided(OpenTeleException)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\exception.py#L157)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\exception.py#L157)
 
 You can't live without a password bro
 
@@ -335,7 +335,7 @@ You can't live without a password bro
 class Passwordincorrect(OpenTeleException)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\exception.py#L162)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\exception.py#L162)
 
 incorrect passwrd
 
@@ -347,7 +347,7 @@ incorrect passwrd
 class LoginFlagInvalid(OpenTeleException)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\exception.py#L167)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\exception.py#L167)
 
 Invalid login flag
 
@@ -359,7 +359,7 @@ Invalid login flag
 class NoInstanceMatched(OpenTeleException)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\exception.py#L172)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\exception.py#L172)
 
 Invalid login flag
 
@@ -372,7 +372,7 @@ Invalid login flag
 def Expects(condition: bool, exception: str = None, done: typing.Callable[[],None] = None, fail: typing.Callable[[OpenTeleException],None] = None, silent: bool = False, stack_index: int = 1) -> bool
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\exception.py#L178)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\exception.py#L178)
 
 Expect a condition to be true, raise an OpenTeleException exception if it's not.
 ### Arguments
@@ -409,7 +409,7 @@ Expect a condition to be true, raise an OpenTeleException exception if it's not.
 def Expects(condition: bool, exception: OpenTeleException = None, done: typing.Callable[[],None] = None, fail: typing.Callable[[OpenTeleException],None] = None, silent: bool = False, stack_index: int = 1) -> bool
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\exception.py#L213)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\exception.py#L213)
 
 Expect a condition to be true, raise an OpenTeleException exception if it's not.
 ### Arguments

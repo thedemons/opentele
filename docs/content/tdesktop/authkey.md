@@ -13,31 +13,31 @@
 
 # td.auth
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\td\auth.py#L1)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\td\auth.py#L1)
 
 <a id="td.auth.annotations"></a>
 
 ## annotations
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\td\auth.py#L1)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\td\auth.py#L1)
 
 <a id="td.auth.*"></a>
 
 ## \*
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\td\auth.py#L2)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\td\auth.py#L2)
 
 <a id="td.auth.td"></a>
 
 ## td
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\td\auth.py#L3)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\td\auth.py#L3)
 
 <a id="td.auth.hashlib"></a>
 
 ## hashlib
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\td\auth.py#L5)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\td\auth.py#L5)
 
 <a id="td.auth.AuthKey"></a>
 
@@ -47,7 +47,7 @@
 class AuthKey(BaseObject)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\td\auth.py#L10)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\td\auth.py#L10)
 
 Authorization key
 Attributes:

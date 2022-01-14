@@ -25,85 +25,85 @@
 
 # tl.telethon
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\tl\telethon.py#L3)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\tl\telethon.py#L3)
 
 <a id="tl.telethon.annotations"></a>
 
 ## annotations
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\tl\telethon.py#L3)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\tl\telethon.py#L3)
 
 <a id="tl.telethon.*"></a>
 
 ## \*
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\tl\telethon.py#L5)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\tl\telethon.py#L5)
 
 <a id="tl.telethon.tl"></a>
 
 ## tl
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\tl\telethon.py#L6)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\tl\telethon.py#L6)
 
 <a id="tl.telethon.PasswordHashInvalidError"></a>
 
 ## PasswordHashInvalidError
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\tl\telethon.py#L8)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\tl\telethon.py#L8)
 
 <a id="tl.telethon.AuthTokenAlreadyAcceptedError"></a>
 
 ## AuthTokenAlreadyAcceptedError
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\tl\telethon.py#L8)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\tl\telethon.py#L8)
 
 <a id="tl.telethon.AuthTokenExpiredError"></a>
 
 ## AuthTokenExpiredError
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\tl\telethon.py#L8)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\tl\telethon.py#L8)
 
 <a id="tl.telethon.AuthTokenInvalidError"></a>
 
 ## AuthTokenInvalidError
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\tl\telethon.py#L8)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\tl\telethon.py#L8)
 
 <a id="tl.telethon.FreshResetAuthorisationForbiddenError"></a>
 
 ## FreshResetAuthorisationForbiddenError
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\tl\telethon.py#L8)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\tl\telethon.py#L8)
 
 <a id="tl.telethon.HashInvalidError"></a>
 
 ## HashInvalidError
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\tl\telethon.py#L8)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\tl\telethon.py#L8)
 
 <a id="tl.telethon.TypeInputClientProxy"></a>
 
 ## TypeInputClientProxy
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\tl\telethon.py#L9)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\tl\telethon.py#L9)
 
 <a id="tl.telethon.TypeJSONValue"></a>
 
 ## TypeJSONValue
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\tl\telethon.py#L9)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\tl\telethon.py#L9)
 
 <a id="tl.telethon.logging"></a>
 
 ## logging
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\tl\telethon.py#L11)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\tl\telethon.py#L11)
 
 <a id="tl.telethon.warnings"></a>
 
 ## warnings
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\tl\telethon.py#L12)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\tl\telethon.py#L12)
 
 <a id="tl.telethon.TelegramClient"></a>
 
@@ -114,7 +114,7 @@
 class TelegramClient(telethon.TelegramClient,  BaseObject)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\tl\telethon.py#L45)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\tl\telethon.py#L45)
 
 <a id="tl.telethon.TelegramClient.__init__"></a>
 
@@ -125,7 +125,7 @@ class TelegramClient(telethon.TelegramClient,  BaseObject)
 def __init__(session: Union[str, Session] = None, api: Union[Type[APIData], APIData] = APITemplate.TelegramDesktop)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\tl\telethon.py#L49)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\tl\telethon.py#L49)
 
 Start TelegramClient with customized api
 Read more at [OpenTele GitHub](https://github.com/thedemons/opentele#authorization)
@@ -167,7 +167,7 @@ Read more at [OpenTele GitHub](https://github.com/thedemons/opentele#authorizati
 def __init__(session: Union[str, Session] = None, api: Union[Type[APIData], APIData] = None, api_id: int = 0, api_hash: str = None, *, connection: typing.Type[Connection] = ConnectionTcpFull, use_ipv6: bool = False, proxy: Union[tuple, dict] = None, local_addr: Union[str, tuple] = None, timeout: int = 10, request_retries: int = 5, connection_retries: int = 5, retry_delay: int = 1, auto_reconnect: bool = True, sequential_updates: bool = False, flood_sleep_threshold: int = 60, raise_last_call_error: bool = False, device_model: str = None, system_version: str = None, app_version: str = None, lang_code: str = 'en', system_lang_code: str = 'en', loop: asyncio.AbstractEventLoop = None, base_logger: Union[str, logging.Logger] = None, receive_updates: bool = True)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\tl\telethon.py#L85)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\tl\telethon.py#L85)
 
 This is the abstract base class for the client. It defines some
 basic stuff like connecting, switching data center, etc, and
@@ -188,7 +188,7 @@ Arguments
         more than once, maybe you're changing the working directory,
         renaming or removing the file, or using random names.
 
-    api (<span style="color:blue"><ins>**[APIData](../../APIData#apidata.APIData)**</ins></span>, optional):
+    api (**[APIData](../../APIData#apidata.APIData)**, optional):
         Use custom api_id and api_hash for better experience.\n
         These arguments will be ignored if it is set in the APIData: `api_id`, `api_hash`, `device_model`, `system_version`, `app_version`, `lang_code`, `system_lang_code`
         Read more at [OpenTele GitHub](https://github.com/thedemons/opentele#authorization)
@@ -327,7 +327,7 @@ Arguments
 async def FromTDesktop(account: Union[td.TDesktop, td.Account], session: Union[str, Session] = None, flag: Type[LoginFlag] = CreateNewSession, api: Union[Type[APIData], APIData] = APITemplate.TelegramDesktop, password: str = None) -> TelegramClient
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\tl\telethon.py#L500)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\tl\telethon.py#L500)
 
 FromTDesktop [summary]
 [extended_summary]

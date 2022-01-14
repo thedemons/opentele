@@ -13,7 +13,7 @@
 
 # td.account
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\td\account.py#L1)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\td\account.py#L1)
 
 <a id="td.account.Account"></a>
 
@@ -23,7 +23,7 @@
 class Account(BaseObject)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\td\account.py#L511)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\td\account.py#L511)
 
 Telegram Desktop account
 Pro account
@@ -33,7 +33,7 @@ Test New
 
 | Name | Type | Description |
 | :--- | :--: | :---------- |
-| api  | <span style="color:blue"><ins>**[APIData](../../APIData#apidata.APIData)**</ins></span> | The API this acount is using |
+| api  | **[APIData](../../APIData#apidata.APIData)** | The API this acount is using |
 | basePath  | <span style="color:green">**str**</span> | The folder where tdata is stored |
 | owner  | `TDesktop` | TDesktop client owner of this account |
 | localKey  | `AuthKey` | Key used to encrypt and decrypt tdata |
@@ -54,7 +54,7 @@ Test New
 def __init__(owner: td.TDesktop, basePath: str = None, api: Union[Type[APIData], APIData] = APITemplate.TelegramDesktop, keyFile: str = None, index: int = 0) -> None
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\td\account.py#L545)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\td\account.py#L545)
 
 Setup a tdesktop account
 
@@ -64,14 +64,14 @@ Setup a tdesktop account
 | :--- | :--: | :---------- |
 | owner  | `td.TDesktop` | TDesktop client owner of this account |
 | basePath  | <span style="color:green">**str**</span> | <span style="color:blue">**None**</span> | The folder where tdata is stored |
-| api  | `Type[APIData]` | <span style="color:blue"><ins>**[APIData](../../APIData#apidata.APIData)**</ins></span> | <span style="color:blue"><ins>**[APITemplate.TelegramDesktop](../../APIData#apidata.APITemplate.TelegramDesktop)**</ins></span> | The <span style="color:blue"><ins>**[APIData](../../APIData#apidata.APIData)**</ins></span> to use |
+| api  | `Type[APIData]` | **[APIData](../../APIData#apidata.APIData)** | **[APITemplate.TelegramDesktop](../../APIData#apidata.APITemplate.TelegramDesktop)** | The **[APIData](../../APIData#apidata.APIData)** to use |
 | keyFile  | <span style="color:green">**str**</span> | <span style="color:blue">**None**</span> | [description] |
 | index  | <span style="color:green">**int**</span> | `0` | [description] |
 
 ### Remarks:
 
-- Notes - <span style="color:blue"><ins>**[prepareToStart()](#td.account.Account.prepareToStart)**</ins></span> must be call after initalizing the object.
-- Notes - <span style="color:blue"><ins>**[prepareToStart()](#td.account.Account.prepareToStart)**</ins></span> must be call after initalizing the object.
+- Notes - **[prepareToStart()](#td.account.Account.prepareToStart)** must be call after initalizing the object.
+- Notes - **[prepareToStart()](#td.account.Account.prepareToStart)** must be call after initalizing the object.
 
 
 <a id="td.account.Account.localKey"></a>
@@ -83,7 +83,7 @@ Setup a tdesktop account
 def localKey(value)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\td\account.py#L626)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\td\account.py#L626)
 
 localKey setter is intended for internal usage
 
@@ -95,7 +95,7 @@ localKey setter is intended for internal usage
 def prepareToStart(localKey: td.AuthKey) -> td.MTP.Config
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\td\account.py#L663)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\td\account.py#L663)
 
 Prepare the account before starting it
 
@@ -103,11 +103,11 @@ Prepare the account before starting it
 
 | Name | Type | Description |
 | :--- | :--: | :---------- |
-| localKey  | <span style="color:blue"><ins>**[td.AuthKey](../AuthKey#td.auth.AuthKey)**</ins></span> | <span style="color:blue"><ins>**[APIData](../../APIData#apidata.APIData)**</ins></span> |
+| localKey  | **[td.AuthKey](../AuthKey#td.auth.AuthKey)** | **[APIData](../../APIData#apidata.APIData)** |
 
 ### Returns:
 
-<span style="color:blue"><ins>**[td.MTP.Config](../MTP#td.mtp.MTP.Config)**</ins></span> - [description]
+**[td.MTP.Config](../MTP#td.mtp.MTP.Config)** - [description]
 
 
 <a id="td.account.Account.SaveTData"></a>
@@ -118,7 +118,7 @@ Prepare the account before starting it
 def SaveTData(basePath: str = None, passcode: str = None, keyFile: str = None) -> None
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/e63c9bb552f72354268d8f1b58db18df5ab4e0ea/src\td\account.py#L771)
+[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\td\account.py#L771)
 
 Save this account to a folder
 [extended_summary]
