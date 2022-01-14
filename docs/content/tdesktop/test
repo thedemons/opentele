@@ -1,7 +1,10 @@
 <!-- vim: syntax=Markdown -->
 <a id="src.td.auth"></a>
-
-# src.td.auth.Test_MÊs(sss: str, aaa: int)
+| Name     | Type    | Description                      |   |   |
+|----------|---------|----------------------------------|---|---|
+| api      | APIDATA | api to use                       |   |   |
+| basePath | str     | The folder where tdata is stored |   |   |
+|          |         |                                  |   |   |
 
 [[view_source]](../../new)
 
