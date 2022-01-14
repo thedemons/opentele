@@ -1,4 +1,7 @@
 md5 05b904a01b77a6b1aa76848e0efb5706 content\README.md
-md5 15f49a039a138a449642cc5e36557413 content\tdesktop\account.md
-md5 47346f4ace5909ed54dceeabc3208686 content\tdesktop\authkey.md
-md5 ec488c2e031e36a79edb00a0324697c6 mkdocs.yml
+md5 53d293c0c659a731b8a22401bb4b4dce content\tdesktop\telegramclient.md
+md5 88cb5ff33b463716bae88089641d25e9 content\tdesktop\account.md
+md5 e1eb5fffe7723cb02212e649d5e8cc4f content\tdesktop\authkey.md
+md5 0bfbfb253e48e2f0121e1b7ec9731f03 content\tdesktop\mtp.md
+md5 06565681734524cac88daac5bbcf6c68 content\exceptions.md
+md5 0a478b84dcb01ae94d8e4553cc706d45 mkdocs.yml

@@ -228,7 +228,7 @@ class MapData(BaseObject):
 
 
     def prepareToWrite(self) -> td.Storage.EncryptedDescriptor:
-        """Warning: For internal usage only"""
+        # Intended for internal usage only
     
         mapSize = 0
 
@@ -399,7 +399,7 @@ class StorageAccount(BaseObject):
         return self.__mapData
 
     def start(self, localKey : td.AuthKey) -> td.MTP.Config:
-        """Warning: For internal usage only"""
+        # Intended for internal usage only
 
         self.__localKey = localKey
         self.readMapWith(self.localKey)
@@ -407,7 +407,7 @@ class StorageAccount(BaseObject):
         
 
     def readMtpData(self):
-        """Warning: For internal usage only"""
+        # Intended for internal usage only
         
         # mtp = ReadEncryptedFile(ToFilePart(self.__dataNameKey), self.__basePath, self.localKey)
         mtp = td.Storage.ReadEncryptedFile(td.Storage.ToFilePart(self.__dataNameKey), self.__baseGlobalPath, self.localKey)
@@ -421,7 +421,7 @@ class StorageAccount(BaseObject):
         self.owner._setMtpAuthorization(serialized)
 
     def readMtpConfig(self) -> td.MTP.Config:
-        """Warning: For internal usage only"""
+        # Intended for internal usage only
         Expects(self.localKey != None, AccountAuthKeyNotFound("The localKey has not been initialized yet"))
 
         try:
@@ -439,7 +439,7 @@ class StorageAccount(BaseObject):
         return td.MTP.Config(td.MTP.Environment.Production)
 
     def readMapWith(self, localKey : td.AuthKey, legacyPasscode : QByteArray = QByteArray()):
-        """Warning: For internal usage only"""
+        # Intended for internal usage only
         try:
             self.__mapData.read(localKey, legacyPasscode)
         except OpenTeleException:
@@ -449,7 +449,7 @@ class StorageAccount(BaseObject):
         
 
     def writeMtpConfig(self, basePath : str) -> None:
-        """Warning: For internal usage only"""
+        # Intended for internal usage only
 
         Expects(self.localKey, "localKey not found, have you initialized me correctly?")
         Expects(basePath, "basePath can't be empty")
@@ -463,7 +463,7 @@ class StorageAccount(BaseObject):
         file.finish()
 
     def writeMap(self, basePath : str) -> None:
-        """Warning: For internal usage only"""
+        # Intended for internal usage only
 
         Expects(self.localKey, "localKey not found, have you initialized me correctly?")
         Expects(basePath, "basePath can't be empty")
@@ -479,7 +479,7 @@ class StorageAccount(BaseObject):
         map.finish()
 
     def writeMtpData(self, baseGlobalPath : str, dataNameKey : str) -> None:
-        """Warning: For internal usage only"""
+        # Intended for internal usage only
 
         Expects(baseGlobalPath, "baseGlobalPath can't be empty")
         Expects(self.localKey, "localKey not found, have you initialized me correctly?")
@@ -494,7 +494,7 @@ class StorageAccount(BaseObject):
         mtp.finish()
     
     def _writeData(self, baseGlobalPath : str, keyFile : str = None) -> None:
-        """Warning: For internal usage only"""
+        # Intended for internal usage only
 
         Expects(baseGlobalPath, "baseGlobalPath can't be empty")
 
@@ -600,7 +600,9 @@ class Account(BaseObject):
    
     @localKey.setter
     def localKey(self, value):
-        # Intended for internal usage only
+        """
+        localKey setter is intended for internal usage
+        """
         self.__localKey = value
         self._local.localKey = value
 
@@ -642,6 +644,7 @@ class Account(BaseObject):
     
     def _setMtpAuthorizationCustom(self, dcId : DcId, userId : int, mtpKeys : List[td.AuthKey], mtpKeysToDestroy : List[td.AuthKey] = []):
         # Intended for internal usage only
+        
         self.__MainDcId = dcId
         self.__UserId = userId
         self.__mtpKeys = mtpKeys
@@ -741,24 +744,17 @@ class Account(BaseObject):
             basePath (str, optional): The path to the folder. Defaults to None.
             passcode (str, optional): Lock the data with a passcode. Defaults to None.
             keyFile (str, optional): [description]. Defaults to None.
+
+        Examples:
+            Add an account to `tdesktop` and save it to `tdata`:
+        ```python
+            telethonClient = TelegramClient("sessionFile", API_ID, API_HASH)
+            td = TDesktop("new_tdata")
+            account = Account.FromTelethon(telethonClient, owner=td) # add this account to td
+            td.SaveTData()
+        ```
         """
         
-        
-        # """Save account to tdata folder
-        
-        # ### Optional
-        #     1. basePath (str | None, default=None):\n
-        #         Folder to save to
-        
-        # ### Examples
-        # #### Add an account to `tdesktop` and save it to `tdata`:
-        # ```python
-        #     telethonClient = TelegramClient("sessionFile", API_ID, API_HASH)
-        #     td = TDesktop("new_tdata")
-        #     account = Account.FromTelethon(telethonClient, owner=td) # add this account to td
-        #     td.SaveTData()
-        # ```
-        # """
         if basePath == None:
             basePath = self.basePath
 

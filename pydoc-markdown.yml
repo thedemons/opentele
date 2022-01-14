@@ -1,14 +1,24 @@
 loaders:
   - type: python
+    search_path: ["src"]
   
 processors:
-  - type: filter
-  - type: smart
-  - type: crossref
+- type: filter
+  documented_only: True
+  do_not_filter_import: True
+- type: smart
+- type: crossref
 
 renderer:
   type: mkdocs
   markdown:
+    add_method_class_prefix: True
+    add_member_class_prefix: True
+    # render_module_header_template: "{module_name}"
+    # add_full_prefix: True
+    # sub_prefix: True
+    render_page_title : True
+    render_toc : True
     source_linker:
       type: github
       repo: thedemons/opentele
@@ -19,7 +29,7 @@ renderer:
 
     site_name: OpenTele
     theme:
-      name: 'material'
+      name: 'readthedocs'
       palette: 
         - scheme: default
           toggle:
@@ -47,19 +57,31 @@ renderer:
           anchor_linenums: true
       - pymdownx.superfences 
 
-    extra_css:
-      - stylesheets/extra.css
+    # extra_css:
+    #   - stylesheets/extra.css
 
     repo_url: https://github.com/thedemons/opentele
     edit_uri: https://github.com/thedemons/opentele/tree/main/docs/content
   
   pages:
+
     - title: Home
       name: README
       source: README.md
+
     - title: TDesktop
       children:
+        - title: TelegramClient
+          contents: [ tl.telethon.* ]
+
         - title: Account
-          contents: [ src.td.account.Account.* ]
+          contents: [ td.account.Account.* ]
+
         - title: AuthKey
-          contents: [ src.td.auth.*]
+          contents: [ td.auth.*]
+
+        - title: MTP
+          contents: [ td.auth.*]
+
+    - title: Exceptions
+      contents: [exception.*]

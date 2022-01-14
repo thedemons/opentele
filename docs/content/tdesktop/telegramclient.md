@@ -1,4 +1,4 @@
-# Account
+# TelegramClient
 
 ## Table of Contents
 

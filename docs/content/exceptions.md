@@ -1,4 +1,4 @@
-# Account
+# Exceptions
 
 ## Table of Contents
 
