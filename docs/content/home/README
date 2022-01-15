@@ -1,3 +1,4 @@
+<!-- vim: syntax=Markdown -->
 # OpenTele
 
 OpenTele is a python library created to make life easier for Telegram API Developers.
@@ -10,7 +11,7 @@ It helps you:
 ## Installation
 - This library was created with the help of [telethon](https://github.com/LonamiWebs/Telethon), [tgcrypto](https://github.com/pyrogram/tgcrypto) and [pyQt5](https://www.riverbankcomputing.com/software/pyqt/)
 - Just run this command to install it
-```
+```pip title="pip"
 pip install --upgrade opentele
 ```
 

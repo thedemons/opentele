@@ -54,12 +54,13 @@ class BaseAPIMetaClass(type):
 class APIData(object, metaclass=BaseAPIMetaClass):
     """
     API configuration to connect to `TelegramClient` and `TDesktop`
+
     ### Attributes:
         api_id (`int`):
-            API_ID
+            [API_ID](https://core.telegram.org/api/obtaining_api_id#obtaining-api-id)
 
         api_hash (`str`):
-            API_HASH
+            [API_HASH](https://core.telegram.org/api/obtaining_api_id#obtaining-api-id)
 
         device_model (`str`):
             Device model name
@@ -137,10 +138,10 @@ class APIData(object, metaclass=BaseAPIMetaClass):
         if self.device_model == None:
             system = platform.uname()
 
-            if system.machine in ('x86_64', 'AMD64'):
-                self.device_model = 'PC 64bit'
-            elif system.machine in ('i386','i686','x86'):
-                self.device_model = 'PC 32bit'
+            if system.machine in ("x86_64", "AMD64"):
+                self.device_model = "PC 64bit"
+            elif system.machine in ("i386","i686","x86"):
+                self.device_model = "PC 32bit"
             else:
                 self.device_model = system.machine
 
@@ -166,7 +167,7 @@ class APIData(object, metaclass=BaseAPIMetaClass):
     def destroy(glob : Union[Type[_T], _T]):
         if isinstance(glob, type): return
 
-        # might cause conflict, disabled for now, it won't be a problem
+        # might cause conflict, disabled for now, it won"t be a problem
         # if (APIData.findData(self.pid) != None):
         #     APIData.CustomInitConnectionList.remove(self)
         
@@ -181,7 +182,7 @@ class APIData(object, metaclass=BaseAPIMetaClass):
     @classmethod
     def _makePIDEnsure(cls) -> int:
         while True:
-            pid = int.from_bytes(os.urandom(8), 'little')
+            pid = int.from_bytes(os.urandom(8), "little")
             if cls.findData(pid) == None: break
         return pid
 
@@ -200,8 +201,10 @@ class APIData(object, metaclass=BaseAPIMetaClass):
         Generate random device model and system version
 
         ### Arguments:
-            id (`str` | `None`):
-                description
+            id (`str`, default=`None` [random]):
+                The ID to generate - can be anything.\\
+                This will be used to ensure that it will generate the same data everytime.\\
+                If not set then it will be randomized every time we runs it.
         
         ### Raises:
             `NotImplementedError`: Not supported for web browser yet
@@ -232,25 +235,83 @@ class APIData(object, metaclass=BaseAPIMetaClass):
         return None
 
 class APITemplate(APIData):
+    """
+    Builtin Templates for APIData
+
+    ### Attributes:
+        TelegramDesktop (`APIData`):
+            Official Telegram for Desktop (Windows, macOS and Linux) [View on GitHub](https://github.com/telegramdesktop/tdesktop)
+
+        TelegramAndroid (`APIData`):
+            Official Telegram for Android [View on GitHub](https://github.com/DrKLO/Telegram)
+
+        TelegramAndroidX (`APIData`):
+            Official TelegramX for Android [View on GitHub](https://github.com/DrKLO/Telegram)
+
+        TelegramIOS (`APIData`):
+            Official Telegram for iOS [View on GitHub](https://github.com/TelegramMessenger/Telegram-iOS)
+
+        TelegramMacOS (`APIData`):
+            Official Telegram-Swift For MacOS [View on GitHub](https://github.com/overtake/TelegramSwift)
+
+        TelegramWeb_Z (`APIData`):
+            Default Official Telegram Web Z For Browsers [View on GitHub](https://github.com/Ajaxy/telegram-tt) | [Visit on Telegram](https://web.telegram.org/z/)
+
+        TelegramWeb_K (`APIData`):
+            Official Telegram Web K For Browsers [View on GitHub](https://github.com/morethanwords/tweb) | [Visit on Telegram](https://web.telegram.org/k/)
+
+        Webogram (`APIData`):
+            Old Telegram For Browsers [View on GitHub](https://github.com/zhukov/webogram) | [Vist on Telegram](https://web.telegram.org/?legacy=1#/im)
+    """
     
     class TelegramDesktop(APIData):
         """
-        Official Telegram for Desktop (Windows, macOS and Linux)\n
+        Official Telegram for Desktop (Windows, macOS and Linux)
         [View on GitHub](https://github.com/telegramdesktop/tdesktop)
+        
+        ### Attributes:
+            api_id (`int`)           : 2040
+            api_hash (`str`)         : b18441a1ff607e10a989891a5462e627
+            device_model (`str`)     : Desktop
+            system_version (`str`)   : Windows 10
+            app_version (`str`)      : 3.4.3 x64
+            lang_code (`str`)        : en
+            system_lang_code (`str`) : en-US
+            lang_pack (`str`)        : tdesktop `Generate`
+        
+        ### Methods:
+            `Generate(x)`: Generate Windows device
+            `Generate(x)`: Generate macOS device
+            `Generate(x)`: Generate Linux device
+            `Generate(x)`: Generate random operating system (Windows | macOS | Linux)
         """
         api_id           = 2040
-        api_hash         = 'b18441a1ff607e10a989891a5462e627'
-        device_model     = 'Desktop'
-        system_version   = 'Windows 10'
-        app_version      = '3.4.3 x64'
-        lang_code        = 'en'
-        system_lang_code = 'en-US'
-        lang_pack        = 'tdesktop'
+        api_hash         = "b18441a1ff607e10a989891a5462e627";
+        device_model     = "Desktop"
+        system_version   = "Windows 10"
+        app_version      = "3.4.3 x64"
+        lang_code        = "en"
+        system_lang_code = "en-US"
+        lang_pack        = "tdesktop"
         
         @typing.overload
         @classmethod
         def Generate(cls : Type[_T], system : str = "windows", id : str = None) -> _T:
-            pass
+            """
+            Generate random TelegramDesktop devices
+            ### Arguments:
+                system (`str`, default=`"windows"`):
+                    Which OS to generate, either "windows", "macos", or "linux".\\
+                    Default is `None` or "random" which means it will selects randomly between 3 OS
+            
+                id (`str`, default=`None`):
+                    The ID to generate - can be anything.\\
+                    This will be used to ensure that it will generate the same data everytime.\\
+                    If not set then it will be randomized every time we runs it.
+            
+            ### Returns:
+                `_T`: [description]
+            """
 
         @typing.overload
         @classmethod
@@ -293,13 +354,13 @@ class APITemplate(APIData):
         [View on GitHub](https://github.com/DrKLO/Telegram)
         """
         api_id           = 6
-        api_hash         = 'eb06d4abfb49dc3eeb1aeb98ae0f581e'
-        device_model     = 'Samsung SM-G998B'
-        system_version   = 'SDK 31'
-        app_version      = '8.4.1 (2522)'
-        lang_code        = 'en'
-        system_lang_code = 'en-US'
-        lang_pack        = 'android'
+        api_hash         = "eb06d4abfb49dc3eeb1aeb98ae0f581e"
+        device_model     = "Samsung SM-G998B"
+        system_version   = "SDK 31"
+        app_version      = "8.4.1 (2522)"
+        lang_code        = "en"
+        system_lang_code = "en-US"
+        lang_pack        = "android"
 
     class TelegramAndroidX(APIData):
         """
@@ -307,13 +368,13 @@ class APITemplate(APIData):
         [View on GitHub](https://github.com/DrKLO/Telegram)
         """
         api_id           = 21724
-        api_hash         = '3e0cb5efcd52300aec5994fdfc5bdc16'
-        device_model     = 'Samsung SM-G998B'
-        system_version   = 'SDK 31'
-        app_version      = '8.4.1 (2522)'
-        lang_code        = 'en'
-        system_lang_code = 'en-US'
-        lang_pack        = 'android'
+        api_hash         = "3e0cb5efcd52300aec5994fdfc5bdc16"
+        device_model     = "Samsung SM-G998B"
+        system_version   = "SDK 31"
+        app_version      = "8.4.1 (2522)"
+        lang_code        = "en"
+        system_lang_code = "en-US"
+        lang_pack        = "android"
 
     class TelegramIOS(APIData):
         """
@@ -321,15 +382,15 @@ class APITemplate(APIData):
         [View on GitHub](https://github.com/TelegramMessenger/Telegram-iOS)
         """
         # api_id           = 8
-        # api_hash         = '7245de8e747a0d6fbe11f7cc14fcc0bb'
+        # api_hash         = "7245de8e747a0d6fbe11f7cc14fcc0bb"
         api_id           = 10840
-        api_hash         = '33c45224029d59cb3ad0c16134215aeb'
-        device_model     = 'iPhone 13 Pro Max'
-        system_version   = '14.8.1'
-        app_version      = '8.4'
-        lang_code        = 'en'
-        system_lang_code = 'en-US'
-        lang_pack        = 'ios'
+        api_hash         = "33c45224029d59cb3ad0c16134215aeb"
+        device_model     = "iPhone 13 Pro Max"
+        system_version   = "14.8.1"
+        app_version      = "8.4"
+        lang_code        = "en"
+        system_lang_code = "en-US"
+        lang_pack        = "ios"
 
     class TelegramMacOS(APIData):
         """
@@ -337,15 +398,15 @@ class APITemplate(APIData):
         [View on GitHub](https://github.com/overtake/TelegramSwift)
         """
         api_id           = 2834
-        api_hash         = '68875f756c9b437a8b916ca3de215815'
+        api_hash         = "68875f756c9b437a8b916ca3de215815"
         # api_id = 9                                    |
-        # api_hash = "3975f648bb682ee889f35483bc618d1c" | Telegram for macOS uses this api, but it's unofficial api, why?
-        device_model     = 'MacBook Pro'
-        system_version   = 'macOS 12.0.1'
-        app_version      = '8.4'
-        lang_code        = 'en'
-        system_lang_code = 'en-US'
-        lang_pack        = 'macos'
+        # api_hash = "3975f648bb682ee889f35483bc618d1c" | Telegram for macOS uses this api, but it"s unofficial api, why?
+        device_model     = "MacBook Pro"
+        system_version   = "macOS 12.0.1"
+        app_version      = "8.4"
+        lang_code        = "en"
+        system_lang_code = "en-US"
+        lang_pack        = "macos"
 
     class TelegramWeb_Z(APIData):
         """
@@ -353,13 +414,13 @@ class APITemplate(APIData):
         [View on GitHub](https://github.com/Ajaxy/telegram-tt) | [Visit on Telegram](https://web.telegram.org/z/)
         """
         api_id           = 2496
-        api_hash         = '8da85b0d5bfe62527e5b244c209159c3'
-        device_model     = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36'
-        system_version   = 'Windows'
-        app_version      = '1.28.3 Z'
-        lang_code        = 'en'
-        system_lang_code = 'en-US'
-        lang_pack        = ''   # I don't understand why Telegram Z doesn't use langPack
+        api_hash         = "8da85b0d5bfe62527e5b244c209159c3"
+        device_model     = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36"
+        system_version   = "Windows"
+        app_version      = "1.28.3 Z"
+        lang_code        = "en"
+        system_lang_code = "en-US"
+        lang_pack        = ""   # I don"t understand why Telegram Z doesn"t use langPack
                                 # You can read its source here: https://github.com/Ajaxy/telegram-tt/blob/f7bc473d51c0fe3a3e8b22678b62d2360225aa7c/src/lib/gramjs/client/TelegramClient.js#L131
 
     class TelegramWeb_K(APIData):
@@ -368,13 +429,13 @@ class APITemplate(APIData):
         [View on GitHub](https://github.com/morethanwords/tweb) | [Visit on Telegram](https://web.telegram.org/k/)
         """
         api_id           = 2496
-        api_hash         = '8da85b0d5bfe62527e5b244c209159c3'
-        device_model     = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36'
-        system_version   = 'Win32'
-        app_version      = '1.0.1 K'
-        lang_code        = 'en'
-        system_lang_code = 'en-US'
-        lang_pack        = 'macos'   # I'm totally confused, why macos? https://github.dev/morethanwords/tweb/blob/26582590e647766f5890c79e1611c54c1e6e800c/src/config/app.ts#L23
+        api_hash         = "8da85b0d5bfe62527e5b244c209159c3"
+        device_model     = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36"
+        system_version   = "Win32"
+        app_version      = "1.0.1 K"
+        lang_code        = "en"
+        system_lang_code = "en-US"
+        lang_pack        = "macos"   # I"m totally confused, why macos? https://github.dev/morethanwords/tweb/blob/26582590e647766f5890c79e1611c54c1e6e800c/src/config/app.ts#L23
 
     class Webogram(APIData):
         """
@@ -382,17 +443,11 @@ class APITemplate(APIData):
         [View on GitHub](https://github.com/zhukov/webogram) | [Vist on Telegram](https://web.telegram.org/?legacy=1#/im)
         """
         api_id           = 2496
-        api_hash         = '8da85b0d5bfe62527e5b244c209159c3'
-        device_model     = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36'
-        system_version   = 'Win32'
-        app_version      = '0.7.0'
-        lang_code        = 'en'
-        system_lang_code = 'en-US'
-        lang_pack        = ''   # The same problem as TelegramWeb_K, as TelegramWeb_K was built on Webogram
+        api_hash         = "8da85b0d5bfe62527e5b244c209159c3"
+        device_model     = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36"
+        system_version   = "Win32"
+        app_version      = "0.7.0"
+        lang_code        = "en"
+        system_lang_code = "en-US"
+        lang_pack        = ""   # The same problem as TelegramWeb_K, as TelegramWeb_K was built on Webogram
 
-
-
-
-# Hook InitConnectionRequest to change API_ID API_HASH, device_model,... etc
-# oldInitConnectionRequest = TLFunctions.InitConnectionRequest
-# TLFunctions.InitConnectionRequest = CustomInitConnectionRequest

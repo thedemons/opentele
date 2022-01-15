@@ -1,0 +1,56 @@
+<!-- vim: syntax=Markdown -->
+# AuthKey
+
+## Table of Contents
+
+- [AuthKey](#authkey)
+  - [Table of Contents](#table-of-contents)
+  - [annotations](#annotations)
+  - [\*](#)
+  - [td](#td)
+  - [hashlib](#hashlib)
+  - [AuthKey Objects](#authkey-objects)
+
+[[source]](https://github.com/thedemons/opentele/blob/7dbe214f9a0a2bd218d387a4d7dc60e9b05e4c17/src\td\auth.py#L2)
+
+<a id="td.auth.annotations"></a>
+
+## annotations
+
+[[source]](https://github.com/thedemons/opentele/blob/7dbe214f9a0a2bd218d387a4d7dc60e9b05e4c17/src\td\auth.py#L2)
+
+<a id="td.auth.*"></a>
+
+## \*
+
+[[source]](https://github.com/thedemons/opentele/blob/7dbe214f9a0a2bd218d387a4d7dc60e9b05e4c17/src\td\auth.py#L3)
+
+<a id="td.auth.td"></a>
+
+## td
+
+[[source]](https://github.com/thedemons/opentele/blob/7dbe214f9a0a2bd218d387a4d7dc60e9b05e4c17/src\td\auth.py#L4)
+
+<a id="td.auth.hashlib"></a>
+
+## hashlib
+
+[[source]](https://github.com/thedemons/opentele/blob/7dbe214f9a0a2bd218d387a4d7dc60e9b05e4c17/src\td\auth.py#L6)
+
+<a id="td.auth.AuthKey"></a>
+
+## AuthKey Objects
+
+[[source]](https://github.com/thedemons/opentele/blob/7dbe214f9a0a2bd218d387a4d7dc60e9b05e4c17/src\td\auth.py#L17)
+
+```python
+class AuthKey(BaseObject)
+```
+
+Authorization key
+Attributes:
+    DcId (DcId): Data Center ID (from 1 to 5)
+    type (AuthKeyType): Type of the key
+    key (bytes): The actual key, 256 bytes in length
+
+

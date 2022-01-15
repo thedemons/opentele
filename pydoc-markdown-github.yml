@@ -11,6 +11,7 @@ processors:
 
 renderer:
   type: mkdocs
+  build_custom_md_extension: ''
   markdown:
     add_method_class_prefix: True
     add_member_class_prefix: True

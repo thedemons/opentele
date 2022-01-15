@@ -1,63 +1,93 @@
 docs_dir: content
 edit_uri: https://github.com/thedemons/opentele/tree/main/docs/content
+extra_css:
+- assets/pymdownx-extras/extra-c12baed3e0.css
+extra_javascript:
+- https://unpkg.com/mermaid@8.13.3/dist/mermaid.min.js
+- https://polyfill.io/v3/polyfill.min.js?features=es6
+- https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+- assets/pymdownx-extras/extra-loader-9e2c67b9.js
 markdown_extensions:
-- admonition
-- abbr
-- attr_list
-- def_list
-- footnotes
-- meta
-- md_in_html
-- toc:
-    permalink: true
-- pymdownx.arithmatex:
-    generic: true
-- pymdownx.betterem:
-    smart_enable: all
-- pymdownx.caret
-- pymdownx.details
-- pymdownx.emoji
+- markdown.extensions.toc: null
+- markdown.extensions.admonition: null
+- markdown.extensions.smarty:
+    smart_quotes: false
+- pymdownx.betterem: null
+- markdown.extensions.attr_list: null
+- markdown.extensions.def_list: null
+- markdown.extensions.tables: null
+- markdown.extensions.abbr: null
+- markdown.extensions.footnotes: null
+- markdown.extensions.md_in_html: null
+- pymdownx.superfences:
+    preserve_tabs: true
 - pymdownx.highlight:
-    anchor_linenums: true
-- pymdownx.inlinehilite
-- pymdownx.keys
+    extend_pygments_lang:
+    - lang: python
+      name: python
+      options:
+        python3: true
+    linenums_style: pymdownx-inline
+- pymdownx.inlinehilite: null
 - pymdownx.magiclink:
+    normalize_issue_symbols: true
     repo: opentele
+    repo_url_shortener: true
     repo_url_shorthand: true
+    social_url_shortener: true
+    social_url_shorthand: true
     user: thedemons
-- pymdownx.mark
-- pymdownx.smartsymbols
-- pymdownx.superfences
-- pymdownx.tabbed:
-    alternate_style: true
+- pymdownx.tilde: null
+- pymdownx.caret: null
+- pymdownx.smartsymbols: null
+- pymdownx.emoji: null
+- pymdownx.escapeall:
+    hardbreak: true
+    nbsp: true
 - pymdownx.tasklist:
     custom_checkbox: true
-- pymdownx.tilde
+- pymdownx.progressbar: null
+- pymdownx.arithmatex:
+    block_tag: pre
+    generic: true
+- pymdownx.mark: null
+- pymdownx.striphtml: null
+- pymdownx.details: null
+- pymdownx.tabbed:
+    alternate_style: true
+- pymdownx.saneheaders: null
 nav:
-- Home: README.md
-- TDesktop:
-  - TelegramClient: tdesktop/telegramclient.md
-  - Account: tdesktop/account.md
-  - AuthKey: tdesktop/authkey.md
-  - MTP: tdesktop/mtp.md
-- APIData: apidata.md
-- Exceptions: exceptions.md
+- Home:
+  - OpenTele: home/README
+- API Documentation:
+  - Telethon:
+    - TelegramClient: api-documentation/telethon/telegramclient
+  - Authorization:
+    - APIData: api-documentation/authorization/apidata
+    - APITemplate: api-documentation/authorization/apitemplate
+  - Telegram Desktop:
+    - TDesktop: api-documentation/telegram-desktop/tdesktop
+    - Account: api-documentation/telegram-desktop/account
+    - AuthKey: api-documentation/telegram-desktop/authkey
+    - MTP: api-documentation/telegram-desktop/mtp
+  - Exceptions: api-documentation/exceptions
 repo_url: https://github.com/thedemons/opentele
 site_author: thedemons
 site_description: A python library created to make life easier for Telegram API Developers.
 site_name: OpenTele
 theme:
+  custom_dir: theme
+  features:
+  - navigation.tabs
+  - navigation.top
+  - navigation.instant
+  font:
+    code: Roboto Mono
+    text: Roboto
+  icon:
+    logo: material/book-open-page-variant
   name: material
   palette:
-  - accent: purple
+    accent: deep purple
     primary: light blue
-    scheme: slate
-    toggle:
-      icon: material/toggle-switch
-      name: Switch to light mode
-  - accent: purple
-    primary: blue
-    scheme: default
-    toggle:
-      icon: material/toggle-switch-off-outline
-      name: Switch to dark mode
+    scheme: dracula

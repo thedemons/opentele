@@ -1,0 +1,68 @@
+<!-- vim: syntax=Markdown -->
+# APIData
+
+## Table of Contents
+
+* [APIData](#apidata.APIData)
+  * [Generate](#apidata.APIData.Generate)
+
+[[source]](https://github.com/thedemons/opentele/blob/7dbe214f9a0a2bd218d387a4d7dc60e9b05e4c17/src\apidata.py#L2)
+
+<a id="apidata.APIData"></a>
+
+## APIData Objects
+
+[[source]](https://github.com/thedemons/opentele/blob/7dbe214f9a0a2bd218d387a4d7dc60e9b05e4c17/src\apidata.py#L54)
+
+```python
+class APIData(object, metaclass=BaseAPIMetaClass)
+```
+
+API configuration to connect to `TelegramClient` and `TDesktop`
+
+#### Attributes:
+
+| Name | Type | Description |
+| :--- | :--: | :---------- |
+| api_id | `#!python int` | [API_ID](https://core.telegram.org/api/obtaining_api_id#obtaining-api-id) |
+| api_hash | `#!python str` | [API_HASH](https://core.telegram.org/api/obtaining_api_id#obtaining-api-id) |
+| device_model | `#!python str` | Device model name |
+| system_version | `#!python str` | Operating System version |
+| app_version | `#!python str` | Current app version |
+| lang_code | `#!python str` | Language code of the client |
+| system_lang_code | `#!python str` | Language code of operating system |
+| lang_pack | `#!python str` | Language pack |
+
+#### Methods:
+
+**[Generate()](../APIData#apidata.APIData.Generate)** - Generate random device model and system version
+
+
+<a id="apidata.APIData.Generate"></a>
+
+#### APIData.Generate
+
+[[source]](https://github.com/thedemons/opentele/blob/7dbe214f9a0a2bd218d387a4d7dc60e9b05e4c17/src\apidata.py#L199)
+
+```python
+@classmethod
+def Generate(cls: Type[_T], id: str = None) -> _T
+```
+
+Generate random device model and system version
+
+#### Arguments:
+
+| Name | Type | Default | Description |
+| :--- | :--: | :-----: | :---------- |
+| id | `#!python str` | `#!python None` [random] | The ID to generate - can be anything.<br/>This will be used to ensure that it will generate the same data everytime.<br/>If not set then it will be randomized every time we runs it. |
+
+#### Raises:
+
+`NotImplementedError` - Not supported for web browser yet
+
+#### Returns:
+
+**[APIData](../APIData#apidata.APIData)** - Return a copy of the api with random data
+
+

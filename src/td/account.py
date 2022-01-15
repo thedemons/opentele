@@ -887,7 +887,7 @@ class Account(BaseObject):
         exception=TelethonUnauthorized("Telethon client is unauthorized, it need to be authorized first"))
         
         if flag == CreateNewSession:
-            copy = await telethonClient._QRLoginToNewClient(api=api, password=password)
+            copy = await telethonClient.QRLoginToNewClient(api=api, password=password)
         else:
             copy = telethonClient
 

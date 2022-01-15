@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 from .configs import *
+from ..td.tdesktop import TDesktop
+
 from . import shared as tl
 
 from telethon.errors.rpcerrorlist import PasswordHashInvalidError, AuthTokenAlreadyAcceptedError, AuthTokenExpiredError, AuthTokenInvalidError, FreshResetAuthorisationForbiddenError, HashInvalidError
@@ -39,20 +41,24 @@ class CustomInitConnectionRequest(functions.InitConnectionRequest):
         self.proxy = proxy
         self.params = params
 
-
-
 @extend_class
 class TelegramClient(telethon.TelegramClient, BaseObject):
-# class TelegramClient(telethon.TelegramClient, BaseObject):
+    """
+    Extended version of telethon.TelegramClient
+
+    ### Methods:
+        `FromTDesktop()`: Create an instance of `TelegramClient` from `TDesktop`
+        `ToTDesktop()`: Convert this `TelegramClient` instance to `TDesktop`
+    """
 
     @typing.overload
     def __init__(self : TelegramClient, session : Union[str, Session] = None, api : Union[Type[APIData], APIData] = APITemplate.TelegramDesktop):
-        """
-        Start TelegramClient with customized api
+        """Start TelegramClient with customized api.
+
         Read more at [OpenTele GitHub](https://github.com/thedemons/opentele#authorization)
         
         ### Arguments
-            1. session (`Union[str, Session]`):\n
+            session (`Union[str, Session]`):
                  The file name of the session file to be used if a string is
                 given (it may be a full path), or the Session instance to be
                 used otherwise. If it's `None`, the session will not be saved,
@@ -66,10 +72,9 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
                 more than once, maybe you're changing the working directory,
                 renaming or removing the file, or using random names.
         
-            2. api (APIData):\n
-                Using API of Telegram Desktop by default
+            api (APIData):
+                Which `APIData` to use, use `APITemPlate.TelegramDesktop` by default
         
-        ### Optional
         ### Examples
         #### Start TelegramClient from an instance of TDesktop:
         ```python
@@ -109,9 +114,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
             loop                    : asyncio.AbstractEventLoop = None,
             base_logger             : Union[str, logging.Logger] = None,
             receive_updates         : bool = True):
-
-        """
-        This is the abstract base class for the client. It defines some
+        """This is the abstract base class for the client. It defines some
         basic stuff like connecting, switching data center, etc, and
         leaves the `__call__` unimplemented.
 
@@ -313,33 +316,6 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
         lang_code=lang_code, system_lang_code=system_lang_code, loop=loop, base_logger=base_logger,
         receive_updates=receive_updates)
 
-    async def TerminateSession(self, hash : int):
-
-        try:
-            await self(functions.account.ResetAuthorizationRequest(hash))
-            import rich
-            rich.print(f"Terminated: {hash}")
-
-        except (FreshResetAuthorisationForbiddenError, HashInvalidError) as e:
-
-            if isinstance(e, FreshResetAuthorisationForbiddenError):
-                raise FreshResetAuthorisationForbiddenError("You can't logout other sessions if less than 24 hours have passed since you logged on the current session.")
-
-            elif isinstance(e, HashInvalidError):
-                raise HashInvalidError("The provided hash is invalid.")
-            
-            raise BaseException(e) 
-
-    async def TerminateAllSession(self) -> bool:
-        sessions = await self.GetSessions()
-        if sessions == None: return False
-
-        for ss in sessions.authorizations:
-            if not ss.current:
-                await self.TerminateSession(ss.hash)
-
-        return True
-        
             
     async def GetSessions(self) -> Optional[types.account.Authorizations]:
         return await self(functions.account.GetAuthorizationsRequest())  # type: ignore
@@ -380,20 +356,39 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
         
         print(PrettyTable(table, [1]))
 
+    async def TerminateSession(self, hash : int):
+
+        try:
+            await self(functions.account.ResetAuthorizationRequest(hash))
+            import rich
+            rich.print(f"Terminated: {hash}")
+
+        except (FreshResetAuthorisationForbiddenError, HashInvalidError) as e:
+
+            if isinstance(e, FreshResetAuthorisationForbiddenError):
+                raise FreshResetAuthorisationForbiddenError("You can't logout other sessions if less than 24 hours have passed since you logged on the current session.")
+
+            elif isinstance(e, HashInvalidError):
+                raise HashInvalidError("The provided hash is invalid.")
+            
+            raise BaseException(e) 
+
+    async def TerminateAllSession(self) -> bool:
+        sessions = await self.GetSessions()
+        if sessions == None: return False
+
+        for ss in sessions.authorizations:
+            if not ss.current:
+                await self.TerminateSession(ss.hash)
+
+        return True
+
     async def is_official_app(self) -> bool:
         auth = await self.GetCurrentSession()
         
         return False if auth == None else bool(auth.official_app)
-
-
-    async def ToTDesktop(self        : TelegramClient,
-                         flag        : Type[LoginFlag] = CreateNewSession,
-                         api         : Union[Type[APIData], APIData] = APITemplate.TelegramDesktop,
-                         password    : str = None) -> td.TDesktop:
-
-        return await td.TDesktop.FromTelethon(self, flag=flag, api=api, password=password)
     
-    async def _QRLoginToNewClient(self,
+    async def QRLoginToNewClient(self,
                                 session                 : Union[str, Session] = None,
                                 api                     : Union[Type[APIData], APIData] = APITemplate.TelegramDesktop,
                                 password                : str = None,
@@ -451,7 +446,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
                     newClient.session.close()
                     newClient.session.delete()
 
-                    newClient = await self._QRLoginToNewClient(
+                    newClient = await self.QRLoginToNewClient(
                         session=session, api=api, password=password,
                         connection=connection, use_ipv6=use_ipv6,
                         proxy=proxy, local_addr=local_addr, timeout=timeout, request_retries=request_retries,
@@ -505,10 +500,33 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
                 raise Passwordincorrect(e.__str__()) from e
 
         return newClient
+    
+    async def ToTDesktop(self,
+                         flag        : Type[LoginFlag] = CreateNewSession,
+                         api         : Union[Type[APIData], APIData] = APITemplate.TelegramDesktop,
+                         password    : str = None) -> TDesktop:
+        """
+        Convert this instance of `TelegramClient` to `TDesktop`
+
+        ### Arguments:
+            flag (`Type[LoginFlag]` | `CreateNewSession`):
+                See `LoginFlag` to learn more
+        
+            api (`Union[Type[APIData], APIData]` | `APITemplate.TelegramDesktop`):
+                See `APIData` to learn more
+        
+            password (`str` | `None`):
+                Two-step verification password if needed
+        
+        ### Returns:
+            `TDesktop`: [description]
+        """
+
+        return await TDesktop.FromTelethon(self, flag=flag, api=api, password=password)
 
     @typing.overload
     @staticmethod
-    async def FromTDesktop( account        : Union[td.TDesktop, td.Account],
+    async def FromTDesktop( account         : Union[TDesktop, td.Account],
                             session         : Union[str, Session] = None,
                             flag            : Type[LoginFlag] = CreateNewSession,
                             api             : Union[Type[APIData], APIData] = APITemplate.TelegramDesktop,
@@ -519,7 +537,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
         [extended_summary]
 
         Args:
-            account (Union[td.TDesktop, td.Account]): [description]
+            account (Union[TDesktop, td.Account]): [description]
             session (Union[str, Session], optional): [description]. Defaults to None.
             flag (Type[LoginFlag], optional): [description]. Defaults to CreateNewSession.
             api (Union[Type[APIData], APIData], optional): [description]. Defaults to APITemplate.TelegramDesktop.
@@ -535,7 +553,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
 
     @typing.overload
     @staticmethod
-    async def FromTDesktop( account        : Union[td.TDesktop, td.Account],
+    async def FromTDesktop( account        : Union[TDesktop, td.Account],
                             session         : Union[str, Session] = None,
                             flag            : Type[LoginFlag] = CreateNewSession,
                             api             : Union[Type[APIData], APIData] = APITemplate.TelegramDesktop,
@@ -559,7 +577,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
         pass
 
     @staticmethod
-    async def FromTDesktop( account         : Union[td.TDesktop, td.Account],
+    async def FromTDesktop( account         : Union[TDesktop, td.Account],
                             session         : Union[str, Session] = None,
                             flag            : Type[LoginFlag] = CreateNewSession,
                             api             : Union[Type[APIData], APIData] = APITemplate.TelegramDesktop,
@@ -583,7 +601,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
         
         Expects((flag == CreateNewSession) or (flag == UseCurrentSession), LoginFlagInvalid("LoginFlag invalid"))
 
-        if isinstance(account, td.TDesktop):
+        if isinstance(account, TDesktop):
             Expects(account.isLoaded(), TDesktopNotLoaded("You need to load accounts from a tdata folder first"))
             Expects(account.accountsCount > 0, TDesktopHasNoAccount("There is no account in this instance of TDesktop"))
             assert account.mainAccount
@@ -652,7 +670,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
 
 
         # create new session by qrlogin
-        return await client._QRLoginToNewClient(
+        return await client.QRLoginToNewClient(
                             session=session, api=api, password=password,
 
                             connection=connection, use_ipv6=use_ipv6,
