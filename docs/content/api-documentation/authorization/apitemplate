@@ -1,4 +1,6 @@
-<!-- vim: syntax=Markdown -->\n# APITemplate
+<!-- vim: syntax=Markdown -->
+
+# APITemplate
 
 ## Table of Contents
 
@@ -13,13 +15,13 @@
   * [TelegramWeb\_K](#apidata.APITemplate.TelegramWeb_K)
   * [Webogram](#apidata.APITemplate.Webogram)
 
-[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\apidata.py#L2)
+[[source]](https://github.com/thedemons/opentele/blob/7c765f76b6bd3cb0f83dab73bfb5247faa52be0e/src\apidata.py#L2)
 
 <a id="apidata.APITemplate"></a>
 
 ## APITemplate Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\apidata.py#L237)
+[[source]](https://github.com/thedemons/opentele/blob/7c765f76b6bd3cb0f83dab73bfb5247faa52be0e/src\apidata.py#L237)
 
 ```python
 class APITemplate(APIData)
@@ -45,7 +47,7 @@ Builtin Templates for APIData
 
 ## TelegramDesktop Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\apidata.py#L267)
+[[source]](https://github.com/thedemons/opentele/blob/7c765f76b6bd3cb0f83dab73bfb5247faa52be0e/src\apidata.py#L267)
 
 ```python
 class TelegramDesktop(APIData)
@@ -69,17 +71,17 @@ Official Telegram for Desktop (Windows, macOS and Linux)
 
 #### Methods:
 
-`Generate(x)` - Generate Windows device
-`Generate(x)` - Generate macOS device
-`Generate(x)` - Generate Linux device
-`Generate(x)` - Generate random operating system (Windows | macOS | Linux)
+- `Generate(x)` - Generate Windows device
+- `Generate(x)` - Generate macOS device
+- `Generate(x)` - Generate Linux device
+- `Generate(x)` - Generate random operating system (Windows | macOS | Linux)
 
 
 <a id="apidata.APITemplate.TelegramDesktop.Generate"></a>
 
 #### TelegramDesktop.Generate
 
-[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\apidata.py#L299)
+[[source]](https://github.com/thedemons/opentele/blob/7c765f76b6bd3cb0f83dab73bfb5247faa52be0e/src\apidata.py#L299)
 
 ```python
 @typing.overload
@@ -98,14 +100,14 @@ Generate random TelegramDesktop devices
 
 #### Returns:
 
-`_T` - [description]
+- `_T` - [description]
 
 
 <a id="apidata.APITemplate.TelegramAndroid"></a>
 
 ## TelegramAndroid Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\apidata.py#L351)
+[[source]](https://github.com/thedemons/opentele/blob/7c765f76b6bd3cb0f83dab73bfb5247faa52be0e/src\apidata.py#L351)
 
 ```python
 class TelegramAndroid(APIData)
@@ -118,7 +120,7 @@ Official Telegram for Android\n
 
 ## TelegramAndroidX Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\apidata.py#L365)
+[[source]](https://github.com/thedemons/opentele/blob/7c765f76b6bd3cb0f83dab73bfb5247faa52be0e/src\apidata.py#L365)
 
 ```python
 class TelegramAndroidX(APIData)
@@ -131,7 +133,7 @@ Official TelegramX for Android\n
 
 ## TelegramIOS Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\apidata.py#L379)
+[[source]](https://github.com/thedemons/opentele/blob/7c765f76b6bd3cb0f83dab73bfb5247faa52be0e/src\apidata.py#L379)
 
 ```python
 class TelegramIOS(APIData)
@@ -144,7 +146,7 @@ Official Telegram for iOS\n
 
 ## TelegramMacOS Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\apidata.py#L395)
+[[source]](https://github.com/thedemons/opentele/blob/7c765f76b6bd3cb0f83dab73bfb5247faa52be0e/src\apidata.py#L395)
 
 ```python
 class TelegramMacOS(APIData)
@@ -157,7 +159,7 @@ Official Telegram-Swift For MacOS\n
 
 ## TelegramWeb\_Z Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\apidata.py#L411)
+[[source]](https://github.com/thedemons/opentele/blob/7c765f76b6bd3cb0f83dab73bfb5247faa52be0e/src\apidata.py#L411)
 
 ```python
 class TelegramWeb_Z(APIData)
@@ -170,7 +172,7 @@ Default Official Telegram Web Z For Browsers\n
 
 ## TelegramWeb\_K Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\apidata.py#L426)
+[[source]](https://github.com/thedemons/opentele/blob/7c765f76b6bd3cb0f83dab73bfb5247faa52be0e/src\apidata.py#L426)
 
 ```python
 class TelegramWeb_K(APIData)
@@ -183,7 +185,7 @@ Official Telegram Web K For Browsers\n
 
 ## Webogram Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\apidata.py#L440)
+[[source]](https://github.com/thedemons/opentele/blob/7c765f76b6bd3cb0f83dab73bfb5247faa52be0e/src\apidata.py#L440)
 
 ```python
 class Webogram(APIData)

@@ -1,4 +1,6 @@
-<!-- vim: syntax=Markdown -->\n# TDesktop
+<!-- vim: syntax=Markdown -->
+
+# TDesktop
 
 ## Table of Contents
 
@@ -17,13 +19,13 @@
   * [SaveTData](#td.tdesktop.TDesktop.SaveTData)
   * [FromTelethon](#td.tdesktop.TDesktop.FromTelethon)
 
-[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\tdesktop.py#L1)
+[[source]](https://github.com/thedemons/opentele/blob/7c765f76b6bd3cb0f83dab73bfb5247faa52be0e/src\td\tdesktop.py#L1)
 
 <a id="td.tdesktop.TDesktop"></a>
 
 ## TDesktop Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\tdesktop.py#L16)
+[[source]](https://github.com/thedemons/opentele/blob/7c765f76b6bd3cb0f83dab73bfb5247faa52be0e/src\td\tdesktop.py#L16)
 
 ```python
 class TDesktop(BaseObject)
@@ -33,7 +35,7 @@ class TDesktop(BaseObject)
 
 #### TDesktop.\_\_init\_\_
 
-[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\tdesktop.py#L22)
+[[source]](https://github.com/thedemons/opentele/blob/7c765f76b6bd3cb0f83dab73bfb5247faa52be0e/src\td\tdesktop.py#L22)
 
 ```python
 @typing.overload
@@ -46,7 +48,7 @@ Create an empty instance
 
 #### TDesktop.\_\_init\_\_
 
-[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\tdesktop.py#L41)
+[[source]](https://github.com/thedemons/opentele/blob/7c765f76b6bd3cb0f83dab73bfb5247faa52be0e/src\td\tdesktop.py#L41)
 
 ```python
 def __init__(basePath: str = None, api: Union[Type[APIData], APIData] = APITemplate.TelegramDesktop, *, passcode: str = None, keyFile: str = None) -> None
@@ -75,7 +77,7 @@ def __init__(basePath: str = None, api: Union[Type[APIData], APIData] = APITempl
 
 #### TDesktop.basePath
 
-[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\tdesktop.py#L95)
+[[source]](https://github.com/thedemons/opentele/blob/7c765f76b6bd3cb0f83dab73bfb5247faa52be0e/src\td\tdesktop.py#L95)
 
 ```python
 @property
@@ -89,7 +91,7 @@ Same as tdata folder of Telegram Desktop
 
 #### TDesktop.passcode
 
-[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\tdesktop.py#L103)
+[[source]](https://github.com/thedemons/opentele/blob/7c765f76b6bd3cb0f83dab73bfb5247faa52be0e/src\td\tdesktop.py#L103)
 
 ```python
 @property
@@ -103,7 +105,7 @@ Same as the Local Passcode of Telegram Desktop
 
 #### TDesktop.localKey
 
-[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\tdesktop.py#L119)
+[[source]](https://github.com/thedemons/opentele/blob/7c765f76b6bd3cb0f83dab73bfb5247faa52be0e/src\td\tdesktop.py#L119)
 
 ```python
 @property
@@ -116,7 +118,7 @@ The key used to encrypt/decrypt data
 
 #### TDesktop.AppVersion
 
-[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\tdesktop.py#L126)
+[[source]](https://github.com/thedemons/opentele/blob/7c765f76b6bd3cb0f83dab73bfb5247faa52be0e/src\td\tdesktop.py#L126)
 
 ```python
 @property
@@ -129,7 +131,7 @@ App version of TDesktop client
 
 #### TDesktop.AppVersionString
 
-[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\tdesktop.py#L133)
+[[source]](https://github.com/thedemons/opentele/blob/7c765f76b6bd3cb0f83dab73bfb5247faa52be0e/src\td\tdesktop.py#L133)
 
 ```python
 @property
@@ -142,7 +144,7 @@ App version of TDesktop client
 
 #### TDesktop.accountsCount
 
-[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\tdesktop.py#L141)
+[[source]](https://github.com/thedemons/opentele/blob/7c765f76b6bd3cb0f83dab73bfb5247faa52be0e/src\td\tdesktop.py#L141)
 
 ```python
 @property
@@ -155,7 +157,7 @@ The number of accounts this client has
 
 #### TDesktop.accounts
 
-[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\tdesktop.py#L149)
+[[source]](https://github.com/thedemons/opentele/blob/7c765f76b6bd3cb0f83dab73bfb5247faa52be0e/src\td\tdesktop.py#L149)
 
 ```python
 @property
@@ -169,7 +171,7 @@ If you want to get the main account, please use .mainAccount instead
 
 #### TDesktop.mainAccount
 
-[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\tdesktop.py#L157)
+[[source]](https://github.com/thedemons/opentele/blob/7c765f76b6bd3cb0f83dab73bfb5247faa52be0e/src\td\tdesktop.py#L157)
 
 ```python
 @property
@@ -182,7 +184,7 @@ The main account of the client
 
 #### TDesktop.isLoaded
 
-[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\tdesktop.py#L163)
+[[source]](https://github.com/thedemons/opentele/blob/7c765f76b6bd3cb0f83dab73bfb5247faa52be0e/src\td\tdesktop.py#L163)
 
 ```python
 def isLoaded() -> bool
@@ -194,7 +196,7 @@ Return True if the client has loaded tdata
 
 #### TDesktop.SaveTData
 
-[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\tdesktop.py#L197)
+[[source]](https://github.com/thedemons/opentele/blob/7c765f76b6bd3cb0f83dab73bfb5247faa52be0e/src\td\tdesktop.py#L197)
 
 ```python
 def SaveTData(basePath: str = None, passcode: str = None, keyFile: str = None) -> bool
@@ -220,7 +222,7 @@ Save the login information to a folder
 
 #### TDesktop.FromTelethon
 
-[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\tdesktop.py#L440)
+[[source]](https://github.com/thedemons/opentele/blob/7c765f76b6bd3cb0f83dab73bfb5247faa52be0e/src\td\tdesktop.py#L440)
 
 ```python
 @staticmethod

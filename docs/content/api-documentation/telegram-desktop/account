@@ -1,4 +1,6 @@
-<!-- vim: syntax=Markdown -->\n# Account
+<!-- vim: syntax=Markdown -->
+
+# Account
 
 ## Table of Contents
 
@@ -8,13 +10,13 @@
   * [prepareToStart](#td.account.Account.prepareToStart)
   * [SaveTData](#td.account.Account.SaveTData)
 
-[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\account.py#L1)
+[[source]](https://github.com/thedemons/opentele/blob/7c765f76b6bd3cb0f83dab73bfb5247faa52be0e/src\td\account.py#L1)
 
 <a id="td.account.Account"></a>
 
 ## Account Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\account.py#L511)
+[[source]](https://github.com/thedemons/opentele/blob/7c765f76b6bd3cb0f83dab73bfb5247faa52be0e/src\td\account.py#L511)
 
 ```python
 class Account(BaseObject)
@@ -38,14 +40,14 @@ Test New
 
 #### Raises:
 
-`OpenTeleException` - Failed
+- `OpenTeleException` - Failed
 
 
 <a id="td.account.Account.__init__"></a>
 
 #### Account.\_\_init\_\_
 
-[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\account.py#L545)
+[[source]](https://github.com/thedemons/opentele/blob/7c765f76b6bd3cb0f83dab73bfb5247faa52be0e/src\td\account.py#L545)
 
 ```python
 def __init__(owner: td.TDesktop, basePath: str = None, api: Union[Type[APIData], APIData] = APITemplate.TelegramDesktop, keyFile: str = None, index: int = 0) -> None
@@ -65,15 +67,15 @@ Setup a tdesktop account
 
 #### Remarks:
 
-- Notes - **[prepareToStart()](../account#td.account.Account.prepareToStart)** must be call after initalizing the object.
-- Notes - **[prepareToStart()](../account#td.account.Account.prepareToStart)** must be call after initalizing the object.
+- - Notes - **[prepareToStart()](../account#td.account.Account.prepareToStart)** must be call after initalizing the object.
+- - Notes - **[prepareToStart()](../account#td.account.Account.prepareToStart)** must be call after initalizing the object.
 
 
 <a id="td.account.Account.localKey"></a>
 
 #### Account.localKey
 
-[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\account.py#L625)
+[[source]](https://github.com/thedemons/opentele/blob/7c765f76b6bd3cb0f83dab73bfb5247faa52be0e/src\td\account.py#L625)
 
 ```python
 @localKey.setter
@@ -86,7 +88,7 @@ localKey setter is intended for internal usage
 
 #### Account.prepareToStart
 
-[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\account.py#L662)
+[[source]](https://github.com/thedemons/opentele/blob/7c765f76b6bd3cb0f83dab73bfb5247faa52be0e/src\td\account.py#L662)
 
 ```python
 def prepareToStart(localKey: td.AuthKey) -> td.MTP.Config
@@ -102,14 +104,14 @@ Prepare the account before starting it
 
 #### Returns:
 
-**[td.MTP.Config](../mtp#td.mtp.MTP.Config)** - [description]
+- **[td.MTP.Config](../mtp#td.mtp.MTP.Config)** - [description]
 
 
 <a id="td.account.Account.SaveTData"></a>
 
 #### Account.SaveTData
 
-[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\account.py#L770)
+[[source]](https://github.com/thedemons/opentele/blob/7c765f76b6bd3cb0f83dab73bfb5247faa52be0e/src\td\account.py#L770)
 
 ```python
 def SaveTData(basePath: str = None, passcode: str = None, keyFile: str = None) -> None
