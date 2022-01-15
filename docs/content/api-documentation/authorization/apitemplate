@@ -15,13 +15,13 @@
   * [TelegramWeb\_K](#apidata.APITemplate.TelegramWeb_K)
   * [Webogram](#apidata.APITemplate.Webogram)
 
-[[source]](https://github.com/thedemons/opentele/blob/cf8dd61b30b05060bfd795f415d90385551eb06b/src\apidata.py#L2)
+[[source]](https://github.com/thedemons/opentele/blob/7c58b8f1d1168e617531c88fbff94e9643035a8a/src\apidata.py#L2)
 
 <a id="apidata.APITemplate"></a>
 
 ## APITemplate Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/cf8dd61b30b05060bfd795f415d90385551eb06b/src\apidata.py#L237)
+[[source]](https://github.com/thedemons/opentele/blob/7c58b8f1d1168e617531c88fbff94e9643035a8a/src\apidata.py#L237)
 
 ```python
 class APITemplate(APIData)
@@ -33,21 +33,21 @@ Builtin Templates for APIData
 
 | Name | Type | Description |
 | :--- | :--: | :---------- |
-| TelegramDesktop | **[APIData](../authorization/apidata#APITemplate-Objects)** | Official Telegram for Desktop (Windows, macOS and Linux) [View on GitHub](https://github.com/telegramdesktop/tdesktop) |
-| TelegramAndroid | **[APIData](../authorization/apidata#APITemplate-Objects)** | Official Telegram for Android [View on GitHub](https://github.com/DrKLO/Telegram) |
-| TelegramAndroidX | **[APIData](../authorization/apidata#APITemplate-Objects)** | Official TelegramX for Android [View on GitHub](https://github.com/DrKLO/Telegram) |
-| TelegramIOS | **[APIData](../authorization/apidata#APITemplate-Objects)** | Official Telegram for iOS [View on GitHub](https://github.com/TelegramMessenger/Telegram-iOS) |
-| TelegramMacOS | **[APIData](../authorization/apidata#APITemplate-Objects)** | Official Telegram-Swift For MacOS [View on GitHub](https://github.com/overtake/TelegramSwift) |
-| TelegramWeb_Z | **[APIData](../authorization/apidata#APITemplate-Objects)** | Default Official Telegram Web Z For Browsers [View on GitHub](https://github.com/Ajaxy/telegram-tt) | [Visit on Telegram](https://web.telegram.org/z/) |
-| TelegramWeb_K | **[APIData](../authorization/apidata#APITemplate-Objects)** | Official Telegram Web K For Browsers [View on GitHub](https://github.com/morethanwords/tweb) | [Visit on Telegram](https://web.telegram.org/k/) |
-| Webogram | **[APIData](../authorization/apidata#APITemplate-Objects)** | Old Telegram For Browsers [View on GitHub](https://github.com/zhukov/webogram) | [Vist on Telegram](https://web.telegram.org/?legacy=1#/im) |
+| TelegramDesktop | **[APIData](../authorization/apidata#apidata-objects)** | Official Telegram for Desktop (Windows, macOS and Linux) [View on GitHub](https://github.com/telegramdesktop/tdesktop) |
+| TelegramAndroid | **[APIData](../authorization/apidata#apidata-objects)** | Official Telegram for Android [View on GitHub](https://github.com/DrKLO/Telegram) |
+| TelegramAndroidX | **[APIData](../authorization/apidata#apidata-objects)** | Official TelegramX for Android [View on GitHub](https://github.com/DrKLO/Telegram) |
+| TelegramIOS | **[APIData](../authorization/apidata#apidata-objects)** | Official Telegram for iOS [View on GitHub](https://github.com/TelegramMessenger/Telegram-iOS) |
+| TelegramMacOS | **[APIData](../authorization/apidata#apidata-objects)** | Official Telegram-Swift For MacOS [View on GitHub](https://github.com/overtake/TelegramSwift) |
+| TelegramWeb_Z | **[APIData](../authorization/apidata#apidata-objects)** | Default Official Telegram Web Z For Browsers [View on GitHub](https://github.com/Ajaxy/telegram-tt) | [Visit on Telegram](https://web.telegram.org/z/) |
+| TelegramWeb_K | **[APIData](../authorization/apidata#apidata-objects)** | Official Telegram Web K For Browsers [View on GitHub](https://github.com/morethanwords/tweb) | [Visit on Telegram](https://web.telegram.org/k/) |
+| Webogram | **[APIData](../authorization/apidata#apidata-objects)** | Old Telegram For Browsers [View on GitHub](https://github.com/zhukov/webogram) | [Vist on Telegram](https://web.telegram.org/?legacy=1#/im) |
 
 
 <a id="apidata.APITemplate.TelegramDesktop"></a>
 
 ## TelegramDesktop Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/cf8dd61b30b05060bfd795f415d90385551eb06b/src\apidata.py#L267)
+[[source]](https://github.com/thedemons/opentele/blob/7c58b8f1d1168e617531c88fbff94e9643035a8a/src\apidata.py#L267)
 
 ```python
 class TelegramDesktop(APIData)
@@ -67,7 +67,7 @@ Official Telegram for Desktop (Windows, macOS and Linux)
 | app_version | `#!python str` | 3.4.3 x64 |
 | lang_code | `#!python str` | en |
 | system_lang_code | `#!python str` | en-US |
-| lang_pack | `#!python str` | tdesktop **[Generate](../authorization/apitemplate#TelegramDesktop-Objects)** |
+| lang_pack | `#!python str` | tdesktop **[Generate](../authorization/apitemplate#generate-objects)** |
 
 #### Methods:
 
@@ -81,7 +81,7 @@ Official Telegram for Desktop (Windows, macOS and Linux)
 
 #### TelegramDesktop.Generate
 
-[[source]](https://github.com/thedemons/opentele/blob/cf8dd61b30b05060bfd795f415d90385551eb06b/src\apidata.py#L299)
+[[source]](https://github.com/thedemons/opentele/blob/7c58b8f1d1168e617531c88fbff94e9643035a8a/src\apidata.py#L299)
 
 ```python
 @typing.overload
@@ -107,7 +107,7 @@ Generate random TelegramDesktop devices
 
 ## TelegramAndroid Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/cf8dd61b30b05060bfd795f415d90385551eb06b/src\apidata.py#L351)
+[[source]](https://github.com/thedemons/opentele/blob/7c58b8f1d1168e617531c88fbff94e9643035a8a/src\apidata.py#L351)
 
 ```python
 class TelegramAndroid(APIData)
@@ -120,7 +120,7 @@ Official Telegram for Android\n
 
 ## TelegramAndroidX Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/cf8dd61b30b05060bfd795f415d90385551eb06b/src\apidata.py#L365)
+[[source]](https://github.com/thedemons/opentele/blob/7c58b8f1d1168e617531c88fbff94e9643035a8a/src\apidata.py#L365)
 
 ```python
 class TelegramAndroidX(APIData)
@@ -133,7 +133,7 @@ Official TelegramX for Android\n
 
 ## TelegramIOS Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/cf8dd61b30b05060bfd795f415d90385551eb06b/src\apidata.py#L379)
+[[source]](https://github.com/thedemons/opentele/blob/7c58b8f1d1168e617531c88fbff94e9643035a8a/src\apidata.py#L379)
 
 ```python
 class TelegramIOS(APIData)
@@ -146,7 +146,7 @@ Official Telegram for iOS\n
 
 ## TelegramMacOS Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/cf8dd61b30b05060bfd795f415d90385551eb06b/src\apidata.py#L395)
+[[source]](https://github.com/thedemons/opentele/blob/7c58b8f1d1168e617531c88fbff94e9643035a8a/src\apidata.py#L395)
 
 ```python
 class TelegramMacOS(APIData)
@@ -159,7 +159,7 @@ Official Telegram-Swift For MacOS\n
 
 ## TelegramWeb\_Z Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/cf8dd61b30b05060bfd795f415d90385551eb06b/src\apidata.py#L411)
+[[source]](https://github.com/thedemons/opentele/blob/7c58b8f1d1168e617531c88fbff94e9643035a8a/src\apidata.py#L411)
 
 ```python
 class TelegramWeb_Z(APIData)
@@ -172,7 +172,7 @@ Default Official Telegram Web Z For Browsers\n
 
 ## TelegramWeb\_K Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/cf8dd61b30b05060bfd795f415d90385551eb06b/src\apidata.py#L426)
+[[source]](https://github.com/thedemons/opentele/blob/7c58b8f1d1168e617531c88fbff94e9643035a8a/src\apidata.py#L426)
 
 ```python
 class TelegramWeb_K(APIData)
@@ -185,7 +185,7 @@ Official Telegram Web K For Browsers\n
 
 ## Webogram Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/cf8dd61b30b05060bfd795f415d90385551eb06b/src\apidata.py#L440)
+[[source]](https://github.com/thedemons/opentele/blob/7c58b8f1d1168e617531c88fbff94e9643035a8a/src\apidata.py#L440)
 
 ```python
 class Webogram(APIData)
