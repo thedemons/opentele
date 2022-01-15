@@ -1,43 +1,29 @@
-<!-- vim: syntax=Markdown -->
-# TDesktop
+<!-- vim: syntax=Markdown -->\n# TDesktop
 
 ## Table of Contents
 
-- [TDesktop](#tdesktop)
-  - [Table of Contents](#table-of-contents)
-  - [TDesktop Objects](#tdesktop-objects)
-      - [TDesktop.\_\_init\_\_](#tdesktop__init__)
-      - [TDesktop.\_\_init\_\_](#tdesktop__init__-1)
-    - [Arguments](#arguments)
-    - [Optional](#optional)
-    - [Examples](#examples)
-      - [Load from a folder or create new instance at C:\\Telegram\\tdata:](#load-from-a-folder-or-create-new-instance-at-ctelegramtdata)
-      - [TDesktop.basePath](#tdesktopbasepath)
-      - [TDesktop.passcode](#tdesktoppasscode)
-      - [TDesktop.localKey](#tdesktoplocalkey)
-      - [TDesktop.AppVersion](#tdesktopappversion)
-      - [TDesktop.AppVersionString](#tdesktopappversionstring)
-      - [TDesktop.accountsCount](#tdesktopaccountscount)
-      - [TDesktop.accounts](#tdesktopaccounts)
-      - [TDesktop.mainAccount](#tdesktopmainaccount)
-      - [TDesktop.isLoaded](#tdesktopisloaded)
-      - [TDesktop.SaveTData](#tdesktopsavetdata)
-    - [Optional](#optional-1)
-    - [Examples](#examples-1)
-      - [Import an account from telethon session and save it as tdata:](#import-an-account-from-telethon-session-and-save-it-as-tdata)
-      - [TDesktop.FromTelethon](#tdesktopfromtelethon)
-    - [Arguments](#arguments-1)
-    - [Remark](#remark)
-    - [Examples](#examples-2)
-      - [Saving a telethon client to tdata:](#saving-a-telethon-client-to-tdata)
+* [TDesktop](#td.tdesktop.TDesktop)
+  * [\_\_init\_\_](#td.tdesktop.TDesktop.__init__)
+  * [\_\_init\_\_](#td.tdesktop.TDesktop.__init__)
+  * [basePath](#td.tdesktop.TDesktop.basePath)
+  * [passcode](#td.tdesktop.TDesktop.passcode)
+  * [localKey](#td.tdesktop.TDesktop.localKey)
+  * [AppVersion](#td.tdesktop.TDesktop.AppVersion)
+  * [AppVersionString](#td.tdesktop.TDesktop.AppVersionString)
+  * [accountsCount](#td.tdesktop.TDesktop.accountsCount)
+  * [accounts](#td.tdesktop.TDesktop.accounts)
+  * [mainAccount](#td.tdesktop.TDesktop.mainAccount)
+  * [isLoaded](#td.tdesktop.TDesktop.isLoaded)
+  * [SaveTData](#td.tdesktop.TDesktop.SaveTData)
+  * [FromTelethon](#td.tdesktop.TDesktop.FromTelethon)
 
-[[source]](https://github.com/thedemons/opentele/blob/7dbe214f9a0a2bd218d387a4d7dc60e9b05e4c17/src\td\tdesktop.py#L1)
+[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\tdesktop.py#L1)
 
 <a id="td.tdesktop.TDesktop"></a>
 
 ## TDesktop Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/7dbe214f9a0a2bd218d387a4d7dc60e9b05e4c17/src\td\tdesktop.py#L16)
+[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\tdesktop.py#L16)
 
 ```python
 class TDesktop(BaseObject)
@@ -47,7 +33,7 @@ class TDesktop(BaseObject)
 
 #### TDesktop.\_\_init\_\_
 
-[[source]](https://github.com/thedemons/opentele/blob/7dbe214f9a0a2bd218d387a4d7dc60e9b05e4c17/src\td\tdesktop.py#L22)
+[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\tdesktop.py#L22)
 
 ```python
 @typing.overload
@@ -60,7 +46,7 @@ Create an empty instance
 
 #### TDesktop.\_\_init\_\_
 
-[[source]](https://github.com/thedemons/opentele/blob/7dbe214f9a0a2bd218d387a4d7dc60e9b05e4c17/src\td\tdesktop.py#L41)
+[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\tdesktop.py#L41)
 
 ```python
 def __init__(basePath: str = None, api: Union[Type[APIData], APIData] = APITemplate.TelegramDesktop, *, passcode: str = None, keyFile: str = None) -> None
@@ -89,7 +75,7 @@ def __init__(basePath: str = None, api: Union[Type[APIData], APIData] = APITempl
 
 #### TDesktop.basePath
 
-[[source]](https://github.com/thedemons/opentele/blob/7dbe214f9a0a2bd218d387a4d7dc60e9b05e4c17/src\td\tdesktop.py#L95)
+[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\tdesktop.py#L95)
 
 ```python
 @property
@@ -103,7 +89,7 @@ Same as tdata folder of Telegram Desktop
 
 #### TDesktop.passcode
 
-[[source]](https://github.com/thedemons/opentele/blob/7dbe214f9a0a2bd218d387a4d7dc60e9b05e4c17/src\td\tdesktop.py#L103)
+[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\tdesktop.py#L103)
 
 ```python
 @property
@@ -117,7 +103,7 @@ Same as the Local Passcode of Telegram Desktop
 
 #### TDesktop.localKey
 
-[[source]](https://github.com/thedemons/opentele/blob/7dbe214f9a0a2bd218d387a4d7dc60e9b05e4c17/src\td\tdesktop.py#L119)
+[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\tdesktop.py#L119)
 
 ```python
 @property
@@ -130,7 +116,7 @@ The key used to encrypt/decrypt data
 
 #### TDesktop.AppVersion
 
-[[source]](https://github.com/thedemons/opentele/blob/7dbe214f9a0a2bd218d387a4d7dc60e9b05e4c17/src\td\tdesktop.py#L126)
+[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\tdesktop.py#L126)
 
 ```python
 @property
@@ -143,7 +129,7 @@ App version of TDesktop client
 
 #### TDesktop.AppVersionString
 
-[[source]](https://github.com/thedemons/opentele/blob/7dbe214f9a0a2bd218d387a4d7dc60e9b05e4c17/src\td\tdesktop.py#L133)
+[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\tdesktop.py#L133)
 
 ```python
 @property
@@ -156,7 +142,7 @@ App version of TDesktop client
 
 #### TDesktop.accountsCount
 
-[[source]](https://github.com/thedemons/opentele/blob/7dbe214f9a0a2bd218d387a4d7dc60e9b05e4c17/src\td\tdesktop.py#L141)
+[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\tdesktop.py#L141)
 
 ```python
 @property
@@ -169,7 +155,7 @@ The number of accounts this client has
 
 #### TDesktop.accounts
 
-[[source]](https://github.com/thedemons/opentele/blob/7dbe214f9a0a2bd218d387a4d7dc60e9b05e4c17/src\td\tdesktop.py#L149)
+[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\tdesktop.py#L149)
 
 ```python
 @property
@@ -183,7 +169,7 @@ If you want to get the main account, please use .mainAccount instead
 
 #### TDesktop.mainAccount
 
-[[source]](https://github.com/thedemons/opentele/blob/7dbe214f9a0a2bd218d387a4d7dc60e9b05e4c17/src\td\tdesktop.py#L157)
+[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\tdesktop.py#L157)
 
 ```python
 @property
@@ -196,7 +182,7 @@ The main account of the client
 
 #### TDesktop.isLoaded
 
-[[source]](https://github.com/thedemons/opentele/blob/7dbe214f9a0a2bd218d387a4d7dc60e9b05e4c17/src\td\tdesktop.py#L163)
+[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\tdesktop.py#L163)
 
 ```python
 def isLoaded() -> bool
@@ -208,7 +194,7 @@ Return True if the client has loaded tdata
 
 #### TDesktop.SaveTData
 
-[[source]](https://github.com/thedemons/opentele/blob/7dbe214f9a0a2bd218d387a4d7dc60e9b05e4c17/src\td\tdesktop.py#L197)
+[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\tdesktop.py#L197)
 
 ```python
 def SaveTData(basePath: str = None, passcode: str = None, keyFile: str = None) -> bool
@@ -234,14 +220,14 @@ Save the login information to a folder
 
 #### TDesktop.FromTelethon
 
-[[source]](https://github.com/thedemons/opentele/blob/7dbe214f9a0a2bd218d387a4d7dc60e9b05e4c17/src\td\tdesktop.py#L440)
+[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\tdesktop.py#L440)
 
 ```python
 @staticmethod
 async def FromTelethon(telethonClient: tl.TelegramClient, flag: Type[LoginFlag] = CreateNewSession, api: Union[Type[APIData], APIData] = APITemplate.TelegramDesktop, password: str = None) -> TDesktop
 ```
 
-Create an instance of **[TDesktop](../TDesktop#td.tdesktop.TDesktop)** from `telethon.TelegramClient`\n
+Create an instance of **[TDesktop](../tdesktop#td.tdesktop.TDesktop)** from `telethon.TelegramClient`\n
 
 ### Arguments
     1. telethonClient (telethon.TelegramClient):\n

@@ -1,29 +1,20 @@
-<!-- vim: syntax=Markdown -->
-# Account
+<!-- vim: syntax=Markdown -->\n# Account
 
 ## Table of Contents
 
-- [Account](#account)
-  - [Table of Contents](#table-of-contents)
-  - [Account Objects](#account-objects)
-      - [Arguments:](#arguments)
-      - [Raises:](#raises)
-      - [Account.\_\_init\_\_](#account__init__)
-      - [Arguments:](#arguments-1)
-      - [Remarks:](#remarks)
-      - [Account.localKey](#accountlocalkey)
-      - [Account.prepareToStart](#accountpreparetostart)
-      - [Arguments:](#arguments-2)
-      - [Returns:](#returns)
-      - [Account.SaveTData](#accountsavetdata)
+* [Account](#td.account.Account)
+  * [\_\_init\_\_](#td.account.Account.__init__)
+  * [localKey](#td.account.Account.localKey)
+  * [prepareToStart](#td.account.Account.prepareToStart)
+  * [SaveTData](#td.account.Account.SaveTData)
 
-[[source]](https://github.com/thedemons/opentele/blob/7dbe214f9a0a2bd218d387a4d7dc60e9b05e4c17/src\td\account.py#L1)
+[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\account.py#L1)
 
 <a id="td.account.Account"></a>
 
 ## Account Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/7dbe214f9a0a2bd218d387a4d7dc60e9b05e4c17/src\td\account.py#L511)
+[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\account.py#L511)
 
 ```python
 class Account(BaseObject)
@@ -37,7 +28,7 @@ Test New
 
 | Name | Type | Default | Description |
 | :--- | :--: | :-----: | :---------- |
-| api | **[APIData](../../Authorization/APIData#apidata.APIData)** | __required__ | The API this acount is using |
+| api | **[APIData](../../authorization/apidata#apidata.APIData)** | __required__ | The API this acount is using |
 | basePath | `#!python str` | __required__ | The folder where tdata is stored |
 | owner | `TDesktop` | __required__ | TDesktop client owner of this account |
 | localKey | `AuthKey` | __required__ | Key used to encrypt and decrypt tdata |
@@ -54,7 +45,7 @@ Test New
 
 #### Account.\_\_init\_\_
 
-[[source]](https://github.com/thedemons/opentele/blob/7dbe214f9a0a2bd218d387a4d7dc60e9b05e4c17/src\td\account.py#L545)
+[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\account.py#L545)
 
 ```python
 def __init__(owner: td.TDesktop, basePath: str = None, api: Union[Type[APIData], APIData] = APITemplate.TelegramDesktop, keyFile: str = None, index: int = 0) -> None
@@ -66,23 +57,23 @@ Setup a tdesktop account
 
 | Name | Type | Default | Description |
 | :--- | :--: | :-----: | :---------- |
-| owner | **[td.TDesktop](../TDesktop#td.tdesktop.TDesktop)** | __required__ | TDesktop client owner of this account |
+| owner | **[td.TDesktop](../tdesktop#td.tdesktop.TDesktop)** | __required__ | TDesktop client owner of this account |
 | basePath | `#!python str` | None | The folder where tdata is stored |
-| api | `Type[APIData]` \| **[APIData](../../Authorization/APIData#apidata.APIData)** \| **[APITemplate.TelegramDesktop](../../Authorization/APITemplate#apidata.APITemplate.TelegramDesktop)** | __required__ | The **[APIData](../../Authorization/APIData#apidata.APIData)** to use |
+| api | `Type[APIData]` \| **[APIData](../../authorization/apidata#apidata.APIData)** \| **[APITemplate.TelegramDesktop](../../authorization/apitemplate#apidata.APITemplate.TelegramDesktop)** | __required__ | The **[APIData](../../authorization/apidata#apidata.APIData)** to use |
 | keyFile | `#!python str` \| `#!python None` | __required__ | [description] |
 | index | `#!python int` \| `0` | __required__ | [description] |
 
 #### Remarks:
 
-- Notes - **[prepareToStart()](../Account#td.account.Account.prepareToStart)** must be call after initalizing the object.
-- Notes - **[prepareToStart()](../Account#td.account.Account.prepareToStart)** must be call after initalizing the object.
+- Notes - **[prepareToStart()](../account#td.account.Account.prepareToStart)** must be call after initalizing the object.
+- Notes - **[prepareToStart()](../account#td.account.Account.prepareToStart)** must be call after initalizing the object.
 
 
 <a id="td.account.Account.localKey"></a>
 
 #### Account.localKey
 
-[[source]](https://github.com/thedemons/opentele/blob/7dbe214f9a0a2bd218d387a4d7dc60e9b05e4c17/src\td\account.py#L625)
+[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\account.py#L625)
 
 ```python
 @localKey.setter
@@ -95,7 +86,7 @@ localKey setter is intended for internal usage
 
 #### Account.prepareToStart
 
-[[source]](https://github.com/thedemons/opentele/blob/7dbe214f9a0a2bd218d387a4d7dc60e9b05e4c17/src\td\account.py#L662)
+[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\account.py#L662)
 
 ```python
 def prepareToStart(localKey: td.AuthKey) -> td.MTP.Config
@@ -107,18 +98,18 @@ Prepare the account before starting it
 
 | Name | Type | Default | Description |
 | :--- | :--: | :-----: | :---------- |
-| localKey | **[td.AuthKey](../AuthKey#td.auth.AuthKey)** | __required__ | **[APIData](../../Authorization/APIData#apidata.APIData)** |
+| localKey | **[td.AuthKey](../authkey#td.auth.AuthKey)** | __required__ | **[APIData](../../authorization/apidata#apidata.APIData)** |
 
 #### Returns:
 
-**[td.MTP.Config](../MTP#td.mtp.MTP.Config)** - [description]
+**[td.MTP.Config](../mtp#td.mtp.MTP.Config)** - [description]
 
 
 <a id="td.account.Account.SaveTData"></a>
 
 #### Account.SaveTData
 
-[[source]](https://github.com/thedemons/opentele/blob/7dbe214f9a0a2bd218d387a4d7dc60e9b05e4c17/src\td\account.py#L770)
+[[source]](https://github.com/thedemons/opentele/blob/7015c7b9e9e6f0d62e29fdc1a75e8fc83d6881b3/src\td\account.py#L770)
 
 ```python
 def SaveTData(basePath: str = None, passcode: str = None, keyFile: str = None) -> None

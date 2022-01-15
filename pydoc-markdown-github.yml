@@ -13,6 +13,7 @@ renderer:
   type: mkdocs
   build_custom_md_extension: ''
   markdown:
+    insert_custom_header: '<!-- vim: syntax=Markdown -->\n'
     add_method_class_prefix: True
     add_member_class_prefix: True
     # render_module_header_template: "{module_name}"
