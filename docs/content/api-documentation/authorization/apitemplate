@@ -33,7 +33,7 @@ Builtin Templates for APIData
 
 | Name | Type | Description |
 | :--- | :--: | :---------- |
-| TelegramDesktop | **[APIData](/apidata#apidata.APIData)** | Official Telegram for Desktop (Windows, macOS and Linux) [View on GitHub](https://github.com/telegramdesktop/tdesktop) |
+| TelegramDesktop | **[APIData](../authorization/apidata#apidata.APIData)** | Official Telegram for Desktop (Windows, macOS and Linux) [View on GitHub](https://github.com/telegramdesktop/tdesktop) |
 | TelegramAndroid | **[APIData](../apidata#apidata.APIData)** | Official Telegram for Android [View on GitHub](https://github.com/DrKLO/Telegram) |
 | TelegramAndroidX | **[APIData](../apidata#apidata.APIData)** | Official TelegramX for Android [View on GitHub](https://github.com/DrKLO/Telegram) |
 | TelegramIOS | **[APIData](../apidata#apidata.APIData)** | Official Telegram for iOS [View on GitHub](https://github.com/TelegramMessenger/Telegram-iOS) |
