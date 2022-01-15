@@ -16,7 +16,7 @@ class CustomInitConnectionRequest(functions.InitConnectionRequest):
     def __init__(self, api_id: int, device_model: str, system_version: str, app_version: str, system_lang_code: str, lang_pack: str, lang_code: str, query, proxy: TypeInputClientProxy = None, params: TypeJSONValue =None):
         
         # our hook pass pid as device_model
-        data = APIData.findData(device_model)
+        data = APIData.findData(device_model) # type: ignore
         if data != None:
             self.api_id = data.api_id
             self.device_model = data.device_model           if data.device_model     else device_model
@@ -295,7 +295,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
             if isinstance(api, APIData) or APIData.__subclasscheck__(api):
                 api_id = api.api_id
                 api_hash = api.api_hash
-                device_model = api.pid # pass our hook id through the device_model
+                device_model = api.pid  # type: ignore # pass our hook id through the device_model
 
             else:
                 if isinstance(api, int) or isinstance(api, str):
@@ -304,7 +304,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
                         api_hash = api_id
                 api = None
         
-        self.__TelegramClient____init__(session, api_id, api_hash, connection=connection,
+        self.__TelegramClient____init__(session, api_id, api_hash, connection=connection, # type: ignore
         use_ipv6=use_ipv6, proxy=proxy, local_addr=local_addr, timeout=timeout,
         request_retries=request_retries, connection_retries=connection_retries,
         retry_delay=retry_delay, auto_reconnect=auto_reconnect, sequential_updates=sequential_updates,
@@ -328,19 +328,25 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
             elif isinstance(e, HashInvalidError):
                 raise HashInvalidError("The provided hash is invalid.")
             
-            raise e
+            raise BaseException(e) 
 
-    async def TerminateAllSession(self):
-        for ss in (await self.GetSessions()).authorizations:
+    async def TerminateAllSession(self) -> bool:
+        sessions = await self.GetSessions()
+        if sessions == None: return False
+
+        for ss in sessions.authorizations:
             if not ss.current:
                 await self.TerminateSession(ss.hash)
+
+        return True
         
             
-    async def GetSessions(self) -> types.account.Authorizations:
-        return await self(functions.account.GetAuthorizationsRequest())
+    async def GetSessions(self) -> Optional[types.account.Authorizations]:
+        return await self(functions.account.GetAuthorizationsRequest())  # type: ignore
 
-    async def GetCurrentSession(self) -> types.Authorization:
+    async def GetCurrentSession(self) -> Optional[types.Authorization]:
         results = await self.GetSessions()
+        if results == None: return None
 
         if results.authorizations[0].current:
             return results.authorizations[0]
@@ -355,6 +361,8 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
         if (sessions == None) or not isinstance(sessions, types.account.Authorizations):
             sessions = await self.GetSessions()
         
+        assert sessions
+
         table = []
 
         index = 0
@@ -374,10 +382,8 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
 
     async def is_official_app(self) -> bool:
         auth = await self.GetCurrentSession()
-        return auth.official_app
-
-
-
+        
+        return False if auth == None else bool(auth.official_app)
 
 
     async def ToTDesktop(self        : TelegramClient,
@@ -423,34 +429,39 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
         if await newClient.is_user_authorized():
             
             currentAuth = await newClient.GetCurrentSession()
-            
-            if (currentAuth.api_id == api.api_id):
-                warnings.warn(
-                    '\nCreateNewSession - a session file with the same name '
-                    'is already existed, returning the old session'
-                )
-            else:
-                warnings.warn(
-                    '\nCreateNewSession - a session file with the same name '
-                    'is already existed, but its api_id is different from '
-                    'the current one, it will be overwritten'
-                )
+            if (currentAuth != None):
 
-                await newClient.disconnect()
-                newClient.session.close()
-                newClient.session.delete()
+                if (currentAuth.api_id == api.api_id):
+                    warnings.warn(
+                        '\nCreateNewSession - a session file with the same name '
+                        'is already existed, returning the old session'
+                    )
+                else:
+                    warnings.warn(
+                        '\nCreateNewSession - a session file with the same name '
+                        'is already existed, but its api_id is different from '
+                        'the current one, it will be overwritten'
+                    )
 
-                newClient = await self._QRLoginToNewClient(
-                    session=session, api=api, password=password,
-                    connection=connection, use_ipv6=use_ipv6,
-                    proxy=proxy, local_addr=local_addr, timeout=timeout, request_retries=request_retries,
-                    connection_retries=connection_retries, retry_delay=retry_delay, auto_reconnect=auto_reconnect,
-                    sequential_updates=sequential_updates, flood_sleep_threshold=flood_sleep_threshold,
-                    raise_last_call_error=raise_last_call_error, loop=loop, base_logger=base_logger,
-                    receive_updates=receive_updates
-                )
+                    disconnect = newClient.disconnect()
+                    if disconnect:
+                        await disconnect
+                        await newClient.disconnected
 
-            return newClient
+                    newClient.session.close()
+                    newClient.session.delete()
+
+                    newClient = await self._QRLoginToNewClient(
+                        session=session, api=api, password=password,
+                        connection=connection, use_ipv6=use_ipv6,
+                        proxy=proxy, local_addr=local_addr, timeout=timeout, request_retries=request_retries,
+                        connection_retries=connection_retries, retry_delay=retry_delay, auto_reconnect=auto_reconnect,
+                        sequential_updates=sequential_updates, flood_sleep_threshold=flood_sleep_threshold,
+                        raise_last_call_error=raise_last_call_error, loop=loop, base_logger=base_logger,
+                        receive_updates=receive_updates
+                    )
+
+                return newClient
 
         if not self._self_id:
             oldMe = await self.get_me()
@@ -480,14 +491,14 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
             
             # two-step verification
             try:
-                pwd = await newClient(functions.account.GetPasswordRequest())
+                pwd : types.account.Password = await newClient(functions.account.GetPasswordRequest()) # type: ignore
                 result = await newClient(
                     functions.auth.CheckPasswordRequest(
-                        pwd_mod.compute_check(pwd, password)
+                        pwd_mod.compute_check(pwd, password) # type: ignore
                     )
                 )
                     
-                newClient._on_login(result.user)
+                newClient._on_login(result.user) # type: ignore
                 
 
             except PasswordHashInvalidError as e:
@@ -575,10 +586,12 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
         if isinstance(account, td.TDesktop):
             Expects(account.isLoaded(), TDesktopNotLoaded("You need to load accounts from a tdata folder first"))
             Expects(account.accountsCount > 0, TDesktopHasNoAccount("There is no account in this instance of TDesktop"))
+            assert account.mainAccount
             account = account.mainAccount
         
         if (flag == UseCurrentSession) and not (isinstance(api, APIData) or APIData.__subclasscheck__(api)):
-            warnings.warn(
+            
+            warnings.warn( # type: ignore
                 '\nIf you use an existing Telegram Desktop session '
                 'with unofficial API_ID and API_HASH, '
                 'Telegram might ban your account because of suspicious activities.\n'
@@ -590,9 +603,9 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
         protocol = td.MTP.DcOptions.Protocol.Tcp
 
         Expects(connection==ConnectionTcpFull, "Other connection type is not supported yet")
-        Expects(len(endpoints[address][protocol]) > 0, "Couldn't find endpoint for this account, something went wrong?")
+        Expects(len(endpoints[address][protocol]) > 0, "Couldn't find endpoint for this account, something went wrong?") # type: ignore
         
-        endpoint = endpoints[address][protocol][0]
+        endpoint = endpoints[address][protocol][0] # type: ignore
 
         # If we're gonna create a new session any way, then this session is only
         # created to accept the qr login for the new session
@@ -619,10 +632,10 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
                     'The given session must be a str or a Session instance.'
                 )
                 
-        auth_session.set_dc(endpoint.id, endpoint.ip, endpoint.port)
-        auth_session.auth_key = AuthKey(account.authKey.key)
+        auth_session.set_dc(endpoint.id, endpoint.ip, endpoint.port) # type: ignore
+        auth_session.auth_key = AuthKey(account.authKey.key) # type: ignore
 
-        client = TelegramClient(auth_session, api=account.api, connection=connection, use_ipv6=use_ipv6,
+        client = TelegramClient(auth_session, api=account.api, connection=connection, use_ipv6=use_ipv6,  # type: ignore
                                 proxy=proxy, local_addr=local_addr, timeout=timeout, request_retries=request_retries,
                                 connection_retries=connection_retries, retry_delay=retry_delay, auto_reconnect=auto_reconnect,
                                 sequential_updates=sequential_updates, flood_sleep_threshold=flood_sleep_threshold,

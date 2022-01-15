@@ -2,7 +2,7 @@ import typing
 
 
 from .account import Account, StorageAccount, MapData
-from .auth import AuthKey
+from .auth import AuthKey, AuthKeyType
 from .mtp import MTP
 from .storage import Storage, Serialize
 from .tdesktop import TDesktop

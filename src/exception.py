@@ -274,7 +274,7 @@ def Expects(condition : bool,
     else:
         stack = inspect.stack()
         frame = stack[stack_index].frame
-        tb = types.TracebackType(None, frame, frame.f_lasti, frame.f_lineno)
+        tb = types.TracebackType(None, frame, frame.f_lasti, frame.f_lineno) # type: ignore
         exception = exception.with_traceback(tb)
 
         if fail != None: fail(exception)

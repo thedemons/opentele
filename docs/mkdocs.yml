@@ -1,27 +1,38 @@
 docs_dir: content
 edit_uri: https://github.com/thedemons/opentele/tree/main/docs/content
 markdown_extensions:
-- abbr
 - admonition
+- abbr
 - attr_list
 - def_list
 - footnotes
 - meta
 - md_in_html
-- pymdownx.caret
-- pymdownx.mark
-- pymdownx.tilde
-- pymdownx.smartsymbols
 - toc:
     permalink: true
 - pymdownx.arithmatex:
     generic: true
+- pymdownx.betterem:
+    smart_enable: all
+- pymdownx.caret
+- pymdownx.details
+- pymdownx.emoji
 - pymdownx.highlight:
     anchor_linenums: true
-    noclasses: true
-    pygments_style: one-dark
-    use_pygments: true
+- pymdownx.inlinehilite
+- pymdownx.keys
+- pymdownx.magiclink:
+    repo: opentele
+    repo_url_shorthand: true
+    user: thedemons
+- pymdownx.mark
+- pymdownx.smartsymbols
 - pymdownx.superfences
+- pymdownx.tabbed:
+    alternate_style: true
+- pymdownx.tasklist:
+    custom_checkbox: true
+- pymdownx.tilde
 nav:
 - Home: README.md
 - TDesktop:

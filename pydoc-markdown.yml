@@ -48,30 +48,38 @@ renderer:
 
 
     markdown_extensions:
-      - abbr
       - admonition
+      - abbr
       - attr_list
       - def_list
       - footnotes
       - meta
       - md_in_html
-      - pymdownx.caret
-      - pymdownx.mark
-      - pymdownx.tilde
-      - pymdownx.smartsymbols
       - toc:
           permalink: true
       - pymdownx.arithmatex:
           generic: true
+      - pymdownx.betterem:
+          smart_enable: all
+      - pymdownx.caret
+      - pymdownx.details
+      - pymdownx.emoji
       - pymdownx.highlight:
-          noclasses: true
-          # pygments_style: material
-          # pygments_style: vs
-          # pygments_style: dracula
-          pygments_style: one-dark
-          use_pygments: true
           anchor_linenums: true
-      - pymdownx.superfences 
+      - pymdownx.inlinehilite
+      - pymdownx.keys
+      - pymdownx.magiclink:
+          repo_url_shorthand: true
+          user: thedemons
+          repo: opentele
+      - pymdownx.mark
+      - pymdownx.smartsymbols
+      - pymdownx.superfences
+      - pymdownx.tabbed:
+          alternate_style: true
+      - pymdownx.tasklist:
+          custom_checkbox: true
+      - pymdownx.tilde
 
     # extra_css:
     #   - stylesheets/extra.css

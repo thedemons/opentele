@@ -4,7 +4,7 @@ import os
 
 import platform
 
-from typing import Any, List, Dict, Type, TypeVar, Union
+from typing import Any, List, Dict, Type, TypeVar, Union, Optional
 from .devices import *
 from .exception import *
 from .utils import *
@@ -19,11 +19,11 @@ _RT = TypeVar("_RT")
 class BaseAPIMetaClass(type):
     """Super high level tactic metaclass"""
 
-    def __new__(cls : Type[_T], clsName : str, bases : List[object], attrs : Dict[str, Any]) -> _T:
+    def __new__(cls : Type[_T], clsName : str, bases : Tuple[type], attrs : Dict[str, Any]) -> _T:
 
         result = super().__new__(cls, clsName, bases, attrs)
-        result._clsMakePID()
-        result.__str__ = BaseAPIMetaClass.__str__
+        result._clsMakePID() # type: ignore
+        result.__str__ = BaseAPIMetaClass.__str__ # type: ignore
 
         return result
         
@@ -82,16 +82,16 @@ class APIData(object, metaclass=BaseAPIMetaClass):
     ### Methods:
         `Generate()`: Generate random device model and system version
     """
-    CustomInitConnectionList : List[APIData] = []
+    CustomInitConnectionList : List[Union[Type[APIData], APIData]] = []
 
-    api_id : int           = None
-    api_hash : str         = None
-    device_model : str     = None
-    system_version : str   = None
-    app_version : str      = None
-    lang_code : str        = None
-    system_lang_code : str = None
-    lang_pack : str        = None
+    api_id : int           = None # type: ignore
+    api_hash : str         = None # type: ignore
+    device_model : str     = None # type: ignore
+    system_version : str   = None # type: ignore
+    app_version : str      = None # type: ignore
+    lang_code : str        = None # type: ignore
+    system_lang_code : str = None # type: ignore
+    lang_pack : str        = None # type: ignore
     
     @typing.overload
     def __init__(self, api_id : int, api_hash : str) -> None:
@@ -152,15 +152,15 @@ class APIData(object, metaclass=BaseAPIMetaClass):
         cls = glob if isinstance(glob, type) else glob.__class__
             
         return cls(
-            glob.api_id,
-            glob.api_hash,
-            glob.device_model,
-            glob.system_version,
-            glob.app_version,
-            glob.system_lang_code,
-            glob.lang_pack,
-            glob.lang_code,
-        )
+            glob.api_id,            # type: ignore
+            glob.api_hash,          # type: ignore
+            glob.device_model,      # type: ignore
+            glob.system_version,    # type: ignore
+            glob.app_version,       # type: ignore
+            glob.system_lang_code,  # type: ignore
+            glob.lang_pack,         # type: ignore
+            glob.lang_code,         # type: ignore
+        ) # type: ignore
 
     @sharemethod
     def destroy(glob : Union[Type[_T], _T]):
@@ -179,14 +179,14 @@ class APIData(object, metaclass=BaseAPIMetaClass):
         self.destroy()
     
     @classmethod
-    def _makePIDEnsure(cls : APIData) -> int:
+    def _makePIDEnsure(cls) -> int:
         while True:
             pid = int.from_bytes(os.urandom(8), 'little')
             if cls.findData(pid) == None: break
         return pid
 
     @classmethod
-    def _clsMakePID(cls : APIData):
+    def _clsMakePID(cls : Type[APIData]):
         cls.pid = cls._makePIDEnsure()
         cls.CustomInitConnectionList.append(cls)
         
@@ -225,10 +225,9 @@ class APIData(object, metaclass=BaseAPIMetaClass):
         
         return cls(device_model=deviceInfo.model, system_version=deviceInfo.version)
         
-
     @classmethod
-    def findData(cls : APIData, pid : int) -> APIData:
-        for x in cls.CustomInitConnectionList:
+    def findData(cls : Type[_T], pid : int) -> Optional[_T]: 
+        for x in cls.CustomInitConnectionList: # type: ignore
             if x.pid == pid: return x
         return None
 
@@ -283,7 +282,7 @@ class APITemplate(APIData):
             elif system == "macos":
                 deviceInfo = macOSDevice.RandomDevice(id)
 
-            elif system == "linux":
+            else:
                 deviceInfo = LinuxDevice.RandomDevice(id)
 
             return cls(device_model=deviceInfo.model, system_version=deviceInfo.version)

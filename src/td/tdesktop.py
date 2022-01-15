@@ -69,7 +69,7 @@ class TDesktop(BaseObject):
         self.__keyFile = keyFile if (keyFile != None) else TDesktop.kDefaultKeyFile
         self.__passcode = passcode if (passcode != None) else str("")
         self.__passcodeBytes = self.__passcode.encode("ascii")
-        self.__mainAccount : td.Account = None
+        self.__mainAccount : Optional[td.Account] = None
         self.__active_index = -1
         self.__passcodeKey = None
         self.__localKey = None
@@ -92,7 +92,7 @@ class TDesktop(BaseObject):
             account.api = value
     
     @property
-    def basePath(self) -> str:
+    def basePath(self) -> Optional[str]:
         """
         Base folder of TDesktop, this is where data stored\n
         Same as tdata folder of Telegram Desktop
@@ -112,28 +112,29 @@ class TDesktop(BaseObject):
         return self.__keyFile
 
     @property
-    def passcodeKey(self) -> td.AuthKey:
+    def passcodeKey(self) -> Optional[td.AuthKey]:
         return self.__passcodeKey
 
     @property
-    def localKey(self) -> td.AuthKey:
+    def localKey(self) -> Optional[td.AuthKey]:
         """
         The key used to encrypt/decrypt data
         """
         return self.__localKey
 
     @property
-    def AppVersion(self) -> int:
+    def AppVersion(self) -> Optional[int]:
         """
         App version of TDesktop client
         """
         return self.__AppVersion
 
     @property
-    def AppVersionString(self) -> int:
+    def AppVersionString(self) -> Optional[str]:
         """
         App version of TDesktop client
         """
+        raise NotImplementedError()
         return self.__AppVersion
 
     @property
@@ -145,7 +146,7 @@ class TDesktop(BaseObject):
         return len(self.__accounts)
 
     @property
-    def accounts(self) -> typing.List[td.Account]:
+    def accounts(self) -> List[td.Account]:
         """
         List of accounts this client has\n
         If you want to get the main account, please use .mainAccount instead
@@ -153,7 +154,7 @@ class TDesktop(BaseObject):
         return self.__accounts
 
     @property
-    def mainAccount(self) -> td.Account:
+    def mainAccount(self) -> Optional[td.Account]:
         """
         The main account of the client
         """
@@ -165,11 +166,11 @@ class TDesktop(BaseObject):
         """
         return self.__isLoaded
 
-    def LoadData(self, basePath : str = None, passcode : str = None, keyFile : str = None) -> bool:
+    def LoadData(self, basePath : str = None, passcode : str = None, keyFile : str = None):
         
         if basePath == None: basePath = self.basePath
         
-        Expects(basePath, "No folder provided to load tdata")
+        Expects(basePath != None and basePath != "", "No folder provided to load tdata")
         
         if keyFile != None and self.__keyFile != keyFile:
             self.__keyFile = keyFile
@@ -215,7 +216,7 @@ class TDesktop(BaseObject):
         
         self.__keyFile = keyFile if (keyFile != None and self.keyFile != keyFile) else self.keyFile
 
-        Expects(basePath, "No folder provided to save tdata")
+        Expects(basePath != None and basePath != "", "No folder provided to save tdata")
     
         if passcode != None and self.__passcode != passcode:
             self.__passcode = passcode
@@ -240,7 +241,7 @@ class TDesktop(BaseObject):
         """Warning: For internal usage only"""
 
         Expects(len(self.accounts) > 0)
-        Expects(basePath)
+        Expects(basePath != None and basePath != "", "No folder provided to save tdata")
 
         for account in self.accounts:
             account._writeData(basePath, keyFile)
@@ -257,7 +258,7 @@ class TDesktop(BaseObject):
             keyData.stream.writeInt32(account.index)
 
         keyData.stream.writeInt32(self.__active_index)
-        key.writeEncrypted(keyData, self.__localKey)
+        key.writeEncrypted(keyData, self.__localKey) # type: ignore
         key.finish()
 
     def __generateLocalKey(self) -> None:
@@ -301,12 +302,12 @@ class TDesktop(BaseObject):
     def __loadFromTData(self) -> None:
         """Warning: For internal usage only"""
 
-        Expects(self.basePath)
+        Expects(self.basePath != None and self.basePath != "", "No folder provided to load tdata")
 
         self.accounts.clear()
 
         # READ KEY_DATA
-        keyData = td.Storage.ReadFile("key_" + self.keyFile, self.basePath)
+        keyData = td.Storage.ReadFile("key_" + self.keyFile, self.basePath) # type: ignore
 
         salt, keyEncrypted, infoEncrypted = QByteArray(), QByteArray(), QByteArray()
 
@@ -319,13 +320,13 @@ class TDesktop(BaseObject):
         self.__AppVersion = keyData.version
         self.__passcodeKey = td.Storage.CreateLocalKey(salt, QByteArray(self.__passcodeBytes))
 
-        keyInnerData = td.Storage.DecryptLocal(keyEncrypted, self.passcodeKey)
+        keyInnerData = td.Storage.DecryptLocal(keyEncrypted, self.passcodeKey) # type: ignore
 
         self.__localKey = td.AuthKey(keyInnerData.stream.readRawData(256))
         self.__passcodeKeyEncrypted = keyEncrypted
         self.__passcodeKeySalt = salt
 
-        info = td.Storage.DecryptLocal(infoEncrypted, self.localKey)
+        info = td.Storage.DecryptLocal(infoEncrypted, self.localKey) # type: ignore
         count = info.stream.readInt32()
 
         Expects(count > 0, "accountsCount is zero, the data might has been corrupted")
@@ -425,6 +426,7 @@ class TDesktop(BaseObject):
 
         Expects(self.isLoaded(), TDesktopNotLoaded("You need to load accounts from a tdata folder first"))
         Expects(self.accountsCount > 0, TDesktopHasNoAccount("There is no account in this instance of TDesktop"))
+        assert self.mainAccount
         
         return await tl.TelegramClient.FromTDesktop(self.mainAccount, session=session, flag=flag, api=api, password=password,
                                             connection=connection, use_ipv6=use_ipv6,

@@ -1,4 +1,3 @@
-
 # Account
 
 ## Table of Contents
@@ -14,7 +13,7 @@
 
 # td.account
 
-[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\td\account.py#L1)
+[[view_source]](https://github.com/thedemons/opentele/blob/dee2df0aaab7f6f44f1259af12b2598a7cd9bcb0/src\td\account.py#L1)
 
 <a id="td.account.Account"></a>
 
@@ -24,7 +23,7 @@
 class Account(BaseObject)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\td\account.py#L511)
+[[view_source]](https://github.com/thedemons/opentele/blob/dee2df0aaab7f6f44f1259af12b2598a7cd9bcb0/src\td\account.py#L511)
 
 Telegram Desktop account
 Pro account
@@ -55,7 +54,7 @@ Test New
 def __init__(owner: td.TDesktop, basePath: str = None, api: Union[Type[APIData], APIData] = APITemplate.TelegramDesktop, keyFile: str = None, index: int = 0) -> None
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\td\account.py#L545)
+[[view_source]](https://github.com/thedemons/opentele/blob/dee2df0aaab7f6f44f1259af12b2598a7cd9bcb0/src\td\account.py#L545)
 
 Setup a tdesktop account
 
@@ -64,7 +63,7 @@ Setup a tdesktop account
 | Name | Type | Description |
 | :--- | :--: | :---------- |
 | owner  | `td.TDesktop` | TDesktop client owner of this account |
-| basePath  | <span style="color:green">**str**</span> | <span style="color:blue">**None**</span> | The folder where tdata is stored |
+| basePath  | <span style="color:green">**str**</span>, default=None | The folder where tdata is stored |
 | api  | `Type[APIData]` | **[APIData](../../APIData#apidata.APIData)** | **[APITemplate.TelegramDesktop](../../APIData#apidata.APITemplate.TelegramDesktop)** | The **[APIData](../../APIData#apidata.APIData)** to use |
 | keyFile  | <span style="color:green">**str**</span> | <span style="color:blue">**None**</span> | [description] |
 | index  | <span style="color:green">**int**</span> | `0` | [description] |
@@ -84,7 +83,7 @@ Setup a tdesktop account
 def localKey(value)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\td\account.py#L626)
+[[view_source]](https://github.com/thedemons/opentele/blob/dee2df0aaab7f6f44f1259af12b2598a7cd9bcb0/src\td\account.py#L625)
 
 localKey setter is intended for internal usage
 
@@ -96,7 +95,7 @@ localKey setter is intended for internal usage
 def prepareToStart(localKey: td.AuthKey) -> td.MTP.Config
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\td\account.py#L663)
+[[view_source]](https://github.com/thedemons/opentele/blob/dee2df0aaab7f6f44f1259af12b2598a7cd9bcb0/src\td\account.py#L662)
 
 Prepare the account before starting it
 
@@ -119,7 +118,7 @@ Prepare the account before starting it
 def SaveTData(basePath: str = None, passcode: str = None, keyFile: str = None) -> None
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\td\account.py#L771)
+[[view_source]](https://github.com/thedemons/opentele/blob/dee2df0aaab7f6f44f1259af12b2598a7cd9bcb0/src\td\account.py#L770)
 
 Save this account to a folder
 [extended_summary]

@@ -13,7 +13,7 @@ class MTP(BaseObject):
     '''
 
 
-    class Environment(int):
+    class Environment(IntEnum):
         '''
         Enviroment flag for MTP.Config
         '''
@@ -43,10 +43,10 @@ class MTP(BaseObject):
         def isTestMode(self):
             return self._enviroment != MTP.Environment.Production
         
-        def constructAddOne(self, id : int, flags : MTP.DcOptions.Flag, ip : str, port : int, secret : bytes):
+        def constructAddOne(self, id : DcId, flags : MTP.DcOptions.Flag, ip : str, port : int, secret : bytes):
             self.applyOneGuarded(DcId.BareDcId(id), flags, ip, port, secret)
 
-        def applyOneGuarded(self, id : int, flags : MTP.DcOptions.Flag, ip : str, port : int, secret : bytes):
+        def applyOneGuarded(self, id : DcId, flags : MTP.DcOptions.Flag, ip : str, port : int, secret : bytes):
     
             if not id in self._data:
                 self._data[id] = []
@@ -64,17 +64,17 @@ class MTP(BaseObject):
             # TO BE ADDED
             # self.readBuiltInPublicKeys()
 
-            def addToData(dcs : typing.List[BuiltInDc], flags : MTP.DcOptions.Flag):
+            def addToData(dcs : List[BuiltInDc], flags : MTP.DcOptions.Flag):
 
                 for dc in dcs:
                     self.applyOneGuarded(dc.id, flags, dc.ip, dc.port, bytes())
 
             if self.isTestMode():
-                addToData(BuiltInDc.kBuiltInDcsTest, MTP.DcOptions.Flag.f_static | 0)
-                addToData(BuiltInDc.kBuiltInDcsIPv6Test, MTP.DcOptions.Flag.f_static | MTP.DcOptions.Flag.f_ipv6)
+                addToData(BuiltInDc.kBuiltInDcsTest, MTP.DcOptions.Flag.f_static | 0) # type: ignore
+                addToData(BuiltInDc.kBuiltInDcsIPv6Test, MTP.DcOptions.Flag.f_static | MTP.DcOptions.Flag.f_ipv6) # type: ignore
             else:
-                addToData(BuiltInDc.kBuiltInDcs, MTP.DcOptions.Flag.f_static | 0)
-                addToData(BuiltInDc.kBuiltInDcsIPv6, MTP.DcOptions.Flag.f_static | MTP.DcOptions.Flag.f_ipv6)
+                addToData(BuiltInDc.kBuiltInDcs, MTP.DcOptions.Flag.f_static | 0) # type: ignore
+                addToData(BuiltInDc.kBuiltInDcsIPv6, MTP.DcOptions.Flag.f_static | MTP.DcOptions.Flag.f_ipv6) # type: ignore
             
         def constructFromSerialized(self, serialized : QByteArray):
             stream = QDataStream(serialized)
@@ -88,8 +88,8 @@ class MTP(BaseObject):
             self._data.clear()
 
             for i in range(0, count):
-                id = stream.readInt32()
-                flags = stream.readInt32()
+                dcId = DcId(stream.readInt32())
+                flags = MTP.DcOptions.Flag(stream.readInt32())
                 port = stream.readInt32()
                 ipSize = stream.readInt32()
 
@@ -112,7 +112,7 @@ class MTP(BaseObject):
 
                 ExpectStreamStatus(stream, "Could not stream config data")
 
-                self.applyOneGuarded(id, flags, ip, port, secret)
+                self.applyOneGuarded(dcId, flags, ip, port, secret)
 
             # TO BE ADDED
             # Read CDN config
@@ -251,7 +251,7 @@ class MTP(BaseObject):
             self._fields.webFileDcId = 2 if self._dcOptions.isTestMode() else 4
             self._fields.txtDomainString =  "tapv3.stel.com" if self._dcOptions.isTestMode() else "apv3.stel.com"
 
-        def endpoints(self, dcId : DcId = 0) -> Dict[MTP.DcOptions.Address, Dict[MTP.DcOptions.Protocol, List[MTP.DcOptions.Endpoint]]]:
+        def endpoints(self, dcId : DcId = DcId._0) -> Dict[MTP.DcOptions.Address, Dict[MTP.DcOptions.Protocol, List[MTP.DcOptions.Endpoint]]]:
 
             endpoints = self._dcOptions._data[dcId]
 
@@ -261,8 +261,8 @@ class MTP(BaseObject):
             Endpoint = MTP.DcOptions.Endpoint
 
             results : Dict[Address, Dict[Protocol, List[Endpoint]]] = {}
-            results[Address.IPv4] = {Protocol.Tcp : [], Protocol.Http : []}
-            results[Address.IPv6] = {Protocol.Tcp : [], Protocol.Http : []}
+            results[Address.IPv4] = {Protocol.Tcp : [], Protocol.Http : []} # type: ignore
+            results[Address.IPv6] = {Protocol.Tcp : [], Protocol.Http : []} # type: ignore
 
             for endpoint in endpoints:
 
@@ -270,10 +270,10 @@ class MTP(BaseObject):
 
                     flags = endpoint.flags
                     address = Address.IPv6 if (flags & Flag.f_ipv6) else Address.IPv4
-                    results[address][Protocol.Tcp].append(endpoint)
+                    results[address][Protocol.Tcp].append(endpoint) # type: ignore
 
                     if ( not (flags & (Flag.f_tcpo_only | Flag.f_secret))):
-                        results[address][Protocol.Http].append(endpoint)
+                        results[address][Protocol.Http].append(endpoint) # type: ignore
             
             return results
 
@@ -340,18 +340,21 @@ class MTP(BaseObject):
             version = stream.readInt32()
             Expects(version == MTP.Config.kVersion, "version != kVersion, something went wrong")
             
-            enviroment : DcId = stream.readInt32()
+            enviroment = MTP.Environment(stream.readInt32())
             result = MTP.Config(enviroment)
 
                         
-            def read(field):
+            def read(field : _T) -> _T:
                 vtype = type(field)
                 if (vtype == int):
-                    return stream.readInt32()
+                    return stream.readInt32() # type: ignore
                 elif (vtype == bool):
-                    return stream.readInt32() == 1
+                    return stream.readInt32() == 1 # type: ignore
                 elif (vtype == str):
-                    return stream.readQString()
+                    return stream.readQString() # type: ignore
+                
+                raise ValueError()
+                
                     
             dcOptionsSerialized = QByteArray()
             stream >> dcOptionsSerialized

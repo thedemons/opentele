@@ -109,7 +109,7 @@ class MapData(BaseObject):
             if (keyType == lskType.lskDraft):
                 count = map.stream.readUInt32()
                 for i in range(count):
-                    key = map.stream.readUInt64()
+                    key = FileKey(map.stream.readUInt64())
                     peerIdSerialized = map.stream.readUInt64()
                     peerId = PeerId.FromSerialized(peerIdSerialized)
                     draftsMap[peerId] = key
@@ -121,7 +121,7 @@ class MapData(BaseObject):
             elif (keyType == lskType.lskDraftPosition):
                 count = map.stream.readUInt32()
                 for i in range(count):
-                    key = map.stream.readUInt64()
+                    key = FileKey(map.stream.readUInt64())
                     peerIdSerialized = map.stream.readUInt64()
                     peerId = PeerId.FromSerialized(peerIdSerialized)
                     draftCursorsMap[peerId] = key
@@ -354,7 +354,7 @@ class StorageAccount(BaseObject):
         return self.__owner
 
     @property
-    def localKey(self) -> td.AuthKey:
+    def localKey(self) -> Optional[td.AuthKey]:
         """
         The key use to encrypt/decrypt data
         """
@@ -372,7 +372,7 @@ class StorageAccount(BaseObject):
         return self.__keyFile
 
     @keyFile.setter
-    def keyFile(self, value) -> str:
+    def keyFile(self, value):
         self.__keyFile = value
         self.__dataNameKey = td.Storage.ComputeDataNameKey(self.__keyFile)
         self.baseGlobalPath = self.baseGlobalPath
@@ -382,7 +382,7 @@ class StorageAccount(BaseObject):
         return self.__baseGlobalPath
 
     @baseGlobalPath.setter
-    def baseGlobalPath(self, value) -> str:
+    def baseGlobalPath(self, value):
         self.__baseGlobalPath = td.Storage.GetAbsolutePath(value)
         self.__basePath = value + td.Storage.ToFilePart(self.__dataNameKey) + "\\"
 
@@ -402,7 +402,7 @@ class StorageAccount(BaseObject):
         # Intended for internal usage only
 
         self.__localKey = localKey
-        self.readMapWith(self.localKey)
+        self.readMapWith(localKey)
         return self.readMtpConfig()
         
 
@@ -410,7 +410,7 @@ class StorageAccount(BaseObject):
         # Intended for internal usage only
         
         # mtp = ReadEncryptedFile(ToFilePart(self.__dataNameKey), self.__basePath, self.localKey)
-        mtp = td.Storage.ReadEncryptedFile(td.Storage.ToFilePart(self.__dataNameKey), self.__baseGlobalPath, self.localKey)
+        mtp = td.Storage.ReadEncryptedFile(td.Storage.ToFilePart(self.__dataNameKey), self.__baseGlobalPath, self.localKey) # type: ignore
 
         blockId = mtp.stream.readInt32()
         
@@ -423,9 +423,9 @@ class StorageAccount(BaseObject):
     def readMtpConfig(self) -> td.MTP.Config:
         # Intended for internal usage only
         Expects(self.localKey != None, AccountAuthKeyNotFound("The localKey has not been initialized yet"))
-
+        
         try:
-            file = td.Storage.ReadEncryptedFile("config", self.basePath, self.localKey)
+            file = td.Storage.ReadEncryptedFile("config", self.basePath, self.localKey) # type: ignore
             serialized = QByteArray()
             file.stream >> serialized
 
@@ -451,22 +451,22 @@ class StorageAccount(BaseObject):
     def writeMtpConfig(self, basePath : str) -> None:
         # Intended for internal usage only
 
-        Expects(self.localKey, "localKey not found, have you initialized me correctly?")
-        Expects(basePath, "basePath can't be empty")
+        Expects(self.localKey != None, "localKey not found, have you initialized me correctly?")
+        Expects(basePath != None and basePath != "", "basePath can't be empty")
 
         serialized = self.owner.MtpConfig.Serialize()
         size = td.Serialize.bytearraySize(serialized)
         file = td.Storage.FileWriteDescriptor("config", basePath)
         data = td.Storage.EncryptedDescriptor(size)
         data.stream << serialized
-        file.writeEncrypted(data, self.localKey)
+        file.writeEncrypted(data, self.localKey) # type: ignore
         file.finish()
 
     def writeMap(self, basePath : str) -> None:
         # Intended for internal usage only
 
-        Expects(self.localKey, "localKey not found, have you initialized me correctly?")
-        Expects(basePath, "basePath can't be empty")
+        Expects(self.localKey != None, "localKey not found, have you initialized me correctly?")
+        Expects(basePath != None and basePath != "", "basePath can't be empty")
 
         map = td.Storage.FileWriteDescriptor("map", basePath)
         
@@ -475,14 +475,14 @@ class StorageAccount(BaseObject):
         map.writeData(QByteArray())
 
         mapDataEncrypted = self.mapData.prepareToWrite()
-        map.writeEncrypted(mapDataEncrypted, self.localKey)
+        map.writeEncrypted(mapDataEncrypted, self.localKey) # type: ignore
         map.finish()
 
-    def writeMtpData(self, baseGlobalPath : str, dataNameKey : str) -> None:
+    def writeMtpData(self, baseGlobalPath : str, dataNameKey : int) -> None:
         # Intended for internal usage only
 
-        Expects(baseGlobalPath, "baseGlobalPath can't be empty")
-        Expects(self.localKey, "localKey not found, have you initialized me correctly?")
+        Expects(self.localKey != None, "localKey not found, have you initialized me correctly?")
+        Expects(baseGlobalPath != None and baseGlobalPath != "", "baseGlobalPath can't be empty")
 
         serialized = self.owner.serializeMtpAuthorization()
         size = sizeof(uint32) + td.Serialize.bytearraySize(serialized)
@@ -490,13 +490,13 @@ class StorageAccount(BaseObject):
         data = td.Storage.EncryptedDescriptor(size)
         data.stream.writeInt32(dbi.MtpAuthorization)
         data.stream << serialized
-        mtp.writeEncrypted(data, self.localKey)
+        mtp.writeEncrypted(data, self.localKey)  # type: ignore
         mtp.finish()
     
     def _writeData(self, baseGlobalPath : str, keyFile : str = None) -> None:
         # Intended for internal usage only
 
-        Expects(baseGlobalPath, "baseGlobalPath can't be empty")
+        Expects(baseGlobalPath != None and baseGlobalPath != "", "baseGlobalPath can't be empty")
 
         if keyFile != None and self.keyFile != keyFile:
             dataNameKey = td.Storage.ComputeDataNameKey(self.__keyFile)
@@ -555,7 +555,7 @@ class Account(BaseObject):
             owner (`td.TDesktop`):
                 TDesktop client owner of this account
         
-            basePath (`str` | `None`):
+            basePath (`str`, default=None):
                 The folder where tdata is stored
         
             api (`Type[APIData]` | `APIData` | `APITemplate.TelegramDesktop`):
@@ -578,7 +578,7 @@ class Account(BaseObject):
         self.__isLoaded = False
         self.__isAuthorized = False
         self.__UserId = 0
-        self.__MainDcId = 0
+        self.__MainDcId = DcId(0)
 
         self.__basePath = td.Storage.GetAbsolutePath(basePath)
         self.__keyFile = keyFile if (keyFile != None) else td.TDesktop.kDefaultKeyFile
@@ -587,8 +587,7 @@ class Account(BaseObject):
         self.__mtpKeysToDestroy : typing.List[td.AuthKey] = []
         self.api = api.copy()
 
-        self.__keyFile = keyFile
-        self._local = StorageAccount(self, self.basePath, td.Storage.ComposeDataString(keyFile, index))
+        self._local = StorageAccount(self, self.basePath, td.Storage.ComposeDataString(self.__keyFile, index))
         self.index = index
 
 
@@ -610,7 +609,7 @@ class Account(BaseObject):
         return self.__basePath
 
     @property
-    def keyFile(self) -> td.AuthKey:
+    def keyFile(self) -> str:
         return self.__keyFile
    
     @keyFile.setter
@@ -619,7 +618,7 @@ class Account(BaseObject):
         self._local.keyFile = td.Storage.ComposeDataString(value, self.index)
 
     @property
-    def localKey(self) -> td.AuthKey:
+    def localKey(self) -> Optional[td.AuthKey]:
         return self.__localKey
    
     @localKey.setter
@@ -631,7 +630,7 @@ class Account(BaseObject):
         self._local.localKey = value
 
     @property
-    def authKey(self) -> td.AuthKey:
+    def authKey(self) -> Optional[td.AuthKey]:
         return self.__authKey
 
     @property
@@ -639,7 +638,7 @@ class Account(BaseObject):
         return self.__UserId
 
     @property
-    def MainDcId(self) -> int:
+    def MainDcId(self) -> DcId:
         return self.__MainDcId
 
     @property
@@ -684,9 +683,9 @@ class Account(BaseObject):
         self.__mtpKeys = mtpKeys
         
         for key in self.__mtpKeys:
-            if key.DcId == self.MainDcId: self.__authKey = key; break
+            if key.dcId == self.MainDcId: self.__authKey = key; break
 
-        Expects(self.__authKey,
+        Expects(self.authKey != None,
         exception=TDataAuthKeyNotFound("Could not find the main authKey, are you sure the data is correct?"))
 
         self.__isLoaded = True
@@ -714,8 +713,8 @@ class Account(BaseObject):
                     QDataStreamFailed("Could not read keys count from mtp authorization."))
 
             for i in range(key_count):
-                dcId = stream.readInt32()
-                keys.append(td.AuthKey.FromStream(stream, td.AuthKey.Type.ReadFromFile, dcId))
+                dcId = DcId(stream.readInt32())
+                keys.append(td.AuthKey.FromStream(stream, td.AuthKeyType.ReadFromFile, dcId))
         
         self.__mtpKeys.clear()
         self.__mtpKeysToDestroy.clear()
@@ -724,9 +723,9 @@ class Account(BaseObject):
         readKeys(self.__mtpKeysToDestroy)
         
         for key in self.__mtpKeys:
-            if key.DcId == self.MainDcId: self.__authKey = key; break
+            if key.dcId == self.MainDcId: self.__authKey = key; break
 
-        Expects(self.__authKey,
+        Expects(self.__authKey != None,
         exception=TDataAuthKeyNotFound("Could not find authKey, the data might has been corrupted"))
 
         self.__isLoaded = True
@@ -749,7 +748,7 @@ class Account(BaseObject):
 
             stream.writeInt32(len(keys))
             for key in keys:
-                stream.writeInt32(key.DcId)
+                stream.writeInt32(key.dcId)
                 stream.writeRawData(key.key)
         result = QByteArray()
         stream = QDataStream(result, QIODevice.OpenModeFlag.WriteOnly)
@@ -795,7 +794,7 @@ class Account(BaseObject):
         basePath = td.Storage.GetAbsolutePath(basePath)
 
         if self.basePath == None:
-            self.basePath = basePath
+            self.__basePath = basePath
 
         self.owner.SaveTData(basePath, passcode, keyFile)
     
@@ -836,7 +835,6 @@ class Account(BaseObject):
                             receive_updates         : bool = True) -> tl.TelegramClient:
         pass
 
-    @typing.overload
     async def ToTelethon(   self,
                             session         : Union[str, Session] = None,
                             flag            : Type[LoginFlag] = CreateNewSession,
@@ -894,14 +892,15 @@ class Account(BaseObject):
             copy = telethonClient
 
         ss = copy.session
-        authKey = ss._auth_key.key
-        dcId = ss._dc_id
+        authKey  = ss.auth_key.key
+        dcId = DcId(ss.dc_id)
         userId = copy._self_id
-        authKey = td.AuthKey(authKey, td.AuthKey.Type.ReadFromFile, dcId)
+        authKey = td.AuthKey(authKey, td.AuthKeyType.ReadFromFile, dcId)
 
         if userId == None:
-            copy.get_me()
+            await copy.get_me()
             userId = copy._self_id
+
 
         newAccount = None
 
@@ -914,14 +913,14 @@ class Account(BaseObject):
             
             index = owner.accountsCount
             newAccount = Account(owner=owner, basePath=owner.basePath, api=api, keyFile=owner.keyFile, index=index)
-            newAccount._setMtpAuthorizationCustom(dcId, userId, [authKey])
+            newAccount._setMtpAuthorizationCustom(dcId, userId, [authKey]) # type: ignore
             owner._addSingleAccount(newAccount)
 
         else:
             index = 0
             newOwner = td.TDesktop()
             newAccount = Account(owner=newOwner, api=api, index=index)
-            newAccount._setMtpAuthorizationCustom(dcId, userId, [authKey])
+            newAccount._setMtpAuthorizationCustom(dcId, userId, [authKey]) # type: ignore
             newOwner._addSingleAccount(newAccount)
 
         return newAccount

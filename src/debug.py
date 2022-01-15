@@ -27,11 +27,11 @@ class HookClassMethod(type):
         
         location = location.ljust(15) + "| " + lineno.ljust(6)
 
-        context = stack.code_context[0][:-1].strip()
+        context = stack.code_context[0][:-1].strip() # type: ignore
 
         print(location + context)
 
-        return self.__fget__(self.__owner__, *args, **kwargs)
+        return self.__fget__(self.__owner__, *args, **kwargs) # type: ignore
 
     def __set_name__(self, owner, name):
         self.__owner__ = owner
@@ -47,7 +47,7 @@ class HookClassMethod(type):
 
 
         result = type.__new__(cls, decorated_func.__name__, decorated_func.__class__.__bases__, firstdct)
-        result.__fget__ = decorated_func
+        result.__fget__ = decorated_func # type: ignore
         return result
 
 def parse_arg(value) -> str:

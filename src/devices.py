@@ -1,5 +1,5 @@
 
-
+from __future__ import annotations
 from typing import List, Dict, Tuple, TypeVar, Type
 from .utils import *
 import hashlib, os
@@ -15,11 +15,16 @@ class DeviceInfo(object):
 
 class SystemInfo(BaseObject):
 
+    
+    deviceList : List[DeviceInfo] = []
+    device_modesl : List[str] = []
+    system_versions : List[str] = []
+
     def __init__(self) -> None:
         pass
     
     @classmethod
-    def RandomDevice(cls : Type[_T], id : str = None) -> DeviceInfo:
+    def RandomDevice(cls : Type[SystemInfo], id : str = None) -> DeviceInfo:
         hash_id = cls._strtohashid(id)
         return cls._RandomDevice(hash_id)
 
@@ -33,9 +38,9 @@ class SystemInfo(BaseObject):
         raise NotImplementedError(f"{cls.__name__} device not supported for randomize yet")
 
     @classmethod
-    def _strtohashid(cls, id : str):
-        id = os.urandom(32) if id == None else id.encode("utf-8")
-        return int(hashlib.sha1(id).hexdigest(), 16) % (10 ** 12)
+    def _strtohashid(cls, id : str = None):
+        byteid = os.urandom(32) if id == None else id.encode("utf-8")
+        return int(hashlib.sha1(byteid).hexdigest(), 16) % (10 ** 12)
 
     @classmethod
     def _hashtorange(cls, hash_id : int, max, min = 0):
@@ -174,7 +179,7 @@ class WindowsDevice(GeneralDesktopDevice):
     deviceList : List[DeviceInfo] = []
 
     @classmethod
-    def __gen__(cls : type) -> None:
+    def __gen__(cls : Type[WindowsDevice]) -> None:
         
         if len(cls.deviceList) == 0:
 
@@ -194,7 +199,7 @@ class LinuxDevice(GeneralDesktopDevice):
     deviceList : List[DeviceInfo] = []
 
     @classmethod
-    def __gen__(cls : type) -> None:
+    def __gen__(cls : Type[LinuxDevice]) -> None:
         
         if len(cls.system_versions) == 0:
             # https://github.com/desktop-app/lib_base/blob/master/base/platform/linux/base_info_linux.cpp#L129
@@ -295,7 +300,7 @@ class macOSDevice(GeneralDesktopDevice):
     deviceList : List[DeviceInfo] = []
 
     @classmethod
-    def __gen__(cls : type) -> None:
+    def __gen__(cls : Type[macOSDevice]) -> None:
         
         if len(cls.deviceList) == 0:
             
@@ -1261,7 +1266,7 @@ class AndroidDevice(SystemInfo):
     deviceList : List[DeviceInfo] = []
 
     @classmethod
-    def __gen__(cls : type) -> None:
+    def __gen__(cls : Type[AndroidDevice]) -> None:
         
         if len(cls.deviceList) == 0:
 
@@ -1306,7 +1311,7 @@ class iOSDeivce(SystemInfo):
     deviceList : List[DeviceInfo] = []
 
     @classmethod
-    def __gen__(cls : type) -> None:
+    def __gen__(cls : Type[iOSDeivce]) -> None:
         
         if len(cls.deviceList) == 0:   
             results : List[DeviceInfo]= []

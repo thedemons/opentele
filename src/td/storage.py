@@ -117,9 +117,9 @@ class Storage(BaseObject):
             pass
 
         def finish(self) -> None:
-            if self.__stream.device(): self.__stream.setDevice(None)
+            if self.__stream.device(): self.__stream.setDevice(None) # type: ignore
             if self.__buffer.isOpen(): self.__buffer.close()
-            self.__buffer.setBuffer(None)
+            self.__buffer.setBuffer(None) # type: ignore
 
         @property
         def data(self) -> QByteArray:
@@ -159,7 +159,7 @@ class Storage(BaseObject):
             self.fullSize = 0
 
         def writeData(self, data : QByteArray):
-            Expects(self.stream.device(), "stream.device is missing")
+            Expects(self.stream.device() != None, "stream.device is missing")
 
             self.stream << data
             len = 0xffffffff if data.isNull() else data.size()
@@ -183,7 +183,7 @@ class Storage(BaseObject):
 
         def finish(self):
             if not self.stream.device(): return
-            self.stream.setDevice(None)
+            self.stream.setDevice(None) # type: ignore
             
             self.md5 += self.fullSize.to_bytes(4, 'little')
             self.md5 += APP_VERSION.to_bytes(4, 'little')
@@ -313,16 +313,16 @@ class Storage(BaseObject):
         try:
             data = Storage.DecryptLocal(encrypted, authKey)
         except OpenTeleException as e:
-            result.stream.setDevice(None)
+            result.stream.setDevice(None) # type: ignore
             if result.buffer.isOpen(): result.buffer.close()
-            result.buffer.setBuffer(None)
+            result.buffer.setBuffer(None) # type: ignore
             result.data = QByteArray()
             result.version = 0
             raise e
         
-        result.stream.setDevice(None)
+        result.stream.setDevice(None) # type: ignore
         if result.buffer.isOpen(): result.buffer.close()
-        result.buffer.setBuffer(None)
+        result.buffer.setBuffer(None) # type: ignore
         result.data = data.data
         
         result.buffer.setBuffer(result.data)
@@ -337,20 +337,20 @@ class Storage(BaseObject):
     def ReadSetting(blockId : int, stream : QDataStream, version : int, context : ReadSettingsContext) -> bool:
 
         if (blockId == dbi.DcOptionOldOld):
-            dcId = stream.readUInt32()
+            dcId = DcId(stream.readUInt32())
             host = stream.readQString()
             ip = stream.readQString()
             port = stream.readUInt32()
             ExpectStreamStatus(stream)
 
             context.fallbackConfigLegacyDcOptions.constructAddOne(
-                dcId, 0 , ip, port, bytes()
+                dcId, td.MTP.DcOptions.Flag(0) , ip, port, bytes()
             )
             context.legacyRead = True
 
         elif (blockId == dbi.DcOptionOld):
-            dcIdWithShift = stream.readUInt32()
-            flags = stream.readInt32()
+            dcIdWithShift = ShiftedDcId(stream.readUInt32())
+            flags = td.MTP.DcOptions.Flag(stream.readInt32())
             ip = stream.readQString()
             port = stream.readUInt32()
             
@@ -422,12 +422,12 @@ class Storage(BaseObject):
             context.mtpLegacyUserId = userId
 
         elif (blockId == dbi.Key):
-            dcId = stream.readInt32()
+            dcId = DcId(stream.readInt32())
             key = stream.readRawData(256)
             ExpectStreamStatus(stream)
 
             context.mtpLegacyKeys.append(
-                td.AuthKey(key, td.AuthKey.Type.ReadFromFile, dcId)
+                td.AuthKey(key, td.AuthKeyType.ReadFromFile, dcId)
             )
 
         elif (blockId == dbi.MtpAuthorization):
@@ -436,6 +436,8 @@ class Storage(BaseObject):
             ExpectStreamStatus(stream)
 
             context.mtpAuthorization = serialized
+
+        return True
 
     @staticmethod
     def CreateLocalKey(salt : QByteArray, passcode: QByteArray = QByteArray()) -> td.AuthKey:
@@ -527,7 +529,7 @@ class Storage(BaseObject):
         return QByteArray(os.urandom(size))
 
     @staticmethod
-    def GetAbsolutePath(path : str) -> str:
+    def GetAbsolutePath(path : str = None) -> str:
 
         if path == None or path == "":
             path = os.getcwd()

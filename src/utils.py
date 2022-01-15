@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from . import debug
 
-from typing import Coroutine, Dict, Type, Callable, TypeVar, List, Any
+from typing import Coroutine, Tuple, Type, Callable, TypeVar, Optional, List, Any, Dict
 from types import FunctionType
 
 import abc
@@ -18,7 +18,7 @@ _F = TypeVar('_F', bound=Callable[..., Any])
 
 class BaseMetaClass(abc.ABCMeta):
     
-    def __new__(cls : Type[_T], clsName : str, bases : List[object], attrs : Dict[str, Any]) -> _T:
+    def __new__(cls : Type[_T], clsName : str, bases : Tuple[type], attrs : Dict[str, Any]) -> _T:
 
         # Hook all subclass methods
         if debug.IS_DEBUG_MODE:
@@ -55,8 +55,8 @@ class override(object):
         if not isinstance(decorated_func, FunctionType):
             raise BaseException("@override decorator is only for functions, not classes")
 
-        decorated_func.__isOverride__ = True
-        return decorated_func
+        decorated_func.__isOverride__ = True # type: ignore
+        return decorated_func # type: ignore
 
     @staticmethod
     def isOverride(func : _F) ->bool:
@@ -117,6 +117,7 @@ class extend_class(object):
 
         return decorated_cls
     
+    @staticmethod
     def object_hierarchy_getattr(obj : object, attributeName : str) -> List[str]:
         
         results = []
@@ -130,14 +131,15 @@ class extend_class(object):
             val = obj.__class__.__dict__[attributeName]
             results.append({"owner": obj, "value": val})
 
-        for base in obj.__bases__:
+        for base in obj.__bases__: # type: ignore
             results += extend_class.object_hierarchy_getattr(base, attributeName)
 
 
         results.reverse()
         return results
 
-    def getattr(obj : object, attributeName : str) -> dict:
+    @staticmethod
+    def getattr(obj : object, attributeName : str) -> Optional[dict]:
         try:
             value = getattr(obj, attributeName)
             return {"owner" : obj, "value" : value}
@@ -159,7 +161,7 @@ class sharemethod(object):
         return self
 
     def __call__(self, *args) -> Any:
-        return self.__fget__.__get__(self.__owner__)(*args)
+        return self.__fget__.__get__(self.__owner__)(*args) # type: ignore
 
     def __set_name__(self, owner, name):
         self.__owner__ = owner
@@ -167,7 +169,7 @@ class sharemethod(object):
         
     def __new__(cls, func : _F) -> _F:
         result = super().__new__(cls)
-        result.__fget__ = func
-        return result
+        result.__fget__ = func # type: ignore
+        return result # type: ignore
 
 

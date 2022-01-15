@@ -33,85 +33,85 @@
 
 # apidata
 
-[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\apidata.py#L2)
+[[view_source]](https://github.com/thedemons/opentele/blob/dee2df0aaab7f6f44f1259af12b2598a7cd9bcb0/src\apidata.py#L2)
 
 <a id="apidata.annotations"></a>
 
 ## annotations
 
-[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\apidata.py#L2)
+[[view_source]](https://github.com/thedemons/opentele/blob/dee2df0aaab7f6f44f1259af12b2598a7cd9bcb0/src\apidata.py#L2)
 
 <a id="apidata.os"></a>
 
 ## os
 
-[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\apidata.py#L3)
+[[view_source]](https://github.com/thedemons/opentele/blob/dee2df0aaab7f6f44f1259af12b2598a7cd9bcb0/src\apidata.py#L3)
 
 <a id="apidata.platform"></a>
 
 ## platform
 
-[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\apidata.py#L5)
+[[view_source]](https://github.com/thedemons/opentele/blob/dee2df0aaab7f6f44f1259af12b2598a7cd9bcb0/src\apidata.py#L5)
 
 <a id="apidata.Any"></a>
 
 ## Any
 
-[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\apidata.py#L7)
+[[view_source]](https://github.com/thedemons/opentele/blob/dee2df0aaab7f6f44f1259af12b2598a7cd9bcb0/src\apidata.py#L7)
 
 <a id="apidata.List"></a>
 
 ## List
 
-[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\apidata.py#L7)
+[[view_source]](https://github.com/thedemons/opentele/blob/dee2df0aaab7f6f44f1259af12b2598a7cd9bcb0/src\apidata.py#L7)
 
 <a id="apidata.Dict"></a>
 
 ## Dict
 
-[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\apidata.py#L7)
+[[view_source]](https://github.com/thedemons/opentele/blob/dee2df0aaab7f6f44f1259af12b2598a7cd9bcb0/src\apidata.py#L7)
 
 <a id="apidata.Type"></a>
 
 ## Type
 
-[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\apidata.py#L7)
+[[view_source]](https://github.com/thedemons/opentele/blob/dee2df0aaab7f6f44f1259af12b2598a7cd9bcb0/src\apidata.py#L7)
 
 <a id="apidata.TypeVar"></a>
 
 ## TypeVar
 
-[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\apidata.py#L7)
+[[view_source]](https://github.com/thedemons/opentele/blob/dee2df0aaab7f6f44f1259af12b2598a7cd9bcb0/src\apidata.py#L7)
 
 <a id="apidata.Union"></a>
 
 ## Union
 
-[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\apidata.py#L7)
+[[view_source]](https://github.com/thedemons/opentele/blob/dee2df0aaab7f6f44f1259af12b2598a7cd9bcb0/src\apidata.py#L7)
 
 <a id="apidata.*"></a>
 
 ## \*
 
-[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\apidata.py#L8)
+[[view_source]](https://github.com/thedemons/opentele/blob/dee2df0aaab7f6f44f1259af12b2598a7cd9bcb0/src\apidata.py#L8)
 
 <a id="apidata.*"></a>
 
 ## \*
 
-[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\apidata.py#L9)
+[[view_source]](https://github.com/thedemons/opentele/blob/dee2df0aaab7f6f44f1259af12b2598a7cd9bcb0/src\apidata.py#L9)
 
 <a id="apidata.*"></a>
 
 ## \*
 
-[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\apidata.py#L10)
+[[view_source]](https://github.com/thedemons/opentele/blob/dee2df0aaab7f6f44f1259af12b2598a7cd9bcb0/src\apidata.py#L10)
 
 <a id="apidata.typing"></a>
 
 ## typing
 
-[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\apidata.py#L12)
+[[view_source]](https://github.com/thedemons/opentele/blob/dee2df0aaab7f6f44f1259af12b2598a7cd9bcb0/src\apidata.py#L12)
 
 <a id="apidata.BaseAPIMetaClass"></a>
 
@@ -121,7 +121,7 @@
 class BaseAPIMetaClass(type)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\apidata.py#L19)
+[[view_source]](https://github.com/thedemons/opentele/blob/dee2df0aaab7f6f44f1259af12b2598a7cd9bcb0/src\apidata.py#L19)
 
 Super high level tactic metaclass
 
@@ -133,7 +133,7 @@ Super high level tactic metaclass
 class APIData(object, metaclass=BaseAPIMetaClass)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\apidata.py#L54)
+[[view_source]](https://github.com/thedemons/opentele/blob/dee2df0aaab7f6f44f1259af12b2598a7cd9bcb0/src\apidata.py#L54)
 
 API configuration to connect to `TelegramClient` and `TDesktop`
 
@@ -164,7 +164,7 @@ API configuration to connect to `TelegramClient` and `TDesktop`
 def Generate(cls: Type[_T], id: str = None) -> _T
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\apidata.py#L198)
+[[view_source]](https://github.com/thedemons/opentele/blob/dee2df0aaab7f6f44f1259af12b2598a7cd9bcb0/src\apidata.py#L198)
 
 Generate random device model and system version
 
@@ -191,7 +191,7 @@ Generate random device model and system version
 class APITemplate(APIData)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\apidata.py#L235)
+[[view_source]](https://github.com/thedemons/opentele/blob/dee2df0aaab7f6f44f1259af12b2598a7cd9bcb0/src\apidata.py#L235)
 
 <a id="apidata.APITemplate.TelegramDesktop"></a>
 
@@ -201,7 +201,7 @@ class APITemplate(APIData)
 class TelegramDesktop(APIData)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\apidata.py#L237)
+[[view_source]](https://github.com/thedemons/opentele/blob/dee2df0aaab7f6f44f1259af12b2598a7cd9bcb0/src\apidata.py#L237)
 
 Official Telegram for Desktop (Windows, macOS and Linux)\n
 [View on GitHub](https://github.com/telegramdesktop/tdesktop)
@@ -214,7 +214,7 @@ Official Telegram for Desktop (Windows, macOS and Linux)\n
 class TelegramAndroid(APIData)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\apidata.py#L291)
+[[view_source]](https://github.com/thedemons/opentele/blob/dee2df0aaab7f6f44f1259af12b2598a7cd9bcb0/src\apidata.py#L291)
 
 Official Telegram for Android\n
 [View on GitHub](https://github.com/DrKLO/Telegram)
@@ -227,7 +227,7 @@ Official Telegram for Android\n
 class TelegramAndroidX(APIData)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\apidata.py#L305)
+[[view_source]](https://github.com/thedemons/opentele/blob/dee2df0aaab7f6f44f1259af12b2598a7cd9bcb0/src\apidata.py#L305)
 
 Official TelegramX for Android\n
 [View on GitHub](https://github.com/DrKLO/Telegram)
@@ -240,7 +240,7 @@ Official TelegramX for Android\n
 class TelegramIOS(APIData)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\apidata.py#L319)
+[[view_source]](https://github.com/thedemons/opentele/blob/dee2df0aaab7f6f44f1259af12b2598a7cd9bcb0/src\apidata.py#L319)
 
 Official Telegram for iOS\n
 [View on GitHub](https://github.com/TelegramMessenger/Telegram-iOS)
@@ -253,7 +253,7 @@ Official Telegram for iOS\n
 class TelegramMacOS(APIData)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\apidata.py#L335)
+[[view_source]](https://github.com/thedemons/opentele/blob/dee2df0aaab7f6f44f1259af12b2598a7cd9bcb0/src\apidata.py#L335)
 
 Official Telegram-Swift For MacOS\n
 [View on GitHub](https://github.com/overtake/TelegramSwift)
@@ -266,7 +266,7 @@ Official Telegram-Swift For MacOS\n
 class TelegramWeb_Z(APIData)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\apidata.py#L351)
+[[view_source]](https://github.com/thedemons/opentele/blob/dee2df0aaab7f6f44f1259af12b2598a7cd9bcb0/src\apidata.py#L351)
 
 Default Official Telegram Web Z For Browsers\n
 [View on GitHub](https://github.com/Ajaxy/telegram-tt) | [Visit on Telegram](https://web.telegram.org/z/)
@@ -279,7 +279,7 @@ Default Official Telegram Web Z For Browsers\n
 class TelegramWeb_K(APIData)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\apidata.py#L366)
+[[view_source]](https://github.com/thedemons/opentele/blob/dee2df0aaab7f6f44f1259af12b2598a7cd9bcb0/src\apidata.py#L366)
 
 Official Telegram Web K For Browsers\n
 [View on GitHub](https://github.com/morethanwords/tweb) | [Visit on Telegram](https://web.telegram.org/k/)
@@ -292,7 +292,7 @@ Official Telegram Web K For Browsers\n
 class Webogram(APIData)
 ```
 
-[[view_source]](https://github.com/thedemons/opentele/blob/f517ab58fde29562675ce88704334ce45d5842c5/src\apidata.py#L380)
+[[view_source]](https://github.com/thedemons/opentele/blob/dee2df0aaab7f6f44f1259af12b2598a7cd9bcb0/src\apidata.py#L380)
 
 Old Telegram For Browsers\n
 [View on GitHub](https://github.com/zhukov/webogram) | [Vist on Telegram](https://web.telegram.org/?legacy=1#/im)

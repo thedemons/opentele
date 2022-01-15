@@ -7,7 +7,7 @@ from ..utils import *
 from ..apidata import *
 from .. import tl
 
-from typing import Union, Callable, TypeVar, Type, List, Dict, Any, TYPE_CHECKING
+from typing import Literal, Union, Callable, TypeVar, Type, Optional, List, Dict, Any, TYPE_CHECKING
 from ctypes import sizeof, c_int32 as int32, c_int64 as int64, c_uint32 as uint32, c_uint64 as uint64, c_short as short, c_ushort as ushort
 from PyQt5.QtCore import QByteArray, QDataStream, QBuffer, QIODevice, QSysInfo, QDir, QFile
 from types import FunctionType
@@ -36,30 +36,30 @@ class ChatIdType(BaseObject):
     '''
     ChatIdType
     '''
-    bare : BareId = 0
-    kShift : BareId = 0
-    kReservedBit : BareId = 0x80
+    bare = BareId(0)
+    kShift = BareId(0)
+    kReservedBit = BareId(0x80)
 
     def __init__(self, value : BareId) -> None:
         self.bare = value
 
 class UserId(ChatIdType):
-    kShift : BareId = 0
+    kShift = BareId(0)
 
 class ChatId(ChatIdType):
-    kShift : BareId = 1
+    kShift = BareId(1)
 
 class ChannelId(ChatIdType):
-    kShift : BareId = 2
+    kShift = BareId(2)
 
 class FakeChatId(ChatIdType):
-    kShift : BareId = 0x7F
+    kShift = BareId(0x7F)
 
 class PeerId(int):
     '''
     PeerId
     '''
-    kChatTypeMask : BareId = 0xFFFFFFFFFFFF
+    kChatTypeMask = BareId(0xFFFFFFFFFFFF)
     def __init__(self, value) -> None:
         self.value = value
     
@@ -79,7 +79,7 @@ class PeerId(int):
         if (not legacy):
             return PeerId(serialized & (~flag))
 
-        PeerIdMask = 0xFFFFFFFF
+        PeerIdMask = int(0xFFFFFFFF)
         PeerIdTypeMask = 0xF00000000
         PeerIdUserShift = 0x000000000
         PeerIdChatShift = 0x100000000
@@ -87,40 +87,65 @@ class PeerId(int):
         PeerIdFakeShift = 0xF00000000
 
         if ((serialized & PeerIdTypeMask) == PeerIdUserShift):
-            return PeerId.FromChatIdType(UserId(serialized & PeerIdMask))
+            return PeerId.FromChatIdType(UserId(BareId(serialized & PeerIdMask)))
 
         elif ((serialized & PeerIdTypeMask) == PeerIdChatShift):
-            return PeerId.FromChatIdType(ChatId(serialized & PeerIdMask))
+            return PeerId.FromChatIdType(ChatId(BareId(serialized & PeerIdMask)))
 
         elif ((serialized & PeerIdTypeMask) == PeerIdChannelShift):
-            return PeerId.FromChatIdType(ChannelId(serialized & PeerIdMask))
+            return PeerId.FromChatIdType(ChannelId(BareId(serialized & PeerIdMask)))
 
         elif ((serialized & PeerIdTypeMask) == PeerIdFakeShift):
-            return PeerId.FromChatIdType(FakeChatId(serialized & PeerIdMask))
+            return PeerId.FromChatIdType(FakeChatId(BareId(serialized & PeerIdMask)))
         
         return PeerId(0)
 
 class FileKey(int):
     pass
 
+class MetaDcId(type):
+    
+    def __new__(cls : Type[_T], clsName : str, bases : Tuple[type], attrs : Dict[str, Any]) -> _T:
+        
+        attrs['kDcShift'] = int(10000)
+        attrs['Invalid'] = int(0)
+        attrs['_0'] = int(0)
+        attrs['_1'] = int(1)
+        attrs['_2'] = int(2)
+        attrs['_3'] = int(3)
+        attrs['_4'] = int(4)
+        attrs['_5'] = int(5)
+        result = super().__new__(cls, clsName, bases, attrs)
+        return result
 
 class DcId(int):
     '''
     Data Center ID
     '''
-    kDcShift = 10000
+    
+    kDcShift : DcId = 10000 # type: ignore
+    Invalid : DcId = 0 # type: ignore
+    _0 : DcId = 0 # type: ignore
+    _1 : DcId = 1 # type: ignore
+    _2 : DcId = 2 # type: ignore
+    _3 : DcId = 3 # type: ignore
+    _4 : DcId = 4 # type: ignore
+    _5 : DcId = 5 # type: ignore
+
     @staticmethod
-    def BareDcId(shiftedDcId : ShiftedDcId) -> DcId:
+    def BareDcId(shiftedDcId : Union[ShiftedDcId, DcId]) -> DcId:
         return DcId(shiftedDcId % DcId.kDcShift)
+
 
 class ShiftedDcId(DcId):
     '''
     Shifted Data Center ID
     '''
+    @staticmethod
     def ShiftDcId(dcId : DcId, value : int) -> ShiftedDcId:
         return ShiftedDcId(dcId + DcId.kDcShift * value)
 
-class BuiltInDc(BaseObject):
+class BuiltInDc(BaseObject): # type: ignore
     '''
     Default DC that is hard-coded
     '''
@@ -132,29 +157,29 @@ class BuiltInDc(BaseObject):
 
 class BuiltInDc(BuiltInDc):
         kBuiltInDcs = [
-            BuiltInDc( 1, "149.154.175.50" , 443 ),
-            BuiltInDc( 2, "149.154.167.51" , 443 ),
-            BuiltInDc( 2, "95.161.76.100"  , 443 ),
-            BuiltInDc( 3, "149.154.175.100", 443 ),
-            BuiltInDc( 4, "149.154.167.91" , 443 ),
-            BuiltInDc( 5, "149.154.171.5"  , 443 )]
+            BuiltInDc( DcId._1, "149.154.175.50" , 443 ),
+            BuiltInDc( DcId._2, "149.154.167.51" , 443 ),
+            BuiltInDc( DcId._2, "95.161.76.100"  , 443 ),
+            BuiltInDc( DcId._3, "149.154.175.100", 443 ),
+            BuiltInDc( DcId._4, "149.154.167.91" , 443 ),
+            BuiltInDc( DcId._5, "149.154.171.5"  , 443 )]
 
         kBuiltInDcsIPv6 = [
-            BuiltInDc( 1, "2001:0b28:f23d:f001:0000:0000:0000:000a", 443 ),
-            BuiltInDc( 2, "2001:067c:04e8:f002:0000:0000:0000:000a", 443 ),
-            BuiltInDc( 3, "2001:0b28:f23d:f003:0000:0000:0000:000a", 443 ),
-            BuiltInDc( 4, "2001:067c:04e8:f004:0000:0000:0000:000a", 443 ),
-            BuiltInDc( 5, "2001:0b28:f23f:f005:0000:0000:0000:000a", 443 )]
+            BuiltInDc( DcId._1, "2001:0b28:f23d:f001:0000:0000:0000:000a", 443 ),
+            BuiltInDc( DcId._2, "2001:067c:04e8:f002:0000:0000:0000:000a", 443 ),
+            BuiltInDc( DcId._3, "2001:0b28:f23d:f003:0000:0000:0000:000a", 443 ),
+            BuiltInDc( DcId._4, "2001:067c:04e8:f004:0000:0000:0000:000a", 443 ),
+            BuiltInDc( DcId._5, "2001:0b28:f23f:f005:0000:0000:0000:000a", 443 )]
 
         kBuiltInDcsTest = [
-            BuiltInDc( 1, "149.154.175.10" , 443 ),
-            BuiltInDc( 2, "149.154.167.40" , 443 ),
-            BuiltInDc( 3, "149.154.175.117", 443 )]
+            BuiltInDc( DcId._1, "149.154.175.10" , 443 ),
+            BuiltInDc( DcId._2, "149.154.167.40" , 443 ),
+            BuiltInDc( DcId._3, "149.154.175.117", 443 )]
 
         kBuiltInDcsIPv6Test = [
-            BuiltInDc( 1, "2001:0b28:f23d:f001:0000:0000:0000:000e", 443 ),
-            BuiltInDc( 2, "2001:067c:04e8:f002:0000:0000:0000:000e", 443 ),
-            BuiltInDc( 3, "2001:0b28:f23d:f003:0000:0000:0000:000e", 443 )]
+            BuiltInDc( DcId._1, "2001:0b28:f23d:f001:0000:0000:0000:000e", 443 ),
+            BuiltInDc( DcId._2, "2001:067c:04e8:f002:0000:0000:0000:000e", 443 ),
+            BuiltInDc( DcId._3, "2001:0b28:f23d:f003:0000:0000:0000:000e", 443 )]
 
 class dbi(int):
     Key = 0x00

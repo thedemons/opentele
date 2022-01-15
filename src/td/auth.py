@@ -1,3 +1,4 @@
+
 from __future__ import annotations
 from .configs import *
 from . import shared as td
@@ -7,26 +8,25 @@ import hashlib
 # if TYPE_CHECKING:
 #     from ..opentele import *
 
+class AuthKeyType(IntEnum):
+    Generated       = 0
+    Temporary       = 1
+    ReadFromFile    = 2
+    Local           = 3
+
 class AuthKey(BaseObject):
     """
     Authorization key
 
     Attributes:
         DcId (DcId): Data Center ID (from 1 to 5)
-        type (AuthKey.Type): Type of the key
+        type (AuthKeyType): Type of the key
         key (bytes): The actual key, 256 bytes in length
 
     """
 
     kSize = 256
-
-    class Type(int):
-        Generated       : int = 0
-        Temporary       : int = 1
-        ReadFromFile    : int = 2
-        Local           : int = 3
-
-    def __init__(self, key : bytes = bytes(), type : AuthKey.Type = 0, dcId : DcId = 0) -> None:
+    def __init__(self, key : bytes = bytes(), type : AuthKeyType = AuthKeyType.Generated, dcId : DcId = DcId.Invalid) -> None: # type: ignore
         self.__type = type
         self.__dcId = dcId
         self.__key = key
@@ -35,11 +35,11 @@ class AuthKey(BaseObject):
         self.__countKeyId()
 
     @property
-    def DcId(self) -> DcId:
+    def dcId(self) -> DcId:
         return self.__dcId
 
     @property
-    def type(self) -> AuthKey.Type:
+    def type(self) -> AuthKeyType:
         return self.__type
 
     @property
@@ -65,11 +65,7 @@ class AuthKey(BaseObject):
 
         return aesKey, aesIv
 
-    @property
-    def key(self):
-        return self.__key
-
     @staticmethod
-    def FromStream(stream : QDataStream, type : AuthKey.Type = 3, dcId : DcId = 0) -> AuthKey:
+    def FromStream(stream : QDataStream, type : AuthKeyType = AuthKeyType.ReadFromFile, dcId : DcId = DcId(0)) -> AuthKey:
         keyData = stream.readRawData(AuthKey.kSize)
         return AuthKey(keyData, type, dcId)
