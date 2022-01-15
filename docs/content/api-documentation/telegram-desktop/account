@@ -10,13 +10,13 @@
   * [prepareToStart](#td.account.Account.prepareToStart)
   * [SaveTData](#td.account.Account.SaveTData)
 
-[[source]](https://github.com/thedemons/opentele/blob/7c58b8f1d1168e617531c88fbff94e9643035a8a/src\td\account.py#L1)
+[[source]](https://github.com/thedemons/opentele/blob/ff912888b4f2cd681a40c8d71153a065f28e369a/src\td\account.py#L1)
 
 <a id="td.account.Account"></a>
 
 ## Account Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/7c58b8f1d1168e617531c88fbff94e9643035a8a/src\td\account.py#L511)
+[[source]](https://github.com/thedemons/opentele/blob/ff912888b4f2cd681a40c8d71153a065f28e369a/src\td\account.py#L511)
 
 ```python
 class Account(BaseObject)
@@ -47,7 +47,7 @@ Test New
 
 #### Account.\_\_init\_\_
 
-[[source]](https://github.com/thedemons/opentele/blob/7c58b8f1d1168e617531c88fbff94e9643035a8a/src\td\account.py#L545)
+[[source]](https://github.com/thedemons/opentele/blob/ff912888b4f2cd681a40c8d71153a065f28e369a/src\td\account.py#L545)
 
 ```python
 def __init__(owner: td.TDesktop, basePath: str = None, api: Union[Type[APIData], APIData] = APITemplate.TelegramDesktop, keyFile: str = None, index: int = 0) -> None
@@ -59,9 +59,9 @@ Setup a tdesktop account
 
 | Name | Type | Default | Description |
 | :--- | :--: | :-----: | :---------- |
-| owner | **[td.TDesktop](../telegram-desktop/tdesktop#accounttdesktop)** | __required__ | TDesktop client owner of this account |
+| owner | **[td.TDesktop](../telegram-desktop/tdesktop#tdesktop-objects)** | __required__ | TDesktop client owner of this account |
 | basePath | `#!python str` | None | The folder where tdata is stored |
-| api | `Type[APIData]` \| **[APIData](../../api-documentation/authorization/apidata#accountapidata)** \| **[APITemplate.TelegramDesktop](../../api-documentation/authorization/apitemplate#accounttelegramdesktop)** | __required__ | The **[APIData](../../api-documentation/authorization/apidata#accountapidata)** to use |
+| api | `Type[APIData]` \| **[APIData](../../api-documentation/authorization/apidata#apidata-objects)** \| **[APITemplate.TelegramDesktop](../../api-documentation/authorization/apitemplate#telegramdesktop-objects)** | __required__ | The **[APIData](../../api-documentation/authorization/apidata#apidata-objects)** to use |
 | keyFile | `#!python str` \| `#!python None` | __required__ | [description] |
 | index | `#!python int` \| `0` | __required__ | [description] |
 
@@ -75,7 +75,7 @@ Setup a tdesktop account
 
 #### Account.localKey
 
-[[source]](https://github.com/thedemons/opentele/blob/7c58b8f1d1168e617531c88fbff94e9643035a8a/src\td\account.py#L625)
+[[source]](https://github.com/thedemons/opentele/blob/ff912888b4f2cd681a40c8d71153a065f28e369a/src\td\account.py#L625)
 
 ```python
 @localKey.setter
@@ -88,7 +88,7 @@ localKey setter is intended for internal usage
 
 #### Account.prepareToStart
 
-[[source]](https://github.com/thedemons/opentele/blob/7c58b8f1d1168e617531c88fbff94e9643035a8a/src\td\account.py#L662)
+[[source]](https://github.com/thedemons/opentele/blob/ff912888b4f2cd681a40c8d71153a065f28e369a/src\td\account.py#L662)
 
 ```python
 def prepareToStart(localKey: td.AuthKey) -> td.MTP.Config
@@ -100,18 +100,18 @@ Prepare the account before starting it
 
 | Name | Type | Default | Description |
 | :--- | :--: | :-----: | :---------- |
-| localKey | **[td.AuthKey](../telegram-desktop/authkey#accountauthkey)** | __required__ | **[APIData](../../api-documentation/authorization/apidata#accountapidata)** |
+| localKey | **[td.AuthKey](../telegram-desktop/authkey#authkey-objects)** | __required__ | **[APIData](../../api-documentation/authorization/apidata#apidata-objects)** |
 
 #### Returns:
 
-- **[td.MTP.Config](../telegram-desktop/mtp#accountconfig)** - [description]
+- **[td.MTP.Config](../telegram-desktop/mtp#config-objects)** - [description]
 
 
 <a id="td.account.Account.SaveTData"></a>
 
 #### Account.SaveTData
 
-[[source]](https://github.com/thedemons/opentele/blob/7c58b8f1d1168e617531c88fbff94e9643035a8a/src\td\account.py#L770)
+[[source]](https://github.com/thedemons/opentele/blob/ff912888b4f2cd681a40c8d71153a065f28e369a/src\td\account.py#L770)
 
 ```python
 def SaveTData(basePath: str = None, passcode: str = None, keyFile: str = None) -> None

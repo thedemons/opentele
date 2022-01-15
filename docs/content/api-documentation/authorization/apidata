@@ -7,13 +7,13 @@
 * [APIData](#apidata.APIData)
   * [Generate](#apidata.APIData.Generate)
 
-[[source]](https://github.com/thedemons/opentele/blob/7c58b8f1d1168e617531c88fbff94e9643035a8a/src\apidata.py#L2)
+[[source]](https://github.com/thedemons/opentele/blob/ff912888b4f2cd681a40c8d71153a065f28e369a/src\apidata.py#L2)
 
 <a id="apidata.APIData"></a>
 
 ## APIData Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/7c58b8f1d1168e617531c88fbff94e9643035a8a/src\apidata.py#L54)
+[[source]](https://github.com/thedemons/opentele/blob/ff912888b4f2cd681a40c8d71153a065f28e369a/src\apidata.py#L54)
 
 ```python
 class APIData(object, metaclass=BaseAPIMetaClass)
@@ -36,14 +36,14 @@ API configuration to connect to `TelegramClient` and `TDesktop`
 
 #### Methods:
 
-- **[Generate()](../authorization/apidata#generate-objects)** - Generate random device model and system version
+- **[Generate()](../authorization/apidata#apidatagenerate)** - Generate random device model and system version
 
 
 <a id="apidata.APIData.Generate"></a>
 
 #### APIData.Generate
 
-[[source]](https://github.com/thedemons/opentele/blob/7c58b8f1d1168e617531c88fbff94e9643035a8a/src\apidata.py#L199)
+[[source]](https://github.com/thedemons/opentele/blob/ff912888b4f2cd681a40c8d71153a065f28e369a/src\apidata.py#L199)
 
 ```python
 @classmethod
@@ -64,6 +64,6 @@ Generate random device model and system version
 
 #### Returns:
 
-- **[APIData](../authorization/apidata#apidataapidata)** - Return a copy of the api with random data
+- **[APIData](../authorization/apidata#apidata-objects)** - Return a copy of the api with random data
 
 

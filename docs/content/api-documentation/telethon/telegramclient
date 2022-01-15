@@ -10,13 +10,13 @@
   * [ToTDesktop](#tl.telethon.TelegramClient.ToTDesktop)
   * [FromTDesktop](#tl.telethon.TelegramClient.FromTDesktop)
 
-[[source]](https://github.com/thedemons/opentele/blob/7c58b8f1d1168e617531c88fbff94e9643035a8a/src\tl\telethon.py#L3)
+[[source]](https://github.com/thedemons/opentele/blob/ff912888b4f2cd681a40c8d71153a065f28e369a/src\tl\telethon.py#L3)
 
 <a id="tl.telethon.TelegramClient"></a>
 
 ## TelegramClient Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/7c58b8f1d1168e617531c88fbff94e9643035a8a/src\tl\telethon.py#L45)
+[[source]](https://github.com/thedemons/opentele/blob/ff912888b4f2cd681a40c8d71153a065f28e369a/src\tl\telethon.py#L45)
 
 ```python
 @extend_class
@@ -27,15 +27,15 @@ Extended version of telethon.TelegramClient
 
 #### Methods:
 
-- **[FromTDesktop()](../telethon/telegramclient#fromtdesktop-objects)** - Create an instance of **[TelegramClient](../telethon/telegramclient#telegramclient-objects)** from **[TDesktop](../../api-documentation/telegram-desktop/tdesktop#tdesktop-objects)**
-- **[ToTDesktop()](../telethon/telegramclient#totdesktop-objects)** - Convert this **[TelegramClient](../telethon/telegramclient#telegramclient-objects)** instance to **[TDesktop](../../api-documentation/telegram-desktop/tdesktop#tdesktop-objects)**
+- **[FromTDesktop()](../telethon/telegramclient#telegramclientfromtdesktop)** - Create an instance of **[TelegramClient](../telethon/telegramclient#telegramclient-objects)** from **[TDesktop](../../api-documentation/telegram-desktop/tdesktop#tdesktop-objects)**
+- **[ToTDesktop()](../telethon/telegramclient#telegramclienttotdesktop)** - Convert this **[TelegramClient](../telethon/telegramclient#telegramclient-objects)** instance to **[TDesktop](../../api-documentation/telegram-desktop/tdesktop#tdesktop-objects)**
 
 
 <a id="tl.telethon.TelegramClient.__init__"></a>
 
 #### TelegramClient.\_\_init\_\_
 
-[[source]](https://github.com/thedemons/opentele/blob/7c58b8f1d1168e617531c88fbff94e9643035a8a/src\tl\telethon.py#L55)
+[[source]](https://github.com/thedemons/opentele/blob/ff912888b4f2cd681a40c8d71153a065f28e369a/src\tl\telethon.py#L55)
 
 ```python
 @typing.overload
@@ -62,7 +62,7 @@ Read more at [OpenTele GitHub](https://github.com/thedemons/opentele#authorizati
         renaming or removing the file, or using random names.
 
     api (APIData):
-        Which **[APIData](../../api-documentation/authorization/apidata#telegramclientapidata)** to use, use `APITemPlate.TelegramDesktop` by default
+        Which **[APIData](../../api-documentation/authorization/apidata#apidata-objects)** to use, use `APITemPlate.TelegramDesktop` by default
 
 ### Examples
 #### Start TelegramClient from an instance of TDesktop:
@@ -77,7 +77,7 @@ Read more at [OpenTele GitHub](https://github.com/thedemons/opentele#authorizati
 
 #### TelegramClient.\_\_init\_\_
 
-[[source]](https://github.com/thedemons/opentele/blob/7c58b8f1d1168e617531c88fbff94e9643035a8a/src\tl\telethon.py#L90)
+[[source]](https://github.com/thedemons/opentele/blob/ff912888b4f2cd681a40c8d71153a065f28e369a/src\tl\telethon.py#L90)
 
 ```python
 @typing.overload
@@ -103,7 +103,7 @@ Arguments
         more than once, maybe you're changing the working directory,
         renaming or removing the file, or using random names.
 
-    api (**[APIData](../../api-documentation/authorization/apidata#telegramclientapidata)**, optional):
+    api (**[APIData](../../api-documentation/authorization/apidata#apidata-objects)**, optional):
         Use custom api_id and api_hash for better experience.\n
         These arguments will be ignored if it is set in the APIData: `api_id`, `api_hash`, `device_model`, `system_version`, `app_version`, `lang_code`, `system_lang_code`
         Read more at [OpenTele GitHub](https://github.com/thedemons/opentele#authorization)
@@ -236,32 +236,32 @@ Arguments
 
 #### TelegramClient.ToTDesktop
 
-[[source]](https://github.com/thedemons/opentele/blob/7c58b8f1d1168e617531c88fbff94e9643035a8a/src\tl\telethon.py#L504)
+[[source]](https://github.com/thedemons/opentele/blob/ff912888b4f2cd681a40c8d71153a065f28e369a/src\tl\telethon.py#L504)
 
 ```python
 async def ToTDesktop(flag: Type[LoginFlag] = CreateNewSession, api: Union[Type[APIData], APIData] = APITemplate.TelegramDesktop, password: str = None) -> TDesktop
 ```
 
-Convert this instance of **[TelegramClient](../telethon/telegramclient#telegramclienttelegramclient)** to **[TDesktop](../../api-documentation/telegram-desktop/tdesktop#telegramclienttdesktop)**
+Convert this instance of **[TelegramClient](../telethon/telegramclient#telegramclient-objects)** to **[TDesktop](../../api-documentation/telegram-desktop/tdesktop#tdesktop-objects)**
 
 #### Arguments:
 
 | Name | Type | Default | Description |
 | :--- | :--: | :-----: | :---------- |
 | flag | `Type[LoginFlag]` \| `CreateNewSession` | __required__ | See `LoginFlag` to learn more |
-| api | `Union[Type[APIData] |  APIData]` | **[APITemplate.TelegramDesktop](../../api-documentation/authorization/apitemplate#telegramclienttelegramdesktop)** | See **[APIData](../../api-documentation/authorization/apidata#telegramclientapidata)** to learn more |
+| api | `Union[Type[APIData] |  APIData]` | **[APITemplate.TelegramDesktop](../../api-documentation/authorization/apitemplate#telegramdesktop-objects)** | See **[APIData](../../api-documentation/authorization/apidata#apidata-objects)** to learn more |
 | password | `#!python str` \| `#!python None` | __required__ | Two-step verification password if needed |
 
 #### Returns:
 
-- **[TDesktop](../../api-documentation/telegram-desktop/tdesktop#telegramclienttdesktop)** - [description]
+- **[TDesktop](../../api-documentation/telegram-desktop/tdesktop#tdesktop-objects)** - [description]
 
 
 <a id="tl.telethon.TelegramClient.FromTDesktop"></a>
 
 #### TelegramClient.FromTDesktop
 
-[[source]](https://github.com/thedemons/opentele/blob/7c58b8f1d1168e617531c88fbff94e9643035a8a/src\tl\telethon.py#L529)
+[[source]](https://github.com/thedemons/opentele/blob/ff912888b4f2cd681a40c8d71153a065f28e369a/src\tl\telethon.py#L529)
 
 ```python
 @typing.overload
