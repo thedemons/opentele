@@ -64,7 +64,8 @@ renderer:
 
       - pymdownx.superfences:
           preserve_tabs: true
-          
+
+      - pymdownx.snippets:
       - pymdownx.highlight:
           extend_pygments_lang:
             - name: python

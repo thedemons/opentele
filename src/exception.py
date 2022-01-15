@@ -4,7 +4,7 @@ import types
 import typing
 from PyQt5.QtCore import QDataStream
 
-
+TEST_CONST = 123
 class OpenTeleException(BaseException):
 
     def __init__(self, message : str = None, stack_index : int = 1) -> None:
@@ -216,6 +216,7 @@ def Expects(condition : bool,
             fail : typing.Callable[[OpenTeleException],None] = None, 
             silent : bool = False,
             stack_index : int = 1) -> bool:
+            
     """Expect a condition to be true, raise an OpenTeleException exception if it's not.
     
     ### Arguments
@@ -240,6 +241,31 @@ def Expects(condition : bool,
     
     ### Raises:
         `exception`: OpenTeleException
+    """
+    """
+    Expect a condition to be true, raise an `OpenTeleException` exception if it's not.
+    Works just like `assert`
+    ### Arguments:
+        condition (`bool`):
+            description
+    
+        exception (`OpenTeleException`, default=`None`):
+            description
+    
+        done (`typing.Callable[[],None]`, default=`None`):
+            description
+    
+        fail (`typing.Callable[[OpenTeleException],None]`, default=`None`):
+            description
+    
+        silent (`bool`, default=`False`):
+            description
+    
+        stack_index (`int`, default=`1`):
+            description
+    
+    ### Returns:
+        `bool`: [description]
     """
     pass
 

@@ -64,12 +64,20 @@ renderer:
       - pymdownx.superfences:
           preserve_tabs: true
           
+      - pymdownx.snippets:
       - pymdownx.highlight:
+          use_pygments: true
+          pygments_style: 'material'
           extend_pygments_lang:
             - name: python
               lang: python
               options:
                 python3: true
+            - name: pyinline
+              lang: python
+              options:
+                python3: true
+                startinline: true
           linenums_style: pymdownx-inline
 
       - pymdownx.inlinehilite:
@@ -111,8 +119,8 @@ renderer:
         primary: light blue
         accent: deep purple
       font:
-        text: Roboto
-        code: Roboto Mono
+        text: Monaco
+        code: Monaco Mono
       features:
         - navigation.tabs
         - navigation.top

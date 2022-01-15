@@ -21,13 +21,21 @@ markdown_extensions:
 - markdown.extensions.md_in_html: null
 - pymdownx.superfences:
     preserve_tabs: true
+- pymdownx.snippets: null
 - pymdownx.highlight:
     extend_pygments_lang:
     - lang: python
       name: python
       options:
         python3: true
+    - lang: python
+      name: pyinline
+      options:
+        python3: true
+        startinline: true
     linenums_style: pymdownx-inline
+    pygments_style: material
+    use_pygments: true
 - pymdownx.inlinehilite: null
 - pymdownx.magiclink:
     normalize_issue_symbols: true
@@ -58,19 +66,19 @@ markdown_extensions:
 - pymdownx.saneheaders: null
 nav:
 - Home:
-  - OpenTele: home/README
+  - OpenTele: home/README.md
 - API Documentation:
   - Telethon:
-    - TelegramClient: api-documentation/telethon/telegramclient
+    - TelegramClient: api-documentation/telethon/telegramclient.md
   - Authorization:
-    - APIData: api-documentation/authorization/apidata
-    - APITemplate: api-documentation/authorization/apitemplate
+    - APIData: api-documentation/authorization/apidata.md
+    - APITemplate: api-documentation/authorization/apitemplate.md
   - Telegram Desktop:
-    - TDesktop: api-documentation/telegram-desktop/tdesktop
-    - Account: api-documentation/telegram-desktop/account
-    - AuthKey: api-documentation/telegram-desktop/authkey
-    - MTP: api-documentation/telegram-desktop/mtp
-  - Exceptions: api-documentation/exceptions
+    - TDesktop: api-documentation/telegram-desktop/tdesktop.md
+    - Account: api-documentation/telegram-desktop/account.md
+    - AuthKey: api-documentation/telegram-desktop/authkey.md
+    - MTP: api-documentation/telegram-desktop/mtp.md
+  - Exceptions: api-documentation/exceptions.md
 repo_url: https://github.com/thedemons/opentele
 site_author: thedemons
 site_description: A python library created to make life easier for Telegram API Developers.
@@ -82,8 +90,8 @@ theme:
   - navigation.top
   - navigation.instant
   font:
-    code: Roboto Mono
-    text: Roboto
+    code: Monaco Mono
+    text: Monaco
   icon:
     logo: material/book-open-page-variant
   name: material

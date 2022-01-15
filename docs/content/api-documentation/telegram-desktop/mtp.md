@@ -4,9 +4,6 @@
 
 ## Table of Contents
 
-* [annotations](#td.mtp.annotations)
-* [\*](#td.mtp.*)
-* [td](#td.mtp.td)
 * [MTP](#td.mtp.MTP)
   * [Environment](#td.mtp.MTP.Environment)
   * [RSAPublicKey](#td.mtp.MTP.RSAPublicKey)
@@ -18,31 +15,13 @@
   * [ConfigFields](#td.mtp.MTP.ConfigFields)
   * [Config](#td.mtp.MTP.Config)
 
-[[source]](https://github.com/thedemons/opentele/blob/ff912888b4f2cd681a40c8d71153a065f28e369a/src\td\mtp.py#L1)
-
-<a id="td.mtp.annotations"></a>
-
-## annotations
-
-[[source]](https://github.com/thedemons/opentele/blob/ff912888b4f2cd681a40c8d71153a065f28e369a/src\td\mtp.py#L1)
-
-<a id="td.mtp.*"></a>
-
-## \*
-
-[[source]](https://github.com/thedemons/opentele/blob/ff912888b4f2cd681a40c8d71153a065f28e369a/src\td\mtp.py#L3)
-
-<a id="td.mtp.td"></a>
-
-## td
-
-[[source]](https://github.com/thedemons/opentele/blob/ff912888b4f2cd681a40c8d71153a065f28e369a/src\td\mtp.py#L4)
+[[source]](https://github.com/thedemons/opentele/blob/c9036f76e4d63f9d6977e997a75bc17909c78d5a/src\td\mtp.py#L1)
 
 <a id="td.mtp.MTP"></a>
 
 ## MTP Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/ff912888b4f2cd681a40c8d71153a065f28e369a/src\td\mtp.py#L9)
+[[source]](https://github.com/thedemons/opentele/blob/c9036f76e4d63f9d6977e997a75bc17909c78d5a/src\td\mtp.py#L9)
 
 ```python
 class MTP(BaseObject)
@@ -55,7 +34,7 @@ https://core.telegram.org/mtproto
 
 ## Environment Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/ff912888b4f2cd681a40c8d71153a065f28e369a/src\td\mtp.py#L16)
+[[source]](https://github.com/thedemons/opentele/blob/c9036f76e4d63f9d6977e997a75bc17909c78d5a/src\td\mtp.py#L16)
 
 ```python
 class Environment(IntEnum)
@@ -67,7 +46,7 @@ Enviroment flag for MTP.Config
 
 ## RSAPublicKey Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/ff912888b4f2cd681a40c8d71153a065f28e369a/src\td\mtp.py#L23)
+[[source]](https://github.com/thedemons/opentele/blob/c9036f76e4d63f9d6977e997a75bc17909c78d5a/src\td\mtp.py#L23)
 
 ```python
 class RSAPublicKey(BaseObject)
@@ -79,7 +58,7 @@ To be added
 
 ## DcOptions Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/ff912888b4f2cd681a40c8d71153a065f28e369a/src\td\mtp.py#L28)
+[[source]](https://github.com/thedemons/opentele/blob/c9036f76e4d63f9d6977e997a75bc17909c78d5a/src\td\mtp.py#L28)
 
 ```python
 class DcOptions(BaseObject)
@@ -91,7 +70,7 @@ Data Center Options, providing information about DC ip, port,.. etc
 
 ## Address Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/ff912888b4f2cd681a40c8d71153a065f28e369a/src\td\mtp.py#L167)
+[[source]](https://github.com/thedemons/opentele/blob/c9036f76e4d63f9d6977e997a75bc17909c78d5a/src\td\mtp.py#L167)
 
 ```python
 class Address(int)
@@ -103,7 +82,7 @@ Flag used for MTP.DcOptions.Endpoint
 
 ## Protocol Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/ff912888b4f2cd681a40c8d71153a065f28e369a/src\td\mtp.py#L174)
+[[source]](https://github.com/thedemons/opentele/blob/c9036f76e4d63f9d6977e997a75bc17909c78d5a/src\td\mtp.py#L174)
 
 ```python
 class Protocol(int)
@@ -115,7 +94,7 @@ Flag used for MTP.DcOptions.Endpoint
 
 ## Flag Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/ff912888b4f2cd681a40c8d71153a065f28e369a/src\td\mtp.py#L181)
+[[source]](https://github.com/thedemons/opentele/blob/c9036f76e4d63f9d6977e997a75bc17909c78d5a/src\td\mtp.py#L181)
 
 ```python
 class Flag(int)
@@ -127,7 +106,7 @@ Flag used for MTP.DcOptions.Endpoint
 
 ## Endpoint Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/ff912888b4f2cd681a40c8d71153a065f28e369a/src\td\mtp.py#L193)
+[[source]](https://github.com/thedemons/opentele/blob/c9036f76e4d63f9d6977e997a75bc17909c78d5a/src\td\mtp.py#L193)
 
 ```python
 class Endpoint(BaseObject)
@@ -139,7 +118,7 @@ Data center endpoint information
 
 ## ConfigFields Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/ff912888b4f2cd681a40c8d71153a065f28e369a/src\td\mtp.py#L205)
+[[source]](https://github.com/thedemons/opentele/blob/c9036f76e4d63f9d6977e997a75bc17909c78d5a/src\td\mtp.py#L205)
 
 ```python
 class ConfigFields(BaseObject)
@@ -151,7 +130,7 @@ Configuration data for MTP.Config
 
 ## Config Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/ff912888b4f2cd681a40c8d71153a065f28e369a/src\td\mtp.py#L241)
+[[source]](https://github.com/thedemons/opentele/blob/c9036f76e4d63f9d6977e997a75bc17909c78d5a/src\td\mtp.py#L241)
 
 ```python
 class Config(BaseObject)
