@@ -74,6 +74,6 @@ Therefore, **there are no differences** between using OpenTele and official apps
 
 ## License
 
-The subscription fee is one ⭐ per month.
+The subscription fee is one :star: per month.
 .. just kidding
 
