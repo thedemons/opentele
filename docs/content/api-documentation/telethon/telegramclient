@@ -10,13 +10,13 @@
   * [ToTDesktop](#tl.telethon.TelegramClient.ToTDesktop)
   * [FromTDesktop](#tl.telethon.TelegramClient.FromTDesktop)
 
-[[source]](https://github.com/thedemons/opentele/blob/bf248ac41a6f628fde8d312517f6e04693a96259/src\tl\telethon.py#L3)
+[[source]](https://github.com/thedemons/opentele/blob/1d042f08ce67545b1408c79ee4f2cd1c6666b500/src/tl/telethon.py#L3)
 
 <a id="tl.telethon.TelegramClient"></a>
 
 ## TelegramClient Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/bf248ac41a6f628fde8d312517f6e04693a96259/src\tl\telethon.py#L45)
+[[source]](https://github.com/thedemons/opentele/blob/1d042f08ce67545b1408c79ee4f2cd1c6666b500/src/tl/telethon.py#L45)
 
 ```python
 @extend_class
@@ -35,7 +35,7 @@ Extended version of telethon.TelegramClient
 
 #### TelegramClient.\_\_init\_\_
 
-[[source]](https://github.com/thedemons/opentele/blob/bf248ac41a6f628fde8d312517f6e04693a96259/src\tl\telethon.py#L55)
+[[source]](https://github.com/thedemons/opentele/blob/1d042f08ce67545b1408c79ee4f2cd1c6666b500/src/tl/telethon.py#L55)
 
 ```python
 @typing.overload
@@ -61,7 +61,7 @@ Read more at [OpenTele GitHub](https://github.com/thedemons/opentele#authorizati
 
 #### TelegramClient.\_\_init\_\_
 
-[[source]](https://github.com/thedemons/opentele/blob/bf248ac41a6f628fde8d312517f6e04693a96259/src\tl\telethon.py#L90)
+[[source]](https://github.com/thedemons/opentele/blob/1d042f08ce67545b1408c79ee4f2cd1c6666b500/src/tl/telethon.py#L90)
 
 ```python
 @typing.overload
@@ -220,7 +220,7 @@ Arguments
 
 #### TelegramClient.ToTDesktop
 
-[[source]](https://github.com/thedemons/opentele/blob/bf248ac41a6f628fde8d312517f6e04693a96259/src\tl\telethon.py#L504)
+[[source]](https://github.com/thedemons/opentele/blob/1d042f08ce67545b1408c79ee4f2cd1c6666b500/src/tl/telethon.py#L504)
 
 ```python
 async def ToTDesktop(flag: Type[LoginFlag] = CreateNewSession, api: Union[Type[APIData], APIData] = APITemplate.TelegramDesktop, password: str = None) -> TDesktop
@@ -245,7 +245,7 @@ Convert this instance of <a class="md-typeset__obj" href="../telethon/telegramcl
 
 #### TelegramClient.FromTDesktop
 
-[[source]](https://github.com/thedemons/opentele/blob/bf248ac41a6f628fde8d312517f6e04693a96259/src\tl\telethon.py#L529)
+[[source]](https://github.com/thedemons/opentele/blob/1d042f08ce67545b1408c79ee4f2cd1c6666b500/src/tl/telethon.py#L529)
 
 ```python
 @typing.overload

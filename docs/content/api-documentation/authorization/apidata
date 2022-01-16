@@ -7,13 +7,13 @@
 * [APIData](#apidata.APIData)
   * [Generate](#apidata.APIData.Generate)
 
-[[source]](https://github.com/thedemons/opentele/blob/bf248ac41a6f628fde8d312517f6e04693a96259/src\apidata.py#L2)
+[[source]](https://github.com/thedemons/opentele/blob/1d042f08ce67545b1408c79ee4f2cd1c6666b500/src/apidata.py#L2)
 
 <a id="apidata.APIData"></a>
 
 ## APIData Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/bf248ac41a6f628fde8d312517f6e04693a96259/src\apidata.py#L54)
+[[source]](https://github.com/thedemons/opentele/blob/1d042f08ce67545b1408c79ee4f2cd1c6666b500/src/apidata.py#L54)
 
 ```python
 class APIData(object, metaclass=BaseAPIMetaClass)
@@ -43,7 +43,7 @@ API configuration to connect to <a class="md-typeset__obj" href="../../api-docum
 
 #### APIData.Generate
 
-[[source]](https://github.com/thedemons/opentele/blob/bf248ac41a6f628fde8d312517f6e04693a96259/src\apidata.py#L199)
+[[source]](https://github.com/thedemons/opentele/blob/1d042f08ce67545b1408c79ee4f2cd1c6666b500/src/apidata.py#L199)
 
 ```python
 @classmethod

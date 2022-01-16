@@ -10,13 +10,13 @@
   * [prepareToStart](#td.account.Account.prepareToStart)
   * [SaveTData](#td.account.Account.SaveTData)
 
-[[source]](https://github.com/thedemons/opentele/blob/bf248ac41a6f628fde8d312517f6e04693a96259/src\td\account.py#L1)
+[[source]](https://github.com/thedemons/opentele/blob/1d042f08ce67545b1408c79ee4f2cd1c6666b500/src/td/account.py#L1)
 
 <a id="td.account.Account"></a>
 
 ## Account Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/bf248ac41a6f628fde8d312517f6e04693a96259/src\td\account.py#L511)
+[[source]](https://github.com/thedemons/opentele/blob/1d042f08ce67545b1408c79ee4f2cd1c6666b500/src/td/account.py#L511)
 
 ```python
 class Account(BaseObject)
@@ -47,7 +47,7 @@ Test New
 
 #### Account.\_\_init\_\_
 
-[[source]](https://github.com/thedemons/opentele/blob/bf248ac41a6f628fde8d312517f6e04693a96259/src\td\account.py#L545)
+[[source]](https://github.com/thedemons/opentele/blob/1d042f08ce67545b1408c79ee4f2cd1c6666b500/src/td/account.py#L545)
 
 ```python
 def __init__(owner: td.TDesktop, basePath: str = None, api: Union[Type[APIData], APIData] = APITemplate.TelegramDesktop, keyFile: str = None, index: int = 0) -> None
@@ -75,7 +75,7 @@ Setup a tdesktop account
 
 #### Account.localKey
 
-[[source]](https://github.com/thedemons/opentele/blob/bf248ac41a6f628fde8d312517f6e04693a96259/src\td\account.py#L625)
+[[source]](https://github.com/thedemons/opentele/blob/1d042f08ce67545b1408c79ee4f2cd1c6666b500/src/td/account.py#L625)
 
 ```python
 @localKey.setter
@@ -88,7 +88,7 @@ localKey setter is intended for internal usage
 
 #### Account.prepareToStart
 
-[[source]](https://github.com/thedemons/opentele/blob/bf248ac41a6f628fde8d312517f6e04693a96259/src\td\account.py#L662)
+[[source]](https://github.com/thedemons/opentele/blob/1d042f08ce67545b1408c79ee4f2cd1c6666b500/src/td/account.py#L662)
 
 ```python
 def prepareToStart(localKey: td.AuthKey) -> td.MTP.Config
@@ -111,7 +111,7 @@ Prepare the account before starting it
 
 #### Account.SaveTData
 
-[[source]](https://github.com/thedemons/opentele/blob/bf248ac41a6f628fde8d312517f6e04693a96259/src\td\account.py#L770)
+[[source]](https://github.com/thedemons/opentele/blob/1d042f08ce67545b1408c79ee4f2cd1c6666b500/src/td/account.py#L770)
 
 ```python
 def SaveTData(basePath: str = None, passcode: str = None, keyFile: str = None) -> None

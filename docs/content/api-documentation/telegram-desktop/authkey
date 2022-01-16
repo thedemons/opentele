@@ -6,13 +6,13 @@
 
 * [AuthKey](#td.auth.AuthKey)
 
-[[source]](https://github.com/thedemons/opentele/blob/bf248ac41a6f628fde8d312517f6e04693a96259/src\td\auth.py#L2)
+[[source]](https://github.com/thedemons/opentele/blob/1d042f08ce67545b1408c79ee4f2cd1c6666b500/src/td/auth.py#L2)
 
 <a id="td.auth.AuthKey"></a>
 
 ## AuthKey Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/bf248ac41a6f628fde8d312517f6e04693a96259/src\td\auth.py#L17)
+[[source]](https://github.com/thedemons/opentele/blob/1d042f08ce67545b1408c79ee4f2cd1c6666b500/src/td/auth.py#L17)
 
 ```python
 class AuthKey(BaseObject)
