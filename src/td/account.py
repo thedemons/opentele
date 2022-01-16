@@ -771,15 +771,18 @@ class Account(BaseObject):
         """
         Save this account to a folder
 
-        [extended_summary]
+        ### Arguments:
+            basePath (`str`, default=`None`):
+                The path to the folder. Defaults to None.
 
-        Args:
-            basePath (str, optional): The path to the folder. Defaults to None.
-            passcode (str, optional): Lock the data with a passcode. Defaults to None.
-            keyFile (str, optional): [description]. Defaults to None.
+            passcode (`str`, default=`None`):
+                Lock the data with a passcode. Defaults to None.
 
-        Examples:
-            Add an account to `tdesktop` and save it to `tdata`:
+            keyFile (`str`, default=`None`):
+                [none]
+
+        ### Examples
+            Add an account to `TDesktop` and save it to `tdata`:
         ```python
             telethonClient = TelegramClient("sessionFile", API_ID, API_HASH)
             td = TDesktop("new_tdata")
