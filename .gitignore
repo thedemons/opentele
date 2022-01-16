@@ -5,3 +5,6 @@ test*
 local-docs/*
 __pycache__/
  *.pyc
+opentele.egg-info/*
+build/*
+dist/*
