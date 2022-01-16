@@ -1,6 +1,6 @@
 <!-- vim: syntax=Markdown -->
 
-# OpenTele
+# OpenTele2
 
 OpenTele is a python library created to make life easier for Telegram API Developers.
 It helps you:
