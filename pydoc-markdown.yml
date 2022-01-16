@@ -12,6 +12,7 @@ processors:
 renderer:
   type: mkdocs
   markdown:
+    build_for_github: False
     add_method_class_prefix: True
     add_member_class_prefix: True
     # render_module_header_template: "{module_name}"
@@ -39,7 +40,7 @@ renderer:
       type: github
       repo: thedemons/opentele
 
-  output_directory: docs
+  output_directory: local-docs
 
   mkdocs_config:
 
@@ -115,11 +116,11 @@ renderer:
       icon:
         logo: material/book-open-page-variant
       palette:
-        scheme: dracula
+        scheme: vsdark
         primary: light blue
         accent: deep purple
       font:
-        text: Monaco
+        text: Roboto
         code: Monaco Mono
       features:
         - navigation.tabs

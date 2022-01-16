@@ -64,14 +64,21 @@ renderer:
 
       - pymdownx.superfences:
           preserve_tabs: true
-
+          
       - pymdownx.snippets:
       - pymdownx.highlight:
+          use_pygments: true
+          pygments_style: 'material'
           extend_pygments_lang:
             - name: python
               lang: python
               options:
                 python3: true
+            - name: pyinline
+              lang: python
+              options:
+                python3: true
+                startinline: true
           linenums_style: pymdownx-inline
 
       - pymdownx.inlinehilite:
@@ -109,12 +116,12 @@ renderer:
       icon:
         logo: material/book-open-page-variant
       palette:
-        scheme: dracula
+        scheme: vsdark
         primary: light blue
         accent: deep purple
       font:
         text: Roboto
-        code: Roboto Mono
+        code: Monaco Mono
       features:
         - navigation.tabs
         - navigation.top

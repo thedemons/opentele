@@ -66,19 +66,19 @@ markdown_extensions:
 - pymdownx.saneheaders: null
 nav:
 - Home:
-  - OpenTele: home/README.md
+  - OpenTele: home/README
 - API Documentation:
   - Telethon:
-    - TelegramClient: api-documentation/telethon/telegramclient.md
+    - TelegramClient: api-documentation/telethon/telegramclient
   - Authorization:
-    - APIData: api-documentation/authorization/apidata.md
-    - APITemplate: api-documentation/authorization/apitemplate.md
+    - APIData: api-documentation/authorization/apidata
+    - APITemplate: api-documentation/authorization/apitemplate
   - Telegram Desktop:
-    - TDesktop: api-documentation/telegram-desktop/tdesktop.md
-    - Account: api-documentation/telegram-desktop/account.md
-    - AuthKey: api-documentation/telegram-desktop/authkey.md
-    - MTP: api-documentation/telegram-desktop/mtp.md
-  - Exceptions: api-documentation/exceptions.md
+    - TDesktop: api-documentation/telegram-desktop/tdesktop
+    - Account: api-documentation/telegram-desktop/account
+    - AuthKey: api-documentation/telegram-desktop/authkey
+    - MTP: api-documentation/telegram-desktop/mtp
+  - Exceptions: api-documentation/exceptions
 repo_url: https://github.com/thedemons/opentele
 site_author: thedemons
 site_description: A python library created to make life easier for Telegram API Developers.
@@ -91,11 +91,11 @@ theme:
   - navigation.instant
   font:
     code: Monaco Mono
-    text: Monaco
+    text: Roboto
   icon:
     logo: material/book-open-page-variant
   name: material
   palette:
     accent: deep purple
     primary: light blue
-    scheme: dracula
+    scheme: vsdark

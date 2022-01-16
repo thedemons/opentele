@@ -201,16 +201,16 @@ class APIData(object, metaclass=BaseAPIMetaClass):
         Generate random device model and system version
 
         ### Arguments:
-            id (`str`, default=`None` [random]):
+            id (`str`, default=`None`):
                 The ID to generate - can be anything.\\
                 This will be used to ensure that it will generate the same data everytime.\\
-                If not set then it will be randomized every time we runs it.
+                If not set then it won't generate the same value again.
         
         ### Raises:
             `NotImplementedError`: Not supported for web browser yet
 
         ### Returns:
-            `APIData`: Return a copy of the api with random data
+            `APIData`: Return a copy of the api with random device data
         """
 
         if cls == APITemplate.TelegramAndroid:
@@ -271,22 +271,19 @@ class APITemplate(APIData):
         
         ### Attributes:
             api_id (`int`)           : 2040
-            api_hash (`str`)         : b18441a1ff607e10a989891a5462e627
-            device_model (`str`)     : Desktop
-            system_version (`str`)   : Windows 10
-            app_version (`str`)      : 3.4.3 x64
-            lang_code (`str`)        : en
-            system_lang_code (`str`) : en-US
-            lang_pack (`str`)        : tdesktop `Generate`
+            api_hash (`str`)         : "b18441a1ff607e10a989891a5462e627" or "123" "423"
+            device_model (`str`)     : "Desktop"
+            system_version (`str`)   : "Windows 10"
+            app_version (`str`)      : "3.4.3 x64"
+            lang_code (`str`)        : "en"
+            system_lang_code (`str`) : "en-US"
+            lang_pack (`str`)        : "tdesktop"
         
         ### Methods:
-            `Generate(x)`: Generate Windows device
-            `Generate(x)`: Generate macOS device
-            `Generate(x)`: Generate Linux device
-            `Generate(x)`: Generate random operating system (Windows | macOS | Linux)
+            `Generate()`: Generate random device data for `Windows`, `macOS` and `Linux`
         """
         api_id           = 2040
-        api_hash         = "b18441a1ff607e10a989891a5462e627";
+        api_hash         = "b18441a1ff607e10a989891a5462e627"
         device_model     = "Desktop"
         system_version   = "Windows 10"
         app_version      = "3.4.3 x64"
@@ -300,14 +297,14 @@ class APITemplate(APIData):
             """
             Generate random TelegramDesktop devices
             ### Arguments:
-                system (`str`, default=`"windows"`):
+                system (`str`, default=`"random"`):
                     Which OS to generate, either "windows", "macos", or "linux".\\
-                    Default is `None` or "random" which means it will selects randomly between 3 OS
+                    Default is `None` or "random" which means it will selects randomly
             
                 id (`str`, default=`None`):
                     The ID to generate - can be anything.\\
-                    This will be used to ensure that it will generate the same data everytime.\\
-                    If not set then it will be randomized every time we runs it.
+                    This ID will be used to ensure that it will generate the same data every single time.\\
+                    If not set then it won't generate the same value again.
             
             ### Returns:
                 `_T`: [description]

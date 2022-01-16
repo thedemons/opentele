@@ -2,5 +2,6 @@
 src/tests.py
 tests.py
 test*
+local-docs/*
 __pycache__/
  *.pyc

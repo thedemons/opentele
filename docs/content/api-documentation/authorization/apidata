@@ -7,19 +7,19 @@
 * [APIData](#apidata.APIData)
   * [Generate](#apidata.APIData.Generate)
 
-[[source]](https://github.com/thedemons/opentele/blob/c9036f76e4d63f9d6977e997a75bc17909c78d5a/src\apidata.py#L2)
+[[source]](https://github.com/thedemons/opentele/blob/bf248ac41a6f628fde8d312517f6e04693a96259/src\apidata.py#L2)
 
 <a id="apidata.APIData"></a>
 
 ## APIData Objects
 
-[[source]](https://github.com/thedemons/opentele/blob/c9036f76e4d63f9d6977e997a75bc17909c78d5a/src\apidata.py#L54)
+[[source]](https://github.com/thedemons/opentele/blob/bf248ac41a6f628fde8d312517f6e04693a96259/src\apidata.py#L54)
 
 ```python
 class APIData(object, metaclass=BaseAPIMetaClass)
 ```
 
-API configuration to connect to `TelegramClient` and `TDesktop`
+API configuration to connect to <a class="md-typeset__obj" href="../../api-documentation/telethon/telegramclient#telegramclient-objects"><b>TelegramClient</b></a> and <a class="md-typeset__obj" href="../../api-documentation/telegram-desktop/tdesktop#tdesktop-objects"><b>TDesktop</b></a>
 
 #### Attributes:
 
@@ -36,14 +36,14 @@ API configuration to connect to `TelegramClient` and `TDesktop`
 
 #### Methods:
 
-- <a class="md-typeset__a_obj" href="../apidata#apidata.APIData.Generate">Generate()</a> - Generate random device model and system version
+- <a class="md-typeset__function" href="../authorization/apidata#apidatagenerate"><b>Generate()</b></a> - Generate random device model and system version
 
 
 <a id="apidata.APIData.Generate"></a>
 
 #### APIData.Generate
 
-[[source]](https://github.com/thedemons/opentele/blob/c9036f76e4d63f9d6977e997a75bc17909c78d5a/src\apidata.py#L199)
+[[source]](https://github.com/thedemons/opentele/blob/bf248ac41a6f628fde8d312517f6e04693a96259/src\apidata.py#L199)
 
 ```python
 @classmethod
@@ -56,14 +56,14 @@ Generate random device model and system version
 
 | Name | Type | Default | Description |
 | :--- | :--: | :-----: | :---------- |
-| id | <span class="md-typeset__obj">str</span> | <span class="md-typeset__const">None</span> [random] | The ID to generate - can be anything.<br/>This will be used to ensure that it will generate the same data everytime.<br/>If not set then it will be randomized every time we runs it. |
+| id | <span class="md-typeset__obj">str</span> | <span class="md-typeset__const">None</span> | The ID to generate - can be anything.<br/>This will be used to ensure that it will generate the same data everytime.<br/>If not set then it won't generate the same value again. |
 
 #### Raises:
 
-- `NotImplementedError` - Not supported for web browser yet
+- <span class="md-typeset__obj">NotImplementedError</span> - Not supported for web browser yet
 
 #### Returns:
 
-- <a class="md-typeset__a_obj" href="../apidata#apidata.APIData">APIData</a> - Return a copy of the api with random data
+- <a class="md-typeset__obj" href="../authorization/apidata#apidata-objects"><b>APIData</b></a> - Return a copy of the api with random device data
 
 

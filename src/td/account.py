@@ -558,13 +558,13 @@ class Account(BaseObject):
             basePath (`str`, default=None):
                 The folder where tdata is stored
         
-            api (`Type[APIData]` | `APIData` | `APITemplate.TelegramDesktop`):
+            api (`APIData`, default=`APITemplate.TelegramDesktop`):
                 The `APIData` to use
         
-            keyFile (`str` | `None`):
+            keyFile (`str`, default=None):
                 [description]
         
-            index (`int` | `0`):
+            index (`int`, default=None):
                 [description]
         
         ### Remarks:

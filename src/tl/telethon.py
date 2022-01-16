@@ -57,26 +57,26 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
 
         Read more at [OpenTele GitHub](https://github.com/thedemons/opentele#authorization)
         
-        ### Arguments
-            session (`Union[str, Session]`):
-                 The file name of the session file to be used if a string is
-                given (it may be a full path), or the Session instance to be
-                used otherwise. If it's `None`, the session will not be saved,
+        ### Arguments:
+            session (`str` | `Session`):
+                The file name of the session file to be used if a string is\\
+                given (it may be a full path), or the Session instance to be\\
+                used otherwise. If it's `None`, the session will not be saved,\\
                 and you should call :meth:`.log_out()` when you're done.
 
-                Note that if you pass a string it will be a file in the current
-                working directory, although you can also pass absolute paths.
+                Note that if you pass a string it will be a file in the current\\
+                working directory, although you can also pass absolute paths.\\
 
-                The session file contains enough information for you to login
-                without re-sending the code, so if you have to enter the code
-                more than once, maybe you're changing the working directory,
+                The session file contains enough information for you to login\\
+                without re-sending the code, so if you have to enter the code\\
+                more than once, maybe you're changing the working directory,\\
                 renaming or removing the file, or using random names.
         
-            api (APIData):
-                Which `APIData` to use, use `APITemPlate.TelegramDesktop` by default
+            api (`APIData`, default=`APITemplate.TelegramDesktop`):
+                Which `APIData` to use, use `APITemplate.TelegramDesktop` by default
         
-        ### Examples
-        #### Start TelegramClient from an instance of TDesktop:
+        ### Examples:
+            Start TelegramClient from an instance of TDesktop:
         ```python
             from opentele.tl import TelegramClient
             from opentele.td import APITemplate
@@ -119,7 +119,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
         leaves the `__call__` unimplemented.
 
         Arguments
-            session (`str` | `telethon.sessions.abstract.Session`, `None`):
+            session (`str` | `telethon.sessions.abstract.Session`, default=`None`):
                 The file name of the session file to be used if a string is
                 given (it may be a full path), or the Session instance to be
                 used otherwise. If it's `None`, the session will not be saved,
@@ -133,47 +133,47 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
                 more than once, maybe you're changing the working directory,
                 renaming or removing the file, or using random names.
 
-            api (`APIData`, optional):
+            api (`APIData`, default=None):
                 Use custom api_id and api_hash for better experience.\n
                 These arguments will be ignored if it is set in the APIData: `api_id`, `api_hash`, `device_model`, `system_version`, `app_version`, `lang_code`, `system_lang_code`
                 Read more at [OpenTele GitHub](https://github.com/thedemons/opentele#authorization)
 
-            api_id (`int` | `str`, optional):
+            api_id (`int` | `str`, default=0):
                 The API ID you obtained from https://my.telegram.org.
 
-            api_hash (`str`, optional):
+            api_hash (`str`, default=None):
                 The API hash you obtained from https://my.telegram.org.
 
-            connection (`telethon.network.connection.common.Connection`, optional):
+            connection (`telethon.network.connection.common.Connection`, default=ConnectionTcpFull):
                 The connection instance to be used when creating a new connection
                 to the servers. It **must** be a type.
 
                 Defaults to `telethon.network.connection.tcpfull.ConnectionTcpFull`.
 
-            use_ipv6 (`bool`, optional):
+            use_ipv6 (`bool`, default=False):
                 Whether to connect to the servers through IPv6 or not.
                 By default this is `False` as IPv6 support is not
                 too widespread yet.
 
-            proxy (`tuple` | `list` | `dict`, optional):
+            proxy (`tuple` | `list` | `dict`, default=None):
                 An iterable consisting of the proxy info. If `connection` is
                 one of `MTProxy`, then it should contain MTProxy credentials:
                 ``('hostname', port, 'secret')``. Otherwise, it's meant to store
                 function parameters for PySocks, like ``(type, 'hostname', port)``.
                 See https://github.com/Anorov/PySocks#usage-1 for more.
 
-            local_addr (`str` | `tuple`, optional):
+            local_addr (`str` | `tuple`, default=None):
                 Local host address (and port, optionally) used to bind the socket to locally.
                 You only need to use this if you have multiple network cards and
                 want to use a specific one.
 
-            timeout (`int` | `float`, optional):
+            timeout (`int` | `float`, default=10):
                 The timeout in seconds to be used when connecting.
                 This is **not** the timeout to be used when ``await``'ing for
                 invoked requests, and you should use ``asyncio.wait`` or
                 ``asyncio.wait_for`` for that.
 
-            request_retries (`int` | `None`, optional):
+            request_retries (`int` | `None`, default=5):
                 How many times a request should be retried. Request are retried
                 when Telegram is having internal issues (due to either
                 ``errors.ServerError`` or ``errors.RpcCallFailError``),
@@ -184,21 +184,21 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
                 this is not recommended, since some requests can always trigger
                 a call fail (such as searching for messages).
 
-            connection_retries (`int` | `None`, optional):
+            connection_retries (`int` | `None`, default=5):
                 How many times the reconnection should retry, either on the
                 initial connection or when Telegram disconnects us. May be
                 set to a negative or `None` value for infinite retries, but
                 this is not recommended, since the program can get stuck in an
                 infinite loop.
 
-            retry_delay (`int` | `float`, optional):
+            retry_delay (`int` | `float`, default=1):
                 The delay in seconds to sleep between automatic reconnections.
 
-            auto_reconnect (`bool`, optional):
+            auto_reconnect (`bool`, default=True):
                 Whether reconnection should be retried `connection_retries`
                 times automatically if Telegram disconnects us or not.
 
-            sequential_updates (`bool`, optional):
+            sequential_updates (`bool`, default=False):
                 By default every incoming update will create a new task, so
                 you can handle several updates in parallel. Some scripts need
                 the order in which updates are processed to be sequential, and
@@ -209,7 +209,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
                 should *not* perform long-running operations since new
                 updates are put inside of an unbounded queue.
 
-            flood_sleep_threshold (`int` | `float`, optional):
+            flood_sleep_threshold (`int` | `float`, default=60):
                 The threshold below which the library should automatically
                 sleep on flood wait and slow mode wait errors (inclusive). For instance, if a
                 ``FloodWaitError`` for 17s occurs and `flood_sleep_threshold`
@@ -217,43 +217,43 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
                 was for 21s, it would ``raise FloodWaitError`` instead. Values
                 larger than a day (like ``float('inf')``) will be changed to a day.
 
-            raise_last_call_error (`bool`, optional):
+            raise_last_call_error (`bool`, default=False):
                 When API calls fail in a way that causes Telethon to retry
                 automatically, should the RPC error of the last attempt be raised
                 instead of a generic ValueError. This is mostly useful for
                 detecting when Telegram has internal issues.
 
-            device_model (`str`, optional):
+            device_model (`str`, default=None):
                 "Device model" to be sent when creating the initial connection.
                 Defaults to 'PC (n)bit' derived from ``platform.uname().machine``, or its direct value if unknown.
 
-            system_version (`str`, optional):
+            system_version (`str`, default=None):
                 "System version" to be sent when creating the initial connection.
                 Defaults to ``platform.uname().release`` stripped of everything ahead of -.
 
-            app_version (`str`, optional):
+            app_version (`str`, default=None):
                 "App version" to be sent when creating the initial connection.
                 Defaults to `telethon.version.__version__`.
 
-            lang_code (`str`, optional):
+            lang_code (`str`, default='en'):
                 "Language code" to be sent when creating the initial connection.
                 Defaults to ``'en'``.
 
-            system_lang_code (`str`, optional):
+            system_lang_code (`str`, default='en'):
                 "System lang code"  to be sent when creating the initial connection.
                 Defaults to `lang_code`.
 
-            loop (`asyncio.AbstractEventLoop`, optional):
+            loop (`asyncio.AbstractEventLoop`, default=None):
                 Asyncio event loop to use. Defaults to `asyncio.get_event_loop()`.
                 This argument is ignored.
 
-            base_logger (`str` | `logging.Logger`, optional):
+            base_logger (`str` | `logging.Logger`, default=None):
                 Base logger name or instance to use.
                 If a `str` is given, it'll be passed to `logging.getLogger()`. If a
                 `logging.Logger` is given, it'll be used directly. If something
                 else or nothing is given, the default logger will be used.
 
-            receive_updates (`bool`, optional):
+            receive_updates (`bool`, default=True):
                 Whether the client will receive updates or not. By default, updates
                 will be received from Telegram as they occur.
 
@@ -509,13 +509,13 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
         Convert this instance of `TelegramClient` to `TDesktop`
 
         ### Arguments:
-            flag (`Type[LoginFlag]` | `CreateNewSession`):
+            flag (`LoginFlag`, default=`CreateNewSession`):
                 See `LoginFlag` to learn more
         
-            api (`Union[Type[APIData], APIData]` | `APITemplate.TelegramDesktop`):
+            api (`APIData`, default=`APITemplate.TelegramDesktop`):
                 See `APIData` to learn more
         
-            password (`str` | `None`):
+            password (`str`, default=`None`):
                 Two-step verification password if needed
         
         ### Returns:
