@@ -10,8 +10,8 @@ README = (HERE / "README.md").read_text()
 # This call to setup() does all the work
 setup(
     name="opentele",
-    version="1.0.5",
-    description="None",
+    version="1.0.6",
+    description="A python library created to make life easier for Telegram API Developers.",
     long_description=README,
     long_description_content_type="text/markdown",
     url="https://github.com/thedemons/opentele",
