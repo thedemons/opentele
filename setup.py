@@ -1,16 +1,20 @@
 import pathlib
 from setuptools import find_packages, setup
+import re
 
-# The directory containing this file
-HERE = pathlib.Path(__file__).parent
+README = (pathlib.Path(__file__).parent / "README.md").read_text()
 
-# The text of the README file
-README = (HERE / "README.md").read_text()
+PACKAGE_NAME        = "opentele"
+VERSION             = "1.0.9"
+SOURCE_DIRECTORY    = "src"
 
-# This call to setup() does all the work
+# SOURCE_PACKAGE_REGEX = re.compile(rf'^{SOURCE_DIRECTORY}')
+# srcPackages = find_packages(include=[SOURCE_DIRECTORY, f'{SOURCE_DIRECTORY}.*'])
+# projectPackages = [SOURCE_PACKAGE_REGEX.sub(PACKAGE_NAME, name) for name in srcPackages]
+
 setup(
-    name="opentele",
-    version="1.0.6",
+    name=PACKAGE_NAME,
+    version=VERSION,
     description="A python library created to make life easier for Telegram API Developers.",
     long_description=README,
     long_description_content_type="text/markdown",
@@ -23,7 +27,8 @@ setup(
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.7",
     ],
-    packages=["src"],
+    packages=["opentele", "opentele.td", "opentele.tl"],
+    # package_dir={PACKAGE_NAME: SOURCE_DIRECTORY},
     include_package_data=True,
     install_requires=["pyqt5", "telethon", "tgcrypto"],
 )
