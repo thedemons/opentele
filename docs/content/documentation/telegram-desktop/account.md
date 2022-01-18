@@ -6,7 +6,7 @@
 
 ---
 
-## <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/td/account.py#L509"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+## <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/td/account.py#L509"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">Account</span></span><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="nc">BaseObject</span></span><span class="highlight"><span class="o">)</span></span>
 
@@ -19,14 +19,14 @@ Telegram Desktop account
 ### Attributes:
 | Name | Type | Description |
 | :--- | :--: | :---------- |
-| <a class="codehl codehl_name" href="account#accountapi"><b>api</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/api#api-objects"><b>API</b></a> | The API this acount is using. |
-| <a class="codehl codehl_name" href="account#accountauthkey"><b>authKey</b></a> | <a class="codehl codehl_obj" href="../telegram-desktop/authkey#authkey-objects"><b>AuthKey</b></a> | The authorization key used to authorize this acocunt. |
-| <a class="codehl codehl_name" href="account#accountuserid"><b>UserId</b></a> | <span class="highlight"><span class="bp">int</span></span> | User ID of this account. |
-| <a class="codehl codehl_name" href="account#accountmaindcid"><b>MainDcId</b></a> | <span class="highlight"><span class="nc">DcId</span></span> | The main Data Center ID this account connects to. |
-| <a class="codehl codehl_name" href="account#accountbasepath"><b>basePath</b></a> | <span class="highlight"><span class="bp">str</span></span> | The folder where tdata is stored. |
-| <a class="codehl codehl_name" href="account#accountlocalkey"><b>localKey</b></a> | <a class="codehl codehl_obj" href="../telegram-desktop/authkey#authkey-objects"><b>AuthKey</b></a> | Key used to encrypt and decrypt tdata. |
-| <a class="codehl codehl_name" href="account#accountowner"><b>owner</b></a> | <a class="codehl codehl_obj" href="../telegram-desktop/tdesktop#tdesktop-objects"><b>TDesktop</b></a> | <span class="highlight"><span class="nn">td</span></span><span class="highlight"><span class="o">.</span></span><a class="codehl codehl_obj" href="../telegram-desktop/tdesktop#tdesktop-objects"><b>TDesktop</b></a> client owner of this account. |
-| <a class="codehl codehl_name" href="account#accountkeyfile"><b>keyFile</b></a> | <span class="highlight"><span class="bp">str</span></span> | See <span class="highlight"><span class="nn">td</span></span><span class="highlight"><span class="o">.</span></span><a class="codehl codehl_obj" href="../telegram-desktop/tdesktop#tdesktop-objects"><b>TDesktop</b></a><span class="highlight"><span class="o">.</span></span><a class="codehl codehl_name" href="../telegram-desktop/tdesktop#tdesktopkeyfile"><b>keyFile</b></a>. |
+| <a class="codehl codehl_name" href="account.md#accountapi"><b>api</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/api.md#api-objects"><b>API</b></a> | The API this acount is using. |
+| <a class="codehl codehl_name" href="account.md#accountauthkey"><b>authKey</b></a> | <a class="codehl codehl_obj" href="../telegram-desktop/authkey.md#authkey-objects"><b>AuthKey</b></a> | The authorization key used to authorize this acocunt. |
+| <a class="codehl codehl_name" href="account.md#accountuserid"><b>UserId</b></a> | <span class="highlight"><span class="bp">int</span></span> | User ID of this account. |
+| <a class="codehl codehl_name" href="account.md#accountmaindcid"><b>MainDcId</b></a> | <span class="highlight"><span class="nc">DcId</span></span> | The main Data Center ID this account connects to. |
+| <a class="codehl codehl_name" href="account.md#accountbasepath"><b>basePath</b></a> | <span class="highlight"><span class="bp">str</span></span> | The folder where tdata is stored. |
+| <a class="codehl codehl_name" href="account.md#accountlocalkey"><b>localKey</b></a> | <a class="codehl codehl_obj" href="../telegram-desktop/authkey.md#authkey-objects"><b>AuthKey</b></a> | Key used to encrypt and decrypt tdata. |
+| <a class="codehl codehl_name" href="account.md#accountowner"><b>owner</b></a> | <a class="codehl codehl_obj" href="../telegram-desktop/tdesktop.md#tdesktop-objects"><b>TDesktop</b></a> | <span class="highlight"><span class="nn">td</span></span><span class="highlight"><span class="o">.</span></span><a class="codehl codehl_obj" href="../telegram-desktop/tdesktop.md#tdesktop-objects"><b>TDesktop</b></a> client owner of this account. |
+| <a class="codehl codehl_name" href="account.md#accountkeyfile"><b>keyFile</b></a> | <span class="highlight"><span class="bp">str</span></span> | See <span class="highlight"><span class="nn">td</span></span><span class="highlight"><span class="o">.</span></span><a class="codehl codehl_obj" href="../telegram-desktop/tdesktop.md#tdesktop-objects"><b>TDesktop</b></a><span class="highlight"><span class="o">.</span></span><a class="codehl codehl_name" href="../telegram-desktop/tdesktop.md#tdesktopkeyfile"><b>keyFile</b></a>. |
 
 
 
@@ -35,7 +35,7 @@ Telegram Desktop account
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/td/account.py#L542"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/td/account.py#L542"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="nc">Account</span></span><span class="highlight"><span class="o">()</span></span>
 
@@ -43,24 +43,24 @@ Telegram Desktop account
 def __init__(owner: td.TDesktop, basePath: str = None, api: Union[Type[API], API] = APITemplate.TelegramDesktop, keyFile: str = None, index: int = 0) -> None
 ```
 
-Initialized a <a class="codehl codehl_obj" href="../telegram-desktop/tdesktop#tdesktop-objects"><b>TDesktop</b></a> account.
+Initialized a <a class="codehl codehl_obj" href="../telegram-desktop/tdesktop.md#tdesktop-objects"><b>TDesktop</b></a> account.
 
-You should use <a class="codehl codehl_obj" href="../telegram-desktop/tdesktop#tdesktop-objects"><b>TDesktop</b></a><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span> or <a class="codehl codehl_obj" href="../telegram-desktop/tdesktop#tdesktop-objects"><b>TDesktop</b></a><span class="highlight"><span class="o">.</span></span><a class="codehl codehl_function" href="../telegram-desktop/tdesktop#tdesktopfromtelethon"><b>FromTelethon</b></a><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span> instead.
+You should use <a class="codehl codehl_obj" href="../telegram-desktop/tdesktop.md#tdesktop-objects"><b>TDesktop</b></a><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span> or <a class="codehl codehl_obj" href="../telegram-desktop/tdesktop.md#tdesktop-objects"><b>TDesktop</b></a><span class="highlight"><span class="o">.</span></span><a class="codehl codehl_function" href="../telegram-desktop/tdesktop.md#tdesktopfromtelethon"><b>FromTelethon</b></a><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span> instead.
 
-Manually using <a class="codehl codehl_obj" href="account#account-objects"><b>Account</b></a><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span> is not recommended. But this is here for your need anyway.
+Manually using <a class="codehl codehl_obj" href="account.md#account-objects"><b>Account</b></a><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span> is not recommended. But this is here for your need anyway.
 
 ### Arguments:
 | Name | Type | Default | Description |
 | :--- | :--: | :-----: | :---------- |
-| <a class="codehl codehl_name" href="account#accountowner"><b>owner</b></a> | <a class="codehl codehl_obj" href="../telegram-desktop/tdesktop#tdesktop-objects"><b>TDesktop</b></a> |  | <a class="codehl codehl_obj" href="../telegram-desktop/tdesktop#tdesktop-objects"><b>TDesktop</b></a> client owner of this account. |
-| <a class="codehl codehl_name" href="account#accountbasepath"><b>basePath</b></a> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="kc">None</span></span> | The folder where <span class="highlight"><span class="n">tdata</span></span> is stored. |
-| <a class="codehl codehl_name" href="account#accountapi"><b>api</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/api#api-objects"><b>API</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/api#telegramdesktop-objects"><b>TelegramDesktop</b></a> | Which API to use. Read more <a class="codehl codehl_obj" href="../../documentation/authorization/api#api-objects"><b>here</b></a>. |
-| <a class="codehl codehl_name" href="account#accountkeyfile"><b>keyFile</b></a> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="kc">None</span></span> | See <a class="codehl codehl_obj" href="../telegram-desktop/tdesktop#tdesktop-objects"><b>TDesktop</b></a><span class="highlight"><span class="o">.</span></span><a class="codehl codehl_name" href="../telegram-desktop/tdesktop#tdesktopkeyfile"><b>keyFile</b></a>. |
-| <span class="highlight"><span class="n">index</span></span> | <span class="highlight"><span class="bp">int</span></span> | <span class="highlight"><span class="mi">0</span></span> | Index of this account in the <a class="codehl codehl_obj" href="../telegram-desktop/tdesktop#tdesktop-objects"><b>TDesktop</b></a> client. |
+| <a class="codehl codehl_name" href="account.md#accountowner"><b>owner</b></a> | <a class="codehl codehl_obj" href="../telegram-desktop/tdesktop.md#tdesktop-objects"><b>TDesktop</b></a> |  | <a class="codehl codehl_obj" href="../telegram-desktop/tdesktop.md#tdesktop-objects"><b>TDesktop</b></a> client owner of this account. |
+| <a class="codehl codehl_name" href="account.md#accountbasepath"><b>basePath</b></a> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="kc">None</span></span> | The folder where <span class="highlight"><span class="n">tdata</span></span> is stored. |
+| <a class="codehl codehl_name" href="account.md#accountapi"><b>api</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/api.md#api-objects"><b>API</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/api.md#telegramdesktop-objects"><b>TelegramDesktop</b></a> | Which API to use. Read more <a class="codehl codehl_obj" href="../../documentation/authorization/api.md#api-objects"><b>here</b></a>. |
+| <a class="codehl codehl_name" href="account.md#accountkeyfile"><b>keyFile</b></a> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="kc">None</span></span> | See <a class="codehl codehl_obj" href="../telegram-desktop/tdesktop.md#tdesktop-objects"><b>TDesktop</b></a><span class="highlight"><span class="o">.</span></span><a class="codehl codehl_name" href="../telegram-desktop/tdesktop.md#tdesktopkeyfile"><b>keyFile</b></a>. |
+| <span class="highlight"><span class="n">index</span></span> | <span class="highlight"><span class="bp">int</span></span> | <span class="highlight"><span class="mi">0</span></span> | Index of this account in the <a class="codehl codehl_obj" href="../telegram-desktop/tdesktop.md#tdesktop-objects"><b>TDesktop</b></a> client. |
 
 
 ???+ note "TODO"
-     <a class="codehl codehl_function" href="account#accountpreparetostart"><b>prepareToStart</b></a><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span> must be call after initalizing the object.
+     <a class="codehl codehl_function" href="account.md#accountpreparetostart"><b>prepareToStart</b></a><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span> must be call after initalizing the object.
 
 
 
@@ -69,7 +69,7 @@ Manually using <a class="codehl codehl_obj" href="account#account-objects"><b>Ac
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/td/account.py#L595"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/td/account.py#L595"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="n">api</span></span>
 
@@ -86,7 +86,7 @@ The API this acount is using.
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/td/account.py#L607"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/td/account.py#L607"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="n">owner</span></span>
 
@@ -103,7 +103,7 @@ TDesktop client owner of this account.
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/td/account.py#L614"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/td/account.py#L614"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="n">basePath</span></span>
 
@@ -120,7 +120,7 @@ The folder where tdata is stored.
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/td/account.py#L621"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/td/account.py#L621"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="n">keyFile</span></span>
 
@@ -129,7 +129,7 @@ The folder where tdata is stored.
 def keyFile() -> str
 ```
 
-See <a class="codehl codehl_obj" href="../telegram-desktop/tdesktop#tdesktop-objects"><b>TDesktop</b></a><span class="highlight"><span class="o">.</span></span><a class="codehl codehl_name" href="../telegram-desktop/tdesktop#tdesktopkeyfile"><b>keyFile</b></a>
+See <a class="codehl codehl_obj" href="../telegram-desktop/tdesktop.md#tdesktop-objects"><b>TDesktop</b></a><span class="highlight"><span class="o">.</span></span><a class="codehl codehl_name" href="../telegram-desktop/tdesktop.md#tdesktopkeyfile"><b>keyFile</b></a>
 
 
 
@@ -137,7 +137,7 @@ See <a class="codehl codehl_obj" href="../telegram-desktop/tdesktop#tdesktop-obj
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/td/account.py#L633"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/td/account.py#L633"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="n">localKey</span></span>
 
@@ -154,7 +154,7 @@ Key used to encrypt and decrypt tdata.
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/td/account.py#L645"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/td/account.py#L645"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="n">authKey</span></span>
 
@@ -171,7 +171,7 @@ The authorization key used to authorize this acocunt.
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/td/account.py#L652"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/td/account.py#L652"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="n">UserId</span></span>
 
@@ -188,7 +188,7 @@ User ID of this account.
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/td/account.py#L659"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/td/account.py#L659"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="n">MainDcId</span></span>
 
@@ -205,7 +205,7 @@ The main Data Center ID this account connects to.
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/td/account.py#L683"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/td/account.py#L683"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="nf">prepareToStart</span></span><span class="highlight"><span class="o">()</span></span>
 
@@ -218,12 +218,12 @@ Prepare the account before starting it
 ### Arguments:
 | Name | Type | Description |
 | :--- | :--: | :---------- |
-| <a class="codehl codehl_name" href="account#accountlocalkey"><b>localKey</b></a> | <a class="codehl codehl_obj" href="../telegram-desktop/authkey#authkey-objects"><b>AuthKey</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/api#api-objects"><b>API</b></a> |
+| <a class="codehl codehl_name" href="account.md#accountlocalkey"><b>localKey</b></a> | <a class="codehl codehl_obj" href="../telegram-desktop/authkey.md#authkey-objects"><b>AuthKey</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/api.md#api-objects"><b>API</b></a> |
 
 
 ### Returns:
 
-<a class="codehl codehl_obj" href="../telegram-desktop/mtp#mtp-objects"><b>MTP</b></a><span class="highlight"><span class="o">.</span></span><a class="codehl codehl_obj" href="../telegram-desktop/mtp#config-objects"><b>Config</b></a>: [description]
+<a class="codehl codehl_obj" href="../telegram-desktop/mtp.md#mtp-objects"><b>MTP</b></a><span class="highlight"><span class="o">.</span></span><a class="codehl codehl_obj" href="../telegram-desktop/mtp.md#config-objects"><b>Config</b></a>: [description]
 
 
 
@@ -233,7 +233,7 @@ Prepare the account before starting it
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/td/account.py#L791"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/td/account.py#L791"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="nf">SaveTData</span></span><span class="highlight"><span class="o">()</span></span>
 
@@ -246,14 +246,14 @@ Save this account to a folder
 ### Arguments:
 | Name | Type | Default | Description |
 | :--- | :--: | :-----: | :---------- |
-| <a class="codehl codehl_name" href="account#accountbasepath"><b>basePath</b></a> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="kc">None</span></span> | The path to the folder. Defaults to None. |
-| <a class="codehl codehl_name" href="../telegram-desktop/tdesktop#tdesktoppasscode"><b>passcode</b></a> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="kc">None</span></span> | Lock the data with a passcode. Defaults to None. |
-| <a class="codehl codehl_name" href="account#accountkeyfile"><b>keyFile</b></a> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="kc">None</span></span> | See <a class="codehl codehl_obj" href="../telegram-desktop/tdesktop#tdesktop-objects"><b>TDesktop</b></a><span class="highlight"><span class="o">.</span></span><a class="codehl codehl_name" href="../telegram-desktop/tdesktop#tdesktopkeyfile"><b>keyFile</b></a> |
+| <a class="codehl codehl_name" href="account.md#accountbasepath"><b>basePath</b></a> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="kc">None</span></span> | The path to the folder. Defaults to None. |
+| <a class="codehl codehl_name" href="../telegram-desktop/tdesktop.md#tdesktoppasscode"><b>passcode</b></a> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="kc">None</span></span> | Lock the data with a passcode. Defaults to None. |
+| <a class="codehl codehl_name" href="account.md#accountkeyfile"><b>keyFile</b></a> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="kc">None</span></span> | See <a class="codehl codehl_obj" href="../telegram-desktop/tdesktop.md#tdesktop-objects"><b>TDesktop</b></a><span class="highlight"><span class="o">.</span></span><a class="codehl codehl_name" href="../telegram-desktop/tdesktop.md#tdesktopkeyfile"><b>keyFile</b></a> |
 
 
 ### Examples
 
-Add an account to <a class="codehl codehl_obj" href="../telegram-desktop/tdesktop#tdesktop-objects"><b>TDesktop</b></a> and save it to <span class="highlight"><span class="n">tdata</span></span>:
+Add an account to <a class="codehl codehl_obj" href="../telegram-desktop/tdesktop.md#tdesktop-objects"><b>TDesktop</b></a> and save it to <span class="highlight"><span class="n">tdata</span></span>:
 
 
 

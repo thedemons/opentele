@@ -6,7 +6,7 @@
 
 ---
 
-## <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/api.py#L54"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+## <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/api.py#L54"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">API</span></span><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="nc">object</span></span><span class="highlight"><span class="o">, </span></span><span class="highlight"><span class="nc">metaclass</span></span><span class="highlight"><span class="o">=</span></span><span class="highlight"><span class="nc">BaseAPIMetaClass</span></span><span class="highlight"><span class="o">)</span></span>
 
@@ -14,9 +14,9 @@
 class API(object, metaclass=BaseAPIMetaClass)
 ```
 
-API configuration to connect to <a class="codehl codehl_obj" href="../../documentation/telethon/telegramclient#telegramclient-objects"><b>TelegramClient</b></a> and <a class="codehl codehl_obj" href="../../documentation/telegram-desktop/tdesktop#tdesktop-objects"><b>TDesktop</b></a>
+API configuration to connect to <a class="codehl codehl_obj" href="../../documentation/telethon/telegramclient.md#telegramclient-objects"><b>TelegramClient</b></a> and <a class="codehl codehl_obj" href="../../documentation/telegram-desktop/tdesktop.md#tdesktop-objects"><b>TDesktop</b></a>
 
-- <span class="highlight"><span class="o">*</span></span><span class="highlight"><span class="o">*</span></span><span class="highlight"><span class="n">opentele</span></span><span class="highlight"><span class="o">*</span></span><span class="highlight"><span class="o">*</span></span> offers the ability to use **<span class="highlight"><span class="n">official</span></span> <span class="highlight"><span class="n">APIs</span></span>**, which are used by <span class="highlight"><span class="n">official</span></span> <span class="highlight"><span class="n">apps</span></span>. You can check that out in <a class="codehl codehl_obj" href="api#apitemplate-objects"><b>APITemplate</b></a>.
+- <span class="highlight"><span class="o">*</span></span><span class="highlight"><span class="o">*</span></span><span class="highlight"><span class="n">opentele</span></span><span class="highlight"><span class="o">*</span></span><span class="highlight"><span class="o">*</span></span> offers the ability to use **<span class="highlight"><span class="n">official</span></span> <span class="highlight"><span class="n">APIs</span></span>**, which are used by <span class="highlight"><span class="n">official</span></span> <span class="highlight"><span class="n">apps</span></span>. You can check that out in <a class="codehl codehl_obj" href="api.md#apitemplate-objects"><b>APITemplate</b></a>.
 
 - According to [Telegram TOS](https://core.telegram.org/api/obtaining_api_id#using-the-api-id): *all accounts that sign up or log in using unofficial Telegram API clients are automatically put under observation to avoid violations of the Terms of Service*.
 
@@ -24,7 +24,7 @@ API configuration to connect to <a class="codehl codehl_obj" href="../../documen
 
 - Therefore, **there are no differences** between using <span class="highlight"><span class="n">opentele</span></span> and <span class="highlight"><span class="n">official</span></span> <span class="highlight"><span class="n">apps</span></span>, the server can't tell you apart.
 
-- You can use <a class="codehl codehl_obj" href="../../documentation/telethon/telegramclient#telegramclient-objects"><b>TelegramClient</b></a><span class="highlight"><span class="o">.</span></span><a class="codehl codehl_function" href="../../documentation/telethon/telegramclient#telegramclientprintsessions"><b>PrintSessions</b></a><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span> to check this out.
+- You can use <a class="codehl codehl_obj" href="../../documentation/telethon/telegramclient.md#telegramclient-objects"><b>TelegramClient</b></a><span class="highlight"><span class="o">.</span></span><a class="codehl codehl_function" href="../../documentation/telethon/telegramclient.md#telegramclientprintsessions"><b>PrintSessions</b></a><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span> to check this out.
 
 ### Attributes:
 | Name | Type | Description |
@@ -41,7 +41,7 @@ API configuration to connect to <a class="codehl codehl_obj" href="../../documen
 
 ### Methods:
 
-<a class="codehl codehl_function" href="api#apigenerate"><b>Generate</b></a><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span>: Generate random device model and system version
+<a class="codehl codehl_function" href="api.md#apigenerate"><b>Generate</b></a><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span>: Generate random device model and system version
 
 
 
@@ -51,7 +51,7 @@ API configuration to connect to <a class="codehl codehl_obj" href="../../documen
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/api.py#L107"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/api.py#L107"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="nc">API</span></span><span class="highlight"><span class="o">()</span></span>
 
@@ -87,7 +87,7 @@ Create your own customized API
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/api.py#L238"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/api.py#L238"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="nf">Generate</span></span><span class="highlight"><span class="o">()</span></span>
 
@@ -112,7 +112,7 @@ Generate random device model and system version
 
 ### Returns:
 
-<a class="codehl codehl_obj" href="api#api-objects"><b>API</b></a>: Return a copy of the api with random device data
+<a class="codehl codehl_obj" href="api.md#api-objects"><b>API</b></a>: Return a copy of the api with random device data
 
 
 

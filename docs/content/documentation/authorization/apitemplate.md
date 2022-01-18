@@ -6,7 +6,7 @@
 
 ---
 
-## <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/api.py#L276"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+## <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/api.py#L276"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">APITemplate</span></span><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="nc">API</span></span><span class="highlight"><span class="o">)</span></span>
 
@@ -19,14 +19,14 @@ Builtin Templates for API
 ### Attributes:
 | Name | Type | Description |
 | :--- | :--: | :---------- |
-| <a class="codehl codehl_obj" href="api#telegramdesktop-objects"><b>TelegramDesktop</b></a> | <a class="codehl codehl_obj" href="api#api-objects"><b>API</b></a> | Official Telegram for Desktop (Windows, macOS and Linux) [View on GitHub](https://github.com/telegramdesktop/tdesktop) |
-| <a class="codehl codehl_obj" href="api#telegramandroid-objects"><b>TelegramAndroid</b></a> | <a class="codehl codehl_obj" href="api#api-objects"><b>API</b></a> | Official Telegram for Android [View on GitHub](https://github.com/DrKLO/Telegram) |
-| <a class="codehl codehl_obj" href="api#telegramandroidx-objects"><b>TelegramAndroidX</b></a> | <a class="codehl codehl_obj" href="api#api-objects"><b>API</b></a> | Official TelegramX for Android [View on GitHub](https://github.com/DrKLO/Telegram) |
-| <a class="codehl codehl_obj" href="api#telegramios-objects"><b>TelegramIOS</b></a> | <a class="codehl codehl_obj" href="api#api-objects"><b>API</b></a> | Official Telegram for iOS [View on GitHub](https://github.com/TelegramMessenger/Telegram-iOS) |
-| <a class="codehl codehl_obj" href="api#telegrammacos-objects"><b>TelegramMacOS</b></a> | <a class="codehl codehl_obj" href="api#api-objects"><b>API</b></a> | Official Telegram-Swift For MacOS [View on GitHub](https://github.com/overtake/TelegramSwift) |
-| <a class="codehl codehl_obj" href="api#telegramweb_z-objects"><b>TelegramWeb_Z</b></a> | <a class="codehl codehl_obj" href="api#api-objects"><b>API</b></a> | Default Official Telegram Web Z For Browsers [View on GitHub](https://github.com/Ajaxy/telegram-tt) | [Visit on Telegram](https://web.telegram.org/z/) |
-| <a class="codehl codehl_obj" href="api#telegramweb_k-objects"><b>TelegramWeb_K</b></a> | <a class="codehl codehl_obj" href="api#api-objects"><b>API</b></a> | Official Telegram Web K For Browsers [View on GitHub](https://github.com/morethanwords/tweb) | [Visit on Telegram](https://web.telegram.org/k/) |
-| <a class="codehl codehl_obj" href="api#webogram-objects"><b>Webogram</b></a> | <a class="codehl codehl_obj" href="api#api-objects"><b>API</b></a> | Old Telegram For Browsers [View on GitHub](https://github.com/zhukov/webogram) | [Vist on Telegram](https://web.telegram.org/?legacy=1#/im) |
+| <a class="codehl codehl_obj" href="api.md#telegramdesktop-objects"><b>TelegramDesktop</b></a> | <a class="codehl codehl_obj" href="api.md#api-objects"><b>API</b></a> | Official Telegram for Desktop (Windows, macOS and Linux) [View on GitHub](https://github.com/telegramdesktop/tdesktop) |
+| <a class="codehl codehl_obj" href="api.md#telegramandroid-objects"><b>TelegramAndroid</b></a> | <a class="codehl codehl_obj" href="api.md#api-objects"><b>API</b></a> | Official Telegram for Android [View on GitHub](https://github.com/DrKLO/Telegram) |
+| <a class="codehl codehl_obj" href="api.md#telegramandroidx-objects"><b>TelegramAndroidX</b></a> | <a class="codehl codehl_obj" href="api.md#api-objects"><b>API</b></a> | Official TelegramX for Android [View on GitHub](https://github.com/DrKLO/Telegram) |
+| <a class="codehl codehl_obj" href="api.md#telegramios-objects"><b>TelegramIOS</b></a> | <a class="codehl codehl_obj" href="api.md#api-objects"><b>API</b></a> | Official Telegram for iOS [View on GitHub](https://github.com/TelegramMessenger/Telegram-iOS) |
+| <a class="codehl codehl_obj" href="api.md#telegrammacos-objects"><b>TelegramMacOS</b></a> | <a class="codehl codehl_obj" href="api.md#api-objects"><b>API</b></a> | Official Telegram-Swift For MacOS [View on GitHub](https://github.com/overtake/TelegramSwift) |
+| <a class="codehl codehl_obj" href="api.md#telegramweb_z-objects"><b>TelegramWeb_Z</b></a> | <a class="codehl codehl_obj" href="api.md#api-objects"><b>API</b></a> | Default Official Telegram Web Z For Browsers [View on GitHub](https://github.com/Ajaxy/telegram-tt) | [Visit on Telegram](https://web.telegram.org/z/) |
+| <a class="codehl codehl_obj" href="api.md#telegramweb_k-objects"><b>TelegramWeb_K</b></a> | <a class="codehl codehl_obj" href="api.md#api-objects"><b>API</b></a> | Official Telegram Web K For Browsers [View on GitHub](https://github.com/morethanwords/tweb) | [Visit on Telegram](https://web.telegram.org/k/) |
+| <a class="codehl codehl_obj" href="api.md#webogram-objects"><b>Webogram</b></a> | <a class="codehl codehl_obj" href="api.md#api-objects"><b>API</b></a> | Old Telegram For Browsers [View on GitHub](https://github.com/zhukov/webogram) | [Vist on Telegram](https://web.telegram.org/?legacy=1#/im) |
 
 
 
@@ -35,7 +35,7 @@ Builtin Templates for API
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/api.py#L306"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/api.py#L306"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TelegramDesktop</span></span><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="nc">API</span></span><span class="highlight"><span class="o">)</span></span>
 
@@ -62,7 +62,7 @@ Official Telegram for Desktop (Windows, macOS and Linux)
 
 ### Methods:
 
-<a class="codehl codehl_function" href="api#telegramdesktopgenerate"><b>Generate</b></a><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span>: Generate random device data for <span class="highlight"><span class="n">Windows</span></span>, <span class="highlight"><span class="n">macOS</span></span> and <span class="highlight"><span class="n">Linux</span></span>
+<a class="codehl codehl_function" href="api.md#telegramdesktopgenerate"><b>Generate</b></a><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span>: Generate random device data for <span class="highlight"><span class="n">Windows</span></span>, <span class="highlight"><span class="n">macOS</span></span> and <span class="highlight"><span class="n">Linux</span></span>
 
 
 
@@ -72,7 +72,7 @@ Official Telegram for Desktop (Windows, macOS and Linux)
 
 ---
 
-#### <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/api.py#L335"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+#### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/api.py#L335"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="nf">Generate</span></span><span class="highlight"><span class="o">()</span></span>
 
@@ -103,7 +103,7 @@ Generate random TelegramDesktop devices
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/api.py#L387"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/api.py#L387"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TelegramAndroid</span></span><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="nc">API</span></span><span class="highlight"><span class="o">)</span></span>
 
@@ -134,7 +134,7 @@ Official Telegram for Android
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/api.py#L411"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/api.py#L411"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TelegramAndroidX</span></span><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="nc">API</span></span><span class="highlight"><span class="o">)</span></span>
 
@@ -165,7 +165,7 @@ Official TelegramX for Android
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/api.py#L435"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/api.py#L435"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TelegramIOS</span></span><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="nc">API</span></span><span class="highlight"><span class="o">)</span></span>
 
@@ -196,7 +196,7 @@ Official Telegram for iOS
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/api.py#L461"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/api.py#L461"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TelegramMacOS</span></span><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="nc">API</span></span><span class="highlight"><span class="o">)</span></span>
 
@@ -227,7 +227,7 @@ Official Telegram-Swift For MacOS
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/api.py#L487"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/api.py#L487"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TelegramWeb_Z</span></span><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="nc">API</span></span><span class="highlight"><span class="o">)</span></span>
 
@@ -258,7 +258,7 @@ Default Official Telegram Web Z For Browsers
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/api.py#L512"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/api.py#L512"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TelegramWeb_K</span></span><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="nc">API</span></span><span class="highlight"><span class="o">)</span></span>
 
@@ -289,7 +289,7 @@ Official Telegram Web K For Browsers
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/api.py#L536"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/api.py#L536"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">Webogram</span></span><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="nc">API</span></span><span class="highlight"><span class="o">)</span></span>
 

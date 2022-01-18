@@ -6,7 +6,7 @@
 
 ---
 
-## <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/tl/telethon.py#L44"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+## <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/tl/telethon.py#L44"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TelegramClient</span></span><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="nc">telethon.TelegramClient</span></span><span class="highlight"><span class="o">, </span></span><span class="highlight"><span class="nc"> BaseObject</span></span><span class="highlight"><span class="o">)</span></span>
 
@@ -21,19 +21,19 @@ Extended version of telethon.TelegramClient
 
 FromTDesktop():
 
-    Create an instance of <a class="codehl codehl_obj" href="telegramclient#telegramclient-objects"><b>TelegramClient</b></a> from <a class="codehl codehl_obj" href="../../documentation/telegram-desktop/tdesktop#tdesktop-objects"><b>TDesktop</b></a>.
+    Create an instance of <a class="codehl codehl_obj" href="telegramclient.md#telegramclient-objects"><b>TelegramClient</b></a> from <a class="codehl codehl_obj" href="../../documentation/telegram-desktop/tdesktop.md#tdesktop-objects"><b>TDesktop</b></a>.
 
 
 
 ToTDesktop():
 
-    Convert this <a class="codehl codehl_obj" href="telegramclient#telegramclient-objects"><b>TelegramClient</b></a> instance to <a class="codehl codehl_obj" href="../../documentation/telegram-desktop/tdesktop#tdesktop-objects"><b>TDesktop</b></a>.
+    Convert this <a class="codehl codehl_obj" href="telegramclient.md#telegramclient-objects"><b>TelegramClient</b></a> instance to <a class="codehl codehl_obj" href="../../documentation/telegram-desktop/tdesktop.md#tdesktop-objects"><b>TDesktop</b></a>.
 
 
 
 QRLoginToNewClient():
 
-    Return <span class="highlight"><span class="kc">True</span></span> if logged-in using an <a class="codehl codehl_obj" href="../../documentation/authorization/api#api-objects"><b>official API</b></a>.
+    Return <span class="highlight"><span class="kc">True</span></span> if logged-in using an <a class="codehl codehl_obj" href="../../documentation/authorization/api.md#api-objects"><b>official API</b></a>.
 
 
 
@@ -69,7 +69,7 @@ PrintSessions():
 
 is_official_app():
 
-    Return <span class="highlight"><span class="kc">True</span></span> if logged-in using an <a class="codehl codehl_obj" href="../../documentation/authorization/api#api-objects"><b>official API</b></a>.
+    Return <span class="highlight"><span class="kc">True</span></span> if logged-in using an <a class="codehl codehl_obj" href="../../documentation/authorization/api.md#api-objects"><b>official API</b></a>.
 
 
 
@@ -81,7 +81,7 @@ is_official_app():
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/tl/telethon.py#L79"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/tl/telethon.py#L79"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="nc">TelegramClient</span></span><span class="highlight"><span class="o">()</span></span>
 
@@ -98,7 +98,7 @@ Read more at [OpenTele GitHub](https://github.com/thedemons/opentele#authorizati
 | Name | Type | Default | Description |
 | :--- | :--: | :-----: | :---------- |
 | <span class="highlight"><span class="n">session</span></span> | <span class="highlight"><span class="bp">str</span></span>, <span class="highlight"><span class="nc">Session</span></span> |  | The file name of the <span class="highlight"><span class="n">session</span></span> <span class="highlight"><span class="n">file</span></span> to be used, if a string is\\<br/><br/>given (it may be a full path), or the <span class="highlight"><span class="nc">Session</span></span> instance to be used\\<br/><br/>Otherwise, if it's <span class="highlight"><span class="kc">None</span></span>, the <span class="highlight"><span class="n">session</span></span> will not be saved,\\<br/><br/>and you should call method <span class="highlight"><span class="o">.</span></span><span class="highlight"><span class="nf">log_out</span></span><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span> when you're done.<br/><br/>Read more [here](https://docs.telethon.dev/en/latest/concepts/sessions.html?highlight=session#what-are-sessions). |
-| <a class="codehl codehl_name" href="../../documentation/telegram-desktop/account#accountapi"><b>api</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/api#api-objects"><b>API</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/api#telegramdesktop-objects"><b>TelegramDesktop</b></a> | Which API to use. Read more <a class="codehl codehl_obj" href="../../documentation/authorization/api#api-objects"><b>here</b></a>. |
+| <a class="codehl codehl_name" href="../../documentation/telegram-desktop/account.md#accountapi"><b>api</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/api.md#api-objects"><b>API</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/api.md#telegramdesktop-objects"><b>TelegramDesktop</b></a> | Which API to use. Read more <a class="codehl codehl_obj" href="../../documentation/authorization/api.md#api-objects"><b>here</b></a>. |
 
 
 ### Examples:
@@ -119,7 +119,7 @@ Start TelegramClient from an instance of TDesktop:
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/tl/telethon.py#L338"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/tl/telethon.py#L338"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="nf">GetSessions</span></span><span class="highlight"><span class="o">()</span></span>
 
@@ -141,7 +141,7 @@ Get all logged-in sessions.
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/tl/telethon.py#L347"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/tl/telethon.py#L347"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="nf">GetCurrentSession</span></span><span class="highlight"><span class="o">()</span></span>
 
@@ -165,7 +165,7 @@ None: Return <span class="highlight"><span class="kc">None</span></span> on fail
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/tl/telethon.py#L367"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/tl/telethon.py#L367"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="nf">TerminateSession</span></span><span class="highlight"><span class="o">()</span></span>
 
@@ -195,7 +195,7 @@ Terminate a specific session
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/tl/telethon.py#L393"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/tl/telethon.py#L393"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="nf">TerminateAllSessions</span></span><span class="highlight"><span class="o">()</span></span>
 
@@ -211,7 +211,7 @@ Terminate all other sessions.
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/tl/telethon.py#L406"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/tl/telethon.py#L406"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="nf">PrintSessions</span></span><span class="highlight"><span class="o">()</span></span>
 
@@ -224,7 +224,7 @@ Pretty-print all logged-in sessions.
 ### Arguments:
 | Name | Type | Default | Description |
 | :--- | :--: | :-----: | :---------- |
-| <span class="highlight"><span class="n">sessions</span></span> | <span class="highlight"><span class="n">Authorizations</span></span> | <span class="highlight"><span class="kc">None</span></span> | <span class="highlight"><span class="n">Sessions</span></span> that return by <a class="codehl codehl_function" href="telegramclient#telegramclientgetsessions"><b>GetSessions</b></a><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span>, if <span class="highlight"><span class="kc">None</span></span> then it will <a class="codehl codehl_function" href="telegramclient#telegramclientgetsessions"><b>GetSessions</b></a><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span> first. |
+| <span class="highlight"><span class="n">sessions</span></span> | <span class="highlight"><span class="n">Authorizations</span></span> | <span class="highlight"><span class="kc">None</span></span> | <span class="highlight"><span class="n">Sessions</span></span> that return by <a class="codehl codehl_function" href="telegramclient.md#telegramclientgetsessions"><b>GetSessions</b></a><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span>, if <span class="highlight"><span class="kc">None</span></span> then it will <a class="codehl codehl_function" href="telegramclient.md#telegramclientgetsessions"><b>GetSessions</b></a><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span> first. |
 
 
 ### Examples:
@@ -245,7 +245,7 @@ Example return:
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/tl/telethon.py#L441"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/tl/telethon.py#L441"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="nf">is_official_app</span></span><span class="highlight"><span class="o">()</span></span>
 
@@ -253,7 +253,7 @@ Example return:
 async def is_official_app() -> bool
 ```
 
-Return <span class="highlight"><span class="kc">True</span></span> if this session was logged-in using an official app (<a class="codehl codehl_obj" href="../../documentation/authorization/api#api-objects"><b>API</b></a>).
+Return <span class="highlight"><span class="kc">True</span></span> if this session was logged-in using an official app (<a class="codehl codehl_obj" href="../../documentation/authorization/api.md#api-objects"><b>API</b></a>).
 
 
 
@@ -261,7 +261,7 @@ Return <span class="highlight"><span class="kc">True</span></span> if this sessi
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/tl/telethon.py#L449"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/tl/telethon.py#L449"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="nf">QRLoginToNewClient</span></span><span class="highlight"><span class="o">()</span></span>
 
@@ -273,15 +273,15 @@ async def QRLoginToNewClient(session: Union[str, Session] = None, api: Union[Typ
 | Name | Type | Default | Description |
 | :--- | :--: | :-----: | :---------- |
 | <span class="highlight"><span class="n">session</span></span> | <span class="highlight"><span class="bp">str</span></span>, <span class="highlight"><span class="nc">Session</span></span> | <span class="highlight"><span class="kc">None</span></span> | description |
-| <a class="codehl codehl_name" href="../../documentation/telegram-desktop/account#accountapi"><b>api</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/api#api-objects"><b>API</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/api#telegramdesktop-objects"><b>TelegramDesktop</b></a> | Which API to use. Read more <a class="codehl codehl_obj" href="../../documentation/authorization/api#api-objects"><b>here</b></a>. |
+| <a class="codehl codehl_name" href="../../documentation/telegram-desktop/account.md#accountapi"><b>api</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/api.md#api-objects"><b>API</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/api.md#telegramdesktop-objects"><b>TelegramDesktop</b></a> | Which API to use. Read more <a class="codehl codehl_obj" href="../../documentation/authorization/api.md#api-objects"><b>here</b></a>. |
 | <span class="highlight"><span class="n">password</span></span> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="kc">None</span></span> | Two-step verification password, set if needed. |
 
 
 ### Raises:
 
-- <a class="codehl codehl_obj" href="../../documentation/exceptions#nopasswordprovided-objects"><b>NoPasswordProvided</b></a>: The account's two-step verification is enabled and no <span class="highlight"><span class="n">password</span></span> was provided. Please set the <span class="highlight"><span class="n">password</span></span> parameters.
+- <a class="codehl codehl_obj" href="../../documentation/exceptions.md#nopasswordprovided-objects"><b>NoPasswordProvided</b></a>: The account's two-step verification is enabled and no <span class="highlight"><span class="n">password</span></span> was provided. Please set the <span class="highlight"><span class="n">password</span></span> parameters.
 
-- <a class="codehl codehl_obj" href="../../documentation/exceptions#passwordincorrect-objects"><b>PasswordIncorrect</b></a>: The two-step verification <span class="highlight"><span class="n">password</span></span> is incorrect
+- <a class="codehl codehl_obj" href="../../documentation/exceptions.md#passwordincorrect-objects"><b>PasswordIncorrect</b></a>: The two-step verification <span class="highlight"><span class="n">password</span></span> is incorrect
 
 - <span class="highlight"><span class="ne">TimeoutError</span></span>: Time out waiting for the client to be authorized.
 
@@ -289,7 +289,7 @@ async def QRLoginToNewClient(session: Union[str, Session] = None, api: Union[Typ
 
 ### Returns:
 
-- Return an instance of <a class="codehl codehl_obj" href="telegramclient#telegramclient-objects"><b>TelegramClient</b></a> on success
+- Return an instance of <a class="codehl codehl_obj" href="telegramclient.md#telegramclient-objects"><b>TelegramClient</b></a> on success
 
 
 
@@ -299,7 +299,7 @@ async def QRLoginToNewClient(session: Union[str, Session] = None, api: Union[Typ
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/tl/telethon.py#L582"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/tl/telethon.py#L582"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="nf">ToTDesktop</span></span><span class="highlight"><span class="o">()</span></span>
 
@@ -307,19 +307,19 @@ async def QRLoginToNewClient(session: Union[str, Session] = None, api: Union[Typ
 async def ToTDesktop(flag: Type[LoginFlag] = CreateNewSession, api: Union[Type[API], API] = APITemplate.TelegramDesktop, password: str = None) -> td.TDesktop
 ```
 
-Convert this instance of <a class="codehl codehl_obj" href="telegramclient#telegramclient-objects"><b>TelegramClient</b></a> to <a class="codehl codehl_obj" href="../../documentation/telegram-desktop/tdesktop#tdesktop-objects"><b>TDesktop</b></a>
+Convert this instance of <a class="codehl codehl_obj" href="telegramclient.md#telegramclient-objects"><b>TelegramClient</b></a> to <a class="codehl codehl_obj" href="../../documentation/telegram-desktop/tdesktop.md#tdesktop-objects"><b>TDesktop</b></a>
 
 ### Arguments:
 | Name | Type | Default | Description |
 | :--- | :--: | :-----: | :---------- |
-| <span class="highlight"><span class="n">flag</span></span> | <a class="codehl codehl_obj" href="../../documentation/authorization/loginflag#loginflag-objects"><b>LoginFlag</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/loginflag#createnewsession-objects"><b>CreateNewSession</b></a> | The login flag. Read more <a class="codehl codehl_obj" href="../../documentation/authorization/loginflag#loginflag-objects"><b>here</b></a>. |
-| <a class="codehl codehl_name" href="../../documentation/telegram-desktop/account#accountapi"><b>api</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/api#api-objects"><b>API</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/api#telegramdesktop-objects"><b>TelegramDesktop</b></a> | Which API to use. Read more <a class="codehl codehl_obj" href="../../documentation/authorization/api#api-objects"><b>here</b></a>. |
+| <span class="highlight"><span class="n">flag</span></span> | <a class="codehl codehl_obj" href="../../documentation/authorization/loginflag.md#loginflag-objects"><b>LoginFlag</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/loginflag.md#createnewsession-objects"><b>CreateNewSession</b></a> | The login flag. Read more <a class="codehl codehl_obj" href="../../documentation/authorization/loginflag.md#loginflag-objects"><b>here</b></a>. |
+| <a class="codehl codehl_name" href="../../documentation/telegram-desktop/account.md#accountapi"><b>api</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/api.md#api-objects"><b>API</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/api.md#telegramdesktop-objects"><b>TelegramDesktop</b></a> | Which API to use. Read more <a class="codehl codehl_obj" href="../../documentation/authorization/api.md#api-objects"><b>here</b></a>. |
 | <span class="highlight"><span class="n">password</span></span> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="kc">None</span></span> | Two-step verification <span class="highlight"><span class="n">password</span></span> if needed. |
 
 
 ### Returns:
 
-- Return an instance of <a class="codehl codehl_obj" href="../../documentation/telegram-desktop/tdesktop#tdesktop-objects"><b>TDesktop</b></a> on success
+- Return an instance of <a class="codehl codehl_obj" href="../../documentation/telegram-desktop/tdesktop.md#tdesktop-objects"><b>TDesktop</b></a> on success
 
 
 
@@ -329,7 +329,7 @@ Convert this instance of <a class="codehl codehl_obj" href="telegramclient#teleg
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/aa00decd853fe25eba189b66c18d832de5a37ede/src/tl/telethon.py#L607"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/tl/telethon.py#L607"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 <span class="highlight"><span class="nf">FromTDesktop</span></span><span class="highlight"><span class="o">()</span></span>
 
@@ -342,16 +342,16 @@ async def FromTDesktop(account: Union[td.TDesktop, td.Account], session: Union[s
 ### Arguments:
 | Name | Type | Default | Description |
 | :--- | :--: | :-----: | :---------- |
-| <span class="highlight"><span class="n">account</span></span> | <a class="codehl codehl_obj" href="../../documentation/telegram-desktop/tdesktop#tdesktop-objects"><b>TDesktop</b></a>, <a class="codehl codehl_obj" href="../../documentation/telegram-desktop/account#account-objects"><b>Account</b></a> |  | The <span class="highlight"><span class="nn">td</span></span><span class="highlight"><span class="o">.</span></span><a class="codehl codehl_obj" href="../../documentation/telegram-desktop/tdesktop#tdesktop-objects"><b>TDesktop</b></a> or <span class="highlight"><span class="nn">td</span></span><span class="highlight"><span class="o">.</span></span><a class="codehl codehl_obj" href="../../documentation/telegram-desktop/account#account-objects"><b>Account</b></a> you want to convert from. |
+| <span class="highlight"><span class="n">account</span></span> | <a class="codehl codehl_obj" href="../../documentation/telegram-desktop/tdesktop.md#tdesktop-objects"><b>TDesktop</b></a>, <a class="codehl codehl_obj" href="../../documentation/telegram-desktop/account.md#account-objects"><b>Account</b></a> |  | The <span class="highlight"><span class="nn">td</span></span><span class="highlight"><span class="o">.</span></span><a class="codehl codehl_obj" href="../../documentation/telegram-desktop/tdesktop.md#tdesktop-objects"><b>TDesktop</b></a> or <span class="highlight"><span class="nn">td</span></span><span class="highlight"><span class="o">.</span></span><a class="codehl codehl_obj" href="../../documentation/telegram-desktop/account.md#account-objects"><b>Account</b></a> you want to convert from. |
 | <span class="highlight"><span class="n">session</span></span> | <span class="highlight"><span class="bp">str</span></span>, <span class="highlight"><span class="nc">Session</span></span> | <span class="highlight"><span class="kc">None</span></span> | The file name of the <span class="highlight"><span class="n">session</span></span> <span class="highlight"><span class="n">file</span></span> to be used, if <span class="highlight"><span class="kc">None</span></span> then the session will not be saved.\\<br/><br/>Read more [here](https://docs.telethon.dev/en/latest/concepts/sessions.html?highlight=session#what-are-sessions). |
-| <span class="highlight"><span class="n">flag</span></span> | <a class="codehl codehl_obj" href="../../documentation/authorization/loginflag#loginflag-objects"><b>LoginFlag</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/loginflag#createnewsession-objects"><b>CreateNewSession</b></a> | The login flag. Read more <a class="codehl codehl_obj" href="../../documentation/authorization/loginflag#loginflag-objects"><b>here</b></a>. |
-| <a class="codehl codehl_name" href="../../documentation/telegram-desktop/account#accountapi"><b>api</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/api#api-objects"><b>API</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/api#telegramdesktop-objects"><b>TelegramDesktop</b></a> | Which API to use. Read more <a class="codehl codehl_obj" href="../../documentation/authorization/api#api-objects"><b>here</b></a>. |
+| <span class="highlight"><span class="n">flag</span></span> | <a class="codehl codehl_obj" href="../../documentation/authorization/loginflag.md#loginflag-objects"><b>LoginFlag</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/loginflag.md#createnewsession-objects"><b>CreateNewSession</b></a> | The login flag. Read more <a class="codehl codehl_obj" href="../../documentation/authorization/loginflag.md#loginflag-objects"><b>here</b></a>. |
+| <a class="codehl codehl_name" href="../../documentation/telegram-desktop/account.md#accountapi"><b>api</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/api.md#api-objects"><b>API</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/api.md#telegramdesktop-objects"><b>TelegramDesktop</b></a> | Which API to use. Read more <a class="codehl codehl_obj" href="../../documentation/authorization/api.md#api-objects"><b>here</b></a>. |
 | <span class="highlight"><span class="n">password</span></span> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="kc">None</span></span> | Two-step verification password if needed. |
 
 
 ### Returns:
 
-- Return an instance of <a class="codehl codehl_obj" href="telegramclient#telegramclient-objects"><b>TelegramClient</b></a> on success
+- Return an instance of <a class="codehl codehl_obj" href="telegramclient.md#telegramclient-objects"><b>TelegramClient</b></a> on success
 
 
 
