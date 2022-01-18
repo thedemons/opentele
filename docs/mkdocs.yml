@@ -1,0 +1,106 @@
+copyright: <a href="https://github.com/thedemons/opentele/" target="_blank" rel="noopener">thedemons.opentele</a>
+docs_dir: content
+edit_uri: https://github.com/thedemons/opentele/tree/main/docs/content
+extra_css:
+- assets/pymdownx-extras/extra-c12baed3e0.css
+extra_javascript:
+- https://unpkg.com/mermaid@8.13.3/dist/mermaid.min.js
+- https://polyfill.io/v3/polyfill.min.js?features=es6
+- https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+- assets/pymdownx-extras/extra-loader-9e2c67b9.js
+markdown_extensions:
+- toc:
+    permalink: true
+- admonition: null
+- smarty:
+    smart_quotes: false
+- pymdownx.betterem: null
+- attr_list: null
+- def_list: null
+- tables: null
+- abbr: null
+- footnotes: null
+- md_in_html: null
+- pymdownx.superfences:
+    preserve_tabs: true
+- pymdownx.snippets: null
+- pymdownx.highlight:
+    extend_pygments_lang:
+    - lang: python
+      name: python
+      options:
+        python3: true
+    - lang: python
+      name: pyinline
+      options:
+        python3: true
+        startinline: true
+    linenums_style: pymdownx-inline
+    pygments_style: material
+    use_pygments: true
+- pymdownx.inlinehilite: null
+- pymdownx.magiclink:
+    normalize_issue_symbols: true
+    repo: opentele
+    repo_url_shortener: true
+    repo_url_shorthand: true
+    social_url_shortener: true
+    social_url_shorthand: true
+    user: thedemons
+- pymdownx.tilde: null
+- pymdownx.caret: null
+- pymdownx.smartsymbols: null
+- pymdownx.emoji: null
+- pymdownx.escapeall:
+    hardbreak: true
+    nbsp: true
+- pymdownx.tasklist:
+    custom_checkbox: true
+- pymdownx.progressbar: null
+- pymdownx.arithmatex:
+    block_tag: pre
+    generic: true
+- pymdownx.mark: null
+- pymdownx.striphtml: null
+- pymdownx.details: null
+- pymdownx.tabbed:
+    alternate_style: true
+- pymdownx.saneheaders: null
+nav:
+- Home:
+  - OpenTele: home/README.md
+- Documentation:
+  - Telegram Desktop:
+    - TDesktop: documentation/telegram-desktop/tdesktop.md
+    - Account: documentation/telegram-desktop/account.md
+    - AuthKey: documentation/telegram-desktop/authkey.md
+    - MTP: documentation/telegram-desktop/mtp.md
+  - Telethon:
+    - TelegramClient: documentation/telethon/telegramclient.md
+  - Authorization:
+    - API: documentation/authorization/api.md
+    - APITemplate: documentation/authorization/apitemplate.md
+    - LoginFlag: documentation/authorization/loginflag.md
+  - Exceptions: documentation/exceptions.md
+repo_url: https://github.com/thedemons/opentele
+site_author: thedemons
+site_description: A python library created to make life easier for Telegram API Developers.
+site_name: OpenTele
+theme:
+  custom_dir: ..\docs-theme
+  features:
+  - navigation.tabs
+  - navigation.instant
+  - navigation.tracking
+  - navigation.expand
+  - navigation.indexes
+  font:
+    code: Monaco Mono
+    text: Roboto
+  icon:
+    logo: material/book-open-page-variant
+  name: material
+  palette:
+    accent: deep purple
+    primary: light blue
+    scheme: vsdark

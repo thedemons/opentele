@@ -1,0 +1,11 @@
+md5 3b4a2e3c4a3045c3cd8dc0253e18175a content\home\README.md
+md5 4714c06b58ee052d5e10b221d21be713 content\documentation\telegram-desktop\tdesktop.md
+md5 bacf56005e0b7f5a13ebfb803b583b0e content\documentation\telegram-desktop\account.md
+md5 bfc4d3aafce4696a7b9b5c397b4ba5c4 content\documentation\telegram-desktop\authkey.md
+md5 659d78bac82680ba3121ac18b18e7b09 content\documentation\telegram-desktop\mtp.md
+md5 0c595941a380e68ea6c116c5c6d64162 content\documentation\telethon\telegramclient.md
+md5 f1eb0c07960bab4554928b37d6003390 content\documentation\authorization\api.md
+md5 995539d09c3b4dd887549fbc55330d51 content\documentation\authorization\apitemplate.md
+md5 e16f426aa2d18db3f70ed9492d70d6e9 content\documentation\authorization\loginflag.md
+md5 89936316d6870d16182d52f44155d6f7 content\documentation\exceptions.md
+md5 4dbae3a24b80724d58d1fe100d685787 mkdocs.yml
