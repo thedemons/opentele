@@ -106,12 +106,11 @@ class TDesktop(BaseObject):
                 See `keyFile`.
 
         ### Examples:
-            Test:\n
-                ```python
-                        from opentele.td import TDesktop
-                        tdataFolder = "Path\\To\\tdata"
-                        tdesktop = TDesktop(tdataFolder)
-                ```
+        ```python
+                from opentele.td import TDesktop
+                tdataFolder = "Path\\To\\tdata"
+                tdesktop = TDesktop(tdataFolder)
+        ```
         """
         self.__accounts : typing.List[td.Account] = []
         self.__basePath = basePath
@@ -512,10 +511,10 @@ class TDesktop(BaseObject):
                     api             : Union[Type[API], API] = APITemplate.TelegramDesktop,
                     password        : str = None) -> TDesktop:
         """
-        Create an instance of `TDesktop` from `telethon.TelegramClient`\n
+        Create an instance of `TDesktop` from `telethon.TelegramClient`
         
         ### Arguments
-            1. telethonClient (telethon.TelegramClient):\n
+            1. telethonClient (telethon.TelegramClient):
                 The client need to be authorized (logged in) first.
         
         

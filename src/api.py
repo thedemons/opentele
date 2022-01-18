@@ -197,9 +197,9 @@ class API(object, metaclass=BaseAPIMetaClass):
             glob.device_model,      # type: ignore
             glob.system_version,    # type: ignore
             glob.app_version,       # type: ignore
+            glob.lang_code,         # type: ignore
             glob.system_lang_code,  # type: ignore
             glob.lang_pack,         # type: ignore
-            glob.lang_code,         # type: ignore
         ) # type: ignore
 
     @sharemethod
@@ -573,7 +573,6 @@ class LoginFlag(int):
         - `TelegramClient.FromTDesktop()` 
 
     """
-    pass
 
 class UseCurrentSession(LoginFlag):
     """
@@ -582,11 +581,7 @@ class UseCurrentSession(LoginFlag):
     The "session" is just an 256-bytes `AuthKey` that get stored in `tdata folder` or Telethon `session files` [(under sqlite3 format)](https://docs.telethon.dev/en/latest/concepts/sessions.html?highlight=sqlite3#what-are-sessions).
     `UseCurrentSession`'s only job is to read this key and convert it to one another.
 
-    ??? Warning test
-        eqwe
-    ???
     """
-    pass
 
 class CreateNewSession(LoginFlag):
     """
@@ -595,4 +590,3 @@ class CreateNewSession(LoginFlag):
     This works just like when you signing into `Telegram` using `QR Login` on mobile devices.
     Although `Telegram Desktop` doesn't let you authorize other sessions via `QR Code` *(or it doesn't have that feature)*, it is still available across all platforms `(``[APIs](API)``)`.
     """
-    pass
