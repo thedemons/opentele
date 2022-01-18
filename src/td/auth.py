@@ -9,6 +9,22 @@ import hashlib
 #     from ..opentele import *
 
 class AuthKeyType(IntEnum):
+    """
+    Type of `AuthKey`
+    
+    ### Attributes:
+        Generated (`IntEnum`):
+            Generated key
+
+        Temporary (`IntEnum`):
+            Temporary key
+
+        ReadFromFile (`IntEnum`):
+            Key red from file
+
+        Local (`IntEnum`):
+            Local key
+    """
     Generated       = 0
     Temporary       = 1
     ReadFromFile    = 2
@@ -16,12 +32,13 @@ class AuthKeyType(IntEnum):
 
 class AuthKey(BaseObject):
     """
-    Authorization key
+    Authorization key used for [MTProto](https://core.telegram.org/mtproto)
+    It's also used to encrypt and decrypt local tdata
 
-    Attributes:
-        DcId (DcId): Data Center ID (from 1 to 5)
-        type (AuthKeyType): Type of the key
-        key (bytes): The actual key, 256 bytes in length
+    ### Attributes:
+        DcId (DcId): Data Center ID (from 1 to 5).
+        type (AuthKeyType): Type of the key.
+        key (bytes): The actual key, 256 `bytes` in length.
 
     """
 

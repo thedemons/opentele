@@ -158,8 +158,8 @@ renderer:
 
       - title: Authorization
         children:
-          - title: APIData
-            contents: [apidata.APIData.*]
+          - title: API
+            contents: [apidata.API.*]
             
           - title: APITemplate
             contents: [apidata.APITemplate.*]

@@ -15,7 +15,7 @@
 	--md-code-hl-class-color: #d16969;
 
 	--md-code-fg-color: #000000;
-	--md-code-bg-color: #FFFFFF;
+	--md-code-bg-color: #ececec;
 	--md-code-hl-operator-color: #000000;
 	--md-code-hl-punctuation-color: #000000;
 	--md-code-hl-string-color: #A31515;
@@ -132,75 +132,6 @@
 	--md-typeset-kbd-accent-color: var(--md-default-fg-color--lighter)
 }
 
-.highlight :is(.kn, .ow) {
-    color: var(--md-code-hl-keyword-color);
-}
-
-
-.highlight :is(.k, .kc) {
-    color: var(--md-code-hl-keyword-constant-color);
-}
-
-.highlight :is(.nn) {
-    color: var(--md-code-hl-namespace-color);
-}
-.highlight :is(.sd) {
-    color: var(--md-code-hl-string-color);
-}
-.highlight :is(.cp,.se,.sh,.sr,.sx) {
-    color: var(--md-code-hl-special-color);
-}
-.highlight :is(.si,.sa) {
-    color: var(--md-code-hl-string-format);
-}
-.highlight :is(.vm) {
-    color: var(--md-code-hl-name-color);
-}
-
-.highlight :is(.fm) {
-    color: var(--md-code-hl-function-color);
-}
-
-/* .highlight :-webkit-any(.k, .kd, .kn, .kp, .kr, .kt) {
-    color: #ff0000;
-  } */
-
-
-
-.highlight .kc {
-	color: var(--md-code-hl-keyword-constant-color)
-}
-
-.highlight .nc,
-.highlight .ne {
-	color: var(--md-code-hl-class-color)
-}
-
-.highlight .mb {
-	color: var(--md-code-hl-number-color)
-}
-
-.highlight .nb {
-	color: var(--md-code-hl-function-color)
-}
-.highlight .bp {
-	color: var(--md-code-hl-builtin-color)
-}
-
-.highlight .nn {
-	color: var(--md-code-hl-namespace-color)
-}
-
-.highlight .na,
-.highlight .nd,
-.highlight .ni {
-	color: var(--md-code-hl-entity-color)
-}
-
-.highlight .nl,
-.highlight .nt {
-	color: var(--md-code-hl-tag-color)
-}
 
 [data-md-color-scheme=vsdark] :not([data-md-color-scheme])[data-md-color-primary=red],
 [data-md-color-scheme=vsdark][data-md-color-primary=red] {
@@ -532,89 +463,134 @@
 	--md-heart-big: #ff5757
 }
 
+.md-typeset :is(.admonition,details) {
+    background-color: var(--md-admonition-bg-color);
+    border: 0 solid #448aff;
+    border-radius: 0.1rem;
+    box-shadow: var(--md-shadow-z1);
+    color: var(--md-admonition-fg-color);
+    display: flow-root;
+    font-size: .85rem;
+    margin: 1.5625em 0;
+    padding: 0 0.6rem;
+    page-break-inside: avoid;
+}
 
+.codehl, .codehl:before {
+    transition: filter 125ms !important;
+}
 
-.md-typeset .md-typeset__keyword {
+.codehl:focus, .codehl:hover {
+	filter: brightness(150%) !important;
+}
+
+.codehl_keyword {
     color: var(--md-code-hl-keyword-color) !important;
-    word-break: break-word !important;
-}
-.md-typeset .md-typeset__keyword, 
-.md-typeset .md-typeset__keyword:before {
-    transition: color 125ms !important;
-}
-.md-typeset .md-typeset__keyword:focus, 
-.md-typeset .md-typeset__keyword:hover {
-    color: var(--md-code-hl-keyword-color-hover) !important;
 }
 
-.md-typeset .md-typeset__variable {
+.codehl_punctuation {
+    color: var(--md-code-hl-punctuation-color) !important;
+}
+
+.codehl_name {
     color: var(--md-code-hl-name-color) !important;
-    word-break: break-word !important;
-}
-.md-typeset .md-typeset__variable, 
-.md-typeset .md-typeset__variable:before {
-    transition: color 125ms !important;
-}
-.md-typeset .md-typeset__variable:focus, 
-.md-typeset .md-typeset__variable:hover {
-    color: var(--md-code-hl-name-color-hover) !important;
 }
 
-
-.md-typeset .md-typeset__function {
+.codehl_function {
     color: var(--md-code-hl-function-color) !important;
-    word-break: break-word !important;
-}
-.md-typeset .md-typeset__function, 
-.md-typeset .md-typeset__function:before {
-    transition: color 125ms !important;
-}
-.md-typeset .md-typeset__function:focus, 
-.md-typeset .md-typeset__function:hover {
-    color: var(--md-code-hl-function-color-hover) !important;
 }
 
-.md-typeset .md-typeset__number {
+.codehl_number {
     color: var(--md-code-hl-number-color) !important;
-    word-break: break-word !important;
 }
-.md-typeset .md-typeset__str {
+.codehl_str {
     color: var(--md-code-hl-string-color) !important;
-    word-break: break-word !important;
+}
+.codehl_str_escape {
+    color: var(--md-code-hl-special-color) !important;
 }
 
-
-
-
-.md-typeset .md-typeset__obj {
+.codehl_obj {
     color: var(--md-code-hl-class-color) !important;
-    word-break: break-word !important;
-}
-.md-typeset .md-typeset__obj, 
-.md-typeset .md-typeset__obj:before {
-    transition: color 125ms !important;
-}
-.md-typeset .md-typeset__obj:focus, 
-.md-typeset .md-typeset__obj:hover {
-    color: var(--md-code-hl-class-color-hover) !important;
 }
 
-.md-typeset .md-typeset__const {
+.codehl_const {
     color: var(--md-code-hl-keyword-constant-color) !important;
-    word-break: break-word !important;
 }
-.md-typeset .md-typeset__const, 
-.md-typeset .md-typeset__const:before {
-    transition: color 125ms !important;
+
+.highlight :is(.kn, .ow) {
+    color: var(--md-code-hl-keyword-color);
 }
-.md-typeset .md-typeset__const:focus, 
-.md-typeset .md-typeset__const:hover {
-    color: var(--md-code-hl-keyword-constant-color-hover) !important;
+
+.highlight :is(.k, .kc) {
+    color: var(--md-code-hl-keyword-constant-color);
 }
+
+.highlight :is(.nn) {
+    color: var(--md-code-hl-namespace-color);
+}
+.highlight :is(.sd) {
+    color: var(--md-code-hl-string-color);
+}
+.highlight :is(.cp,.se,.sh,.sr,.sx) {
+    color: var(--md-code-hl-special-color);
+}
+.highlight :is(.si,.sa) {
+    color: var(--md-code-hl-string-format);
+}
+.highlight :is(.vm) {
+    color: var(--md-code-hl-name-color);
+}
+
+.highlight :is(.fm) {
+    color: var(--md-code-hl-function-color);
+}
+
+/* .highlight :-webkit-any(.k, .kd, .kn, .kp, .kr, .kt) {
+    color: #ff0000;
+  } */
+
+
+
+.highlight .kc {
+	color: var(--md-code-hl-keyword-constant-color)
+}
+
+.highlight .nc,
+.highlight .ne {
+	color: var(--md-code-hl-class-color)
+}
+
+.highlight .mb {
+	color: var(--md-code-hl-number-color)
+}
+
+.highlight .nb {
+	color: var(--md-code-hl-function-color)
+}
+.highlight .bp {
+	color: var(--md-code-hl-builtin-color)
+}
+
+.highlight .nn {
+	color: var(--md-code-hl-namespace-color)
+}
+
+.highlight .na,
+.highlight .nd,
+.highlight .ni {
+	color: var(--md-code-hl-entity-color)
+}
+
+.highlight .nl,
+.highlight .nt {
+	color: var(--md-code-hl-tag-color)
+}
+
 
 .md-typeset a.source-link {
 	position: relative;
-	top: -.6rem;
+	/* top: -.6rem; */
 	float: right;
 	color: var(--md-default-fg-color--lighter);
 	transition: color 125ms

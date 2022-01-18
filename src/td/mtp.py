@@ -8,14 +8,25 @@ from . import shared as td
 
 class MTP(BaseObject):
     '''
-    MTProto Protocal
-    https://core.telegram.org/mtproto
+    [MTProto Protocal] https://core.telegram.org/mtproto
+
+    This class is for further future developments and has no usage for now.
+    
+    ### Attributes:
+        `Environment` (`class`): MTP Enviroment
+        `RSAPublicKey` (`class`): RSAPublicKey
+        `DcOptions` (`class`): DcOptions
+        `ConfigFields` (`class`): ConfigFields
+        `Config` (`class`): Config
     '''
 
 
     class Environment(IntEnum):
         '''
         Enviroment flag for MTP.Config
+        ### Attributes:
+            Production (`IntEnum`): Production Enviroment
+            Test (`IntEnum`): Test Enviroment
         '''
         Production = 0
         Test = 1
@@ -166,14 +177,22 @@ class MTP(BaseObject):
         
         class Address(int):
             '''
-            Flag used for MTP.DcOptions.Endpoint
+            Connection flag used for MTP.DcOptions.Endpoint
+            
+            ### Attributes:
+                IPv4 (`int`): IPv4 connection
+                IPv6 (`int`): IPv6 connection
             '''
             IPv4 = 0
             IPv6 = 1
 
         class Protocol(int):
             '''
-            Flag used for MTP.DcOptions.Endpoint
+            Protocal flag used for MTP.DcOptions.Endpoint
+            
+            ### Attributes:
+                Tcp (`int`): Tcp connection
+                Http (`int`): Http connection
             '''
             Tcp = 0
             Http = 1
@@ -181,6 +200,15 @@ class MTP(BaseObject):
         class Flag(int):
             '''
             Flag used for MTP.DcOptions.Endpoint
+            
+            ### Attributes:
+                f_ipv6 (`int`): f_ipv6
+                f_media_only (`int`): f_media_only
+                f_tcpo_only (`int`): f_tcpo_only
+                f_cdn (`int`): f_cdn
+                f_static (`int`): f_static
+                f_secret (`int`): f_secret
+                MAX_FIELD (`int`): MAX_FIELD
             '''
             f_ipv6 = 1 << 0
             f_media_only = 1 << 1
@@ -192,7 +220,14 @@ class MTP(BaseObject):
 
         class Endpoint(BaseObject):
             '''
-            Data center endpoint information
+            Data center endpoint
+
+            ### Attributes:
+                id (`DcId`): Data Center ID
+                flags (`Flag`): `Flag`
+                ip (`str`): IP address of the data center
+                port (`int`): Port to connect to
+                secret (`bytes`): secret
             '''
             def __init__(self, id : int, flags : MTP.DcOptions.Flag, ip : str, port : int, secret : bytes) -> None:
                 self.id = id
@@ -204,7 +239,39 @@ class MTP(BaseObject):
                 
     class ConfigFields(BaseObject):
         '''
-        Configuration data for MTP.Config
+        Configuration data for `MTP.Config`
+
+        ### Attributes:
+            chatSizeMax (`int`): `200`
+            megagroupSizeMax (`int`): `10000`
+            forwardedCountMax (`int`): `100`
+            onlineUpdatePeriod (`int`): `120000`
+            offlineBlurTimeout (`int`): `5000`
+            offlineIdleTimeout (`int`): `30000`
+            onlineFocusTimeout (`int`): `1000` `# Not from the server config.`
+            onlineCloudTimeout (`int`): `300000`
+            notifyCloudDelay (`int`): `30000`
+            notifyDefaultDelay (`int`): `1500`
+            savedGifsLimit (`int`): `200`
+            editTimeLimit (`int`): `172800`
+            revokeTimeLimit (`int`): `172800`
+            revokePrivateTimeLimit (`int`): `172800`
+            revokePrivateInbox (`bool`): `False`
+            stickersRecentLimit (`int`): `30`
+            stickersFavedLimit (`int`): `5`
+            pinnedDialogsCountMax (`int`): `5`
+            pinnedDialogsInFolderMax (`int`): `100`
+            internalLinksDomain (`str`): `"https://t.me/"`
+            channelsReadMediaPeriod (`int`): `86400 * 7`
+            callReceiveTimeoutMs (`int`): `20000`
+            callRingTimeoutMs (`int`): `90000`
+            callConnectTimeoutMs (`int`): `30000`
+            callPacketTimeoutMs (`int`): `10000`
+            webFileDcId (`int`): `4`
+            txtDomainString (`str`): `str()`
+            phoneCallsEnabled (`bool`): `True`
+            blockedMode (`bool`): `False`
+            captionLengthMax (`int`): `1024`
         '''
         def __init__(self) -> None:
             self.chatSizeMax = 200
@@ -241,6 +308,8 @@ class MTP(BaseObject):
     class Config(BaseObject):
         '''
         Configuration of MTProto
+        ### Attributes:
+            kVersion (`int`): `1`
         '''
         
         kVersion = 1

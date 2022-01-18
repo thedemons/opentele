@@ -1,6 +1,6 @@
 <!-- vim: syntax=Markdown -->
 
-# OpenTele
+# opentele
 A python library created to make life easier for Telegram API Developers.
 
 ## Main Features
@@ -44,8 +44,8 @@ async def main():
     client = await tdesktop.ToTelethon("newSession.session", CreateNewSession, api)
 
     # Although Telegram Desktop doesn't let you authorize other
-    # sessions on desktop client (or doesn't have that feature),
-    # it is still available for all platforms (APIs).
+    # sessions via QR Code (or it doesn't have that feature),
+    # it is still available across all platforms (APIs).
 
     # Connect and print all logged in devices
     await client.connect()
@@ -55,14 +55,14 @@ asyncio.run(main())
 ```
 
 ## Authorization
-OpenTele offers the ability to use the **official APIs**, which are used by official apps. You can check that out [here](https://github.com/thedemons/opentele/blob/main/docs/content/api-documentation/authorization/apitemplate#telegramdesktop-objects).
+**opentele** offers the ability to use **official APIs**, which are used by official apps. You can check that out [here](https://github.com/thedemons/opentele/blob/main/docs/content/api-documentation/authorization/apitemplate#telegramdesktop-objects).
 <br>
-According to [Telegram TOS](https://core.telegram.org/api/obtaining_api_id#using-the-api-id): all accounts that sign up or log in using unofficial Telegram API clients are automatically put under observation to avoid violations of the Terms of Service.
+According to [Telegram TOS](https://core.telegram.org/api/obtaining_api_id#using-the-api-id): *all accounts that sign up or log in using unofficial Telegram API clients are automatically put under observation to avoid violations of the Terms of Service*.
 <br>
 <br>
-It also uses the **official [lang_pack](https://core.telegram.org/method/initConnection)** parameter, of which [telethon can't use](https://github.com/LonamiWebs/Telethon/blob/master/telethon/client/telegrambaseclient.py#L375) because it's only for official apps.
+It also uses the **[lang_pack](https://core.telegram.org/method/initConnection)** parameter, of which [telethon can't use](https://github.com/LonamiWebs/Telethon/blob/master/telethon/client/telegrambaseclient.py#L375) because it's for official apps only.
 <br>
-Therefore, **there are no differences** between using OpenTele and official apps, the server can't tell you apart.
+Therefore, **there are no differences** between using opentele and official apps, the server can't tell you apart.
 
 ## Incoming Features
 - [x] Writing data to tdata for converting telethon sessions to tdesktop

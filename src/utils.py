@@ -35,14 +35,6 @@ class BaseMetaClass(abc.ABCMeta):
 class BaseObject(object, metaclass=BaseMetaClass):
     pass
 
-class LoginFlag(int):
-    pass
-
-class CreateNewSession(LoginFlag):
-    pass
-
-class UseCurrentSession(LoginFlag):
-    pass
 
 class override(object):
     """

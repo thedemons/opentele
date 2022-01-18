@@ -6,6 +6,9 @@ from PyQt5.QtCore import QDataStream
 
 TEST_CONST = 123
 class OpenTeleException(BaseException):
+    """
+    Base exception of the library.
+    """
 
     def __init__(self, message : str = None, stack_index : int = 1) -> None:
         
@@ -57,7 +60,7 @@ class OpenTeleException(BaseException):
             # reason += f"{self._caller_method}({self._caller_method_params}) ]"
         return reason
         
-class FileNotFound(OpenTeleException):
+class TFileNotFound(OpenTeleException):
     '''
     Could not find or open the file
     '''
@@ -159,7 +162,7 @@ class NoPasswordProvided(OpenTeleException):
     You can't live without a password bro
     '''
 
-class Passwordincorrect(OpenTeleException):
+class PasswordIncorrect(OpenTeleException):
     '''
     incorrect passwrd
     '''
@@ -176,35 +179,34 @@ class NoInstanceMatched(OpenTeleException):
 
 @typing.overload
 def Expects(condition : bool, 
-            exception : str = None,
+            message : str = None,
             done : typing.Callable[[],None] = None, 
             fail : typing.Callable[[OpenTeleException],None] = None, 
             silent : bool = False,
             stack_index : int = 1) -> bool:
-    """Expect a condition to be true, raise an OpenTeleException exception if it's not.
+    """Expect a condition to be `True`, raise an `OpenTeleException` if it's not.
     
-    ### Arguments
-        1. condition (bool):\n
-            Condition that you're expecting
+    ### Arguments:
+        condition (bool):
+            Condition that you're expecting.
+
+        message (str, default=None):
+            Custom exception message
     
-    ### Optional
-        2. message (OpenTeleException, default=None):\n
-            custom exception message
-    
-        3. done (`typing.Callable[[],None]`, default=None):\n
+        done (`lambda`, default=None):
             lambda to execute when done without error
     
-        4. fail (`typing.Callable[[OpenTeleException],None]`, default=None):\n
-            lambda to execute when the condition is False, the lambda will be execute before raising the exception
+        fail (`lambda`, default=None):
+            lambda to execute when the condition is False, the lambda will be execute before raising the exception.
     
-        5. silent (bool, default=False):\n
-            if True then it won't raise the exception, only execute fail() lambda
+        silent (`bool`, default=False):
+            if True then it won't raise the exception, only execute fail lambda.
     
-        6. `stack_index` (int, default=1):\n
-            stack index to raise the exception with trace back to where it happens, intended for internal usage
+        stack_index (`int`, default=1):
+            stack index to raise the exception with trace back to where it happens, intended for internal usage.
     
     ### Raises:
-        `exception`: OpenTeleException
+        `OpenTeleException`: exception
     """
     pass
 
@@ -217,55 +219,29 @@ def Expects(condition : bool,
             silent : bool = False,
             stack_index : int = 1) -> bool:
             
-    """Expect a condition to be true, raise an OpenTeleException exception if it's not.
+    """Expect a condition to be `True`, raise an `OpenTeleException` if it's not.
     
-    ### Arguments
-        1. condition (bool):\n
-            Condition that you're expecting
+    ### Arguments:
+        condition (bool):
+            Condition that you're expecting.
+
+        message (OpenTeleException, default=None):
+            Custom exception.
     
-    ### Optional
-        2. exception (OpenTeleException, default=None):\n
-            custom exception to raise if False
+        done (`lambda`, default=None):
+            lambda to execute when done without error.
     
-        3. done (`typing.Callable[[],None]`, default=None):\n
-            lambda to execute when done without error
+        fail (`lambda`, default=None):
+            lambda to execute when the condition is False, the lambda will be execute before raising the exception.
     
-        4. fail (`typing.Callable[[OpenTeleException],None]`, default=None):\n
-            lambda to execute when the condition is False, the lambda will be execute before raising the exception
+        silent (`bool`, default=False):
+            if True then it won't raise the exception, only execute fail lambda.
     
-        5. silent (bool, default=False):\n
-            if True then it won't raise the exception, only execute fail() lambda
-    
-        6. `stack_index` (int, default=1):\n
-            stack index to raise the exception with trace back to where it happens, intended for internal usage
+        stack_index (`int`, default=1):
+            stack index to raise the exception with trace back to where it happens, intended for internal usage.
     
     ### Raises:
-        `exception`: OpenTeleException
-    """
-    """
-    Expect a condition to be true, raise an `OpenTeleException` exception if it's not.
-    Works just like `assert`
-    ### Arguments:
-        condition (`bool`):
-            description
-    
-        exception (`OpenTeleException`, default=`None`):
-            description
-    
-        done (`typing.Callable[[],None]`, default=`None`):
-            description
-    
-        fail (`typing.Callable[[OpenTeleException],None]`, default=`None`):
-            description
-    
-        silent (`bool`, default=`False`):
-            description
-    
-        stack_index (`int`, default=`1`):
-            description
-    
-    ### Returns:
-        `bool`: [description]
+        `OpenTeleException`: exception
     """
     pass
 

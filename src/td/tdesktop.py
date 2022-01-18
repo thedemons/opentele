@@ -14,55 +14,104 @@ from telethon.sessions.abstract import Session
 
 
 class TDesktop(BaseObject):
+    """
+    Telegram Desktop client.
+    
+    A client can have multiple account, up to 3 - according to official Telegram Desktop client.
 
-    kMaxAccounts : int = int(3)
-    kDefaultKeyFile = "data"
+    ### Attributes:
+        api (`API`):
+            The API this client is using.
+        
+        accountsCount (`int`):
+            The numbers of accounts in this client.
+
+        accounts (`List[Account]`):
+            List of accounts in this client
+
+        mainAccount (`Account`):
+            The main account of this client
+        
+        basePath (`str`):
+            The path to `tdata folder`.
+
+        passcode (`str`):
+            Passcode of the client, the same as Local Passcode on `Telegram Desktop`.\\
+            Use to encrypt and decrypt `tdata files`.
+
+        AppVersion (`int`):
+            App version of the client.
+        
+        kMaxAccounts (`int`):
+            See `kMaxAccounts`.
+
+        keyFile (`str`):
+            See `keyFile`.
+        
+        kDefaultKeyFile (`str`):
+            Default value for `keyFile`.
+    
+    ### Methods:
+        LoadTData():
+            Load the client from `tdata folder`. \\
+            Use this if you didn't set the `basePath` when initializing the client.
+
+        SaveTData():
+            Save the client session to `tdata folder` - which can be used by `Telegram Desktop`.
+
+        isLoaded():
+            Return `True` if the client has successfully loaded accounts from `tdata` or from `TelegramClient`
+
+    """
     
     @typing.overload
     def __init__(self) -> None:
         """
         Create an empty instance
         """
-        pass
 
     @typing.overload
     def __init__(self,  basePath : str = None,
-                        api : Union[Type[APIData], APIData] = APITemplate.TelegramDesktop) -> None:
+                        api : Union[Type[API], API] = APITemplate.TelegramDesktop) -> None:
         pass
                         
     @typing.overload
     def __init__(self,  basePath : str = None,
-                        api : Union[Type[APIData], APIData] = APITemplate.TelegramDesktop,
+                        api : Union[Type[API], API] = APITemplate.TelegramDesktop,
                         *,
                         passcode : str = None,
                         keyFile : str = None) -> None:
         pass
 
     def __init__(self,  basePath : str = None,
-                        api : Union[Type[APIData], APIData] = APITemplate.TelegramDesktop,
+                        api : Union[Type[API], API] = APITemplate.TelegramDesktop,
                         *,
                         passcode : str = None,
                         keyFile : str = None) -> None:
         """
+        Initialize a `TDesktop` client
+
+        ### Arguments:
+            basePath (`str`, default=`None`):
+                The path to the `tdata folder`.
+                If the path doesn't exists or its data is corrupted, a new instance will be created.
+            
+            api (`API`, default=`TelegramDesktop`):
+                Which API to use. Read more `[here](API)`.
+
+            passcode (str, default=`None`):
+                The passcode for tdata, same as the Local Passcode on `Telegram Desktop`.
         
-        ### Arguments
-            1. basePath (str):\n
-                The path to the tdata folder, if the path doesn't exists or its data is corrupted, a new instance is returned
-        
-        ### Optional
-            2. passcode (str, default=""):\n
-                The passcode for tdata, same as the Local Passcode on Telegram Desktop
-        
-            3. keyFile (str, default="data"):\n
-                The gKeyFile data name, the same for `Telegram.exe -key gKeyFile`\n
-                This argument is rarely used, you should only use this if you understand what it is
-        
-        ### Examples
-        #### Load from a folder or create new instance at C:\\Telegram\\tdata:
-        ```python
-            td = TDesktop("C:\\Telegram\\tdata")
-            print( td.isAuthorized() )
-        ```
+            keyFile (str, default="data"):
+                See `keyFile`.
+
+        ### Examples:
+            Test:\n
+                ```python
+                        from opentele.td import TDesktop
+                        tdataFolder = "Path\\To\\tdata"
+                        tdesktop = TDesktop(tdataFolder)
+                ```
         """
         self.__accounts : typing.List[td.Account] = []
         self.__basePath = basePath
@@ -79,94 +128,33 @@ class TDesktop(BaseObject):
 
         if basePath != None:
             self.__basePath = td.Storage.GetAbsolutePath(basePath)
-            self.LoadData()
-        
-    @property
-    def api(self) -> APIData:
-        return self.__api
-
-    @api.setter
-    def api(self, value) -> None:
-        self.__api = value
-        for account in self.accounts:
-            account.api = value
-    
-    @property
-    def basePath(self) -> Optional[str]:
-        """
-        Base folder of TDesktop, this is where data stored\n
-        Same as tdata folder of Telegram Desktop
-        """
-        return self.__basePath
-
-    @property
-    def passcode(self) -> str:
-        """
-        Passcode used to encrypt and decrypt data\n
-        Same as the Local Passcode of Telegram Desktop
-        """
-        return self.__passcode
-
-    @property
-    def keyFile(self) -> str:
-        return self.__keyFile
-
-    @property
-    def passcodeKey(self) -> Optional[td.AuthKey]:
-        return self.__passcodeKey
-
-    @property
-    def localKey(self) -> Optional[td.AuthKey]:
-        """
-        The key used to encrypt/decrypt data
-        """
-        return self.__localKey
-
-    @property
-    def AppVersion(self) -> Optional[int]:
-        """
-        App version of TDesktop client
-        """
-        return self.__AppVersion
-
-    @property
-    def AppVersionString(self) -> Optional[str]:
-        """
-        App version of TDesktop client
-        """
-        raise NotImplementedError()
-        return self.__AppVersion
-
-    @property
-    def accountsCount(self) -> int:
-        """
-        The number of accounts this client has
-        """
-        # return self.__accountsCount
-        return len(self.__accounts)
-
-    @property
-    def accounts(self) -> List[td.Account]:
-        """
-        List of accounts this client has\n
-        If you want to get the main account, please use .mainAccount instead
-        """
-        return self.__accounts
-
-    @property
-    def mainAccount(self) -> Optional[td.Account]:
-        """
-        The main account of the client
-        """
-        return self.__mainAccount
+            self.LoadTData()
+ 
 
     def isLoaded(self) -> bool:
         """
-        Return True if the client has loaded tdata
+        Return `True` if the client has successfully loaded accounts from `tdata` or from `TelegramClient`
         """
         return self.__isLoaded
 
-    def LoadData(self, basePath : str = None, passcode : str = None, keyFile : str = None):
+    def LoadTData(self, basePath : str = None, passcode : str = None, keyFile : str = None):
+        """
+        Loads accounts from `tdata folder`
+
+        ### Arguments:
+            basePath (`str`, default=`None`):
+                The path to the folder.
+        
+            passcode (`str`, default=`None`):
+                See `passcode`
+        
+            keyFile (`str`, default=`None`):
+                See `keyFile`
+        
+        ### Raises:
+            `TDataBadDecryptKey`:
+                The `tdata folder` is password-encrypted, please the set the argument `passcode` to decrypt it.
+        """
         
         if basePath == None: basePath = self.basePath
         
@@ -196,21 +184,13 @@ class TDesktop(BaseObject):
 
     def SaveTData(self, basePath : str = None, passcode : str = None, keyFile : str = None) -> bool:
         """
-        Save the login information to a folder
-        ### Optional
-            1. basePath (str | None, default=None):\n
-                Path to the folder\n
-                If None then the data will be saved at the basePath given at creation\n
-                If None and no basePath was given at creation, it will raises an OpenTeleException
+        Save the client session to a folder.
+
+        ### Arguments:
+            basePath (str, default=None):
+                Path to the folder\\
+                If None then the data will be saved at the basePath given at creation
         
-        ### Examples
-        #### Import an account from telethon session and save it as tdata:
-        ```python
-            telethon_client = TelegramClient("SessionFile")
-            td = TDesktop("NewFolder")
-            td.ImportTelethonAccount(telethon_client)
-            td.SaveTData()
-        ```
         """
         if basePath == None: basePath = self.basePath
         
@@ -238,7 +218,7 @@ class TDesktop(BaseObject):
             raise TDataSaveFailed("Could not save tdata, something went wrong") from e
 
     def __writeAccounts(self, basePath : str, keyFile : str = None) -> None:
-        """Warning: For internal usage only"""
+        # Intended for internal usage only
 
         Expects(len(self.accounts) > 0)
         Expects(basePath != None and basePath != "", "No folder provided to save tdata")
@@ -262,7 +242,7 @@ class TDesktop(BaseObject):
         key.finish()
 
     def __generateLocalKey(self) -> None:
-        """Warning: For internal usage only"""
+        # Intended for internal usage only
 
         Expects(not self.isLoaded())
 
@@ -287,7 +267,7 @@ class TDesktop(BaseObject):
         self.__isLoaded = True
 
     def _addSingleAccount(self, account : td.Account):
-        """Warning: For internal usage only"""
+        # Intended for internal usage only
 
         # Expects(self.isLoaded(), "Could not add account because i haven't been loaded")
         Expects(account.isLoaded(), "Could not add account because the account hasn't been loaded")
@@ -300,7 +280,7 @@ class TDesktop(BaseObject):
             self.__mainAccount = self.__accounts[0]
 
     def __loadFromTData(self) -> None:
-        """Warning: For internal usage only"""
+        # Intended for internal usage only
 
         Expects(self.basePath != None and self.basePath != "", "No folder provided to load tdata")
 
@@ -360,7 +340,97 @@ class TDesktop(BaseObject):
         
         self.__isLoaded = True
         
+           
+    kMaxAccounts : int = int(3)
+    """Maximum amount of accounts a client can have"""
 
+    kDefaultKeyFile = "data"
+    """See `TDesktop.keyFile`"""
+
+    @property
+    def api(self) -> API:
+        """
+        The API this client is using.
+        """
+        return self.__api
+
+    @api.setter
+    def api(self, value) -> None:
+        self.__api = value
+        for account in self.accounts:
+            account.api = value
+    
+    @property
+    def basePath(self) -> Optional[str]:
+        """
+        Base folder of TDesktop, this is where data stored
+        Same as tdata folder of Telegram Desktop
+        """
+        return self.__basePath
+
+    @property
+    def passcode(self) -> str:
+        """
+        Passcode
+        Passcode used to encrypt and decrypt data
+        Same as the Local Passcode of Telegram Desktop
+        """
+        return self.__passcode
+
+    @property
+    def keyFile(self) -> str:
+        """
+        Default value is `"data"`, this argument is rarely ever used.
+        It is used by `Telegram Desktop` by running it with the `"-key"` argument.
+        I don't know what's the use cases of it, maybe this was a legacy feature of `Telegram Desktop`.
+        """
+        return self.__keyFile
+
+    @property
+    def passcodeKey(self) -> Optional[td.AuthKey]:
+        return self.__passcodeKey
+
+    @property
+    def localKey(self) -> Optional[td.AuthKey]:
+        """
+        The key used to encrypt/decrypt data
+        """
+        return self.__localKey
+
+    @property
+    def AppVersion(self) -> Optional[int]:
+        """
+        App version of TDesktop client
+        """
+        return self.__AppVersion
+
+    @property
+    def AppVersionString(self) -> Optional[str]:
+        raise NotImplementedError()
+        return self.__AppVersion
+
+    @property
+    def accountsCount(self) -> int:
+        """
+        The number of accounts this client has
+        """
+        # return self.__accountsCount
+        return len(self.__accounts)
+
+    @property
+    def accounts(self) -> List[td.Account]:
+        """
+        List of accounts this client has\n
+        If you want to get the main account, please use .mainAccount instead
+        """
+        return self.__accounts
+
+    @property
+    def mainAccount(self) -> Optional[td.Account]:
+        """
+        The main account of the client
+        """
+        return self.__mainAccount
 
 
 
@@ -374,7 +444,7 @@ class TDesktop(BaseObject):
     async def ToTelethon(self,
                     session         : Union[str, Session] = None,
                     flag            : Type[LoginFlag] = CreateNewSession,
-                    api             : Union[Type[APIData], APIData] = APITemplate.TelegramDesktop,
+                    api             : Union[Type[API], API] = APITemplate.TelegramDesktop,
                     password        : str = None) -> tl.TelegramClient:
         pass
 
@@ -382,7 +452,7 @@ class TDesktop(BaseObject):
     async def ToTelethon( self,
                     session         : Union[str, Session] = None,
                     flag            : Type[LoginFlag] = CreateNewSession,
-                    api             : Union[Type[APIData], APIData] = APITemplate.TelegramDesktop,
+                    api             : Union[Type[API], API] = APITemplate.TelegramDesktop,
                     password                : str = None,
                     *,
                     connection              : typing.Type[Connection] = ConnectionTcpFull,
@@ -405,7 +475,7 @@ class TDesktop(BaseObject):
     async def ToTelethon( self,
                     session         : Union[str, Session] = None,
                     flag            : Type[LoginFlag] = CreateNewSession,
-                    api             : Union[Type[APIData], APIData] = APITemplate.TelegramDesktop,
+                    api             : Union[Type[API], API] = APITemplate.TelegramDesktop,
                     password        : str = None,
                     *,
                     connection              : typing.Type[Connection] = ConnectionTcpFull,
@@ -439,7 +509,7 @@ class TDesktop(BaseObject):
     @staticmethod
     async def FromTelethon(telethonClient : tl.TelegramClient,
                     flag            : Type[LoginFlag] = CreateNewSession,
-                    api             : Union[Type[APIData], APIData] = APITemplate.TelegramDesktop,
+                    api             : Union[Type[API], API] = APITemplate.TelegramDesktop,
                     password        : str = None) -> TDesktop:
         """
         Create an instance of `TDesktop` from `telethon.TelegramClient`\n

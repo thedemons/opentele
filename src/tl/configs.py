@@ -1,7 +1,7 @@
 
 from ..exception import *
 from ..utils import *
-from ..apidata import APIData, APITemplate
+from ..api import API, APITemplate, LoginFlag, CreateNewSession, UseCurrentSession
 from .. import td
 
 from typing import Union, Callable, TypeVar, Type, List, Dict, Any, TYPE_CHECKING

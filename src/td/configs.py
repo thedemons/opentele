@@ -4,7 +4,7 @@ from enum import IntEnum
 
 from ..exception import *
 from ..utils import *
-from ..apidata import *
+from ..api import *
 from .. import tl
 
 from typing import Literal, Union, Callable, TypeVar, Type, Optional, List, Dict, Any, TYPE_CHECKING

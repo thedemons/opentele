@@ -6,8 +6,8 @@ processors:
 - type: filter
   documented_only: True
   do_not_filter_import: True
-- type: smart
-- type: crossref
+- type: google
+- type: deepcrossref
 
 renderer:
   type: mkdocs
@@ -15,6 +15,7 @@ renderer:
     build_for_github: False
     add_method_class_prefix: True
     add_member_class_prefix: True
+    use_fixed_header_levels: False
     # render_module_header_template: "{module_name}"
     # add_full_prefix: True
     # sub_prefix: True
@@ -31,8 +32,8 @@ renderer:
     # signature_python_help_style: True
     classdef_render_init_signature_if_needed: False
 
-    render_toc : True
-    toc_maxdepth: 3
+    # render_toc : True
+    # toc_maxdepth: 3
     
     
     source_position: before signature
@@ -47,20 +48,24 @@ renderer:
     site_name: OpenTele
     site_description: A python library created to make life easier for Telegram API Developers.
     site_author: thedemons
+    copyright: <a href="https://github.com/thedemons/opentele/" target="_blank" rel="noopener">thedemons.opentele</a>
 
     markdown_extensions:
     
-      - markdown.extensions.toc:
-      - markdown.extensions.admonition:
-      - markdown.extensions.smarty:
+      - toc:
+          permalink: True
+          
+      - admonition:
+
+      - smarty:
           smart_quotes: false
       - pymdownx.betterem:
-      - markdown.extensions.attr_list:
-      - markdown.extensions.def_list:
-      - markdown.extensions.tables:
-      - markdown.extensions.abbr:
-      - markdown.extensions.footnotes:
-      - markdown.extensions.md_in_html:
+      - attr_list:
+      - def_list:
+      - tables:
+      - abbr:
+      - footnotes:
+      - md_in_html:
 
       - pymdownx.superfences:
           preserve_tabs: true
@@ -112,7 +117,7 @@ renderer:
       
     theme:
       name: material
-      custom_dir: theme
+      custom_dir: ..\docs-theme
       icon:
         logo: material/book-open-page-variant
       palette:
@@ -123,9 +128,12 @@ renderer:
         text: Roboto
         code: Monaco Mono
       features:
+        # - toc.integrate
         - navigation.tabs
-        - navigation.top
         - navigation.instant
+        - navigation.tracking
+        - navigation.expand
+        - navigation.indexes
 
     extra_css:
       # - https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css
@@ -149,37 +157,9 @@ renderer:
         source: README.md
 
     
-    - title: API Documentation
+    - title: Documentation
       children:
-      - title: Telethon
-        children:
-          - title: TelegramClient
-            contents: [ tl.telethon.TelegramClient.* ]
-
-      - title: Authorization
-        children:
-          - title: APIData
-            contents: [apidata.APIData.*]
-            
-          - title: APITemplate
-            contents: [apidata.APITemplate.*]
-            # - title: TelegramAndroid
-            #   contents: 
-            #     - apidata.APITemplate.TelegramAndroid.*
-            # - title: TelegramAndroidX
-            #   contents: [apidata.APITemplate.TelegramAndroidX.*]
-            # - title: TelegramIOS
-            #   contents: [apidata.APITemplate.TelegramIOS.*]
-            # - title: TelegramMacOS
-            #   contents: [apidata.APITemplate.TelegramMacOS.*]
-            # - title: TelegramWeb_Z
-            #   contents: [apidata.APITemplate.TelegramWeb_Z.*]
-            # - title: TelegramWeb_K
-            #   contents: [apidata.APITemplate.TelegramWeb_K.*]
-            # - title: Webogram
-            #   contents: [apidata.APITemplate.Webogram.*]
-
-
+      
       - title: Telegram Desktop
         children:
           - title: TDesktop
@@ -193,6 +173,22 @@ renderer:
 
           - title: MTP
             contents: [ td.mtp.*]
+
+      - title: Telethon
+        children:
+          - title: TelegramClient
+            contents: [ tl.telethon.TelegramClient.* ]
+
+      - title: Authorization
+        children:
+          - title: API
+            contents: [api.API.*]
+            
+          - title: APITemplate
+            contents: [api.APITemplate.*]
+
+          - title: LoginFlag
+            contents: [ api.LoginFlag, api.CreateNewSession, api.UseCurrentSession]
 
       - title: Exceptions
         contents: [exception.*]

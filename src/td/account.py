@@ -362,9 +362,7 @@ class StorageAccount(BaseObject):
 
     @localKey.setter
     def localKey(self, value):
-        """
-        localKey setter is intended for internal usage
-        """
+        # localKey setter is intended for internal usage
         self.__localKey = value
         
     @property
@@ -511,32 +509,31 @@ class StorageAccount(BaseObject):
 class Account(BaseObject):
     """
     Telegram Desktop account
-    Pro account
-    Test New
-
-    ### Arguments:
-        api (`APIData`):
-            The API this acount is using
-        basePath (`str`):
-            The folder where tdata is stored
-
-        owner (`TDesktop`):
-            TDesktop client owner of this account
-
-        localKey (`AuthKey`):
-            Key used to encrypt and decrypt tdata
+    
+    ### Attributes:
+        api (`API`):
+            The API this acount is using.
 
         authKey (`AuthKey`):
-            The actual key used to authorize this acocunt
+            The authorization key used to authorize this acocunt.
 
         UserId (`int`):
-            User ID of this account
+            User ID of this account.
 
         MainDcId (`DcId`):
-            The main Data Center ID this account connects to
+            The main Data Center ID this account connects to.
 
-    ### Raises:
-        `OpenTeleException`: Failed
+        basePath (`str`):
+            The folder where tdata is stored.
+
+        localKey (`AuthKey`):
+            Key used to encrypt and decrypt tdata.
+
+        owner (`TDesktop`):
+            `td.TDesktop` client owner of this account.
+
+        keyFile (`str`):
+            See `td.TDesktop.keyFile`.
 
     """
 
@@ -545,31 +542,34 @@ class Account(BaseObject):
     def __init__(self, 
                 owner    : td.TDesktop,
                 basePath : str = None, 
-                api      : Union[Type[APIData], APIData] = APITemplate.TelegramDesktop,
+                api      : Union[Type[API], API] = APITemplate.TelegramDesktop,
                 keyFile  : str = None,
                 index    : int = 0) -> None:
         """
-        Setup a tdesktop account
+        Initialized a `TDesktop` account.
+
+        You should use `TDesktop()` or `TDesktop.FromTelethon()` instead.
+        Manually using `Account()` is not recommended. But this is here for your need anyway.
 
         ### Arguments:
-            owner (`td.TDesktop`):
-                TDesktop client owner of this account
+            owner (`TDesktop`):
+                `TDesktop` client owner of this account.
         
             basePath (`str`, default=None):
-                The folder where tdata is stored
+                The folder where `tdata` is stored.
         
-            api (`APIData`, default=`APITemplate.TelegramDesktop`):
-                The `APIData` to use
+            api (`API`, default=`TelegramDesktop`):
+                Which API to use. Read more `[here](API)`.
         
             keyFile (`str`, default=None):
-                [description]
+                See `TDesktop.keyFile`.
         
-            index (`int`, default=None):
-                [description]
+            index (`int`, default=0):
+                Index of this account in the `TDesktop` client.
         
-        ### Remarks:
-            - Notes: `prepareToStart()` must be call after initalizing the object.
-            - Notes: `prepareToStart()` must be call after initalizing the object.
+        ### Notes:
+            TODO: `prepareToStart()` must be call after initalizing the object.
+        
         """
         self.__owner = owner
         self.__localKey = None
@@ -592,7 +592,10 @@ class Account(BaseObject):
 
 
     @property
-    def api(self) -> APIData:
+    def api(self) -> API:
+        """
+        The API this acount is using.
+        """
         return self.__api
 
     @api.setter
@@ -602,14 +605,23 @@ class Account(BaseObject):
 
     @property
     def owner(self) -> td.TDesktop:
+        """
+        TDesktop client owner of this account.
+        """
         return self.__owner
 
     @property
     def basePath(self) -> str:
+        """
+        The folder where tdata is stored.
+        """
         return self.__basePath
 
     @property
     def keyFile(self) -> str:
+        """
+        See `TDesktop.keyFile`
+        """
         return self.__keyFile
    
     @keyFile.setter
@@ -619,26 +631,35 @@ class Account(BaseObject):
 
     @property
     def localKey(self) -> Optional[td.AuthKey]:
+        """
+        Key used to encrypt and decrypt tdata.
+        """
         return self.__localKey
    
     @localKey.setter
     def localKey(self, value):
-        """
-        localKey setter is intended for internal usage
-        """
         self.__localKey = value
         self._local.localKey = value
 
     @property
     def authKey(self) -> Optional[td.AuthKey]:
+        """
+        The authorization key used to authorize this acocunt.
+        """
         return self.__authKey
 
     @property
     def UserId(self) -> int:
+        """
+        User ID of this account.
+        """
         return self.__UserId
 
     @property
     def MainDcId(self) -> DcId:
+        """
+        The main Data Center ID this account connects to.
+        """
         return self.__MainDcId
 
     @property
@@ -664,11 +685,11 @@ class Account(BaseObject):
         Prepare the account before starting it
 
         ### Arguments:
-            localKey (`td.AuthKey`):
-                `APIData`
+            localKey (`AuthKey`):
+                `API`
         
         ### Returns:
-            `td.MTP.Config`: [description]
+            `MTP.Config`: [description]
         """
 
         self.__localKey = localKey
@@ -779,7 +800,7 @@ class Account(BaseObject):
                 Lock the data with a passcode. Defaults to None.
 
             keyFile (`str`, default=`None`):
-                [none]
+                See `TDesktop.keyFile`
 
         ### Examples
             Add an account to `TDesktop` and save it to `tdata`:
@@ -810,7 +831,7 @@ class Account(BaseObject):
     async def ToTelethon(   self,
                             session         : Union[str, Session] = None,
                             flag            : Type[LoginFlag] = CreateNewSession,
-                            api             : Union[Type[APIData], APIData] = APITemplate.TelegramDesktop,
+                            api             : Union[Type[API], API] = APITemplate.TelegramDesktop,
                             password        : str = None) -> tl.TelegramClient:
         pass
 
@@ -818,7 +839,7 @@ class Account(BaseObject):
     async def ToTelethon(   self,
                             session         : Union[str, Session] = None,
                             flag            : Type[LoginFlag] = CreateNewSession,
-                            api             : Union[Type[APIData], APIData] = APITemplate.TelegramDesktop,
+                            api             : Union[Type[API], API] = APITemplate.TelegramDesktop,
                             password        : str = None,
                             *,
                             connection              : typing.Type[Connection] = ConnectionTcpFull,
@@ -841,7 +862,7 @@ class Account(BaseObject):
     async def ToTelethon(   self,
                             session         : Union[str, Session] = None,
                             flag            : Type[LoginFlag] = CreateNewSession,
-                            api             : Union[Type[APIData], APIData] = APITemplate.TelegramDesktop,
+                            api             : Union[Type[API], API] = APITemplate.TelegramDesktop,
                             password        : str = None,
                             *,
                             connection              : typing.Type[Connection] = ConnectionTcpFull,
@@ -874,7 +895,7 @@ class Account(BaseObject):
     @staticmethod
     async def FromTelethon( telethonClient : tl.TelegramClient,
                             flag            : Type[LoginFlag] = CreateNewSession,
-                            api             : Union[Type[APIData], APIData] = APITemplate.TelegramDesktop,
+                            api             : Union[Type[API], API] = APITemplate.TelegramDesktop,
                             password        : str = None,
                             owner           : td.TDesktop = None):
 
@@ -890,7 +911,7 @@ class Account(BaseObject):
         exception=TelethonUnauthorized("Telethon client is unauthorized, it need to be authorized first"))
         
         if flag == CreateNewSession:
-            copy = await telethonClient.QRLoginToNewClient(api=api, password=password)
+            copy = await telethonClient._QRLoginToNewClient(api=api, password=password)
         else:
             copy = telethonClient
 

@@ -252,7 +252,7 @@ class Storage(BaseObject):
 
                 file = QFile(basePath + fileName + chr)
                 if (not file.open(QIODevice.OpenModeFlag.ReadOnly)):
-                    tries_exception = FileNotFound(f"Could not open {fileName}")
+                    tries_exception = TFileNotFound(f"Could not open {fileName}")
                     continue
 
                 
@@ -301,7 +301,7 @@ class Storage(BaseObject):
             except IOError as e:
                 pass
         
-        raise tries_exception if tries_exception else FileNotFound("Could not open {fileName}")
+        raise tries_exception if tries_exception else TFileNotFound("Could not open {fileName}")
 
     @staticmethod
     def ReadEncryptedFile(fileName : str, basePath : str, authKey : td.AuthKey) -> FileReadDescriptor:

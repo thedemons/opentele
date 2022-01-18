@@ -21,7 +21,7 @@ from .shared import *
 #         return True
 
 # class TDesktop(TDesktop):
-#     async def ToNewTelethonSession(self, session_name : str, customAPI : APIData = None) -> TelegramClient:
+#     async def ToNewTelethonSession(self, session_name : str, customAPI : API = None) -> TelegramClient:
         
 #         resolve_file_name = session_name
 #         if resolve_file_name[-8:] != ".session": resolve_file_name += ".session"
@@ -32,7 +32,7 @@ from .shared import *
 #         if customAPI != None:
 #             newClient = TelegramClient(session_name, customAPI.api_id, customAPI.api_hash, device_model=customAPI.pid) # pass hook data pid through device_model
 #         else:
-#             defaultAPI =  APIDataTemplate.TelegramDesktop
+#             defaultAPI =  APITemplate.TelegramDesktop
 #             newClient = TelegramClient(session_name, defaultAPI.api_id, defaultAPI.api_hash, )
         
 #         oldClient = self.ToTelethon()
