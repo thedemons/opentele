@@ -36,9 +36,14 @@ class AuthKey(BaseObject):
     It's also used to encrypt and decrypt local tdata
 
     ### Attributes:
-        DcId (DcId): Data Center ID (from 1 to 5).
-        type (AuthKeyType): Type of the key.
-        key (bytes): The actual key, 256 `bytes` in length.
+        DcId (DcId):
+            Data Center ID (from 1 to 5).
+            
+        type (AuthKeyType):
+            Type of the key.
+
+        key (bytes):
+            The actual key, 256 `bytes` in length.
 
     """
 

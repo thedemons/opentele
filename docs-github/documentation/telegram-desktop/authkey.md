@@ -6,13 +6,13 @@
 
 
 ---
-## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">AuthKeyType</span></span><a href="https://github.com/thedemons/opentele/blob/a8fc73b823d300bc9d9bd5fdf0d0af5841c91711/src/td/auth.py#L11"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">AuthKeyType</span></span><a href="https://github.com/thedemons/opentele/blob/a51027bc68365c929518d1b8e203f444dbfba4fa/src/td/auth.py#L11"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class AuthKeyType(IntEnum)
 ```
 
-Type of <a class="codehl codehl_obj" href="authkey.md#authkey-objects"><b>AuthKey</b></a><br>
+Type of <a class="codehl codehl_obj" href="authkey.md#class-authkey"><b>AuthKey</b></a><br>
 <h3>Attributes:</h3>
 
 | Name | Type | Description |
@@ -28,7 +28,7 @@ Type of <a class="codehl codehl_obj" href="authkey.md#authkey-objects"><b>AuthKe
 
 
 ---
-## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">AuthKey</span></span><a href="https://github.com/thedemons/opentele/blob/a8fc73b823d300bc9d9bd5fdf0d0af5841c91711/src/td/auth.py#L33"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">AuthKey</span></span><a href="https://github.com/thedemons/opentele/blob/a51027bc68365c929518d1b8e203f444dbfba4fa/src/td/auth.py#L33"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class AuthKey(BaseObject)
@@ -40,8 +40,8 @@ It's also used to encrypt and decrypt local tdata<br>
 
 | Name | Type | Description |
 | :--- | :--: | :---------- |
-| <span class="highlight"><span class="nc">DcId</span></span> | <span class="highlight"><span class="nc">DcId</span></span><span class="highlight"><span class="p">)</span></span><span class="highlight"><span class="p">:</span></span><span class="highlight"><span class="nf">DataCenterID</span></span><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="n">from1to5</span></span> | . |
-| <span class="highlight"><span class="bp">type</span></span> | <a class="codehl codehl_obj" href="authkey.md#authkeytype-objects"><b>AuthKeyType</b></a> | Type of the key. |
+| <span class="highlight"><span class="nc">DcId</span></span> | <span class="highlight"><span class="nc">DcId</span></span> | Data Center ID (from 1 to 5). |
+| <span class="highlight"><span class="bp">type</span></span> | <a class="codehl codehl_obj" href="authkey.md#class-authkeytype"><b>AuthKeyType</b></a> | Type of the key. |
 | <span class="highlight"><span class="n">key</span></span> | <span class="highlight"><span class="bp">bytes</span></span> | The actual key, 256 <span class="highlight"><span class="bp">bytes</span></span> in length. |
 
 
