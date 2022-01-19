@@ -1,6 +1,13 @@
 <!-- vim: syntax=Markdown -->
 
 # opentele
+[![documentation](https://readthedocs.org/projects/opentele/badge/?version=latest&style=flat)](https://opentele.readthedocs.io/)
+[![pypi version](https://img.shields.io/pypi/v/opentele?color=brightgreen&logo=opentele)](https://pypi.org/project/opentele/)
+[![pypi format](https://img.shields.io/pypi/format/opentele?logo=opentele)](https://pypi.org/project/opentele/)
+[![pypi installs](https://img.shields.io/pypi/dm/opentele?color=brightgreen&label=installs&logo=opentele)](https://pypi.org/project/opentele/)
+[![license](https://img.shields.io/pypi/l/opentele?color=brightgreen)](https://en.wikipedia.org/wiki/MIT_License)
+[![issues](	https://img.shields.io/github/issues/thedemons/opentele)](https://en.wikipedia.org/wiki/MIT_License)
+
 A **python** library created to make life easier for **Telegram API Developers**.\
 [**Read the documentation**](https://opentele.readthedocs.io/en/latest/documentation/telegram-desktop/tdesktop/)
 
@@ -27,6 +34,7 @@ pip install --upgrade opentele
 from opentele.td import TDesktop
 from opentele.tl import TelegramClient
 from opentele.api import API, CreateNewSession, UseCurrentSession
+import asyncio
 
 async def main():
     
