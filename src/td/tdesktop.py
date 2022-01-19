@@ -17,7 +17,7 @@ class TDesktop(BaseObject):
     """
     Telegram Desktop client.
     
-    A client can have multiple account, up to 3 - according to official Telegram Desktop client.
+    A client can have multiple accounts, up to 3 - according to official Telegram Desktop client.
 
     ### Attributes:
         api (`API`):
@@ -60,7 +60,7 @@ class TDesktop(BaseObject):
             Save the client session to `tdata folder` - which can be used by `Telegram Desktop`.
 
         isLoaded():
-            Return `True` if the client has successfully loaded accounts from `tdata` or from `TelegramClient`.
+            Return `True` if the client has successfully loaded accounts from `tdata` or `TelegramClient`.
 
         ToTelethon():
             Convert this session to `TelegramClient`.
@@ -127,7 +127,7 @@ class TDesktop(BaseObject):
 
     def isLoaded(self) -> bool:
         """
-        Return `True` if the client has successfully loaded accounts from `tdata` or from `TelegramClient`
+        Return `True` if the client has successfully loaded accounts from `tdata` or `TelegramClient`
         """
         return self.__isLoaded
 
@@ -528,7 +528,7 @@ class TDesktop(BaseObject):
         return _self
          
     kMaxAccounts : int = int(3)
-    """Maximum amount of accounts a client can have"""
+    """The maximum amount of accounts a client can have"""
 
     kDefaultKeyFile = "data"
     """See `TDesktop.keyFile`"""
@@ -566,7 +566,7 @@ class TDesktop(BaseObject):
     @property
     def keyFile(self) -> str:
         """
-        Default value is `"data"`, this argument is rarely ever used.
+        The default value is `"data"`, this argument is rarely ever used.
         It is used by `Telegram Desktop` by running it with the `"-key"` argument.
         I don't know what's the use cases of it, maybe this was a legacy feature of `Telegram Desktop`.
         """

@@ -365,7 +365,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
                 The `session`'s hash to terminate
         
         ### Raises:
-            `FreshResetAuthorisationForbiddenError`: You can't logout other `sessions` if less than `24 hours` have passed since you logged on the `current session`.
+            `FreshResetAuthorisationForbiddenError`: You can't log out other `sessions` if less than `24 hours` have passed since you logged on to the `current session`.
             `HashInvalidError`: The provided hash is invalid.
         """
 
