@@ -79,7 +79,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
     def __init__(self : TelegramClient, session : Union[str, Session] = None, api : Union[Type[APIData], APIData] = API.TelegramDesktop):
         """Start TelegramClient with customized api.
 
-        Read more at [OpenTele GitHub](https://github.com/thedemons/opentele#authorization)
+        Read more at [opentele GitHub](https://github.com/thedemons/opentele#authorization)
         
         ### Arguments:
             session (`str` | `Session`):
@@ -146,7 +146,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
             api (`API`, default=None):
                 Use custom api_id and api_hash for better experience.\n
                 These arguments will be ignored if it is set in the API: `api_id`, `api_hash`, `device_model`, `system_version`, `app_version`, `lang_code`, `system_lang_code`
-                Read more at [OpenTele GitHub](https://github.com/thedemons/opentele#authorization)
+                Read more at [opentele GitHub](https://github.com/thedemons/opentele#authorization)
 
             api_id (`int` | `str`, default=0):
                 The API ID you obtained from https://my.telegram.org.
