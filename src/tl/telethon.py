@@ -492,7 +492,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
 
             # We can safely authorize the new client with a different API.
             newAPI = API.TelegramAndroid.Generate(unique_id="new.session")
-            newClient = client.QRLoginToNewClient(session="new.session", api=newAPI)
+            newClient = await client.QRLoginToNewClient(session="new.session", api=newAPI)
             await newClient.connect()
             await newClient.PrintSessions()
         ```
@@ -666,7 +666,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
             # We can safely CreateNewSession with a different API.
             # Be aware that you should not use UseCurrentSession with a different API than the one that first authorized it.
             newAPI = API.TelegramAndroid.Generate(unique_id="new_tdata")
-            tdesk = oldClient.ToTDesktop(flag=CreateNewSession, api=newAPI)
+            tdesk = await oldClient.ToTDesktop(flag=CreateNewSession, api=newAPI)
 
             # Save the new session to a folder named "new_tdata"
             tdesk.SaveTData("new_tdata")
@@ -713,7 +713,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
 
             # We can safely authorize the new client with a different API.
             newAPI = API.TelegramAndroid.Generate(unique_id="new.session")
-            client = TelegramClient.FromTDesktop(tdesk, session="new.session", flag=CreateNewSession, api=newAPI)
+            client = await TelegramClient.FromTDesktop(tdesk, session="new.session", flag=CreateNewSession, api=newAPI)
             await client.connect()
             await client.PrintSessions()
         ```

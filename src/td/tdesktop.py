@@ -163,7 +163,7 @@ class TDesktop(BaseObject):
             # We can safely use CreateNewSession with a different API.
             # Be aware that you should not use UseCurrentSession with a different API than the one that first authorized it.
             newAPI = API.TelegramAndroid.Generate("new_tdata")
-            tdesk = TDesktop.FromTelethon(oldclient, flag=CreateNewSession, api=newAPI)
+            tdesk = await TDesktop.FromTelethon(oldclient, flag=CreateNewSession, api=newAPI)
 
             # Save the new session to a folder named "new_tdata"
             tdesk.SaveTData("new_tdata")
@@ -222,7 +222,7 @@ class TDesktop(BaseObject):
             # We can safely CreateNewSession with a different API.
             # Be aware that you should not use UseCurrentSession with a different API than the one that first authorized it.
             newAPI = API.TelegramAndroid.Generate("new_tdata")
-            tdesk = TDesktop.FromTelethon(oldclient, flag=CreateNewSession, api=newAPI)
+            tdesk = await TDesktop.FromTelethon(oldclient, flag=CreateNewSession, api=newAPI)
 
             # Save the new session to a folder named "new_tdata"
             tdesk.SaveTData("new_tdata")
@@ -415,7 +415,7 @@ class TDesktop(BaseObject):
 
             # We can safely authorize the new client with a different API.
             newAPI = API.TelegramAndroid.Generate(unique_id="new.session")
-            client = tdesk.ToTelethon(session="new.session", flag=CreateNewSession, api=newAPI)
+            client = await tdesk.ToTelethon(session="new.session", flag=CreateNewSession, api=newAPI)
             await client.connect()
             await client.PrintSessions()
         ```
@@ -511,7 +511,7 @@ class TDesktop(BaseObject):
             # We can safely CreateNewSession with a different API.
             # Be aware that you should not use UseCurrentSession with a different API than the one that first authorized it.
             newAPI = API.TelegramAndroid.Generate("new_tdata")
-            tdesk = TDesktop.FromTelethon(oldclient, flag=CreateNewSession, api=newAPI)
+            tdesk = await TDesktop.FromTelethon(oldclient, flag=CreateNewSession, api=newAPI)
 
             # Save the new session to a folder named "new_tdata"
             tdesk.SaveTData("new_tdata")
