@@ -6,7 +6,7 @@
 
 
 ---
-## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDesktop</span></span><a href="https://github.com/thedemons/opentele/blob/b4ba9f663fbd9836c05bc41c7b5ae0b716607cf3/src/td/tdesktop.py#L16"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDesktop</span></span><a class="source-link" href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/tdesktop.py#L16" title="Source"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0V3zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5z"></path><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45z"></path></svg></span></a>
 
 ```python
 class TDesktop(BaseObject)
@@ -18,30 +18,30 @@ A client can have multiple account, up to 3 - according to official Telegram Des
 
 | Name | Type | Description |
 | :--- | :--: | :---------- |
-| <a class="codehl codehl_name" href="tdesktop.md#tdesktopapi"><b>api</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/api.md#api-objects"><b>API</b></a> | The API this client is using. |
-| <a class="codehl codehl_name" href="tdesktop.md#tdesktopaccountscount"><b>accountsCount</b></a> | <span class="highlight"><span class="bp">int</span></span> | The numbers of accounts in this client. |
-| <a class="codehl codehl_name" href="tdesktop.md#tdesktopaccounts"><b>accounts</b></a> | <span class="highlight"><span class="nc">List</span></span>[<a class="codehl codehl_obj" href="../telegram-desktop/account.md#account-objects"><b>Account</b></a>] | List of accounts in this client. |
-| <a class="codehl codehl_name" href="tdesktop.md#tdesktopmainaccount"><b>mainAccount</b></a> | <a class="codehl codehl_obj" href="../telegram-desktop/account.md#account-objects"><b>Account</b></a> | The main account of this client. |
-| <a class="codehl codehl_name" href="tdesktop.md#tdesktopbasepath"><b>basePath</b></a> | <span class="highlight"><span class="bp">str</span></span> | The path to <span class="highlight"><span class="n">tdata</span></span> <span class="highlight"><span class="n">folder</span></span>. |
-| <a class="codehl codehl_name" href="tdesktop.md#tdesktoppasscode"><b>passcode</b></a> | <span class="highlight"><span class="bp">str</span></span> | Passcode of the client, the same as Local Passcode on <span class="highlight"><span class="n">Telegram</span></span> <span class="highlight"><span class="n">Desktop</span></span>.<br/>Use to encrypt and decrypt <span class="highlight"><span class="n">tdata</span></span> <span class="highlight"><span class="n">files</span></span>. |
-| <a class="codehl codehl_name" href="tdesktop.md#tdesktopappversion"><b>AppVersion</b></a> | <span class="highlight"><span class="bp">int</span></span> | App version of the client. |
-| <a class="codehl codehl_name" href="tdesktop.md#tdesktopkmaxaccounts"><b>kMaxAccounts</b></a> | <span class="highlight"><span class="bp">int</span></span> | See <a class="codehl codehl_name" href="tdesktop.md#tdesktopkmaxaccounts"><b>kMaxAccounts</b></a>. |
-| <a class="codehl codehl_name" href="tdesktop.md#tdesktopkeyfile"><b>keyFile</b></a> | <span class="highlight"><span class="bp">str</span></span> | See <a class="codehl codehl_name" href="tdesktop.md#tdesktopkeyfile"><b>keyFile</b></a>. |
-| <a class="codehl codehl_name" href="tdesktop.md#tdesktopkdefaultkeyfile"><b>kDefaultKeyFile</b></a> | <span class="highlight"><span class="bp">str</span></span> | Default value for <a class="codehl codehl_name" href="tdesktop.md#tdesktopkeyfile"><b>keyFile</b></a>. |
+| <a class="codehl codehl_name" href="#td.tdesktop.TDesktop.api"><b>api</b></a> | <a class="codehl codehl_obj" href="../../authorization/api#api.API"><b>API</b></a> | The API this client is using. |
+| <a class="codehl codehl_name" href="#td.tdesktop.TDesktop.accountsCount"><b>accountsCount</b></a> | <span class="highlight"><span class="bp">int</span></span> | The numbers of accounts in this client. |
+| <a class="codehl codehl_name" href="#td.tdesktop.TDesktop.accounts"><b>accounts</b></a> | <span class="highlight"><span class="nc">List</span></span>[<a class="codehl codehl_obj" href="../account#td.account.Account"><b>Account</b></a>] | List of accounts in this client. |
+| <a class="codehl codehl_name" href="#td.tdesktop.TDesktop.mainAccount"><b>mainAccount</b></a> | <a class="codehl codehl_obj" href="../account#td.account.Account"><b>Account</b></a> | The main account of this client. |
+| <a class="codehl codehl_name" href="#td.tdesktop.TDesktop.basePath"><b>basePath</b></a> | <span class="highlight"><span class="bp">str</span></span> | The path to <span class="highlight"><span class="n">tdata</span></span> <span class="highlight"><span class="n">folder</span></span>. |
+| <a class="codehl codehl_name" href="#td.tdesktop.TDesktop.passcode"><b>passcode</b></a> | <span class="highlight"><span class="bp">str</span></span> | Passcode of the client, the same as Local Passcode on <span class="highlight"><span class="n">Telegram</span></span> <span class="highlight"><span class="n">Desktop</span></span>.<br/>Use to encrypt and decrypt <span class="highlight"><span class="n">tdata</span></span> <span class="highlight"><span class="n">files</span></span>. |
+| <a class="codehl codehl_name" href="#td.tdesktop.TDesktop.AppVersion"><b>AppVersion</b></a> | <span class="highlight"><span class="bp">int</span></span> | App version of the client. |
+| <a class="codehl codehl_name" href="#td.tdesktop.TDesktop.kMaxAccounts"><b>kMaxAccounts</b></a> | <span class="highlight"><span class="bp">int</span></span> | See <a class="codehl codehl_name" href="#td.tdesktop.TDesktop.kMaxAccounts"><b>kMaxAccounts</b></a>. |
+| <a class="codehl codehl_name" href="#td.tdesktop.TDesktop.keyFile"><b>keyFile</b></a> | <span class="highlight"><span class="bp">str</span></span> | See <a class="codehl codehl_name" href="#td.tdesktop.TDesktop.keyFile"><b>keyFile</b></a>. |
+| <a class="codehl codehl_name" href="#td.tdesktop.TDesktop.kDefaultKeyFile"><b>kDefaultKeyFile</b></a> | <span class="highlight"><span class="bp">str</span></span> | Default value for <a class="codehl codehl_name" href="#td.tdesktop.TDesktop.keyFile"><b>keyFile</b></a>. |
 
 <h3>Methods:</h3>
 
-- <a class="codehl codehl_function" href="tdesktop.md#tdesktoploadtdata"><b>LoadTData</b></a><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span><span class="highlight"><span class="p">:</span></span>\
+- <a class="codehl codehl_function" href="#td.tdesktop.TDesktop.LoadTData"><b>LoadTData</b></a><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span><span class="highlight"><span class="p">:</span></span>\
 Load the client from <span class="highlight"><span class="n">tdata</span></span> <span class="highlight"><span class="n">folder</span></span>. <br>
-Use this if you didn't set the <a class="codehl codehl_name" href="tdesktop.md#tdesktopbasepath"><b>basePath</b></a> when initializing the client.
-- <a class="codehl codehl_function" href="tdesktop.md#tdesktopsavetdata"><b>SaveTData</b></a><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span><span class="highlight"><span class="p">:</span></span>\
+Use this if you didn't set the <a class="codehl codehl_name" href="#td.tdesktop.TDesktop.basePath"><b>basePath</b></a> when initializing the client.
+- <a class="codehl codehl_function" href="#td.tdesktop.TDesktop.SaveTData"><b>SaveTData</b></a><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span><span class="highlight"><span class="p">:</span></span>\
 Save the client session to <span class="highlight"><span class="n">tdata</span></span> <span class="highlight"><span class="n">folder</span></span> - which can be used by <span class="highlight"><span class="n">Telegram</span></span> <span class="highlight"><span class="n">Desktop</span></span>.
-- <a class="codehl codehl_function" href="tdesktop.md#tdesktopisloaded"><b>isLoaded</b></a><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span><span class="highlight"><span class="p">:</span></span>\
-Return <span class="highlight"><span class="kc">True</span></span> if the client has successfully loaded accounts from <span class="highlight"><span class="n">tdata</span></span> or from <a class="codehl codehl_obj" href="../../documentation/telethon/telegramclient.md#telegramclient-objects"><b>TelegramClient</b></a>.
-- <a class="codehl codehl_function" href="tdesktop.md#tdesktoptotelethon"><b>ToTelethon</b></a><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span><span class="highlight"><span class="p">:</span></span>\
-Convert this session to <a class="codehl codehl_obj" href="../../documentation/telethon/telegramclient.md#telegramclient-objects"><b>TelegramClient</b></a>.
-- <a class="codehl codehl_function" href="tdesktop.md#tdesktopfromtelethon"><b>FromTelethon</b></a><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span><span class="highlight"><span class="p">:</span></span>\
-Create a new session from <a class="codehl codehl_obj" href="../../documentation/telethon/telegramclient.md#telegramclient-objects"><b>TelegramClient</b></a>.
+- <a class="codehl codehl_function" href="#td.tdesktop.TDesktop.isLoaded"><b>isLoaded</b></a><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span><span class="highlight"><span class="p">:</span></span>\
+Return <span class="highlight"><span class="kc">True</span></span> if the client has successfully loaded accounts from <span class="highlight"><span class="n">tdata</span></span> or from <a class="codehl codehl_obj" href="../../telethon/telegramclient#tl.telethon.TelegramClient"><b>TelegramClient</b></a>.
+- <a class="codehl codehl_function" href="#td.tdesktop.TDesktop.ToTelethon"><b>ToTelethon</b></a><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span><span class="highlight"><span class="p">:</span></span>\
+Convert this session to <a class="codehl codehl_obj" href="../../telethon/telegramclient#tl.telethon.TelegramClient"><b>TelegramClient</b></a>.
+- <a class="codehl codehl_function" href="#td.tdesktop.TDesktop.FromTelethon"><b>FromTelethon</b></a><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span><span class="highlight"><span class="p">:</span></span>\
+Create a new session from <a class="codehl codehl_obj" href="../../telethon/telegramclient#tl.telethon.TelegramClient"><b>TelegramClient</b></a>.
 
 
 
@@ -49,21 +49,21 @@ Create a new session from <a class="codehl codehl_obj" href="../../documentation
 
 
 ---
-### <span class="highlight"><span class="nc">TDesktop</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/b4ba9f663fbd9836c05bc41c7b5ae0b716607cf3/src/td/tdesktop.py#L89"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="nc">TDesktop</span></span><span class="highlight"><span class="o">()</span></span><a class="source-link" href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/tdesktop.py#L89" title="Source"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0V3zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5z"></path><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45z"></path></svg></span></a>
 
 ```python
 def __init__(basePath: str = None, api: Union[Type[APIData], APIData] = API.TelegramDesktop, passcode: str = None, keyFile: str = None) -> None
 ```
 
-Initialize a <a class="codehl codehl_obj" href="tdesktop.md#tdesktop-objects"><b>TDesktop</b></a> client<br>
+Initialize a <a class="codehl codehl_obj" href="#td.tdesktop.TDesktop"><b>TDesktop</b></a> client<br>
 <h3>Arguments:</h3>
 
 | Name | Type | Default | Description |
 | :--- | :--: | :-----: | :---------- |
-| <a class="codehl codehl_name" href="tdesktop.md#tdesktopbasepath"><b>basePath</b></a> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="kc">None</span></span> | The path to the <span class="highlight"><span class="n">tdata</span></span> <span class="highlight"><span class="n">folder</span></span>.<br/>If the path doesn't exists or its data is corrupted, a new instance will be created. |
-| <a class="codehl codehl_name" href="tdesktop.md#tdesktopapi"><b>api</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/api.md#api-objects"><b>API</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/api.md#telegramdesktop-objects"><b>TelegramDesktop</b></a> | Which API to use. Read more <a class="codehl codehl_obj" href="../../documentation/authorization/api.md#api-objects"><b>here</b></a>. |
-| <a class="codehl codehl_name" href="tdesktop.md#tdesktoppasscode"><b>passcode</b></a> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="kc">None</span></span> | The passcode for tdata, same as the Local Passcode on <span class="highlight"><span class="n">Telegram</span></span> <span class="highlight"><span class="n">Desktop</span></span>. |
-| <a class="codehl codehl_name" href="tdesktop.md#tdesktopkeyfile"><b>keyFile</b></a> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="s2">"</span></span><span class="highlight"><span class="s2">data</span></span><span class="highlight"><span class="s2">"</span></span> | See <a class="codehl codehl_name" href="tdesktop.md#tdesktopkeyfile"><b>keyFile</b></a>. |
+| <a class="codehl codehl_name" href="#td.tdesktop.TDesktop.basePath"><b>basePath</b></a> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="kc">None</span></span> | The path to the <span class="highlight"><span class="n">tdata</span></span> <span class="highlight"><span class="n">folder</span></span>.<br/>If the path doesn't exists or its data is corrupted, a new instance will be created. |
+| <a class="codehl codehl_name" href="#td.tdesktop.TDesktop.api"><b>api</b></a> | <a class="codehl codehl_obj" href="../../authorization/api#api.API"><b>API</b></a> | <a class="codehl codehl_obj" href="../../authorization/api#api.API.TelegramDesktop"><b>TelegramDesktop</b></a> | Which API to use. Read more <a class="codehl codehl_obj" href="../../authorization/api#api.API"><b>here</b></a>. |
+| <a class="codehl codehl_name" href="#td.tdesktop.TDesktop.passcode"><b>passcode</b></a> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="kc">None</span></span> | The passcode for tdata, same as the Local Passcode on <span class="highlight"><span class="n">Telegram</span></span> <span class="highlight"><span class="n">Desktop</span></span>. |
+| <a class="codehl codehl_name" href="#td.tdesktop.TDesktop.keyFile"><b>keyFile</b></a> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="s2">"</span></span><span class="highlight"><span class="s2">data</span></span><span class="highlight"><span class="s2">"</span></span> | See <a class="codehl codehl_name" href="#td.tdesktop.TDesktop.keyFile"><b>keyFile</b></a>. |
 
 
 
@@ -71,20 +71,20 @@ Initialize a <a class="codehl codehl_obj" href="tdesktop.md#tdesktop-objects"><b
 
 
 ---
-### <span class="highlight"><span class="nf">isLoaded</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/b4ba9f663fbd9836c05bc41c7b5ae0b716607cf3/src/td/tdesktop.py#L128"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="nf">isLoaded</span></span><span class="highlight"><span class="o">()</span></span><a class="source-link" href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/tdesktop.py#L128" title="Source"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0V3zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5z"></path><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45z"></path></svg></span></a>
 
 ```python
 def isLoaded() -> bool
 ```
 
-Return <span class="highlight"><span class="kc">True</span></span> if the client has successfully loaded accounts from <span class="highlight"><span class="n">tdata</span></span> or from <a class="codehl codehl_obj" href="../../documentation/telethon/telegramclient.md#telegramclient-objects"><b>TelegramClient</b></a><br>
+Return <span class="highlight"><span class="kc">True</span></span> if the client has successfully loaded accounts from <span class="highlight"><span class="n">tdata</span></span> or from <a class="codehl codehl_obj" href="../../telethon/telegramclient#tl.telethon.TelegramClient"><b>TelegramClient</b></a><br>
 
 
 <a id="td.tdesktop.TDesktop.LoadTData"></a>
 
 
 ---
-### <span class="highlight"><span class="nf">LoadTData</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/b4ba9f663fbd9836c05bc41c7b5ae0b716607cf3/src/td/tdesktop.py#L134"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="nf">LoadTData</span></span><span class="highlight"><span class="o">()</span></span><a class="source-link" href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/tdesktop.py#L134" title="Source"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0V3zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5z"></path><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45z"></path></svg></span></a>
 
 ```python
 def LoadTData(basePath: str = None, passcode: str = None, keyFile: str = None)
@@ -95,18 +95,17 @@ Loads accounts from <span class="highlight"><span class="n">tdata</span></span> 
 
 | Name | Type | Default | Description |
 | :--- | :--: | :-----: | :---------- |
-| <a class="codehl codehl_name" href="tdesktop.md#tdesktopbasepath"><b>basePath</b></a> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="kc">None</span></span> | The path to the folder. |
-| <a class="codehl codehl_name" href="tdesktop.md#tdesktoppasscode"><b>passcode</b></a> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="kc">None</span></span> | Read more <a class="codehl codehl_name" href="tdesktop.md#tdesktoppasscode"><b>here</b></a>. |
-| <a class="codehl codehl_name" href="tdesktop.md#tdesktopkeyfile"><b>keyFile</b></a> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="kc">None</span></span> | Read more <a class="codehl codehl_name" href="tdesktop.md#tdesktopkeyfile"><b>here</b></a>. |
+| <a class="codehl codehl_name" href="#td.tdesktop.TDesktop.basePath"><b>basePath</b></a> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="kc">None</span></span> | The path to the folder. |
+| <a class="codehl codehl_name" href="#td.tdesktop.TDesktop.passcode"><b>passcode</b></a> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="kc">None</span></span> | Read more <a class="codehl codehl_name" href="#td.tdesktop.TDesktop.passcode"><b>here</b></a>. |
+| <a class="codehl codehl_name" href="#td.tdesktop.TDesktop.keyFile"><b>keyFile</b></a> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="kc">None</span></span> | Read more <a class="codehl codehl_name" href="#td.tdesktop.TDesktop.keyFile"><b>here</b></a>. |
 
 <h3>Raises:</h3>
 
-<a class="codehl codehl_obj" href="../../documentation/exceptions.md#tdatabaddecryptkey-objects"><b>TDataBadDecryptKey</b></a>: The <span class="highlight"><span class="n">tdata</span></span> <span class="highlight"><span class="n">folder</span></span> is password-encrypted, please the set the argument <a class="codehl codehl_name" href="tdesktop.md#tdesktoppasscode"><b>passcode</b></a> to decrypt it.
+<a class="codehl codehl_obj" href="../../exceptions#exception.TDataBadDecryptKey"><b>TDataBadDecryptKey</b></a>: The <span class="highlight"><span class="n">tdata</span></span> <span class="highlight"><span class="n">folder</span></span> is password-encrypted, please the set the argument <a class="codehl codehl_name" href="#td.tdesktop.TDesktop.passcode"><b>passcode</b></a> to decrypt it.
 
-
-| :warning: This function is not recommended to use |
-| :--- |
-|     You should load tdata using <a class="codehl codehl_obj" href="tdesktop.md#tdesktop-objects"><b>TDesktop</b></a><span class="highlight"><span class="o">(</span></span><a class="codehl codehl_name" href="tdesktop.md#tdesktopbasepath"><b>basePath</b></a><span class="highlight"><span class="o">=</span></span><span class="highlight"><span class="s2">"</span></span><span class="highlight"><span class="s2">path</span></span><span class="highlight"><span class="s2">"</span></span><span class="highlight"><span class="p">)</span></span>.<br/>    Don't manually load tdata using this function, bugs might pop up out of nowhere. |
+???+ warning "This function is not recommended to use"
+    You should load tdata using <a class="codehl codehl_obj" href="#td.tdesktop.TDesktop"><b>TDesktop</b></a><span class="highlight"><span class="o">(</span></span><a class="codehl codehl_name" href="#td.tdesktop.TDesktop.basePath"><b>basePath</b></a><span class="highlight"><span class="o">=</span></span><span class="highlight"><span class="s2">"</span></span><span class="highlight"><span class="s2">path</span></span><span class="highlight"><span class="s2">"</span></span><span class="highlight"><span class="p">)</span></span>.<br/>
+    Don't manually load tdata using this function, bugs might pop up out of nowhere.
 
 <h3>Examples:</h3>
 
@@ -130,7 +129,7 @@ tdesk.SaveTData("new_tdata")
 
 
 ---
-### <span class="highlight"><span class="nf">SaveTData</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/b4ba9f663fbd9836c05bc41c7b5ae0b716607cf3/src/td/tdesktop.py#L199"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="nf">SaveTData</span></span><span class="highlight"><span class="o">()</span></span><a class="source-link" href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/tdesktop.py#L199" title="Source"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0V3zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5z"></path><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45z"></path></svg></span></a>
 
 ```python
 def SaveTData(basePath: str = None, passcode: str = None, keyFile: str = None) -> bool
@@ -141,9 +140,9 @@ Save the client session to a folder.<br>
 
 | Name | Type | Default | Description |
 | :--- | :--: | :-----: | :---------- |
-| <a class="codehl codehl_name" href="tdesktop.md#tdesktopbasepath"><b>basePath</b></a> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="kc">None</span></span> | Path to the folder<br/>If None then the data will be saved at the basePath given at creation. |
-| <a class="codehl codehl_name" href="tdesktop.md#tdesktoppasscode"><b>passcode</b></a> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="kc">None</span></span> | Read more <a class="codehl codehl_name" href="tdesktop.md#tdesktoppasscode"><b>here</b></a>. |
-| <a class="codehl codehl_name" href="tdesktop.md#tdesktopkeyfile"><b>keyFile</b></a> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="kc">None</span></span> | Read more <a class="codehl codehl_name" href="tdesktop.md#tdesktopkeyfile"><b>here</b></a>. |
+| <a class="codehl codehl_name" href="#td.tdesktop.TDesktop.basePath"><b>basePath</b></a> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="kc">None</span></span> | Path to the folder<br/>If None then the data will be saved at the basePath given at creation. |
+| <a class="codehl codehl_name" href="#td.tdesktop.TDesktop.passcode"><b>passcode</b></a> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="kc">None</span></span> | Read more <a class="codehl codehl_name" href="#td.tdesktop.TDesktop.passcode"><b>here</b></a>. |
+| <a class="codehl codehl_name" href="#td.tdesktop.TDesktop.keyFile"><b>keyFile</b></a> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="kc">None</span></span> | Read more <a class="codehl codehl_name" href="#td.tdesktop.TDesktop.keyFile"><b>here</b></a>. |
 
 <h3>Examples:</h3>
 
@@ -169,7 +168,7 @@ tdesk.SaveTData("new_tdata")
 
 
 ---
-### <span class="highlight"><span class="nf">ToTelethon</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/b4ba9f663fbd9836c05bc41c7b5ae0b716607cf3/src/td/tdesktop.py#L385"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="nf">ToTelethon</span></span><span class="highlight"><span class="o">()</span></span><a class="source-link" href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/tdesktop.py#L385" title="Source"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0V3zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5z"></path><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45z"></path></svg></span></a>
 
 ```python
 @typing.overload
@@ -181,14 +180,14 @@ async def ToTelethon(session: Union[str, Session] = None, flag: Type[LoginFlag] 
 | Name | Type | Default | Description |
 | :--- | :--: | :-----: | :---------- |
 | <span class="highlight"><span class="n">session</span></span> | <span class="highlight"><span class="bp">str</span></span>, <span class="highlight"><span class="nc">Session</span></span> | <span class="highlight"><span class="kc">None</span></span> | The file name of the <span class="highlight"><span class="n">session</span></span> <span class="highlight"><span class="n">file</span></span> to be used, if <span class="highlight"><span class="kc">None</span></span> then the session will not be saved.<br/>Read more [here](https://docs.telethon.dev/en/latest/concepts/sessions.html?highlight=session#what-are-sessions). |
-| <span class="highlight"><span class="n">flag</span></span> | <a class="codehl codehl_obj" href="../../documentation/authorization/loginflag.md#loginflag-objects"><b>LoginFlag</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/loginflag.md#createnewsession-objects"><b>CreateNewSession</b></a> | The login flag. Read more <a class="codehl codehl_obj" href="../../documentation/authorization/loginflag.md#loginflag-objects"><b>here</b></a>. |
-| <a class="codehl codehl_name" href="tdesktop.md#tdesktopapi"><b>api</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/api.md#apidata-objects"><b>APIData</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/api.md#telegramdesktop-objects"><b>TelegramDesktop</b></a> | Which API to use. Read more <a class="codehl codehl_obj" href="../../documentation/authorization/api.md#api-objects"><b>here</b></a>. |
+| <span class="highlight"><span class="n">flag</span></span> | <a class="codehl codehl_obj" href="../../authorization/loginflag#api.LoginFlag"><b>LoginFlag</b></a> | <a class="codehl codehl_obj" href="../../authorization/loginflag#api.CreateNewSession"><b>CreateNewSession</b></a> | The login flag. Read more <a class="codehl codehl_obj" href="../../authorization/loginflag#api.LoginFlag"><b>here</b></a>. |
+| <a class="codehl codehl_name" href="#td.tdesktop.TDesktop.api"><b>api</b></a> | <a class="codehl codehl_obj" href="../../authorization/api#api.APIData"><b>APIData</b></a> | <a class="codehl codehl_obj" href="../../authorization/api#api.API.TelegramDesktop"><b>TelegramDesktop</b></a> | Which API to use. Read more <a class="codehl codehl_obj" href="../../authorization/api#api.API"><b>here</b></a>. |
 | <span class="highlight"><span class="n">password</span></span> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="kc">None</span></span> | Two-step verification password if needed. |
 
 <h3>Returns:</h3>
 
 
-- Return an instance of <a class="codehl codehl_obj" href="../../documentation/telethon/telegramclient.md#telegramclient-objects"><b>TelegramClient</b></a> on success
+- Return an instance of <a class="codehl codehl_obj" href="../../telethon/telegramclient#tl.telethon.TelegramClient"><b>TelegramClient</b></a> on success
 
 <h3>Examples:</h3>
 
@@ -211,21 +210,21 @@ await client.PrintSessions()
 
 
 ---
-### <span class="highlight"><span class="nf">FromTelethon</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/b4ba9f663fbd9836c05bc41c7b5ae0b716607cf3/src/td/tdesktop.py#L483"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="nf">FromTelethon</span></span><span class="highlight"><span class="o">()</span></span><a class="source-link" href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/tdesktop.py#L483" title="Source"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0V3zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5z"></path><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45z"></path></svg></span></a>
 
 ```python
 @staticmethod
 async def FromTelethon(telethonClient: tl.TelegramClient, flag: Type[LoginFlag] = CreateNewSession, api: Union[Type[APIData], APIData] = API.TelegramDesktop, password: str = None) -> TDesktop
 ```
 
-Create an instance of <a class="codehl codehl_obj" href="tdesktop.md#tdesktop-objects"><b>TDesktop</b></a> from <a class="codehl codehl_obj" href="../../documentation/telethon/telegramclient.md#telegramclient-objects"><b>TelegramClient</b></a>.<br>
+Create an instance of <a class="codehl codehl_obj" href="#td.tdesktop.TDesktop"><b>TDesktop</b></a> from <a class="codehl codehl_obj" href="../../telethon/telegramclient#tl.telethon.TelegramClient"><b>TelegramClient</b></a>.<br>
 <h3>Arguments:</h3>
 
 | Name | Type | Default | Description |
 | :--- | :--: | :-----: | :---------- |
-| <span class="highlight"><span class="n">telethonClient</span></span> | <a class="codehl codehl_obj" href="../../documentation/telethon/telegramclient.md#telegramclient-objects"><b>TelegramClient</b></a> |  | The <a class="codehl codehl_obj" href="../../documentation/telethon/telegramclient.md#telegramclient-objects"><b>TelegramClient</b></a> you want to convert from. |
-| <span class="highlight"><span class="n">flag</span></span> | <a class="codehl codehl_obj" href="../../documentation/authorization/loginflag.md#loginflag-objects"><b>LoginFlag</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/loginflag.md#createnewsession-objects"><b>CreateNewSession</b></a> | The login flag. Read more <a class="codehl codehl_obj" href="../../documentation/authorization/loginflag.md#loginflag-objects"><b>here</b></a>. |
-| <a class="codehl codehl_name" href="tdesktop.md#tdesktopapi"><b>api</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/api.md#apidata-objects"><b>APIData</b></a> | <a class="codehl codehl_obj" href="../../documentation/authorization/api.md#api-objects"><b>API</b></a><span class="highlight"><span class="o">.</span></span><a class="codehl codehl_obj" href="../../documentation/authorization/api.md#telegramdesktop-objects"><b>TelegramDesktop</b></a> | Which API to use. Read more <a class="codehl codehl_obj" href="../../documentation/authorization/api.md#api-objects"><b>here</b></a>. |
+| <span class="highlight"><span class="n">telethonClient</span></span> | <a class="codehl codehl_obj" href="../../telethon/telegramclient#tl.telethon.TelegramClient"><b>TelegramClient</b></a> |  | The <a class="codehl codehl_obj" href="../../telethon/telegramclient#tl.telethon.TelegramClient"><b>TelegramClient</b></a> you want to convert from. |
+| <span class="highlight"><span class="n">flag</span></span> | <a class="codehl codehl_obj" href="../../authorization/loginflag#api.LoginFlag"><b>LoginFlag</b></a> | <a class="codehl codehl_obj" href="../../authorization/loginflag#api.CreateNewSession"><b>CreateNewSession</b></a> | The login flag. Read more <a class="codehl codehl_obj" href="../../authorization/loginflag#api.LoginFlag"><b>here</b></a>. |
+| <a class="codehl codehl_name" href="#td.tdesktop.TDesktop.api"><b>api</b></a> | <a class="codehl codehl_obj" href="../../authorization/api#api.APIData"><b>APIData</b></a> | <a class="codehl codehl_obj" href="../../authorization/api#api.API"><b>API</b></a><span class="highlight"><span class="o">.</span></span><a class="codehl codehl_obj" href="../../authorization/api#api.API.TelegramDesktop"><b>TelegramDesktop</b></a> | Which API to use. Read more <a class="codehl codehl_obj" href="../../authorization/api#api.API"><b>here</b></a>. |
 | <span class="highlight"><span class="n">password</span></span> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="kc">None</span></span> | Two-step verification password if needed. |
 
 <h3>Examples:</h3>
@@ -252,7 +251,7 @@ tdesk.SaveTData("new_tdata")
 
 
 ---
-### <span class="highlight"><span class="n">kMaxAccounts</span></span><a href="https://github.com/thedemons/opentele/blob/b4ba9f663fbd9836c05bc41c7b5ae0b716607cf3/src/td/tdesktop.py#L530"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="n">kMaxAccounts</span></span><a class="source-link" href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/tdesktop.py#L530" title="Source"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0V3zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5z"></path><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45z"></path></svg></span></a>
 
 Maximum amount of accounts a client can have<br>
 
@@ -261,16 +260,16 @@ Maximum amount of accounts a client can have<br>
 
 
 ---
-### <span class="highlight"><span class="n">kDefaultKeyFile</span></span><a href="https://github.com/thedemons/opentele/blob/b4ba9f663fbd9836c05bc41c7b5ae0b716607cf3/src/td/tdesktop.py#L533"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="n">kDefaultKeyFile</span></span><a class="source-link" href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/tdesktop.py#L533" title="Source"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0V3zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5z"></path><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45z"></path></svg></span></a>
 
-See <a class="codehl codehl_obj" href="tdesktop.md#tdesktop-objects"><b>TDesktop</b></a><span class="highlight"><span class="o">.</span></span><a class="codehl codehl_name" href="tdesktop.md#tdesktopkeyfile"><b>keyFile</b></a><br>
+See <a class="codehl codehl_obj" href="#td.tdesktop.TDesktop"><b>TDesktop</b></a><span class="highlight"><span class="o">.</span></span><a class="codehl codehl_name" href="#td.tdesktop.TDesktop.keyFile"><b>keyFile</b></a><br>
 
 
 <a id="td.tdesktop.TDesktop.api"></a>
 
 
 ---
-### <span class="highlight"><span class="n">api</span></span><a href="https://github.com/thedemons/opentele/blob/b4ba9f663fbd9836c05bc41c7b5ae0b716607cf3/src/td/tdesktop.py#L537"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="n">api</span></span><a class="source-link" href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/tdesktop.py#L537" title="Source"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0V3zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5z"></path><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45z"></path></svg></span></a>
 
 ```python
 @property
@@ -284,14 +283,14 @@ The API this client is using.<br>
 
 
 ---
-### <span class="highlight"><span class="n">basePath</span></span><a href="https://github.com/thedemons/opentele/blob/b4ba9f663fbd9836c05bc41c7b5ae0b716607cf3/src/td/tdesktop.py#L550"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="n">basePath</span></span><a class="source-link" href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/tdesktop.py#L550" title="Source"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0V3zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5z"></path><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45z"></path></svg></span></a>
 
 ```python
 @property
 def basePath() -> Optional[str]
 ```
 
-Base folder of <a class="codehl codehl_obj" href="tdesktop.md#tdesktop-objects"><b>TDesktop</b></a>, this is where data stored<br>
+Base folder of <a class="codehl codehl_obj" href="#td.tdesktop.TDesktop"><b>TDesktop</b></a>, this is where data stored<br>
 Same as tdata folder of <span class="highlight"><span class="n">Telegram</span></span> <span class="highlight"><span class="n">Desktop</span></span><br>
 
 
@@ -299,7 +298,7 @@ Same as tdata folder of <span class="highlight"><span class="n">Telegram</span><
 
 
 ---
-### <span class="highlight"><span class="n">passcode</span></span><a href="https://github.com/thedemons/opentele/blob/b4ba9f663fbd9836c05bc41c7b5ae0b716607cf3/src/td/tdesktop.py#L558"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="n">passcode</span></span><a class="source-link" href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/tdesktop.py#L558" title="Source"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0V3zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5z"></path><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45z"></path></svg></span></a>
 
 ```python
 @property
@@ -315,7 +314,7 @@ Same as the Local Passcode of <span class="highlight"><span class="n">Telegram</
 
 
 ---
-### <span class="highlight"><span class="n">keyFile</span></span><a href="https://github.com/thedemons/opentele/blob/b4ba9f663fbd9836c05bc41c7b5ae0b716607cf3/src/td/tdesktop.py#L567"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="n">keyFile</span></span><a class="source-link" href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/tdesktop.py#L567" title="Source"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0V3zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5z"></path><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45z"></path></svg></span></a>
 
 ```python
 @property
@@ -331,7 +330,7 @@ I don't know what's the use cases of it, maybe this was a legacy feature of <spa
 
 
 ---
-### <span class="highlight"><span class="n">localKey</span></span><a href="https://github.com/thedemons/opentele/blob/b4ba9f663fbd9836c05bc41c7b5ae0b716607cf3/src/td/tdesktop.py#L580"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="n">localKey</span></span><a class="source-link" href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/tdesktop.py#L580" title="Source"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0V3zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5z"></path><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45z"></path></svg></span></a>
 
 ```python
 @property
@@ -345,7 +344,7 @@ The key used to encrypt/decrypt data<br>
 
 
 ---
-### <span class="highlight"><span class="n">AppVersion</span></span><a href="https://github.com/thedemons/opentele/blob/b4ba9f663fbd9836c05bc41c7b5ae0b716607cf3/src/td/tdesktop.py#L587"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="n">AppVersion</span></span><a class="source-link" href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/tdesktop.py#L587" title="Source"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0V3zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5z"></path><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45z"></path></svg></span></a>
 
 ```python
 @property
@@ -359,7 +358,7 @@ App version of TDesktop client<br>
 
 
 ---
-### <span class="highlight"><span class="n">accountsCount</span></span><a href="https://github.com/thedemons/opentele/blob/b4ba9f663fbd9836c05bc41c7b5ae0b716607cf3/src/td/tdesktop.py#L599"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="n">accountsCount</span></span><a class="source-link" href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/tdesktop.py#L599" title="Source"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0V3zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5z"></path><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45z"></path></svg></span></a>
 
 ```python
 @property
@@ -373,7 +372,7 @@ The number of accounts this client has<br>
 
 
 ---
-### <span class="highlight"><span class="n">accounts</span></span><a href="https://github.com/thedemons/opentele/blob/b4ba9f663fbd9836c05bc41c7b5ae0b716607cf3/src/td/tdesktop.py#L607"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="n">accounts</span></span><a class="source-link" href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/tdesktop.py#L607" title="Source"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0V3zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5z"></path><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45z"></path></svg></span></a>
 
 ```python
 @property
@@ -388,7 +387,7 @@ If you want to get the main account, please use .mainAccount instead<br>
 
 
 ---
-### <span class="highlight"><span class="n">mainAccount</span></span><a href="https://github.com/thedemons/opentele/blob/b4ba9f663fbd9836c05bc41c7b5ae0b716607cf3/src/td/tdesktop.py#L615"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="n">mainAccount</span></span><a class="source-link" href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/tdesktop.py#L615" title="Source"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0V3zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5z"></path><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45z"></path></svg></span></a>
 
 ```python
 @property

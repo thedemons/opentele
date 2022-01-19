@@ -54,7 +54,7 @@ asyncio.run(main())
 ```
 
 ## Authorization
-**opentele** offers the ability to use **official APIs**, which are used by official apps. You can check that out [here](https://github.com/thedemons/opentele/blob/main/docs/content/api-documentation/authorization/API#telegramdesktop-objects).
+**opentele** offers the ability to use **official APIs**, which are used by official apps. You can check that out [here](https://github.com/thedemons/opentele/blob/main/docs/content/documentation/authorization/api.md#api).
 <br>
 According to [Telegram TOS](https://core.telegram.org/api/obtaining_api_id#using-the-api-id): *all accounts that sign up or log in using unofficial Telegram API clients are automatically put under observation to avoid violations of the Terms of Service*.
 <br>

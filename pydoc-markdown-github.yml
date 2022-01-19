@@ -42,11 +42,12 @@ renderer:
       type: github
       repo: thedemons/opentele
 
-  output_directory: docs
+  output_directory: docs-gh
+  content_directory_name: content
 
   mkdocs_config:
 
-    site_name: OpenTele
+    site_name: opentele
     site_description: A python library created to make life easier for Telegram API Developers.
     site_author: thedemons
     copyright: <a href="https://github.com/thedemons/opentele/" target="_blank" rel="noopener">thedemons.opentele</a>
@@ -152,13 +153,11 @@ renderer:
   pages:
 
     - title: Home
-      children:
-      - title: OpenTele
-        name: README
-        source: README.md
+      name: index
+      source: readme.md
 
-    
     - title: Documentation
+      source: readme.md
       children:
       
       - title: Telegram Desktop

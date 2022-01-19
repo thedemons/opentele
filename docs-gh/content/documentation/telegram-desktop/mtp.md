@@ -6,7 +6,7 @@
 
 
 ---
-## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">MTP</span></span><a class="source-link" href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/mtp.py#L9" title="Source"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0V3zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5z"></path><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45z"></path></svg></span></a>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">MTP</span></span><a href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/mtp.py#L9"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class MTP(BaseObject)
@@ -18,11 +18,11 @@ This class is for further future developments and has no usage for now.<br>
 
 | Name | Type | Description |
 | :--- | :--: | :---------- |
-| <a class="codehl codehl_obj" href="#td.mtp.MTP.Environment"><b>Environment</b></a> | <span class="highlight"><span class="k">class</span></span> | MTP Enviroment |
-| <a class="codehl codehl_obj" href="#td.mtp.MTP.RSAPublicKey"><b>RSAPublicKey</b></a> | <span class="highlight"><span class="k">class</span></span> | RSAPublicKey |
-| <a class="codehl codehl_obj" href="#td.mtp.MTP.DcOptions"><b>DcOptions</b></a> | <span class="highlight"><span class="k">class</span></span> | DcOptions |
-| <a class="codehl codehl_obj" href="#td.mtp.MTP.ConfigFields"><b>ConfigFields</b></a> | <span class="highlight"><span class="k">class</span></span> | ConfigFields |
-| <a class="codehl codehl_obj" href="#td.mtp.MTP.Config"><b>Config</b></a> | <span class="highlight"><span class="k">class</span></span> | Config |
+| <a class="codehl codehl_obj" href="mtp.md#environment-objects"><b>Environment</b></a> | <span class="highlight"><span class="k">class</span></span> | MTP Enviroment |
+| <a class="codehl codehl_obj" href="mtp.md#rsapublickey-objects"><b>RSAPublicKey</b></a> | <span class="highlight"><span class="k">class</span></span> | RSAPublicKey |
+| <a class="codehl codehl_obj" href="mtp.md#dcoptions-objects"><b>DcOptions</b></a> | <span class="highlight"><span class="k">class</span></span> | DcOptions |
+| <a class="codehl codehl_obj" href="mtp.md#configfields-objects"><b>ConfigFields</b></a> | <span class="highlight"><span class="k">class</span></span> | ConfigFields |
+| <a class="codehl codehl_obj" href="mtp.md#config-objects"><b>Config</b></a> | <span class="highlight"><span class="k">class</span></span> | Config |
 
 
 
@@ -30,7 +30,7 @@ This class is for further future developments and has no usage for now.<br>
 
 
 ---
-### <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">Environment</span></span><a class="source-link" href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/mtp.py#L24" title="Source"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0V3zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5z"></path><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45z"></path></svg></span></a>
+### <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">Environment</span></span><a href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/mtp.py#L24"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class Environment(IntEnum)
@@ -50,7 +50,7 @@ Enviroment flag for MTP.Config<br>
 
 
 ---
-### <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">RSAPublicKey</span></span><a class="source-link" href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/mtp.py#L34" title="Source"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0V3zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5z"></path><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45z"></path></svg></span></a>
+### <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">RSAPublicKey</span></span><a href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/mtp.py#L34"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class RSAPublicKey(BaseObject)
@@ -63,7 +63,7 @@ To be added<br>
 
 
 ---
-### <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">DcOptions</span></span><a class="source-link" href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/mtp.py#L39" title="Source"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0V3zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5z"></path><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45z"></path></svg></span></a>
+### <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">DcOptions</span></span><a href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/mtp.py#L39"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class DcOptions(BaseObject)
@@ -76,7 +76,7 @@ Data Center Options, providing information about DC ip, port,.. etc<br>
 
 
 ---
-#### <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">Address</span></span><a class="source-link" href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/mtp.py#L178" title="Source"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0V3zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5z"></path><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45z"></path></svg></span></a>
+#### <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">Address</span></span><a href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/mtp.py#L178"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class Address(int)
@@ -96,7 +96,7 @@ Connection flag used for MTP.DcOptions.Endpoint<br>
 
 
 ---
-#### <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">Protocol</span></span><a class="source-link" href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/mtp.py#L189" title="Source"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0V3zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5z"></path><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45z"></path></svg></span></a>
+#### <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">Protocol</span></span><a href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/mtp.py#L189"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class Protocol(int)
@@ -116,7 +116,7 @@ Protocal flag used for MTP.DcOptions.Endpoint<br>
 
 
 ---
-#### <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">Flag</span></span><a class="source-link" href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/mtp.py#L200" title="Source"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0V3zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5z"></path><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45z"></path></svg></span></a>
+#### <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">Flag</span></span><a href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/mtp.py#L200"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class Flag(int)
@@ -141,7 +141,7 @@ Flag used for MTP.DcOptions.Endpoint<br>
 
 
 ---
-#### <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">Endpoint</span></span><a class="source-link" href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/mtp.py#L221" title="Source"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0V3zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5z"></path><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45z"></path></svg></span></a>
+#### <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">Endpoint</span></span><a href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/mtp.py#L221"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class Endpoint(BaseObject)
@@ -153,7 +153,7 @@ Data center endpoint<br>
 | Name | Type | Description |
 | :--- | :--: | :---------- |
 | <span class="highlight"><span class="nb">id</span></span> | <span class="highlight"><span class="nc">DcId</span></span> | Data Center ID |
-| <span class="highlight"><span class="n">flags</span></span> | <a class="codehl codehl_obj" href="#td.mtp.MTP.DcOptions.Flag"><b>Flag</b></a> | <a class="codehl codehl_obj" href="#td.mtp.MTP.DcOptions.Flag"><b>Flag</b></a> |
+| <span class="highlight"><span class="n">flags</span></span> | <a class="codehl codehl_obj" href="mtp.md#flag-objects"><b>Flag</b></a> | <a class="codehl codehl_obj" href="mtp.md#flag-objects"><b>Flag</b></a> |
 | <span class="highlight"><span class="n">ip</span></span> | <span class="highlight"><span class="bp">str</span></span> | IP address of the data center |
 | <span class="highlight"><span class="n">port</span></span> | <span class="highlight"><span class="bp">int</span></span> | Port to connect to |
 | <span class="highlight"><span class="n">secret</span></span> | <span class="highlight"><span class="bp">bytes</span></span> | secret |
@@ -164,13 +164,13 @@ Data center endpoint<br>
 
 
 ---
-### <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">ConfigFields</span></span><a class="source-link" href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/mtp.py#L240" title="Source"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0V3zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5z"></path><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45z"></path></svg></span></a>
+### <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">ConfigFields</span></span><a href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/mtp.py#L240"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class ConfigFields(BaseObject)
 ```
 
-Configuration data for <a class="codehl codehl_obj" href="#td.mtp.MTP"><b>MTP</b></a><span class="highlight"><span class="o">.</span></span><a class="codehl codehl_obj" href="#td.mtp.MTP.Config"><b>Config</b></a><br>
+Configuration data for <a class="codehl codehl_obj" href="mtp.md#mtp-objects"><b>MTP</b></a><span class="highlight"><span class="o">.</span></span><a class="codehl codehl_obj" href="mtp.md#config-objects"><b>Config</b></a><br>
 <h3>Attributes:</h3>
 
 | Name | Type | Description |
@@ -212,7 +212,7 @@ Configuration data for <a class="codehl codehl_obj" href="#td.mtp.MTP"><b>MTP</b
 
 
 ---
-### <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">Config</span></span><a class="source-link" href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/mtp.py#L308" title="Source"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3 3a2 2 0 0 1 2-2h9.982a2 2 0 0 1 1.414.586l4.018 4.018A2 2 0 0 1 21 7.018V21a2 2 0 0 1-2 2H4.75a.75.75 0 0 1 0-1.5H19a.5.5 0 0 0 .5-.5V8.5h-4a2 2 0 0 1-2-2v-4H5a.5.5 0 0 0-.5.5v6.25a.75.75 0 0 1-1.5 0V3zm12-.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 0-.146-.336l-4.018-4.018A.5.5 0 0 0 15 2.5z"></path><path d="M4.53 12.24a.75.75 0 0 1-.039 1.06l-2.639 2.45 2.64 2.45a.75.75 0 1 1-1.022 1.1l-3.23-3a.75.75 0 0 1 0-1.1l3.23-3a.75.75 0 0 1 1.06.04zm3.979 1.06a.75.75 0 1 1 1.02-1.1l3.231 3a.75.75 0 0 1 0 1.1l-3.23 3a.75.75 0 1 1-1.021-1.1l2.639-2.45-2.64-2.45z"></path></svg></span></a>
+### <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">Config</span></span><a href="https://github.com/thedemons/opentele/blob/f97ec845a420981815ba2e97129b5538f3c4ebcd/src/td/mtp.py#L308"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class Config(BaseObject)
