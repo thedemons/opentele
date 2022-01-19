@@ -6,4 +6,3 @@ __pycache__/
  *.pyc
 opentele.egg-info/*
 build/*
-dist/*

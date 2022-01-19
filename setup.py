@@ -42,8 +42,8 @@ setup(
         "opentele",
     ],
     
-    packages=["opentele", "opentele.td", "opentele.tl"],
-    package_dir={'opentele': 'src'},
+    packages=[PACKAGE_NAME] + find_packages(PACKAGE_NAME),
+    package_dir={PACKAGE_NAME: SOURCE_DIRECTORY},
     include_package_data=True,
     install_requires=requirements,
 )
