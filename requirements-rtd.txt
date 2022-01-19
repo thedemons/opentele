@@ -1,0 +1,4 @@
+pyqt5
+telethon
+tgcrypto
+mkdocs-material
