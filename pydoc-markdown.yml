@@ -42,8 +42,8 @@ renderer:
       type: github
       repo: thedemons/opentele
 
-  output_directory: docs
-  content_directory_name: content
+  output_directory: '..\opentele'
+  content_directory_name: docs
 
   mkdocs_config:
     
@@ -119,7 +119,7 @@ renderer:
       
     theme:
       name: material
-      custom_dir: ..\docs-theme
+      custom_dir: theme
       icon:
         logo: material/book-open-page-variant
       palette:
