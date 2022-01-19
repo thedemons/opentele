@@ -24,8 +24,8 @@ class SystemInfo(BaseObject):
         pass
     
     @classmethod
-    def RandomDevice(cls : Type[SystemInfo], id : str = None) -> DeviceInfo:
-        hash_id = cls._strtohashid(id)
+    def RandomDevice(cls : Type[SystemInfo], unique_id : str = None) -> DeviceInfo:
+        hash_id = cls._strtohashid(unique_id)
         return cls._RandomDevice(hash_id)
 
     @classmethod
@@ -38,8 +38,9 @@ class SystemInfo(BaseObject):
         raise NotImplementedError(f"{cls.__name__} device not supported for randomize yet")
 
     @classmethod
-    def _strtohashid(cls, id : str = None):
-        byteid = os.urandom(32) if id == None else id.encode("utf-8")
+    def _strtohashid(cls, unique_id : str = None):
+        if unique_id != None: unique_id = str(unique_id)
+        byteid = os.urandom(32) if unique_id == None else unique_id.encode("utf-8")
         return int(hashlib.sha1(byteid).hexdigest(), 16) % (10 ** 12)
 
     @classmethod
