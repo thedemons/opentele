@@ -6,19 +6,18 @@
 
 ---
 
-## <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/td/mtp.py#L9"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+## <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/td/mtp.py#L9"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">MTP</span></span><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="nc">BaseObject</span></span><span class="highlight"><span class="o">)</span></span>
+<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">MTP</span></span>
 
 ```python
 class MTP(BaseObject)
 ```
 
 [MTProto Protocal] https://core.telegram.org/mtproto
+This class is for further future developments and has no usage for now.<br>
+<h3>Attributes:</h3>
 
-This class is for further future developments and has no usage for now.
-
-### Attributes:
 | Name | Type | Description |
 | :--- | :--: | :---------- |
 | <a class="codehl codehl_obj" href="mtp.md#environment-objects"><b>Environment</b></a> | <span class="highlight"><span class="k">class</span></span> | MTP Enviroment |
@@ -29,22 +28,21 @@ This class is for further future developments and has no usage for now.
 
 
 
-
 <a id="td.mtp.MTP.Environment"></a>
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/td/mtp.py#L24"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/td/mtp.py#L24"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">Environment</span></span><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="nc">IntEnum</span></span><span class="highlight"><span class="o">)</span></span>
+<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">Environment</span></span>
 
 ```python
 class Environment(IntEnum)
 ```
 
-Enviroment flag for MTP.Config
+Enviroment flag for MTP.Config<br>
+<h3>Attributes:</h3>
 
-### Attributes:
 | Name | Type | Description |
 | :--- | :--: | :---------- |
 | <span class="highlight"><span class="n">Production</span></span> | <span class="highlight"><span class="nc">IntEnum</span></span> | Production Enviroment |
@@ -52,54 +50,51 @@ Enviroment flag for MTP.Config
 
 
 
-
 <a id="td.mtp.MTP.RSAPublicKey"></a>
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/td/mtp.py#L34"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/td/mtp.py#L34"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">RSAPublicKey</span></span><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="nc">BaseObject</span></span><span class="highlight"><span class="o">)</span></span>
+<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">RSAPublicKey</span></span>
 
 ```python
 class RSAPublicKey(BaseObject)
 ```
 
-To be added
-
+To be added<br>
 
 
 <a id="td.mtp.MTP.DcOptions"></a>
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/td/mtp.py#L39"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/td/mtp.py#L39"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">DcOptions</span></span><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="nc">BaseObject</span></span><span class="highlight"><span class="o">)</span></span>
+<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">DcOptions</span></span>
 
 ```python
 class DcOptions(BaseObject)
 ```
 
-Data Center Options, providing information about DC ip, port,.. etc
-
+Data Center Options, providing information about DC ip, port,.. etc<br>
 
 
 <a id="td.mtp.MTP.DcOptions.Address"></a>
 
 ---
 
-#### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/td/mtp.py#L178"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+#### <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/td/mtp.py#L178"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">Address</span></span><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="nc">int</span></span><span class="highlight"><span class="o">)</span></span>
+<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">Address</span></span>
 
 ```python
 class Address(int)
 ```
 
-Connection flag used for MTP.DcOptions.Endpoint
+Connection flag used for MTP.DcOptions.Endpoint<br>
+<h3>Attributes:</h3>
 
-### Attributes:
 | Name | Type | Description |
 | :--- | :--: | :---------- |
 | <span class="highlight"><span class="n">IPv4</span></span> | <span class="highlight"><span class="bp">int</span></span> | IPv4 connection |
@@ -107,22 +102,21 @@ Connection flag used for MTP.DcOptions.Endpoint
 
 
 
-
 <a id="td.mtp.MTP.DcOptions.Protocol"></a>
 
 ---
 
-#### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/td/mtp.py#L189"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+#### <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/td/mtp.py#L189"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">Protocol</span></span><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="nc">int</span></span><span class="highlight"><span class="o">)</span></span>
+<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">Protocol</span></span>
 
 ```python
 class Protocol(int)
 ```
 
-Protocal flag used for MTP.DcOptions.Endpoint
+Protocal flag used for MTP.DcOptions.Endpoint<br>
+<h3>Attributes:</h3>
 
-### Attributes:
 | Name | Type | Description |
 | :--- | :--: | :---------- |
 | <span class="highlight"><span class="n">Tcp</span></span> | <span class="highlight"><span class="bp">int</span></span> | Tcp connection |
@@ -130,22 +124,21 @@ Protocal flag used for MTP.DcOptions.Endpoint
 
 
 
-
 <a id="td.mtp.MTP.DcOptions.Flag"></a>
 
 ---
 
-#### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/td/mtp.py#L200"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+#### <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/td/mtp.py#L200"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">Flag</span></span><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="nc">int</span></span><span class="highlight"><span class="o">)</span></span>
+<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">Flag</span></span>
 
 ```python
 class Flag(int)
 ```
 
-Flag used for MTP.DcOptions.Endpoint
+Flag used for MTP.DcOptions.Endpoint<br>
+<h3>Attributes:</h3>
 
-### Attributes:
 | Name | Type | Description |
 | :--- | :--: | :---------- |
 | <span class="highlight"><span class="n">f_ipv6</span></span> | <span class="highlight"><span class="bp">int</span></span> | f_ipv6 |
@@ -158,22 +151,21 @@ Flag used for MTP.DcOptions.Endpoint
 
 
 
-
 <a id="td.mtp.MTP.DcOptions.Endpoint"></a>
 
 ---
 
-#### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/td/mtp.py#L221"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+#### <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/td/mtp.py#L221"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">Endpoint</span></span><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="nc">BaseObject</span></span><span class="highlight"><span class="o">)</span></span>
+<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">Endpoint</span></span>
 
 ```python
 class Endpoint(BaseObject)
 ```
 
-Data center endpoint
+Data center endpoint<br>
+<h3>Attributes:</h3>
 
-### Attributes:
 | Name | Type | Description |
 | :--- | :--: | :---------- |
 | <span class="highlight"><span class="nb">id</span></span> | <span class="highlight"><span class="nc">DcId</span></span> | Data Center ID |
@@ -184,22 +176,21 @@ Data center endpoint
 
 
 
-
 <a id="td.mtp.MTP.ConfigFields"></a>
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/td/mtp.py#L240"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/td/mtp.py#L240"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">ConfigFields</span></span><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="nc">BaseObject</span></span><span class="highlight"><span class="o">)</span></span>
+<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">ConfigFields</span></span>
 
 ```python
 class ConfigFields(BaseObject)
 ```
 
-Configuration data for <a class="codehl codehl_obj" href="mtp.md#mtp-objects"><b>MTP</b></a><span class="highlight"><span class="o">.</span></span><a class="codehl codehl_obj" href="mtp.md#config-objects"><b>Config</b></a>
+Configuration data for <a class="codehl codehl_obj" href="mtp.md#mtp-objects"><b>MTP</b></a><span class="highlight"><span class="o">.</span></span><a class="codehl codehl_obj" href="mtp.md#config-objects"><b>Config</b></a><br>
+<h3>Attributes:</h3>
 
-### Attributes:
 | Name | Type | Description |
 | :--- | :--: | :---------- |
 | <span class="highlight"><span class="n">chatSizeMax</span></span> | <span class="highlight"><span class="bp">int</span></span> | <span class="highlight"><span class="mi">200</span></span> |
@@ -235,26 +226,24 @@ Configuration data for <a class="codehl codehl_obj" href="mtp.md#mtp-objects"><b
 
 
 
-
 <a id="td.mtp.MTP.Config"></a>
 
 ---
 
-### <a href="https://github.com/thedemons/opentele/blob/73b66dd3aacff5a89e25f30c48d19d105de483f8/src/td/mtp.py#L308"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/td/mtp.py#L308"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">Config</span></span><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="nc">BaseObject</span></span><span class="highlight"><span class="o">)</span></span>
+<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">Config</span></span>
 
 ```python
 class Config(BaseObject)
 ```
 
-Configuration of MTProto
+Configuration of MTProto<br>
+<h3>Attributes:</h3>
 
-### Attributes:
 | Name | Type | Description |
 | :--- | :--: | :---------- |
 | <span class="highlight"><span class="n">kVersion</span></span> | <span class="highlight"><span class="bp">int</span></span> | <span class="highlight"><span class="mi">1</span></span> |
-
 
 
 

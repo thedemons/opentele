@@ -24,9 +24,8 @@ pip install --upgrade opentele
 - Load TDesktop from tdata folder and convert it to telethon, with a custom API.
 ```python
 from opentele.td import TDesktop
-from opentele.td import APITemplate
 from opentele.tl import TelegramClient
-from opentele.utils import CreateNewSession, UseCurrentSession
+from opentele.api import API, CreateNewSession, UseCurrentSession
 
 async def main():
     
@@ -36,7 +35,7 @@ async def main():
 
     # Using official iOS API with randomly generated device info
     # print(api) to see more
-    api = APITemplate.TelegramIOS.Generate()
+    api = API.TelegramIOS.Generate()
 
     # Convert TDesktop session to telethon client
     # CreateNewSession flag will use the current existing session to
@@ -55,7 +54,7 @@ asyncio.run(main())
 ```
 
 ## Authorization
-**opentele** offers the ability to use **official APIs**, which are used by official apps. You can check that out [here](https://github.com/thedemons/opentele/blob/main/docs/content/api-documentation/authorization/apitemplate#telegramdesktop-objects).
+**opentele** offers the ability to use **official APIs**, which are used by official apps. You can check that out [here](https://github.com/thedemons/opentele/blob/main/docs/content/api-documentation/authorization/API#telegramdesktop-objects).
 <br>
 According to [Telegram TOS](https://core.telegram.org/api/obtaining_api_id#using-the-api-id): *all accounts that sign up or log in using unofficial Telegram API clients are automatically put under observation to avoid violations of the Terms of Service*.
 <br>
@@ -65,15 +64,11 @@ It also uses the **[lang_pack](https://core.telegram.org/method/initConnection)*
 Therefore, **there are no differences** between using opentele and official apps, the server can't tell you apart.
 
 ## Incoming Features
-- [x] Writing data to tdata for converting telethon sessions to tdesktop
-- [x] Random device information for [initConnection](https://core.telegram.org/method/initConnection) to perform mass registeration without being detected
-- [ ] Add supports for [pyrogram](https://github.com/pyrogram/pyrogram)
+- [x] Writing data to tdata for converting telethon sessions to tdesktop.
+- [x] Random device information for [initConnection](https://core.telegram.org/method/initConnection) to avoid spam-detection.
+- [ ] Add support for [pyrogram](https://github.com/pyrogram/pyrogram).
 
 ## Documentation
-- [ ] Half way done
+- [ ] Nearly done.
 
-## License
-
-The subscription fee is one :star: per month.
-.. just kidding
 

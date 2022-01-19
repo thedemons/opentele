@@ -79,7 +79,6 @@ nav:
     - TelegramClient: documentation/telethon/telegramclient.md
   - Authorization:
     - API: documentation/authorization/api.md
-    - APITemplate: documentation/authorization/apitemplate.md
     - LoginFlag: documentation/authorization/loginflag.md
   - Exceptions: documentation/exceptions.md
 repo_url: https://github.com/thedemons/opentele
