@@ -49,7 +49,7 @@ def __init__(session: Union[str, Session] = None, api: Union[Type[APIData], APID
 ```
 
 Start TelegramClient with customized api.<br>
-Read more at [OpenTele GitHub](https://github.com/thedemons/opentele#authorization)
+Read more at [opentele GitHub](https://github.com/thedemons/opentele#authorization)
 <h3>Arguments:</h3>
 
 | Name | Type | Default | Description |
