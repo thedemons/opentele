@@ -85,7 +85,7 @@ site_author: thedemons
 site_description: A python library created to make life easier for Telegram API Developers.
 site_name: opentele
 theme:
-  custom_dir: ..\docs-theme
+  custom_dir: ../docs-theme
   features:
   - navigation.tabs
   - navigation.instant
