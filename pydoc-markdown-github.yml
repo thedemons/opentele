@@ -184,9 +184,6 @@ renderer:
           - title: API
             contents: [api.API.*]
             
-          - title: APITemplate
-            contents: [api.APITemplate.*]
-
           - title: LoginFlag
             contents: [ api.LoginFlag, api.CreateNewSession, api.UseCurrentSession]
 
