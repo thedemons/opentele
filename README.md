@@ -5,6 +5,7 @@
 [![github last commit](https://img.shields.io/github/last-commit/thedemons/opentele)](https://github.com/thedemons/opentele/commits/main)
 [![github commits](https://img.shields.io/github/commit-activity/m/thedemons/opentele?logo=opentele)](https://github.com/thedemons/opentele/commits/main)
 [![issues](https://img.shields.io/github/issues/thedemons/opentele)](https://github.com/thedemons/opentele/issues)
+
 [![pypi status](https://img.shields.io/pypi/status/opentele?logo=opentele&label=build)](https://pypi.org/project/opentele/)
 [![pypi version](https://img.shields.io/pypi/v/opentele?logo=opentele)](https://pypi.org/project/opentele/)
 [![pypi installs](https://img.shields.io/pypi/dm/opentele?color=brightgreen&label=installs&logo=opentele)](https://pypi.org/project/opentele/)
