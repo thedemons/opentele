@@ -6,7 +6,7 @@
 
 
 ---
-## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TelegramClient</span></span><a href="https://github.com/thedemons/opentele/blob/a51027bc68365c929518d1b8e203f444dbfba4fa/src/tl/telethon.py#L44"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TelegramClient</span></span><a href="https://github.com/thedemons/opentele/blob/9ef4a342a8a347dc5fff50e9c6e38cd3ec8062ee/src/tl/telethon.py#L44"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 @extend_class
@@ -41,7 +41,7 @@ Return <span class="highlight"><span class="kc">True</span></span> if logged-in 
 
 
 ---
-### <span class="highlight"><span class="nc">TelegramClient</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/a51027bc68365c929518d1b8e203f444dbfba4fa/src/tl/telethon.py#L79"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="nc">TelegramClient</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/9ef4a342a8a347dc5fff50e9c6e38cd3ec8062ee/src/tl/telethon.py#L79"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 @typing.overload
@@ -63,7 +63,7 @@ Read more at [opentele GitHub](https://github.com/thedemons/opentele#authorizati
 
 
 ---
-### <span class="highlight"><span class="nf">GetSessions</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/a51027bc68365c929518d1b8e203f444dbfba4fa/src/tl/telethon.py#L330"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="nf">GetSessions</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/9ef4a342a8a347dc5fff50e9c6e38cd3ec8062ee/src/tl/telethon.py#L330"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 async def GetSessions() -> Optional[types.account.Authorizations]
@@ -81,7 +81,7 @@ Get all logged-in sessions.
 
 
 ---
-### <span class="highlight"><span class="nf">GetCurrentSession</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/a51027bc68365c929518d1b8e203f444dbfba4fa/src/tl/telethon.py#L339"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="nf">GetCurrentSession</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/9ef4a342a8a347dc5fff50e9c6e38cd3ec8062ee/src/tl/telethon.py#L339"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 async def GetCurrentSession() -> Optional[types.Authorization]
@@ -99,7 +99,7 @@ None : Return <span class="highlight"><span class="kc">None</span></span> on fai
 
 
 ---
-### <span class="highlight"><span class="nf">TerminateSession</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/a51027bc68365c929518d1b8e203f444dbfba4fa/src/tl/telethon.py#L359"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="nf">TerminateSession</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/9ef4a342a8a347dc5fff50e9c6e38cd3ec8062ee/src/tl/telethon.py#L359"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 async def TerminateSession(hash: int)
@@ -123,7 +123,7 @@ Terminate a specific session<br>
 
 
 ---
-### <span class="highlight"><span class="nf">TerminateAllSessions</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/a51027bc68365c929518d1b8e203f444dbfba4fa/src/tl/telethon.py#L385"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="nf">TerminateAllSessions</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/9ef4a342a8a347dc5fff50e9c6e38cd3ec8062ee/src/tl/telethon.py#L385"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 async def TerminateAllSessions() -> bool
@@ -136,7 +136,7 @@ Terminate all other sessions.<br>
 
 
 ---
-### <span class="highlight"><span class="nf">PrintSessions</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/a51027bc68365c929518d1b8e203f444dbfba4fa/src/tl/telethon.py#L398"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="nf">PrintSessions</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/9ef4a342a8a347dc5fff50e9c6e38cd3ec8062ee/src/tl/telethon.py#L398"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 async def PrintSessions(sessions: types.account.Authorizations = None)
@@ -178,7 +178,7 @@ On success, it should prints the sessions table as the code below.<br>
 
 
 ---
-### <span class="highlight"><span class="nf">is_official_app</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/a51027bc68365c929518d1b8e203f444dbfba4fa/src/tl/telethon.py#L451"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="nf">is_official_app</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/9ef4a342a8a347dc5fff50e9c6e38cd3ec8062ee/src/tl/telethon.py#L451"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 async def is_official_app() -> bool
@@ -191,7 +191,7 @@ Return <span class="highlight"><span class="kc">True</span></span> if this sessi
 
 
 ---
-### <span class="highlight"><span class="nf">QRLoginToNewClient</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/a51027bc68365c929518d1b8e203f444dbfba4fa/src/tl/telethon.py#L460"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="nf">QRLoginToNewClient</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/9ef4a342a8a347dc5fff50e9c6e38cd3ec8062ee/src/tl/telethon.py#L460"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 @typing.overload
@@ -210,9 +210,9 @@ Create a new session using the current session.<br>
 <h3>Raises:</h3>
 
 
-- <a class="codehl codehl_obj" href="../../documentation/exceptions.md#class-nopasswordprovided"><b>NoPasswordProvided</b></a>: The account's two-step verification is enabled and no <span class="highlight"><span class="n">password</span></span> was provided. Please set the <span class="highlight"><span class="n">password</span></span> parameters.
+- <a class="codehl codehl_obj" href="../../documentation/exceptions.md#class-nopasswordprovided"><b>NoPasswordProvided</b></a> : The account's two-step verification is enabled and no <span class="highlight"><span class="n">password</span></span> was provided. Please set the <span class="highlight"><span class="n">password</span></span> parameters.
 
-- <a class="codehl codehl_obj" href="../../documentation/exceptions.md#class-passwordincorrect"><b>PasswordIncorrect</b></a>: The two-step verification <span class="highlight"><span class="n">password</span></span> is incorrect.
+- <a class="codehl codehl_obj" href="../../documentation/exceptions.md#class-passwordincorrect"><b>PasswordIncorrect</b></a> : The two-step verification <span class="highlight"><span class="n">password</span></span> is incorrect.
 
 - <span class="highlight"><span class="ne">TimeoutError</span></span> : Time out waiting for the client to be authorized.
 
@@ -243,7 +243,7 @@ await newClient.PrintSessions()
 
 
 ---
-### <span class="highlight"><span class="nf">ToTDesktop</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/a51027bc68365c929518d1b8e203f444dbfba4fa/src/tl/telethon.py#L638"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="nf">ToTDesktop</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/9ef4a342a8a347dc5fff50e9c6e38cd3ec8062ee/src/tl/telethon.py#L638"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 async def ToTDesktop(flag: Type[LoginFlag] = CreateNewSession, api: Union[Type[APIData], APIData] = API.TelegramDesktop, password: str = None) -> td.TDesktop
@@ -287,7 +287,7 @@ tdesk.SaveTData("new_tdata")
 
 
 ---
-### <span class="highlight"><span class="nf">FromTDesktop</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/a51027bc68365c929518d1b8e203f444dbfba4fa/src/tl/telethon.py#L680"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="nf">FromTDesktop</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/9ef4a342a8a347dc5fff50e9c6e38cd3ec8062ee/src/tl/telethon.py#L680"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 @typing.overload
