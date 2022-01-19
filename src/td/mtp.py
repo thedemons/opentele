@@ -8,7 +8,7 @@ from . import shared as td
 
 class MTP(BaseObject):
     '''
-    [MTProto Protocal] https://core.telegram.org/mtproto
+    [MTProto Protocal](https://core.telegram.org/mtproto)
 
     This class is for further future developments and has no usage for now.
     

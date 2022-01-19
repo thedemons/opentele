@@ -157,7 +157,6 @@ renderer:
       source: README.md
 
     - title: Documentation
-      source: README.md
 
       children:
       
