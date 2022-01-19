@@ -6,7 +6,7 @@
 
 
 ---
-## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">AuthKeyType</span></span><a href="https://github.com/thedemons/opentele/blob/dc953fde68622a66e73ec9031a262da828c5bb1b/src/td/auth.py#L11"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">AuthKeyType</span></span><a href="https://github.com/thedemons/opentele/blob/a6586dbfdb335a1712b9e05f4de63314a3935b90/src/td/auth.py#L11"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class AuthKeyType(IntEnum)
@@ -28,7 +28,7 @@ Type of <a class="codehl codehl_obj" href="authkey.md#class-authkey"><b>AuthKey<
 
 
 ---
-## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">AuthKey</span></span><a href="https://github.com/thedemons/opentele/blob/dc953fde68622a66e73ec9031a262da828c5bb1b/src/td/auth.py#L33"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">AuthKey</span></span><a href="https://github.com/thedemons/opentele/blob/a6586dbfdb335a1712b9e05f4de63314a3935b90/src/td/auth.py#L33"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class AuthKey(BaseObject)
