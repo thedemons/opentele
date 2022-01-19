@@ -5,7 +5,7 @@ import re
 README = (pathlib.Path(__file__).parent / "README.md").read_text()
 
 PACKAGE_NAME        = "opentele"
-VERSION             = "1.1.1"
+VERSION             = "1.1.2"
 SOURCE_DIRECTORY    = "src"
 
 with open("requirements.txt") as data:
@@ -32,9 +32,10 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.7",
+        "Development Status :: 5 - Production/Stable",
     ],
     
-    kerwords=[
+    keywords=[
         "tdata",
         "tdesktop",
         "telegram",
