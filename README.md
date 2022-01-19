@@ -1,8 +1,8 @@
 <!-- vim: syntax=Markdown -->
 
 # opentele
-A python library created to make life easier for Telegram API Developers.
-
+A **python** library created to make life easier for **Telegram API Developers**.\
+[**Read the documentation**](https://opentele.readthedocs.io/en/latest/documentation/telegram-desktop/tdesktop/)
 
 ## Main Features
 - Convert [Telegram Desktop](https://github.com/telegramdesktop/tdesktop) **tdata** sessions to [telethon](https://github.com/LonamiWebs/Telethon) sessions and vice versa.
