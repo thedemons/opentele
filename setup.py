@@ -5,12 +5,8 @@ import re
 README = (pathlib.Path(__file__).parent / "README.md").read_text()
 
 PACKAGE_NAME        = "opentele"
-VERSION             = "1.0.9"
+VERSION             = "1.0.8.2"
 SOURCE_DIRECTORY    = "src"
-
-# SOURCE_PACKAGE_REGEX = re.compile(rf'^{SOURCE_DIRECTORY}')
-# srcPackages = find_packages(include=[SOURCE_DIRECTORY, f'{SOURCE_DIRECTORY}.*'])
-# projectPackages = [SOURCE_PACKAGE_REGEX.sub(PACKAGE_NAME, name) for name in srcPackages]
 
 setup(
     name=PACKAGE_NAME,
@@ -28,7 +24,7 @@ setup(
         "Programming Language :: Python :: 3.7",
     ],
     packages=["opentele", "opentele.td", "opentele.tl"],
-    # package_dir={PACKAGE_NAME: SOURCE_DIRECTORY},
+    package_dir={'opentele': 'src'},
     include_package_data=True,
     install_requires=["pyqt5", "telethon", "tgcrypto"],
 )
