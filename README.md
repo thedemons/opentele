@@ -64,7 +64,6 @@ It also uses the **[lang_pack](https://core.telegram.org/method/initConnection)*
 <br>
 Therefore, **there are no differences** between using opentele and official apps, the server can't tell you apart.
 
-:a
 ## Incoming Features
 - [x] Writing data to tdata for converting telethon sessions to tdesktop.
 - [x] Random device information for [initConnection](https://core.telegram.org/method/initConnection) to avoid spam-detection.
