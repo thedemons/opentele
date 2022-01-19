@@ -12,6 +12,7 @@ processors:
 
 renderer:
   type: mkdocs
+  clean_render: False
   markdown:
     build_for_github: False
     add_method_class_prefix: True
