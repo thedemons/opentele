@@ -153,11 +153,11 @@ renderer:
   pages:
 
     - title: Home
-      name: index
-      source: index.md
+      name: README
+      source: README.md
 
     - title: Documentation
-      source: index.md
+      source: README.md
 
       children:
       
