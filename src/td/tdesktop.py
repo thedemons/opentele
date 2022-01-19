@@ -156,7 +156,7 @@ class TDesktop(BaseObject):
         ### Examples:
         ```python
             # Using the API that we've generated before. Please refer to method API.Generate() to learn more.
-            oldAPI = API.TelegramDesktop.Generate(system="windows", id="old.session")
+            oldAPI = API.TelegramDesktop.Generate(system="windows", unique_id="old.session")
             oldclient = TelegramClient("old.session", api=oldAPI)
             await oldClient.connect()
 
@@ -215,7 +215,7 @@ class TDesktop(BaseObject):
             Save a telethon session to tdata:
         ```python
             # Using the API that we've generated before. Please refer to method API.Generate() to learn more.
-            oldAPI = API.TelegramDesktop.Generate(system="windows", id="old.session")
+            oldAPI = API.TelegramDesktop.Generate(system="windows", unique_id="old.session")
             oldclient = TelegramClient("old.session", api=oldAPI)
             await oldClient.connect()
 
@@ -410,11 +410,11 @@ class TDesktop(BaseObject):
             Create a telethon session from tdata folder:
         ```python
             # Using the API that we've generated before. Please refer to method API.Generate() to learn more.
-            oldAPI = API.TelegramDesktop.Generate(system="windows", id="old_tdata")
+            oldAPI = API.TelegramDesktop.Generate(system="windows", unique_id="old_tdata")
             tdesk = TDesktop("old_tdata", api=oldAPI)
 
             # We can safely authorize the new client with a different API.
-            newAPI = API.TelegramAndroid.Generate(id="new.session")
+            newAPI = API.TelegramAndroid.Generate(unique_id="new.session")
             client = tdesk.ToTelethon(session="new.session", flag=CreateNewSession, api=newAPI)
             await client.connect()
             await client.PrintSessions()
@@ -504,7 +504,7 @@ class TDesktop(BaseObject):
             Save a telethon session to tdata:
         ```python
             # Using the API that we've generated before. Please refer to method API.Generate() to learn more.
-            oldAPI = API.TelegramDesktop.Generate(system="windows", id="old.session")
+            oldAPI = API.TelegramDesktop.Generate(system="windows", unique_id="old.session")
             oldclient = TelegramClient("old.session", api=oldAPI)
             await oldClient.connect()
 

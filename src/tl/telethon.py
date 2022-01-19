@@ -486,12 +486,12 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
             Use to current session to authorize a new session:
         ```python
             # Using the API that we've generated before. Please refer to method API.Generate() to learn more.
-            oldAPI = API.TelegramDesktop.Generate(system="windows", id="old.session")
+            oldAPI = API.TelegramDesktop.Generate(system="windows", unique_id="old.session")
             oldclient = TelegramClient("old.session", api=oldAPI)
             await oldClient.connect()
 
             # We can safely authorize the new client with a different API.
-            newAPI = API.TelegramAndroid.Generate(id="new.session")
+            newAPI = API.TelegramAndroid.Generate(unique_id="new.session")
             newClient = client.QRLoginToNewClient(session="new.session", api=newAPI)
             await newClient.connect()
             await newClient.PrintSessions()
@@ -659,13 +659,13 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
             Save a telethon session to tdata:
         ```python
             # Using the API that we've generated before. Please refer to method API.Generate() to learn more.
-            oldAPI = API.TelegramDesktop.Generate(system="windows", id="old.session")
+            oldAPI = API.TelegramDesktop.Generate(system="windows", unique_id="old.session")
             oldclient = TelegramClient("old.session", api=oldAPI)
             await oldClient.connect()
 
             # We can safely CreateNewSession with a different API.
             # Be aware that you should not use UseCurrentSession with a different API than the one that first authorized it.
-            newAPI = API.TelegramAndroid.Generate(id="new_tdata")
+            newAPI = API.TelegramAndroid.Generate(unique_id="new_tdata")
             tdesk = oldClient.ToTDesktop(flag=CreateNewSession, api=newAPI)
 
             # Save the new session to a folder named "new_tdata"
@@ -708,11 +708,11 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
             Create a telethon session using tdata folder:
         ```python
             # Using the API that we've generated before. Please refer to method API.Generate() to learn more.
-            oldAPI = API.TelegramDesktop.Generate(system="windows", id="old_tdata")
+            oldAPI = API.TelegramDesktop.Generate(system="windows", unique_id="old_tdata")
             tdesk = TDesktop("old_tdata", api=oldAPI)
 
             # We can safely authorize the new client with a different API.
-            newAPI = API.TelegramAndroid.Generate(id="new.session")
+            newAPI = API.TelegramAndroid.Generate(unique_id="new.session")
             client = TelegramClient.FromTDesktop(tdesk, session="new.session", flag=CreateNewSession, api=newAPI)
             await client.connect()
             await client.PrintSessions()

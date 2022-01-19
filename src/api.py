@@ -141,7 +141,6 @@ class APIData(object, metaclass=BaseAPIMetaClass):
                 Using the wrong API can lead to your account banned.
                 If the session was created using an official API, you must continue using official APIs for that session.
                 Otherwise that account is at risk of getting banned.
-                
         """
 
     def __init__(self,
@@ -244,7 +243,15 @@ class APIData(object, metaclass=BaseAPIMetaClass):
             `NotImplementedError`: Not supported for web browser yet
 
         ### Returns:
-            `API`: Return a copy of the api with random device data
+            `APIData`: Return a copy of the api with random device data
+
+        ### Examples:
+            Create a `TelegramClient` with custom API:
+        ```python
+            api = API.TelegramIOS.Generate(unique_id="new.session")
+            client = TelegramClient(session="new.session" api=api)
+            client.start()
+        ```
         """
 
         if cls == API.TelegramAndroid or cls == API.TelegramAndroidX:
@@ -346,7 +353,27 @@ class API(BaseObject):
                     If not set then the data will be randomized each time we runs it.
             
             ### Returns:
-                `_T`: [description]
+                `APIData`: Return a copy of the api with random device data
+            
+            ### Examples:
+                Save a telethon session to tdata:
+            ```python
+                # unique_id will ensure that this data will always be the same (per unique_id).
+                # You can use the session file name, or user_id as a unique_id.
+                # If unique_id isn't specify, the device data will be randomized each time we runs it.
+                oldAPI = API.TelegramDesktop.Generate(system="windows", unique_id="old.session")
+                oldclient = TelegramClient("old.session", api=oldAPI)
+                await oldClient.connect()
+
+                # We can safely CreateNewSession with a different API.
+                # Be aware that you should not use UseCurrentSession with a different API than the one that first authorized it.
+                # You can print(newAPI) to see what it had generated.
+                newAPI = API.TelegramDesktop.Generate("macos", "new_tdata")
+                tdesk = oldclient.ToTDesktop(oldclient, flag=CreateNewSession, api=newAPI)
+
+                # Save the new session to a folder named "new_tdata"
+                tdesk.SaveTData("new_tdata")
+            ```
             """
 
         @typing.overload
