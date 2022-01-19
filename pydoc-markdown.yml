@@ -183,8 +183,7 @@ renderer:
       - title: Authorization
         children:
           - title: API
-            contents: [api.APIData.*]
-            contents: [api.API.*]
+            contents: [api.APIData.*, api.API.*]
 
           - title: LoginFlag
             contents: [ api.LoginFlag, api.CreateNewSession, api.UseCurrentSession]
