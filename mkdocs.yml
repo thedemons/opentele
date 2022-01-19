@@ -67,7 +67,7 @@ markdown_extensions:
     alternate_style: true
 - pymdownx.saneheaders: null
 nav:
-- Home: index.md
+- Home: README.md
 - Documentation:
   - Telegram Desktop:
     - TDesktop: documentation/telegram-desktop/tdesktop.md
