@@ -183,6 +183,7 @@ renderer:
       - title: Authorization
         children:
           - title: API
+            contents: [api.APIData.*]
             contents: [api.API.*]
 
           - title: LoginFlag
