@@ -10,7 +10,7 @@ from . import configs
 
 from .. import exception as excpt
 
-from ..api import API, APITemplate
+from ..api import APIData, API
 
 from typing import Optional
 

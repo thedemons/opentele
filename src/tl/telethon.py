@@ -17,7 +17,7 @@ class CustomInitConnectionRequest(functions.InitConnectionRequest):
     def __init__(self, api_id: int, device_model: str, system_version: str, app_version: str, system_lang_code: str, lang_pack: str, lang_code: str, query, proxy: TypeInputClientProxy = None, params: TypeJSONValue =None):
         
         # our hook pass pid as device_model
-        data = API.findData(device_model) # type: ignore
+        data = APIData.findData(device_model) # type: ignore
         if data != None:
             self.api_id = data.api_id
             self.device_model = data.device_model           if data.device_model     else device_model
@@ -43,7 +43,7 @@ class CustomInitConnectionRequest(functions.InitConnectionRequest):
 @extend_class
 class TelegramClient(telethon.TelegramClient, BaseObject):
     """
-    Extended version of telethon.TelegramClient
+    Extended version of [telethon.TelegramClient](https://github.com/LonamiWebs/Telethon/blob/master/telethon/client/telegramclient.py#L8)
 
     ### Methods:
         FromTDesktop():
@@ -76,7 +76,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
     """
 
     @typing.overload
-    def __init__(self : TelegramClient, session : Union[str, Session] = None, api : Union[Type[API], API] = APITemplate.TelegramDesktop):
+    def __init__(self : TelegramClient, session : Union[str, Session] = None, api : Union[Type[APIData], APIData] = API.TelegramDesktop):
         """Start TelegramClient with customized api.
 
         Read more at [OpenTele GitHub](https://github.com/thedemons/opentele#authorization)
@@ -92,14 +92,6 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
 
             api (`API`, default=`TelegramDesktop`):
                 Which API to use. Read more `[here](API)`.
-        
-        ### Examples:
-            Start TelegramClient from an instance of TDesktop:
-        ```python
-            from opentele.tl import TelegramClient
-            from opentele.td import APITemplate
-            client = TelegramClient("data.session", api=APITemplate.TelegramDesktop)
-        ```
         """
         pass
 
@@ -107,7 +99,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
     def __init__(
             self,
             session     : Union[str, Session] = None,
-            api         : Union[Type[API], API] = None,
+            api         : Union[Type[APIData], APIData] = None,
             api_id      : int = 0,
             api_hash    : str = None,
             *,
@@ -287,7 +279,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
     def __init__(
             self,
             session     : Union[str, Session] = None,
-            api         : Union[Type[API], API] = None,
+            api         : Union[Type[APIData], APIData] = None,
             api_id      : int = 0,
             api_hash    : str = None,
             *,
@@ -313,7 +305,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
             receive_updates         : bool = True):
 
         if api != None:
-            if isinstance(api, API) or API.__subclasscheck__(api):
+            if isinstance(api, APIData) or APIData.__subclasscheck__(api):
                 api_id = api.api_id
                 api_hash = api.api_hash
                 device_model = api.pid  # type: ignore # pass our hook id through the device_model
@@ -410,11 +402,29 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
         ### Arguments:
             sessions (`Authorizations`, default=`None`):
                 `Sessions` that return by `GetSessions()`, if `None` then it will `GetSessions()` first.
-        ### Examples:
-            Example return:
-                ```
-                testest
-                ```
+
+        ### Returns:
+            On success, it should prints the sessions table as the code below.
+        ```
+            |---------+-----------------------------+----------+----------------+--------+----------------------------+--------------|
+            |         |           Device            | Platform |     System     | API_ID |          App name          | Official App |
+            |---------+-----------------------------+----------+----------------+--------+----------------------------+--------------|
+            | Current |         MacBook Pro         |  macOS   |    10.15.6     |  2834  |     Telegram macOS 8.4     |      ✔       |
+            |---------+-----------------------------+----------+----------------+--------+----------------------------+--------------|
+            |    1    |          Chrome 96          | Windows  |                |  2496  |   Telegram Web 1.28.3 Z    |      ✔       |
+            |    2    |            iMac             |  macOS   |     11.3.1     |  2834  |     Telegram macOS 8.4     |      ✔       |
+            |    3    |         MacBook Pro         |  macOS   |     10.12      |  2834  |     Telegram macOS 8.4     |      ✔       |
+            |    4    |       Huawei Y360-U93       | Android  | 7.1 N MR1 (25) | 21724  |  Telegram Android X 8.4.1  |      ✔       |
+            |    5    |    Samsung Galaxy Spica     | Android  |   6.0 M (23)   |   6    |   Telegram Android 8.4.1   |      ✔       |
+            |    6    |     Xiaomi Redmi Note 8     | Android  |   10 Q (29)    |   6    |   Telegram Android 8.4.1   |      ✔       |
+            |    7    | Samsung Galaxy Tab A (2017) | Android  |   7.0 N (24)   |   6    |   Telegram Android 8.4.1   |      ✔       |
+            |    8    |  Samsung Galaxy XCover Pro  | Android  |   8.0 O (26)   |   6    |   Telegram Android 8.4.1   |      ✔       |
+            |    9    |          iPhone X           |   iOS    |     13.1.3     | 10840  |      Telegram iOS 8.4      |      ✔       |
+            |   10    |        iPhone XS Max        |   iOS    |    12.11.0     | 10840  |      Telegram iOS 8.4      |      ✔       |
+            |   11    |      iPhone 11 Pro Max      |   iOS    |     14.4.2     | 10840  |      Telegram iOS 8.4      |      ✔       |
+            |---------+-----------------------------+----------+----------------+--------+----------------------------+--------------|
+        ```
+        
         """
         if (sessions == None) or not isinstance(sessions, types.account.Authorizations):
             sessions = await self.GetSessions()
@@ -446,9 +456,53 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
         
         return False if auth == None else bool(auth.official_app)
     
+    @typing.overload
     async def QRLoginToNewClient(self,
                                 session                 : Union[str, Session] = None,
-                                api                     : Union[Type[API], API] = APITemplate.TelegramDesktop,
+                                api                     : Union[Type[APIData], APIData] = API.TelegramDesktop,
+                                password                : str = None) -> TelegramClient:
+        """
+        Create a new session using the current session.
+
+        ### Arguments:
+            session (`str`, `Session`, default=`None`):
+                description
+        
+            api (`API`, default=`TelegramDesktop`):
+                Which API to use. Read more `[here](API)`.
+        
+            password (`str`, default=`None`):
+                Two-step verification password, set if needed.
+        
+        ### Raises:
+            - `NoPasswordProvided`: The account's two-step verification is enabled and no `password` was provided. Please set the `password` parameters.
+            - `PasswordIncorrect`: The two-step verification `password` is incorrect.
+            - `TimeoutError`: Time out waiting for the client to be authorized.
+
+        ### Returns:
+            - Return an instance of `TelegramClient` on success.
+
+        ### Examples:
+            Use to current session to authorize a new session:
+        ```python
+            # Using the API that we've generated before. Please refer to method API.Generate() to learn more.
+            oldAPI = API.TelegramDesktop.Generate(system="windows", id="old.session")
+            oldclient = TelegramClient("old.session", api=oldAPI)
+            await oldClient.connect()
+
+            # We can safely authorize the new client with a different API.
+            newAPI = API.TelegramAndroid.Generate(id="new.session")
+            newClient = client.QRLoginToNewClient(session="new.session", api=newAPI)
+            await newClient.connect()
+            await newClient.PrintSessions()
+        ```
+        """
+
+        
+    @typing.overload
+    async def QRLoginToNewClient(self,
+                                session                 : Union[str, Session] = None,
+                                api                     : Union[Type[APIData], APIData] = API.TelegramDesktop,
                                 password                : str = None,
                                 *,
                                 connection              : typing.Type[Connection] = ConnectionTcpFull,
@@ -466,26 +520,28 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
                                 loop                    : asyncio.AbstractEventLoop = None,
                                 base_logger             : Union[str, logging.Logger] = None,
                                 receive_updates         : bool = True) -> TelegramClient:
-        """
-        
-        ### Arguments:
-            session (`str`, `Session`, default=`None`):
-                description
-        
-            api (`API`, default=`TelegramDesktop`):
-                Which API to use. Read more `[here](API)`.
-        
-            password (`str`, default=`None`):
-                Two-step verification password, set if needed.
-        
-        ### Raises:
-            - `NoPasswordProvided`: The account's two-step verification is enabled and no `password` was provided. Please set the `password` parameters.
-            - `PasswordIncorrect`: The two-step verification `password` is incorrect
-            - `TimeoutError`: Time out waiting for the client to be authorized.
+        pass
 
-        ### Returns:
-            - Return an instance of `TelegramClient` on success
-        """
+    async def QRLoginToNewClient(self,
+                                session                 : Union[str, Session] = None,
+                                api                     : Union[Type[APIData], APIData] = API.TelegramDesktop,
+                                password                : str = None,
+                                *,
+                                connection              : typing.Type[Connection] = ConnectionTcpFull,
+                                use_ipv6                : bool = False,
+                                proxy                   : Union[tuple, dict] = None,
+                                local_addr              : Union[str, tuple] = None,
+                                timeout                 : int = 10,
+                                request_retries         : int = 5,
+                                connection_retries      : int = 5,
+                                retry_delay             : int = 1,
+                                auto_reconnect          : bool = True,
+                                sequential_updates      : bool = False,
+                                flood_sleep_threshold   : int = 60,
+                                raise_last_call_error   : bool = False,
+                                loop                    : asyncio.AbstractEventLoop = None,
+                                base_logger             : Union[str, logging.Logger] = None,
+                                receive_updates         : bool = True) -> TelegramClient:
 
         newClient = TelegramClient(session, api=api, connection=connection, use_ipv6=use_ipv6,
                                 proxy=proxy, local_addr=local_addr, timeout=timeout, request_retries=request_retries,
@@ -581,7 +637,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
     
     async def ToTDesktop(self,
                          flag        : Type[LoginFlag] = CreateNewSession,
-                         api         : Union[Type[API], API] = APITemplate.TelegramDesktop,
+                         api         : Union[Type[APIData], APIData] = API.TelegramDesktop,
                          password    : str = None) -> td.TDesktop:
         """
         Convert this instance of `TelegramClient` to `TDesktop`
@@ -598,6 +654,23 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
         
         ### Returns:
             - Return an instance of `TDesktop` on success
+
+        ### Examples:
+            Save a telethon session to tdata:
+        ```python
+            # Using the API that we've generated before. Please refer to method API.Generate() to learn more.
+            oldAPI = API.TelegramDesktop.Generate(system="windows", id="old.session")
+            oldclient = TelegramClient("old.session", api=oldAPI)
+            await oldClient.connect()
+
+            # We can safely CreateNewSession with a different API.
+            # Be aware that you should not use UseCurrentSession with a different API than the one that first authorized it.
+            newAPI = API.TelegramAndroid.Generate(id="new_tdata")
+            tdesk = oldClient.ToTDesktop(flag=CreateNewSession, api=newAPI)
+
+            # Save the new session to a folder named "new_tdata"
+            tdesk.SaveTData("new_tdata")
+        ```
         """
 
         return await td.TDesktop.FromTelethon(self, flag=flag, api=api, password=password)
@@ -607,13 +680,13 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
     async def FromTDesktop( account         : Union[td.TDesktop, td.Account],
                             session         : Union[str, Session] = None,
                             flag            : Type[LoginFlag] = CreateNewSession,
-                            api             : Union[Type[API], API] = APITemplate.TelegramDesktop,
+                            api             : Union[Type[APIData], APIData] = API.TelegramDesktop,
                             password        : str = None) -> TelegramClient:
         """
         
         ### Arguments:
             account (`TDesktop`, `Account`):
-                The `td.TDesktop` or `td.Account` you want to convert from.
+                The `TDesktop` or `Account` you want to convert from.
         
             session (`str`, `Session`, default=`None`):
                 The file name of the `session file` to be used, if `None` then the session will not be saved.\\
@@ -630,6 +703,20 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
         
         ### Returns:
             - Return an instance of `TelegramClient` on success
+        
+        ### Examples:
+            Create a telethon session using tdata folder:
+        ```python
+            # Using the API that we've generated before. Please refer to method API.Generate() to learn more.
+            oldAPI = API.TelegramDesktop.Generate(system="windows", id="old_tdata")
+            tdesk = TDesktop("old_tdata", api=oldAPI)
+
+            # We can safely authorize the new client with a different API.
+            newAPI = API.TelegramAndroid.Generate(id="new.session")
+            client = TelegramClient.FromTDesktop(tdesk, session="new.session", flag=CreateNewSession, api=newAPI)
+            await client.connect()
+            await client.PrintSessions()
+        ```
         """
 
         pass
@@ -639,7 +726,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
     async def FromTDesktop( account        : Union[td.TDesktop, td.Account],
                             session         : Union[str, Session] = None,
                             flag            : Type[LoginFlag] = CreateNewSession,
-                            api             : Union[Type[API], API] = APITemplate.TelegramDesktop,
+                            api             : Union[Type[APIData], APIData] = API.TelegramDesktop,
                             password        : str = None,
                             *,
                             connection              : typing.Type[Connection] = ConnectionTcpFull,
@@ -663,7 +750,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
     async def FromTDesktop( account         : Union[td.TDesktop, td.Account],
                             session         : Union[str, Session] = None,
                             flag            : Type[LoginFlag] = CreateNewSession,
-                            api             : Union[Type[API], API] = APITemplate.TelegramDesktop,
+                            api             : Union[Type[APIData], APIData] = API.TelegramDesktop,
                             password        : str = None,
                             *,
                             connection              : typing.Type[Connection] = ConnectionTcpFull,
@@ -690,13 +777,13 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
             assert account.mainAccount
             account = account.mainAccount
         
-        if (flag == UseCurrentSession) and not (isinstance(api, API) or API.__subclasscheck__(api)):
+        if (flag == UseCurrentSession) and not (isinstance(api, APIData) or APIData.__subclasscheck__(api)):
             
             warnings.warn( # type: ignore
                 '\nIf you use an existing Telegram Desktop session '
                 'with unofficial API_ID and API_HASH, '
                 'Telegram might ban your account because of suspicious activities.\n'
-                'Please use the default APITemplates to get rid of this.'
+                'Please use the default APIs to get rid of this.'
             )
         
         endpoints = account._local.config.endpoints(account.MainDcId)

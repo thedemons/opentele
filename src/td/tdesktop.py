@@ -27,10 +27,10 @@ class TDesktop(BaseObject):
             The numbers of accounts in this client.
 
         accounts (`List[Account]`):
-            List of accounts in this client
+            List of accounts in this client.
 
         mainAccount (`Account`):
-            The main account of this client
+            The main account of this client.
         
         basePath (`str`):
             The path to `tdata folder`.
@@ -60,32 +60,34 @@ class TDesktop(BaseObject):
             Save the client session to `tdata folder` - which can be used by `Telegram Desktop`.
 
         isLoaded():
-            Return `True` if the client has successfully loaded accounts from `tdata` or from `TelegramClient`
+            Return `True` if the client has successfully loaded accounts from `tdata` or from `TelegramClient`.
+
+        ToTelethon():
+            Convert this session to `TelegramClient`.
+
+        FromTelethon():
+            Create a new session from `TelegramClient`.
 
     """
     
     @typing.overload
     def __init__(self) -> None:
-        """
-        Create an empty instance
-        """
+        pass
 
     @typing.overload
     def __init__(self,  basePath : str = None,
-                        api : Union[Type[API], API] = APITemplate.TelegramDesktop) -> None:
+                        api : Union[Type[APIData], APIData] = API.TelegramDesktop) -> None:
         pass
                         
     @typing.overload
     def __init__(self,  basePath : str = None,
-                        api : Union[Type[API], API] = APITemplate.TelegramDesktop,
-                        *,
+                        api : Union[Type[APIData], APIData] = API.TelegramDesktop,
                         passcode : str = None,
                         keyFile : str = None) -> None:
         pass
 
     def __init__(self,  basePath : str = None,
-                        api : Union[Type[API], API] = APITemplate.TelegramDesktop,
-                        *,
+                        api : Union[Type[APIData], APIData] = API.TelegramDesktop,
                         passcode : str = None,
                         keyFile : str = None) -> None:
         """
@@ -104,13 +106,6 @@ class TDesktop(BaseObject):
         
             keyFile (str, default="data"):
                 See `keyFile`.
-
-        ### Examples:
-        ```python
-                from opentele.td import TDesktop
-                tdataFolder = "Path\\To\\tdata"
-                tdesktop = TDesktop(tdataFolder)
-        ```
         """
         self.__accounts : typing.List[td.Account] = []
         self.__basePath = basePath
@@ -145,14 +140,34 @@ class TDesktop(BaseObject):
                 The path to the folder.
         
             passcode (`str`, default=`None`):
-                See `passcode`
+                Read more `[here](passcode)`.
         
             keyFile (`str`, default=`None`):
-                See `keyFile`
+                Read more `[here](keyFile)`.
         
         ### Raises:
-            `TDataBadDecryptKey`:
-                The `tdata folder` is password-encrypted, please the set the argument `passcode` to decrypt it.
+            `TDataBadDecryptKey`: The `tdata folder` is password-encrypted, please the set the argument `passcode` to decrypt it.
+
+        ### Warning:
+            This function is not recommended to use:
+                You should load tdata using `TDesktop(basePath="path")`.
+                Don't manually load tdata using this function, bugs might pop up out of nowhere.
+
+        ### Examples:
+        ```python
+            # Using the API that we've generated before. Please refer to method API.Generate() to learn more.
+            oldAPI = API.TelegramDesktop.Generate(system="windows", id="old.session")
+            oldclient = TelegramClient("old.session", api=oldAPI)
+            await oldClient.connect()
+
+            # We can safely use CreateNewSession with a different API.
+            # Be aware that you should not use UseCurrentSession with a different API than the one that first authorized it.
+            newAPI = API.TelegramAndroid.Generate("new_tdata")
+            tdesk = TDesktop.FromTelethon(oldclient, flag=CreateNewSession, api=newAPI)
+
+            # Save the new session to a folder named "new_tdata"
+            tdesk.SaveTData("new_tdata")
+        ```
         """
         
         if basePath == None: basePath = self.basePath
@@ -186,10 +201,32 @@ class TDesktop(BaseObject):
         Save the client session to a folder.
 
         ### Arguments:
-            basePath (str, default=None):
+            basePath (`str`, default=None):
                 Path to the folder\\
-                If None then the data will be saved at the basePath given at creation
+                If None then the data will be saved at the basePath given at creation.
+
+            passcode (`str`, default=`None`):
+                Read more `[here](passcode)`.
         
+            keyFile (`str`, default=`None`):
+                Read more `[here](keyFile)`.
+
+        ### Examples:
+            Save a telethon session to tdata:
+        ```python
+            # Using the API that we've generated before. Please refer to method API.Generate() to learn more.
+            oldAPI = API.TelegramDesktop.Generate(system="windows", id="old.session")
+            oldclient = TelegramClient("old.session", api=oldAPI)
+            await oldClient.connect()
+
+            # We can safely CreateNewSession with a different API.
+            # Be aware that you should not use UseCurrentSession with a different API than the one that first authorized it.
+            newAPI = API.TelegramAndroid.Generate("new_tdata")
+            tdesk = TDesktop.FromTelethon(oldclient, flag=CreateNewSession, api=newAPI)
+
+            # Save the new session to a folder named "new_tdata"
+            tdesk.SaveTData("new_tdata")
+        ```
         """
         if basePath == None: basePath = self.basePath
         
@@ -338,8 +375,158 @@ class TDesktop(BaseObject):
             self.__mainAccount = self.accounts[0]
         
         self.__isLoaded = True
+
+
+# EXTENDED FUNCTION ====================================================================
+# @extend_classs
+# class TDesktop:
+
+    @typing.overload
+    async def ToTelethon(self,
+                    session         : Union[str, Session] = None,
+                    flag            : Type[LoginFlag] = CreateNewSession,
+                    api             : Union[Type[APIData], APIData] = API.TelegramDesktop,
+                    password        : str = None) -> tl.TelegramClient:
+        """
         
-           
+        ### Arguments:
+            session (`str`, `Session`, default=`None`):
+                The file name of the `session file` to be used, if `None` then the session will not be saved.\\
+                Read more [here](https://docs.telethon.dev/en/latest/concepts/sessions.html?highlight=session#what-are-sessions).
+        
+            flag (`LoginFlag`, default=`CreateNewSession`):
+                The login flag. Read more `[here](LoginFlag)`.
+        
+            api (`APIData`, default=`TelegramDesktop`):
+                Which API to use. Read more `[here](API)`.
+        
+            password (`str`, default=`None`):
+                Two-step verification password if needed.
+        
+        ### Returns:
+            - Return an instance of `TelegramClient` on success
+
+        ### Examples:
+            Create a telethon session from tdata folder:
+        ```python
+            # Using the API that we've generated before. Please refer to method API.Generate() to learn more.
+            oldAPI = API.TelegramDesktop.Generate(system="windows", id="old_tdata")
+            tdesk = TDesktop("old_tdata", api=oldAPI)
+
+            # We can safely authorize the new client with a different API.
+            newAPI = API.TelegramAndroid.Generate(id="new.session")
+            client = tdesk.ToTelethon(session="new.session", flag=CreateNewSession, api=newAPI)
+            await client.connect()
+            await client.PrintSessions()
+        ```
+        """
+
+    @typing.overload
+    async def ToTelethon( self,
+                    session         : Union[str, Session] = None,
+                    flag            : Type[LoginFlag] = CreateNewSession,
+                    api             : Union[Type[APIData], APIData] = API.TelegramDesktop,
+                    password                : str = None,
+                    *,
+                    connection              : typing.Type[Connection] = ConnectionTcpFull,
+                    use_ipv6                : bool = False,
+                    proxy                   : Union[tuple, dict] = None,
+                    local_addr              : Union[str, tuple] = None,
+                    timeout                 : int = 10,
+                    request_retries         : int = 5,
+                    connection_retries      : int = 5,
+                    retry_delay             : int = 1,
+                    auto_reconnect          : bool = True,
+                    sequential_updates      : bool = False,
+                    flood_sleep_threshold   : int = 60,
+                    raise_last_call_error   : bool = False,
+                    loop                    : asyncio.AbstractEventLoop = None,
+                    base_logger             : Union[str, logging.Logger] = None,
+                    receive_updates         : bool = True) -> tl.TelegramClient:
+        pass
+
+    async def ToTelethon( self,
+                    session         : Union[str, Session] = None,
+                    flag            : Type[LoginFlag] = CreateNewSession,
+                    api             : Union[Type[APIData], APIData] = API.TelegramDesktop,
+                    password        : str = None,
+                    *,
+                    connection              : typing.Type[Connection] = ConnectionTcpFull,
+                    use_ipv6                : bool = False,
+                    proxy                   : Union[tuple, dict] = None,
+                    local_addr              : Union[str, tuple] = None,
+                    timeout                 : int = 10,
+                    request_retries         : int = 5,
+                    connection_retries      : int = 5,
+                    retry_delay             : int = 1,
+                    auto_reconnect          : bool = True,
+                    sequential_updates      : bool = False,
+                    flood_sleep_threshold   : int = 60,
+                    raise_last_call_error   : bool = False,
+                    loop                    : asyncio.AbstractEventLoop = None,
+                    base_logger             : Union[str, logging.Logger] = None,
+                    receive_updates         : bool = True) -> tl.TelegramClient:
+
+        Expects(self.isLoaded(), TDesktopNotLoaded("You need to load accounts from a tdata folder first"))
+        Expects(self.accountsCount > 0, TDesktopHasNoAccount("There is no account in this instance of TDesktop"))
+        assert self.mainAccount
+        
+        return await tl.TelegramClient.FromTDesktop(self.mainAccount, session=session, flag=flag, api=api, password=password,
+                                            connection=connection, use_ipv6=use_ipv6,
+                                            proxy=proxy, local_addr=local_addr, timeout=timeout, request_retries=request_retries,
+                                            connection_retries=connection_retries, retry_delay=retry_delay, auto_reconnect=auto_reconnect,
+                                            sequential_updates=sequential_updates, flood_sleep_threshold=flood_sleep_threshold,
+                                            raise_last_call_error=raise_last_call_error, loop=loop, base_logger=base_logger,
+                                            receive_updates=receive_updates)
+
+    @staticmethod
+    async def FromTelethon(telethonClient : tl.TelegramClient,
+                    flag            : Type[LoginFlag] = CreateNewSession,
+                    api             : Union[Type[APIData], APIData] = API.TelegramDesktop,
+                    password        : str = None) -> TDesktop:
+        """
+        Create an instance of `TDesktop` from `TelegramClient`.
+
+        ### Arguments:
+            telethonClient (`TelegramClient`):
+                The `TelegramClient` you want to convert from.
+        
+            flag (`LoginFlag`, default=`CreateNewSession`):
+                The login flag. Read more `[here](LoginFlag)`.
+        
+            api (`APIData`, default=`API.TelegramDesktop`):
+                Which API to use. Read more `[here](API)`.
+        
+            password (`str`, default=`None`):
+                Two-step verification password if needed.
+
+        ### Examples:
+            Save a telethon session to tdata:
+        ```python
+            # Using the API that we've generated before. Please refer to method API.Generate() to learn more.
+            oldAPI = API.TelegramDesktop.Generate(system="windows", id="old.session")
+            oldclient = TelegramClient("old.session", api=oldAPI)
+            await oldClient.connect()
+
+            # We can safely CreateNewSession with a different API.
+            # Be aware that you should not use UseCurrentSession with a different API than the one that first authorized it.
+            newAPI = API.TelegramAndroid.Generate("new_tdata")
+            tdesk = TDesktop.FromTelethon(oldclient, flag=CreateNewSession, api=newAPI)
+
+            # Save the new session to a folder named "new_tdata"
+            tdesk.SaveTData("new_tdata")
+        ```
+        """
+        
+        Expects((flag == CreateNewSession) or (flag == UseCurrentSession), LoginFlagInvalid("LoginFlag invalid"))
+        
+        _self = TDesktop()
+        _self.__isLoaded = True
+        
+        await td.Account.FromTelethon(telethonClient, flag=flag, api=api, password=password, owner=_self)
+
+        return _self
+         
     kMaxAccounts : int = int(3)
     """Maximum amount of accounts a client can have"""
 
@@ -347,7 +534,7 @@ class TDesktop(BaseObject):
     """See `TDesktop.keyFile`"""
 
     @property
-    def api(self) -> API:
+    def api(self) -> APIData:
         """
         The API this client is using.
         """
@@ -362,8 +549,8 @@ class TDesktop(BaseObject):
     @property
     def basePath(self) -> Optional[str]:
         """
-        Base folder of TDesktop, this is where data stored
-        Same as tdata folder of Telegram Desktop
+        Base folder of `TDesktop`, this is where data stored
+        Same as tdata folder of `Telegram Desktop`
         """
         return self.__basePath
 
@@ -372,7 +559,7 @@ class TDesktop(BaseObject):
         """
         Passcode
         Passcode used to encrypt and decrypt data
-        Same as the Local Passcode of Telegram Desktop
+        Same as the Local Passcode of `Telegram Desktop`
         """
         return self.__passcode
 
@@ -430,111 +617,3 @@ class TDesktop(BaseObject):
         The main account of the client
         """
         return self.__mainAccount
-
-
-
-
-
-# EXTENDED FUNCTION ====================================================================
-# @extend_classs
-# class TDesktop:
-
-    @typing.overload
-    async def ToTelethon(self,
-                    session         : Union[str, Session] = None,
-                    flag            : Type[LoginFlag] = CreateNewSession,
-                    api             : Union[Type[API], API] = APITemplate.TelegramDesktop,
-                    password        : str = None) -> tl.TelegramClient:
-        pass
-
-    @typing.overload
-    async def ToTelethon( self,
-                    session         : Union[str, Session] = None,
-                    flag            : Type[LoginFlag] = CreateNewSession,
-                    api             : Union[Type[API], API] = APITemplate.TelegramDesktop,
-                    password                : str = None,
-                    *,
-                    connection              : typing.Type[Connection] = ConnectionTcpFull,
-                    use_ipv6                : bool = False,
-                    proxy                   : Union[tuple, dict] = None,
-                    local_addr              : Union[str, tuple] = None,
-                    timeout                 : int = 10,
-                    request_retries         : int = 5,
-                    connection_retries      : int = 5,
-                    retry_delay             : int = 1,
-                    auto_reconnect          : bool = True,
-                    sequential_updates      : bool = False,
-                    flood_sleep_threshold   : int = 60,
-                    raise_last_call_error   : bool = False,
-                    loop                    : asyncio.AbstractEventLoop = None,
-                    base_logger             : Union[str, logging.Logger] = None,
-                    receive_updates         : bool = True) -> tl.TelegramClient:
-        pass
-
-    async def ToTelethon( self,
-                    session         : Union[str, Session] = None,
-                    flag            : Type[LoginFlag] = CreateNewSession,
-                    api             : Union[Type[API], API] = APITemplate.TelegramDesktop,
-                    password        : str = None,
-                    *,
-                    connection              : typing.Type[Connection] = ConnectionTcpFull,
-                    use_ipv6                : bool = False,
-                    proxy                   : Union[tuple, dict] = None,
-                    local_addr              : Union[str, tuple] = None,
-                    timeout                 : int = 10,
-                    request_retries         : int = 5,
-                    connection_retries      : int = 5,
-                    retry_delay             : int = 1,
-                    auto_reconnect          : bool = True,
-                    sequential_updates      : bool = False,
-                    flood_sleep_threshold   : int = 60,
-                    raise_last_call_error   : bool = False,
-                    loop                    : asyncio.AbstractEventLoop = None,
-                    base_logger             : Union[str, logging.Logger] = None,
-                    receive_updates         : bool = True) -> tl.TelegramClient:
-
-        Expects(self.isLoaded(), TDesktopNotLoaded("You need to load accounts from a tdata folder first"))
-        Expects(self.accountsCount > 0, TDesktopHasNoAccount("There is no account in this instance of TDesktop"))
-        assert self.mainAccount
-        
-        return await tl.TelegramClient.FromTDesktop(self.mainAccount, session=session, flag=flag, api=api, password=password,
-                                            connection=connection, use_ipv6=use_ipv6,
-                                            proxy=proxy, local_addr=local_addr, timeout=timeout, request_retries=request_retries,
-                                            connection_retries=connection_retries, retry_delay=retry_delay, auto_reconnect=auto_reconnect,
-                                            sequential_updates=sequential_updates, flood_sleep_threshold=flood_sleep_threshold,
-                                            raise_last_call_error=raise_last_call_error, loop=loop, base_logger=base_logger,
-                                            receive_updates=receive_updates)
-
-    @staticmethod
-    async def FromTelethon(telethonClient : tl.TelegramClient,
-                    flag            : Type[LoginFlag] = CreateNewSession,
-                    api             : Union[Type[API], API] = APITemplate.TelegramDesktop,
-                    password        : str = None) -> TDesktop:
-        """
-        Create an instance of `TDesktop` from `telethon.TelegramClient`
-        
-        ### Arguments
-            1. telethonClient (telethon.TelegramClient):
-                The client need to be authorized (logged in) first.
-        
-        
-        ### Remark
-            - If you don't set the basePath, you will have to set it when saving tdata
-
-        ### Examples
-        #### Saving a telethon client to tdata:
-        ```python
-            telethonClient = TelegramClient("sessionFile", API_ID, API_HASH)
-            account = Account.FromTelethon(telethonClient, basePath="new_tdata")
-            account.saveTData()
-        ```
-        """
-        
-        Expects((flag == CreateNewSession) or (flag == UseCurrentSession), LoginFlagInvalid("LoginFlag invalid"))
-        
-        _self = TDesktop()
-        _self.__isLoaded = True
-        
-        await td.Account.FromTelethon(telethonClient, flag=flag, api=api, password=password, owner=_self)
-
-        return _self

@@ -51,14 +51,9 @@ class BaseAPIMetaClass(type):
         return result + "}"
 
 
-class API(object, metaclass=BaseAPIMetaClass):
+class APIData(object, metaclass=BaseAPIMetaClass):
     """
     API configuration to connect to `TelegramClient` and `TDesktop`
-    - `**opentele**` offers the ability to use **`official APIs`**, which are used by `official apps`. You can check that out in `APITemplate`.
-    - According to [Telegram TOS](https://core.telegram.org/api/obtaining_api_id#using-the-api-id): *all accounts that sign up or log in using unofficial Telegram API clients are automatically put under observation to avoid violations of the Terms of Service*.
-    - It also uses the **[lang_pack](https://core.telegram.org/method/initConnection)** parameter, of which [telethon can't use](https://github.com/LonamiWebs/Telethon/blob/master/telethon/client/telegrambaseclient.py#L375) because it's for official apps only.
-    - Therefore, **there are no differences** between using `opentele` and `official apps`, the server can't tell you apart.
-    - You can use `TelegramClient.PrintSessions()` to check this out.
 
     ### Attributes:
         api_id (`int`):
@@ -88,7 +83,7 @@ class API(object, metaclass=BaseAPIMetaClass):
     ### Methods:
         `Generate()`: Generate random device model and system version
     """
-    CustomInitConnectionList : List[Union[Type[API], API]] = []
+    CustomInitConnectionList : List[Union[Type[APIData], APIData]] = []
 
     api_id : int           = None # type: ignore
     api_hash : str         = None # type: ignore
@@ -159,7 +154,7 @@ class API(object, metaclass=BaseAPIMetaClass):
                 system_lang_code    : str = None,
                 lang_pack           : str = None) -> None:
 
-        Expects((self.__class__ != API) or (api_id != None and api_hash != None),
+        Expects((self.__class__ != APIData) or (api_id != None and api_hash != None),
         NoInstanceMatched("No instace of API matches the arguments"))
 
         cls = self.__class__
@@ -211,8 +206,8 @@ class API(object, metaclass=BaseAPIMetaClass):
         #     API.CustomInitConnectionList.remove(self)
         
 
-    def __eq__(self, __o: API) -> bool:
-        if (type(__o) != API): return False
+    def __eq__(self, __o: APIData) -> bool:
+        if (type(__o) != APIData): return False
         return self.pid == __o.pid
     
     def __del__(self):
@@ -226,7 +221,7 @@ class API(object, metaclass=BaseAPIMetaClass):
         return pid
 
     @classmethod
-    def _clsMakePID(cls : Type[API]):
+    def _clsMakePID(cls : Type[APIData]):
         cls.pid = cls._makePIDEnsure()
         cls.CustomInitConnectionList.append(cls)
         
@@ -235,15 +230,15 @@ class API(object, metaclass=BaseAPIMetaClass):
         self.__class__.CustomInitConnectionList.append(self)
     
     @classmethod
-    def Generate(cls : Type[_T], id : str = None) -> _T:
+    def Generate(cls : Type[_T], unique_id : str = None) -> _T:
         """
         Generate random device model and system version
 
         ### Arguments:
-            id (`str`, default=`None`):
-                The ID to generate - can be anything.\\
+            unique_id (`str`, default=`None`):
+                The unique ID to generate - can be anything.\\
                 This will be used to ensure that it will generate the same data everytime.\\
-                If not set then it won't generate the same value again.
+                If not set then the data will be randomized each time we runs it.
         
         ### Raises:
             `NotImplementedError`: Not supported for web browser yet
@@ -252,16 +247,16 @@ class API(object, metaclass=BaseAPIMetaClass):
             `API`: Return a copy of the api with random device data
         """
 
-        if cls == APITemplate.TelegramAndroid:
+        if cls == API.TelegramAndroid or cls == API.TelegramAndroidX:
             deviceInfo = AndroidDevice.RandomDevice(id)
 
-        elif cls == APITemplate.TelegramIOS:
+        elif cls == API.TelegramIOS:
             deviceInfo = iOSDeivce.RandomDevice(id)
 
-        elif cls == APITemplate.TelegramMacOS:
+        elif cls == API.TelegramMacOS:
             deviceInfo = macOSDevice.RandomDevice(id)
 
-        # elif cls == APITemplate.TelegramWeb_K or cls == APITemplate.TelegramWeb_Z or cls == APITemplate.Webogram:
+        # elif cls == API.TelegramWeb_K or cls == API.TelegramWeb_Z or cls == API.Webogram:
         else:
             raise NotImplementedError(f"{cls.__name__} device not supported for randomize yet")
         
@@ -273,9 +268,14 @@ class API(object, metaclass=BaseAPIMetaClass):
             if x.pid == pid: return x
         return None
 
-class APITemplate(API):
+class API(BaseObject):
     """
-    Builtin Templates for API
+    #### Built-in templates for Telegram API
+    - **`opentele`** offers the ability to use **`official APIs`**, which are used by `official apps`.
+    - According to [Telegram TOS](https://core.telegram.org/api/obtaining_api_id#using-the-api-id): *all accounts that sign up or log in using unofficial Telegram API clients are automatically put under observation to avoid violations of the Terms of Service*.
+    - It also uses the **[lang_pack](https://core.telegram.org/method/initConnection)** parameter, of which [telethon can't use](https://github.com/LonamiWebs/Telethon/blob/master/telethon/client/telegrambaseclient.py#L375) because it's for official apps only.
+    - Therefore, **there are no differences** between using `opentele` and `official apps`, the server can't tell you apart.
+    - You can use `TelegramClient.PrintSessions()` to check this out.
 
     ### Attributes:
         TelegramDesktop (`API`):
@@ -303,7 +303,7 @@ class APITemplate(API):
             Old Telegram For Browsers [View on GitHub](https://github.com/zhukov/webogram) | [Vist on Telegram](https://web.telegram.org/?legacy=1#/im)
     """
     
-    class TelegramDesktop(API):
+    class TelegramDesktop(APIData):
         """
         Official Telegram for Desktop (Windows, macOS and Linux)
         [View on GitHub](https://github.com/telegramdesktop/tdesktop)
@@ -332,18 +332,18 @@ class APITemplate(API):
         
         @typing.overload
         @classmethod
-        def Generate(cls : Type[_T], system : str = "windows", id : str = None) -> _T:
+        def Generate(cls : Type[_T], system : str = "windows", unique_id : str = None) -> _T:
             """
             Generate random TelegramDesktop devices
             ### Arguments:
                 system (`str`, default=`"random"`):
-                    Which OS to generate, either "windows", "macos", or "linux".\\
-                    Default is `None` or "random" which means it will selects randomly
+                    Which OS to generate, either `"windows"`, `"macos"`, or `"linux"`.\\
+                    Default is `None` or `"random"` -  which means it will be selected randomly.
             
-                id (`str`, default=`None`):
-                    The ID to generate - can be anything.\\
+                unique_id (`str`, default=`None`):
+                    The unique ID to generate - can be anything.\\
                     This ID will be used to ensure that it will generate the same data every single time.\\
-                    If not set then it won't generate the same value again.
+                    If not set then the data will be randomized each time we runs it.
             
             ### Returns:
                 `_T`: [description]
@@ -384,7 +384,7 @@ class APITemplate(API):
 
             return cls(device_model=deviceInfo.model, system_version=deviceInfo.version)
 
-    class TelegramAndroid(API):
+    class TelegramAndroid(APIData):
         """
         Official Telegram for Android
         [View on GitHub](https://github.com/DrKLO/Telegram)
@@ -408,7 +408,7 @@ class APITemplate(API):
         system_lang_code = "en-US"
         lang_pack        = "android"
 
-    class TelegramAndroidX(API):
+    class TelegramAndroidX(APIData):
         """
         Official TelegramX for Android
         [View on GitHub](https://github.com/DrKLO/Telegram)
@@ -432,7 +432,7 @@ class APITemplate(API):
         system_lang_code = "en-US"
         lang_pack        = "android"
 
-    class TelegramIOS(API):
+    class TelegramIOS(APIData):
         """
         Official Telegram for iOS
         [View on GitHub](https://github.com/TelegramMessenger/Telegram-iOS)
@@ -458,7 +458,7 @@ class APITemplate(API):
         system_lang_code = "en-US"
         lang_pack        = "ios"
 
-    class TelegramMacOS(API):
+    class TelegramMacOS(APIData):
         """
         Official Telegram-Swift For MacOS
         [View on GitHub](https://github.com/overtake/TelegramSwift)
@@ -484,7 +484,7 @@ class APITemplate(API):
         system_lang_code = "en-US"
         lang_pack        = "macos"
 
-    class TelegramWeb_Z(API):
+    class TelegramWeb_Z(APIData):
         """
         Default Official Telegram Web Z For Browsers
         [View on GitHub](https://github.com/Ajaxy/telegram-tt) | [Visit on Telegram](https://web.telegram.org/z/)
@@ -509,7 +509,7 @@ class APITemplate(API):
         lang_pack        = ""   # I don"t understand why Telegram Z doesn"t use langPack
                                 # You can read its source here: https://github.com/Ajaxy/telegram-tt/blob/f7bc473d51c0fe3a3e8b22678b62d2360225aa7c/src/lib/gramjs/client/TelegramClient.js#L131
 
-    class TelegramWeb_K(API):
+    class TelegramWeb_K(APIData):
         """
         Official Telegram Web K For Browsers
         [View on GitHub](https://github.com/morethanwords/tweb) | [Visit on Telegram](https://web.telegram.org/k/)
@@ -533,7 +533,7 @@ class APITemplate(API):
         system_lang_code = "en-US"
         lang_pack        = "macos"   # I"m totally confused, why macos? https://github.dev/morethanwords/tweb/blob/26582590e647766f5890c79e1611c54c1e6e800c/src/config/app.ts#L23
 
-    class Webogram(API):
+    class Webogram(APIData):
         """
         Old Telegram For Browsers
         [View on GitHub](https://github.com/zhukov/webogram) | [Vist on Telegram](https://web.telegram.org/?legacy=1#/im)
@@ -567,7 +567,7 @@ class LoginFlag(int):
         CreateNewSession (LoginFlag): Create a new session.
     
     ### Related:
-        `TDesktop.ToTelethon()`
+        - `TDesktop.ToTelethon()`
         - `TDesktop.FromTelethon()`
         - `TelegramClient.ToTDesktop()`
         - `TelegramClient.FromTDesktop()` 
@@ -577,16 +577,26 @@ class LoginFlag(int):
 class UseCurrentSession(LoginFlag):
     """
     Use the current session.
-    Convert an already-logged in session of `Telegram Desktop` to `Telethon` and vice versa.
-    The "session" is just an 256-bytes `AuthKey` that get stored in `tdata folder` or Telethon `session files` [(under sqlite3 format)](https://docs.telethon.dev/en/latest/concepts/sessions.html?highlight=sqlite3#what-are-sessions).
-    `UseCurrentSession`'s only job is to read this key and convert it to one another.
+    - Convert an already-logged in session of `Telegram Desktop` to `Telethon` and vice versa.
+    - The "session" is just an 256-bytes `AuthKey` that get stored in `tdata folder` or Telethon `session files` [(under sqlite3 format)](https://docs.telethon.dev/en/latest/concepts/sessions.html?highlight=sqlite3#what-are-sessions).
+    - `UseCurrentSession`'s only job is to read this key and convert it to one another.
+
+    ### Warning:
+        Use at your own risk!:
+            You should only use the same consistant API through out the session.
+            Don't use a same session with multiple different APIs, you might be banned.
+
 
     """
 
 class CreateNewSession(LoginFlag):
     """
     Create a new session.
-    Use the `current session` to authorize the `new session` by [Login via QR code](https://core.telegram.org/api/qr-login).
-    This works just like when you signing into `Telegram` using `QR Login` on mobile devices.
-    Although `Telegram Desktop` doesn't let you authorize other sessions via `QR Code` *(or it doesn't have that feature)*, it is still available across all platforms `(``[APIs](API)``)`.
+    - Use the `current session` to authorize the `new session` by [Login via QR code](https://core.telegram.org/api/qr-login).
+    - This works just like when you signing into `Telegram` using `QR Login` on mobile devices.
+    - Although `Telegram Desktop` doesn't let you authorize other sessions via `QR Code` *(or it doesn't have that feature)*, it is still available across all platforms `(``[APIs](API)``)`.
+    
+    ### Done:
+        Safe to use:
+            You can always use `CreateNewSessions` with any APIs, it can be different from the API that originally created the session.
     """

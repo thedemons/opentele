@@ -32,7 +32,7 @@ from .shared import *
 #         if customAPI != None:
 #             newClient = TelegramClient(session_name, customAPI.api_id, customAPI.api_hash, device_model=customAPI.pid) # pass hook data pid through device_model
 #         else:
-#             defaultAPI =  APITemplate.TelegramDesktop
+#             defaultAPI =  API.TelegramDesktop
 #             newClient = TelegramClient(session_name, defaultAPI.api_id, defaultAPI.api_hash, )
         
 #         oldClient = self.ToTelethon()

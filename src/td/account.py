@@ -542,7 +542,7 @@ class Account(BaseObject):
     def __init__(self, 
                 owner    : td.TDesktop,
                 basePath : str = None, 
-                api      : Union[Type[API], API] = APITemplate.TelegramDesktop,
+                api      : Union[Type[APIData], APIData] = API.TelegramDesktop,
                 keyFile  : str = None,
                 index    : int = 0) -> None:
         """
@@ -592,7 +592,7 @@ class Account(BaseObject):
 
 
     @property
-    def api(self) -> API:
+    def api(self) -> APIData:
         """
         The API this acount is using.
         """
@@ -831,7 +831,7 @@ class Account(BaseObject):
     async def ToTelethon(   self,
                             session         : Union[str, Session] = None,
                             flag            : Type[LoginFlag] = CreateNewSession,
-                            api             : Union[Type[API], API] = APITemplate.TelegramDesktop,
+                            api             : Union[Type[APIData], APIData] = API.TelegramDesktop,
                             password        : str = None) -> tl.TelegramClient:
         pass
 
@@ -839,7 +839,7 @@ class Account(BaseObject):
     async def ToTelethon(   self,
                             session         : Union[str, Session] = None,
                             flag            : Type[LoginFlag] = CreateNewSession,
-                            api             : Union[Type[API], API] = APITemplate.TelegramDesktop,
+                            api             : Union[Type[APIData], APIData] = API.TelegramDesktop,
                             password        : str = None,
                             *,
                             connection              : typing.Type[Connection] = ConnectionTcpFull,
@@ -862,7 +862,7 @@ class Account(BaseObject):
     async def ToTelethon(   self,
                             session         : Union[str, Session] = None,
                             flag            : Type[LoginFlag] = CreateNewSession,
-                            api             : Union[Type[API], API] = APITemplate.TelegramDesktop,
+                            api             : Union[Type[APIData], APIData] = API.TelegramDesktop,
                             password        : str = None,
                             *,
                             connection              : typing.Type[Connection] = ConnectionTcpFull,
@@ -895,7 +895,7 @@ class Account(BaseObject):
     @staticmethod
     async def FromTelethon( telethonClient : tl.TelegramClient,
                             flag            : Type[LoginFlag] = CreateNewSession,
-                            api             : Union[Type[API], API] = APITemplate.TelegramDesktop,
+                            api             : Union[Type[APIData], APIData] = API.TelegramDesktop,
                             password        : str = None,
                             owner           : td.TDesktop = None):
 
