@@ -7,6 +7,7 @@ processors:
   documented_only: True
   do_not_filter_import: True
 - type: google
+  build_for_github: True
 - type: deepcrossref
 
 renderer:

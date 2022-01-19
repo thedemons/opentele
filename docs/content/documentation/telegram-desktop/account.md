@@ -4,11 +4,9 @@
 
 <a id="td.account.Account"></a>
 
+
 ---
-
-## <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/td/account.py#L509"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">Account</span></span>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">Account</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/td/account.py#L509"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class Account(BaseObject)
@@ -32,11 +30,9 @@ Telegram Desktop account<br>
 
 <a id="td.account.Account.__init__"></a>
 
+
 ---
-
-### <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/td/account.py#L542"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="nc">Account</span></span><span class="highlight"><span class="o">()</span></span>
+### <span class="highlight"><span class="nc">Account</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/td/account.py#L542"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 def __init__(owner: td.TDesktop, basePath: str = None, api: Union[Type[APIData], APIData] = API.TelegramDesktop, keyFile: str = None, index: int = 0) -> None
@@ -55,18 +51,18 @@ Manually using <a class="codehl codehl_obj" href="account.md#account-objects"><b
 | <a class="codehl codehl_name" href="account.md#accountkeyfile"><b>keyFile</b></a> | <span class="highlight"><span class="bp">str</span></span> | <span class="highlight"><span class="kc">None</span></span> | See <a class="codehl codehl_obj" href="../telegram-desktop/tdesktop.md#tdesktop-objects"><b>TDesktop</b></a><span class="highlight"><span class="o">.</span></span><a class="codehl codehl_name" href="../telegram-desktop/tdesktop.md#tdesktopkeyfile"><b>keyFile</b></a>. |
 | <span class="highlight"><span class="n">index</span></span> | <span class="highlight"><span class="bp">int</span></span> | <span class="highlight"><span class="mi">0</span></span> | Index of this account in the <a class="codehl codehl_obj" href="../telegram-desktop/tdesktop.md#tdesktop-objects"><b>TDesktop</b></a> client. |
 
-???+ note "TODO"
-    <a class="codehl codehl_function" href="account.md#accountpreparetostart"><b>prepareToStart</b></a><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span> must be call after initalizing the object.
+
+| :blue_book: TODO |
+| :--- |
+|     <a class="codehl codehl_function" href="account.md#accountpreparetostart"><b>prepareToStart</b></a><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span> must be call after initalizing the object. |
 
 
 
 <a id="td.account.Account.api"></a>
 
+
 ---
-
-### <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/td/account.py#L595"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="n">api</span></span>
+### <span class="highlight"><span class="n">api</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/td/account.py#L595"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 @property
@@ -78,11 +74,9 @@ The API this acount is using.<br>
 
 <a id="td.account.Account.owner"></a>
 
+
 ---
-
-### <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/td/account.py#L607"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="n">owner</span></span>
+### <span class="highlight"><span class="n">owner</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/td/account.py#L607"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 @property
@@ -94,11 +88,9 @@ TDesktop client owner of this account.<br>
 
 <a id="td.account.Account.basePath"></a>
 
+
 ---
-
-### <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/td/account.py#L614"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="n">basePath</span></span>
+### <span class="highlight"><span class="n">basePath</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/td/account.py#L614"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 @property
@@ -110,11 +102,9 @@ The folder where tdata is stored.<br>
 
 <a id="td.account.Account.keyFile"></a>
 
+
 ---
-
-### <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/td/account.py#L621"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="n">keyFile</span></span>
+### <span class="highlight"><span class="n">keyFile</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/td/account.py#L621"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 @property
@@ -126,11 +116,9 @@ See <a class="codehl codehl_obj" href="../telegram-desktop/tdesktop.md#tdesktop-
 
 <a id="td.account.Account.localKey"></a>
 
+
 ---
-
-### <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/td/account.py#L633"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="n">localKey</span></span>
+### <span class="highlight"><span class="n">localKey</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/td/account.py#L633"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 @property
@@ -142,11 +130,9 @@ Key used to encrypt and decrypt tdata.<br>
 
 <a id="td.account.Account.authKey"></a>
 
+
 ---
-
-### <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/td/account.py#L645"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="n">authKey</span></span>
+### <span class="highlight"><span class="n">authKey</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/td/account.py#L645"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 @property
@@ -158,11 +144,9 @@ The authorization key used to authorize this acocunt.<br>
 
 <a id="td.account.Account.UserId"></a>
 
+
 ---
-
-### <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/td/account.py#L652"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="n">UserId</span></span>
+### <span class="highlight"><span class="n">UserId</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/td/account.py#L652"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 @property
@@ -174,11 +158,9 @@ User ID of this account.<br>
 
 <a id="td.account.Account.MainDcId"></a>
 
+
 ---
-
-### <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/td/account.py#L659"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="n">MainDcId</span></span>
+### <span class="highlight"><span class="n">MainDcId</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/td/account.py#L659"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 @property
@@ -190,11 +172,9 @@ The main Data Center ID this account connects to.<br>
 
 <a id="td.account.Account.prepareToStart"></a>
 
+
 ---
-
-### <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/td/account.py#L683"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="nf">prepareToStart</span></span><span class="highlight"><span class="o">()</span></span>
+### <span class="highlight"><span class="nf">prepareToStart</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/td/account.py#L683"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 def prepareToStart(localKey: td.AuthKey) -> td.MTP.Config
@@ -215,11 +195,9 @@ Prepare the account before starting it<br>
 
 <a id="td.account.Account.SaveTData"></a>
 
+
 ---
-
-### <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/td/account.py#L791"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="nf">SaveTData</span></span><span class="highlight"><span class="o">()</span></span>
+### <span class="highlight"><span class="nf">SaveTData</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/td/account.py#L791"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 def SaveTData(basePath: str = None, passcode: str = None, keyFile: str = None) -> None

@@ -4,11 +4,9 @@
 
 <a id="api.API"></a>
 
+
 ---
-
-## <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/api.py#L271"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">API</span></span>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">API</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/api.py#L271"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class API(BaseObject)
@@ -43,11 +41,9 @@ class API(BaseObject)
 
 <a id="api.API.TelegramDesktop"></a>
 
+
 ---
-
-### <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/api.py#L306"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TelegramDesktop</span></span>
+### <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TelegramDesktop</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/api.py#L306"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class TelegramDesktop(APIData)
@@ -76,11 +72,9 @@ Generate random device data for <span class="highlight"><span class="n">Windows<
 
 <a id="api.API.TelegramDesktop.Generate"></a>
 
+
 ---
-
-#### <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/api.py#L335"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="nf">Generate</span></span><span class="highlight"><span class="o">()</span></span>
+#### <span class="highlight"><span class="nf">Generate</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/api.py#L335"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 @typing.overload
@@ -104,11 +98,9 @@ Generate random TelegramDesktop devices<br>
 
 <a id="api.API.TelegramAndroid"></a>
 
+
 ---
-
-### <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/api.py#L387"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TelegramAndroid</span></span>
+### <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TelegramAndroid</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/api.py#L387"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class TelegramAndroid(APIData)
@@ -133,11 +125,9 @@ Official Telegram for Android<br>
 
 <a id="api.API.TelegramAndroidX"></a>
 
+
 ---
-
-### <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/api.py#L411"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TelegramAndroidX</span></span>
+### <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TelegramAndroidX</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/api.py#L411"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class TelegramAndroidX(APIData)
@@ -162,11 +152,9 @@ Official TelegramX for Android<br>
 
 <a id="api.API.TelegramIOS"></a>
 
+
 ---
-
-### <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/api.py#L435"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TelegramIOS</span></span>
+### <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TelegramIOS</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/api.py#L435"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class TelegramIOS(APIData)
@@ -191,11 +179,9 @@ Official Telegram for iOS<br>
 
 <a id="api.API.TelegramMacOS"></a>
 
+
 ---
-
-### <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/api.py#L461"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TelegramMacOS</span></span>
+### <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TelegramMacOS</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/api.py#L461"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class TelegramMacOS(APIData)
@@ -220,11 +206,9 @@ Official Telegram-Swift For MacOS
 
 <a id="api.API.TelegramWeb_Z"></a>
 
+
 ---
-
-### <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/api.py#L487"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TelegramWeb_Z</span></span>
+### <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TelegramWeb_Z</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/api.py#L487"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class TelegramWeb_Z(APIData)
@@ -249,11 +233,9 @@ Default Official Telegram Web Z For Browsers<br>
 
 <a id="api.API.TelegramWeb_K"></a>
 
+
 ---
-
-### <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/api.py#L512"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TelegramWeb_K</span></span>
+### <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TelegramWeb_K</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/api.py#L512"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class TelegramWeb_K(APIData)
@@ -278,11 +260,9 @@ Official Telegram Web K For Browsers<br>
 
 <a id="api.API.Webogram"></a>
 
+
 ---
-
-### <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/api.py#L536"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">Webogram</span></span>
+### <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">Webogram</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/api.py#L536"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class Webogram(APIData)

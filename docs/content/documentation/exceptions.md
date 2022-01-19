@@ -4,11 +4,9 @@
 
 <a id="exception.OpenTeleException"></a>
 
+
 ---
-
-## <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/exception.py#L8"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">OpenTeleException</span></span>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">OpenTeleException</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/exception.py#L8"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class OpenTeleException(BaseException)
@@ -19,11 +17,9 @@ Base exception of the library.<br>
 
 <a id="exception.TFileNotFound"></a>
 
+
 ---
-
-## <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/exception.py#L63"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TFileNotFound</span></span>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TFileNotFound</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/exception.py#L63"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class TFileNotFound(OpenTeleException)
@@ -34,11 +30,9 @@ Could not find or open the file<br>
 
 <a id="exception.TDataInvalidMagic"></a>
 
+
 ---
-
-## <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/exception.py#L68"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDataInvalidMagic</span></span>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDataInvalidMagic</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/exception.py#L68"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class TDataInvalidMagic(OpenTeleException)
@@ -50,11 +44,9 @@ This usually mean that the file is corrupted or not in the supported formats<br>
 
 <a id="exception.TDataInvalidCheckSum"></a>
 
+
 ---
-
-## <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/exception.py#L74"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDataInvalidCheckSum</span></span>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDataInvalidCheckSum</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/exception.py#L74"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class TDataInvalidCheckSum(OpenTeleException)
@@ -66,11 +58,9 @@ This usually mean that the file is corrupted or not in the supported formats<br>
 
 <a id="exception.TDataBadDecryptKey"></a>
 
+
 ---
-
-## <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/exception.py#L80"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDataBadDecryptKey</span></span>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDataBadDecryptKey</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/exception.py#L80"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class TDataBadDecryptKey(OpenTeleException)
@@ -82,11 +72,9 @@ This usually mean that the file is password-encrypted
 
 <a id="exception.TDataWrongPasscode"></a>
 
+
 ---
-
-## <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/exception.py#L86"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDataWrongPasscode</span></span>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDataWrongPasscode</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/exception.py#L86"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class TDataWrongPasscode(OpenTeleException)
@@ -97,11 +85,9 @@ Wrong passcode to decrypt tdata folder\n<br>
 
 <a id="exception.TDataBadEncryptedDataSize"></a>
 
+
 ---
-
-## <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/exception.py#L91"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDataBadEncryptedDataSize</span></span>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDataBadEncryptedDataSize</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/exception.py#L91"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class TDataBadEncryptedDataSize(OpenTeleException)
@@ -112,11 +98,9 @@ The encrypted data size part of the file is corrupted<br>
 
 <a id="exception.TDataBadDecryptedDataSize"></a>
 
+
 ---
-
-## <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/exception.py#L95"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDataBadDecryptedDataSize</span></span>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDataBadDecryptedDataSize</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/exception.py#L95"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class TDataBadDecryptedDataSize(OpenTeleException)
@@ -127,11 +111,9 @@ The decrypted data size part of the file is corrupted<br>
 
 <a id="exception.TDataBadConfigData"></a>
 
+
 ---
-
-## <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/exception.py#L99"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDataBadConfigData</span></span>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDataBadConfigData</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/exception.py#L99"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class TDataBadConfigData(OpenTeleException)
@@ -142,11 +124,9 @@ TData contains bad config data that couldn't be parsed<br>
 
 <a id="exception.QDataStreamFailed"></a>
 
+
 ---
-
-## <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/exception.py#L104"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">QDataStreamFailed</span></span>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">QDataStreamFailed</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/exception.py#L104"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class QDataStreamFailed(OpenTeleException)
@@ -158,11 +138,9 @@ Please check the QDataStream.status() for more information<br>
 
 <a id="exception.AccountAuthKeyNotFound"></a>
 
+
 ---
-
-## <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/exception.py#L110"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">AccountAuthKeyNotFound</span></span>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">AccountAuthKeyNotFound</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/exception.py#L110"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class AccountAuthKeyNotFound(OpenTeleException)
@@ -173,11 +151,9 @@ Account.authKey is missing, something went wrong<br>
 
 <a id="exception.TDataReadMapDataFailed"></a>
 
+
 ---
-
-## <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/exception.py#L115"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDataReadMapDataFailed</span></span>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDataReadMapDataFailed</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/exception.py#L115"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class TDataReadMapDataFailed(OpenTeleException)
@@ -188,11 +164,9 @@ Could not read map data<br>
 
 <a id="exception.TDataReadMapDataIncorrectPasscode"></a>
 
+
 ---
-
-## <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/exception.py#L119"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDataReadMapDataIncorrectPasscode</span></span>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDataReadMapDataIncorrectPasscode</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/exception.py#L119"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class TDataReadMapDataIncorrectPasscode(OpenTeleException)
@@ -203,11 +177,9 @@ Could not read map data because of incorrect passcode<br>
 
 <a id="exception.TDataAuthKeyNotFound"></a>
 
+
 ---
-
-## <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/exception.py#L123"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDataAuthKeyNotFound</span></span>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDataAuthKeyNotFound</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/exception.py#L123"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class TDataAuthKeyNotFound(OpenTeleException)
@@ -218,11 +190,9 @@ Could not find authKey in TData<br>
 
 <a id="exception.MaxAccountLimit"></a>
 
+
 ---
-
-## <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/exception.py#L127"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">MaxAccountLimit</span></span>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">MaxAccountLimit</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/exception.py#L127"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class MaxAccountLimit(OpenTeleException)
@@ -233,11 +203,9 @@ Maxed out limit for accounts per tdesktop client<br>
 
 <a id="exception.TDesktopUnauthorized"></a>
 
+
 ---
-
-## <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/exception.py#L132"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDesktopUnauthorized</span></span>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDesktopUnauthorized</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/exception.py#L132"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class TDesktopUnauthorized(OpenTeleException)
@@ -248,11 +216,9 @@ TDesktop client is unauthorized<br>
 
 <a id="exception.TelethonUnauthorized"></a>
 
+
 ---
-
-## <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/exception.py#L137"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TelethonUnauthorized</span></span>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TelethonUnauthorized</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/exception.py#L137"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class TelethonUnauthorized(OpenTeleException)
@@ -263,11 +229,9 @@ Telethon client is unauthorized<br>
 
 <a id="exception.TDataSaveFailed"></a>
 
+
 ---
-
-## <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/exception.py#L142"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDataSaveFailed</span></span>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDataSaveFailed</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/exception.py#L142"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class TDataSaveFailed(OpenTeleException)
@@ -278,11 +242,9 @@ Could not save TDesktop to tdata folder<br>
 
 <a id="exception.TDesktopNotLoaded"></a>
 
+
 ---
-
-## <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/exception.py#L147"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDesktopNotLoaded</span></span>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDesktopNotLoaded</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/exception.py#L147"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class TDesktopNotLoaded(OpenTeleException)
@@ -293,11 +255,9 @@ TDesktop instance has no account<br>
 
 <a id="exception.TDesktopHasNoAccount"></a>
 
+
 ---
-
-## <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/exception.py#L151"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDesktopHasNoAccount</span></span>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDesktopHasNoAccount</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/exception.py#L151"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class TDesktopHasNoAccount(OpenTeleException)
@@ -308,11 +268,9 @@ TDesktop instance has no account<br>
 
 <a id="exception.TDAccountNotLoaded"></a>
 
+
 ---
-
-## <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/exception.py#L156"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDAccountNotLoaded</span></span>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDAccountNotLoaded</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/exception.py#L156"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class TDAccountNotLoaded(OpenTeleException)
@@ -323,11 +281,9 @@ TDesktop account hasn't been loaded yet<br>
 
 <a id="exception.NoPasswordProvided"></a>
 
+
 ---
-
-## <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/exception.py#L160"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">NoPasswordProvided</span></span>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">NoPasswordProvided</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/exception.py#L160"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class NoPasswordProvided(OpenTeleException)
@@ -338,11 +294,9 @@ You can't live without a password bro<br>
 
 <a id="exception.PasswordIncorrect"></a>
 
+
 ---
-
-## <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/exception.py#L165"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">PasswordIncorrect</span></span>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">PasswordIncorrect</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/exception.py#L165"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class PasswordIncorrect(OpenTeleException)
@@ -353,11 +307,9 @@ incorrect passwrd<br>
 
 <a id="exception.LoginFlagInvalid"></a>
 
+
 ---
-
-## <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/exception.py#L170"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">LoginFlagInvalid</span></span>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">LoginFlagInvalid</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/exception.py#L170"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class LoginFlagInvalid(OpenTeleException)
@@ -368,11 +320,9 @@ Invalid login flag<br>
 
 <a id="exception.NoInstanceMatched"></a>
 
+
 ---
-
-## <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/exception.py#L175"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">NoInstanceMatched</span></span>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">NoInstanceMatched</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/exception.py#L175"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class NoInstanceMatched(OpenTeleException)
@@ -383,11 +333,9 @@ Invalid login flag<br>
 
 <a id="exception.Expects"></a>
 
+
 ---
-
-## <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/exception.py#L181"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="nf">Expects</span></span><span class="highlight"><span class="o">()</span></span>
+## <span class="highlight"><span class="nf">Expects</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/exception.py#L181"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 @typing.overload
@@ -414,11 +362,9 @@ Expect a condition to be <span class="highlight"><span class="kc">True</span></s
 
 <a id="exception.Expects"></a>
 
+
 ---
-
-## <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/exception.py#L215"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="nf">Expects</span></span><span class="highlight"><span class="o">()</span></span>
+## <span class="highlight"><span class="nf">Expects</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/exception.py#L215"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 @typing.overload

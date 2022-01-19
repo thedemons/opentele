@@ -4,11 +4,9 @@
 
 <a id="api.LoginFlag"></a>
 
+
 ---
-
-## <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/api.py#L561"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">LoginFlag</span></span>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">LoginFlag</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/api.py#L561"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class LoginFlag(int)
@@ -37,11 +35,9 @@ Login flag for converting sessions between <a class="codehl codehl_obj" href="..
 
 <a id="api.UseCurrentSession"></a>
 
+
 ---
-
-## <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/api.py#L577"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">UseCurrentSession</span></span>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">UseCurrentSession</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/api.py#L577"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class UseCurrentSession(LoginFlag)
@@ -54,19 +50,18 @@ Use the current session.<br>
 - The "session" is just an 256-bytes <a class="codehl codehl_obj" href="../../documentation/telegram-desktop/authkey.md#authkey-objects"><b>AuthKey</b></a> that get stored in <span class="highlight"><span class="n">tdata</span></span> <span class="highlight"><span class="n">folder</span></span> or Telethon <span class="highlight"><span class="n">session</span></span> <span class="highlight"><span class="n">files</span></span> [(under sqlite3 format)](https://docs.telethon.dev/en/latest/concepts/sessions.html?highlight=sqlite3#what-are-sessions).
 
 - <a class="codehl codehl_obj" href="loginflag.md#usecurrentsession-objects"><b>UseCurrentSession</b></a>'s only job is to read this key and convert it to one another.
-???+ warning "Use at your own risk!"
-    You should only use the same consistant API through out the session.<br/>
-    Don't use a same session with multiple different APIs, you might be banned.
+
+| :warning: Use at your own risk! |
+| :--- |
+|     You should only use the same consistant API through out the session.<br/>    Don't use a same session with multiple different APIs, you might be banned. |
 
 
 
 <a id="api.CreateNewSession"></a>
 
+
 ---
-
-## <a href="https://github.com/thedemons/opentele/blob/38b2fdbd516b56819bb386cad7d1f896e907fa3e/src/api.py#L592"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
-
-<span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">CreateNewSession</span></span>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">CreateNewSession</span></span><a href="https://github.com/thedemons/opentele/blob/a4ab2f0e6e9f603b2207d3c82f27c76ecba4f614/src/api.py#L592"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class CreateNewSession(LoginFlag)
@@ -79,8 +74,10 @@ Create a new session.<br>
 - This works just like when you signing into <span class="highlight"><span class="n">Telegram</span></span> using <span class="highlight"><span class="n">QR</span></span> <span class="highlight"><span class="n">Login</span></span> on mobile devices.
 
 - Although <span class="highlight"><span class="n">Telegram</span></span> <span class="highlight"><span class="n">Desktop</span></span> doesn't let you authorize other sessions via <span class="highlight"><span class="n">QR</span></span> <span class="highlight"><span class="n">Code</span></span> *(or it doesn't have that feature)*, it is still available across all platforms <span class="highlight"><span class="p">(</span></span><a class="codehl codehl_obj" href="../authorization/api.md#api-objects"><b>APIs</b></a><span class="highlight"><span class="p">)</span></span>.
-???+ done "Safe to use"
-    You can always use <span class="highlight"><span class="n">CreateNewSessions</span></span> with any APIs, it can be different from the API that originally created the session.
+
+| :heavy_check_mark: Safe to use |
+| :--- |
+|     You can always use <span class="highlight"><span class="n">CreateNewSessions</span></span> with any APIs, it can be different from the API that originally created the session. |
 
 
 
