@@ -543,12 +543,17 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
                                 base_logger             : Union[str, logging.Logger] = None,
                                 receive_updates         : bool = True) -> TelegramClient:
 
+
         newClient = TelegramClient(session, api=api, connection=connection, use_ipv6=use_ipv6,
                                 proxy=proxy, local_addr=local_addr, timeout=timeout, request_retries=request_retries,
                                 connection_retries=connection_retries, retry_delay=retry_delay, auto_reconnect=auto_reconnect,
                                 sequential_updates=sequential_updates, flood_sleep_threshold=flood_sleep_threshold,
                                 raise_last_call_error=raise_last_call_error, loop=loop, base_logger=base_logger,
                                 receive_updates=receive_updates)
+        
+        # switch DC for now because i can't handle LoginTokenMigrateTo...
+        if newClient.session.dc_id != self.session.dc_id:
+            newClient._switch_dc(self.session.dc_id)
 
         try:
             await newClient.connect()
