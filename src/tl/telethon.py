@@ -441,7 +441,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
                 "Platform" : session.platform,
                 "System" : session.system_version,
                 "API_ID" : session.api_id,
-                "App name" : f"{session.app_name} {session.app_version}",
+                "App name" : "{} {}".format(session.app_name, session.app_version),
                 "Official App" : "✔" if session.official_app else "✖"
             })
             index += 1
