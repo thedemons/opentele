@@ -603,14 +603,13 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
 
 
             try:
+                # we could have been already authorized, but it still raised an timeouterror (??!)
+                if attemp > 0 and await newClient.is_user_authorized(): break
+
                 qr_login = await newClient.qr_login()
                 
                 # if we encountered timeout error in the first try, it might be because of mismatched DcId, we're gonna have to switch_dc
                 if isinstance(qr_login._resp, types.auth.LoginTokenMigrateTo):
-                    
-                    # we could have been already authorized, but it still raised an timeouterror (??!)
-                    if await newClient.is_user_authorized(): break
-                                        
                     await newClient._switch_dc(qr_login._resp.dc_id)
                     qr_login._resp = await newClient(functions.auth.ImportLoginTokenRequest(qr_login._resp.token))
 
