@@ -1,6 +1,8 @@
 
 
 import sys, pathlib
+
+from cv2 import logPolar
 base_dir = pathlib.Path(__file__).parent.parent.absolute().__str__()
 sys.path.insert(1, base_dir)
 
@@ -24,12 +26,11 @@ def event_loop():
     res._close()
 
 @pytest.mark.asyncio
-async def test_tdata_to_telethon():
+async def test_tdata_to_telethon(event_loop):
     
 
     api_desktop = API.TelegramDesktop.Generate("windows", "!thedemons#opentele")
     api_ios = API.TelegramIOS.Generate("!thedemons#opentele")
-
 
     tdesk = TDesktop("tests/tdata_test_profile", api_desktop, "!thedemons#opentele", "opentele#thedemons!")
     assert tdesk.isLoaded()
@@ -37,14 +38,14 @@ async def test_tdata_to_telethon():
 
     oldClient = await tdesk.ToTelethon(flag=UseCurrentSession, api=api_desktop)
     await oldClient.connect()
-    assert oldClient.is_user_authorized()
+    assert await oldClient.is_user_authorized()
 
     await oldClient.PrintSessions()
 
 
     newClient = await tdesk.ToTelethon(flag=CreateNewSession,  api=api_ios, password="!thedemons#opentele")
     await newClient.connect()
-    assert newClient.is_user_authorized()
+    assert await newClient.is_user_authorized()
 
     await newClient.PrintSessions()
 
