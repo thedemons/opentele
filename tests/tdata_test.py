@@ -72,8 +72,7 @@ async def test_entry_point(event_loop):
     event_loop.close = lambda: None
 
     ter.write("\n\n")
-    ter.write(sys.version_info )
-    ter.sep("=", "Begin testing for Python {}".format(PythonVersion()), cyan=True)
+    ter.sep("=", "Begin testing for Python {}".format(PythonVersion()) , cyan=True)
 
     try:
         await tdata_to_telethon()
