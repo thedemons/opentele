@@ -7,4 +7,4 @@ python:
   install:
   - method: pip
     path: .
-  - requirements: readthedocs_requirements.txt
+  - requirements: docs/requirements.txt
