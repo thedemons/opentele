@@ -1,14 +1,17 @@
 
-
 import sys, pathlib
 base_dir = pathlib.Path(__file__).parent.parent.absolute().__str__()
 sys.path.insert(1, base_dir)
 
+
 from src.td import TDesktop
+from src.tl.telethon import TelegramClient
 from src.api import API, CreateNewSession, UseCurrentSession
 
-import pytest
 import asyncio
+import pytest
+import pytest_asyncio
+from _pytest._io import TerminalWriter
 
 async def tdata_to_telethon():
     
@@ -26,7 +29,6 @@ async def tdata_to_telethon():
 
     await oldClient.PrintSessions()
 
-
     newClient = await tdesk.ToTelethon(flag=CreateNewSession,  api=api_ios, password="!thedemons#opentele")
     await newClient.connect()
     assert await newClient.is_user_authorized()
@@ -38,28 +40,29 @@ async def tdata_to_telethon():
     tdesk = await oldClient.ToTDesktop(UseCurrentSession, api=api_desktop)
     tdesk.SaveTData("tests/tdata_test_profile", "!thedemons#opentele", "opentele#thedemons!")
 
+
+
 # Fix for "RuntimeError: Event loop is closed"
 # Thanks to https://github.com/pytest-dev/pytest-asyncio/issues/30
-@pytest.fixture 
+
+@pytest_asyncio.fixture
 def event_loop():
-    """Create an instance of the default event loop for each test case."""
+    writer = TerminalWriter(sys.stdout)
+    writer.hasmarkup = True
+    writer.write("\n\n")
+    writer.sep("=", "Begin testing for opentele package", yellow=True)
+
     policy = asyncio.get_event_loop_policy()
     res = policy.new_event_loop()
-    asyncio.set_event_loop(res)
     res._close = res.close
     res.close = lambda: None
-
+    res.run_until_complete(tdata_to_telethon())
+    
     yield res
 
-    res._close()
-
 @pytest.mark.asyncio
-@pytest.mark.usefixtures('event_loop')
-async def test_entry_point(event_loop ):
-    print(event_loop)
-    print(type(event_loop))
-    print(dir(event_loop))
-    event_loop.run_until_complete(tdata_to_telethon())
-    print(event_loop)
-    print(type(event_loop))
-    print(dir(event_loop))
+async def test_entry_point(event_loop):
+    pass
+
+
+
