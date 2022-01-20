@@ -54,11 +54,12 @@ def event_loop():
     res._close()
 
 @pytest.mark.asyncio
-async def test_entry_point(event_loop : asyncio.events.BaseDefaultEventLoopPolicy):
+@pytest.mark.usefixtures('event_loop')
+async def test_entry_point(event_loop ):
     print(event_loop)
     print(type(event_loop))
     print(dir(event_loop))
-    event_loop.get_event_loop().run_until_complete(tdata_to_telethon())
+    event_loop.run_until_complete(tdata_to_telethon())
     print(event_loop)
     print(type(event_loop))
     print(dir(event_loop))
