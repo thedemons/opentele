@@ -553,7 +553,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
         
         # switch DC for now because i can't handle LoginTokenMigrateTo...
         if newClient.session.dc_id != self.session.dc_id:
-            newClient._switch_dc(self.session.dc_id)
+            await newClient._switch_dc(self.session.dc_id)
 
         try:
             await newClient.connect()
