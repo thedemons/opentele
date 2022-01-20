@@ -605,6 +605,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
 
             try:
                 qr_login = await newClient.qr_login()
+                print(qr_login.url)
                 resp = await self(functions.auth.AcceptLoginTokenRequest(qr_login.token))
                 await qr_login.wait()
                 # await qr_login.wait(30) # wait for 30 seconds
