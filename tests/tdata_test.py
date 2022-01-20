@@ -15,6 +15,7 @@ import pytest_asyncio
 from _pytest._io import TerminalWriter
 
 def PythonVersion():
+    return "3.10"
     return "{}.{}".format(sys.version_info.major, sys.version_info.minor)
 
 def profile_path():
@@ -24,35 +25,33 @@ async def tdata_to_telethon():
 
 
 
-    api_desktop = API.TelegramDesktop.Generate("windows", "!thedemons#opentele")
-    api_ios = API.TelegramIOS.Generate("!thedemons#opentele")
+    api_ios = API.TelegramIOS.Generate(profile_path())
+    api_android = API.TelegramAndroid.Generate()
 
 
-    tdesk = TDesktop(profile_path(), api_desktop, "!thedemons#opentele", "opentele#thedemons!")
+    tdesk = TDesktop(profile_path(), api_ios, "!thedemons#opentele", "opentele#thedemons!")
     assert tdesk.isLoaded()
     
 
-    oldClient = await tdesk.ToTelethon(flag=UseCurrentSession, api=api_desktop)
+    oldClient = await tdesk.ToTelethon(flag=UseCurrentSession, api=api_ios)
 
     await oldClient.connect()
     assert await oldClient.is_user_authorized()
     await oldClient.PrintSessions()
     
-
-    newClient = await oldClient.QRLoginToNewClient(api=api_ios, password="!thedemons#opentele")
+    newClient = await oldClient.QRLoginToNewClient(api=api_android, password="!thedemons#opentele")
 
     await newClient.connect()
     assert await newClient.is_user_authorized()
     await newClient.PrintSessions()
 
 
-    # try: 
-    #     await oldClient.TerminateAllSessions()
-    # except FreshResetAuthorisationForbiddenError as e:
-    #     pass
+    try: 
+        await oldClient.TerminateAllSessions()
+    except FreshResetAuthorisationForbiddenError as e:
+        pass
 
-
-    tdesk = await newClient.ToTDesktop(UseCurrentSession, api=api_desktop)
+    tdesk = await newClient.ToTDesktop(UseCurrentSession, api=api_android)
     tdesk.SaveTData(profile_path(), "!thedemons#opentele", "opentele#thedemons!")
 
 
