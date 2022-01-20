@@ -15,7 +15,6 @@ import pytest_asyncio
 from _pytest._io import TerminalWriter
 
 def PythonVersion():
-    return "3.10"
     return "{}.{}".format(sys.version_info.major, sys.version_info.minor)
 
 def profile_path():
