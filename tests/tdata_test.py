@@ -28,7 +28,7 @@ async def test_entry_point(event_loop):
     try:
         await tdata_to_telethon()
 
-    except asyncio.CancelledError as e:
+    except (asyncio.CancelledError, asyncio.exceptions.TimeoutError) as e:
         ter.sep("-", "Catched Exception: {}".format(e.__str__()), red=True)
     
 
