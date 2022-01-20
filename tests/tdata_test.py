@@ -28,18 +28,21 @@ async def test_entry_point(event_loop):
     try:
         await tdata_to_telethon()
 
-    except (asyncio.CancelledError, asyncio.exceptions.TimeoutError) as e:
+    except (asyncio.CancelledError, asyncio.TimeoutError) as e:
         ter.sep("-", "Catched Exception: {}".format(e.__str__()), red=True)
     
 
-
 async def tdata_to_telethon():
+
+    def profile_path():
+        return "tests/test_profile{}".format(sys.version.split(" ")[0])
+
 
     api_desktop = API.TelegramDesktop.Generate("windows", "!thedemons#opentele")
     api_ios = API.TelegramIOS.Generate("!thedemons#opentele")
 
 
-    tdesk = TDesktop("tests/tdata_test_profile", api_desktop, "!thedemons#opentele", "opentele#thedemons!")
+    tdesk = TDesktop(profile_path(), api_desktop, "!thedemons#opentele", "opentele#thedemons!")
     assert tdesk.isLoaded()
     
 
@@ -57,18 +60,19 @@ async def tdata_to_telethon():
     await newClient.PrintSessions()
 
 
-    try: 
-        await oldClient.TerminateAllSessions()
-    except FreshResetAuthorisationForbiddenError as e:
-        pass
+    # try: 
+    #     await oldClient.TerminateAllSessions()
+    # except FreshResetAuthorisationForbiddenError as e:
+    #     pass
 
 
-    tdesk = await oldClient.ToTDesktop(UseCurrentSession, api=api_desktop)
-    tdesk.SaveTData("tests/tdata_test_profile", "!thedemons#opentele", "opentele#thedemons!")
+    tdesk = await newClient.ToTDesktop(UseCurrentSession, api=api_desktop)
+    tdesk.SaveTData(profile_path(), "!thedemons#opentele", "opentele#thedemons!")
 
 
     await oldClient.disconnect()
     await newClient.disconnect()
     await oldClient.disconnected
     await newClient.disconnected
+    
 
