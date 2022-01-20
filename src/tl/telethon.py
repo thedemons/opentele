@@ -606,13 +606,13 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
                 qr_login = await newClient.qr_login()
                 
                 # if we encountered timeout error in the first try, it might be because of mismatched DcId, we're gonna have to switch_dc
-                if isinstance(qr_login, types.auth.LoginTokenMigrateTo):
-                    await newClient._switch_dc(qr_login.dc_id)
-                    qr_login = await newClient(functions.auth.ImportLoginTokenRequest(qr_login.token))
+                if isinstance(qr_login._resp, types.auth.LoginTokenMigrateTo):
+                    await newClient._switch_dc(qr_login._resp.dc_id)
+                    qr_login._resp = await newClient(functions.auth.ImportLoginTokenRequest(qr_login._resp.token))
 
                 # for the above reason, we should check if we're already authorized
-                if isinstance(qr_login, types.auth.LoginTokenSuccess):
-                    newClient._on_login(qr_login.authorization.user)
+                if isinstance(qr_login._resp, types.auth.LoginTokenSuccess):
+                    newClient._on_login(qr_login._resp.authorization.user)
                     break
 
                 # calculate when will the qr token expire

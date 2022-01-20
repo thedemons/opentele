@@ -1,5 +1,6 @@
 
 import sys, pathlib
+from time import sleep
 base_dir = pathlib.Path(__file__).parent.parent.absolute().__str__()
 sys.path.insert(1, base_dir)
 
@@ -44,10 +45,10 @@ async def tdata_to_telethon():
     await newClient.PrintSessions()
 
 
-    try: 
-        await oldClient.TerminateAllSessions()
-    except FreshResetAuthorisationForbiddenError as e:
-        pass
+    # try: 
+    #     await oldClient.TerminateAllSessions()
+    # except FreshResetAuthorisationForbiddenError as e:
+    #     pass
 
     tdesk = await oldClient.ToTDesktop(UseCurrentSession, api=api_ios)
     tdesk.SaveTData(profile_path(), "!thedemons#opentele", "opentele#thedemons!")
