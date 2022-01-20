@@ -255,13 +255,13 @@ class APIData(object, metaclass=BaseAPIMetaClass):
         """
 
         if cls == API.TelegramAndroid or cls == API.TelegramAndroidX:
-            deviceInfo = AndroidDevice.RandomDevice(id)
+            deviceInfo = AndroidDevice.RandomDevice(unique_id)
 
         elif cls == API.TelegramIOS:
-            deviceInfo = iOSDeivce.RandomDevice(id)
+            deviceInfo = iOSDeivce.RandomDevice(unique_id)
 
         elif cls == API.TelegramMacOS:
-            deviceInfo = macOSDevice.RandomDevice(id)
+            deviceInfo = macOSDevice.RandomDevice(unique_id)
 
         # elif cls == API.TelegramWeb_K or cls == API.TelegramWeb_Z or cls == API.Webogram:
         else:
@@ -378,36 +378,36 @@ class API(BaseObject):
 
         @typing.overload
         @classmethod
-        def Generate(cls : Type[_T], system : str = "macos", id : str = None) -> _T:
+        def Generate(cls : Type[_T], system : str = "macos", unique_id : str = None) -> _T:
             pass
 
         @typing.overload
         @classmethod
-        def Generate(cls : Type[_T], system : str = "linux", id : str = None) -> _T:
+        def Generate(cls : Type[_T], system : str = "linux", unique_id : str = None) -> _T:
             pass
 
         @typing.overload
         @classmethod
-        def Generate(cls : Type[_T], system : str = "random", id : str = None) -> _T:
+        def Generate(cls : Type[_T], system : str = "random", unique_id : str = None) -> _T:
             pass
         
         @classmethod
-        def Generate(cls : Type[_T], system : str = None, id : str = None) -> _T:
+        def Generate(cls : Type[_T], system : str = None, unique_id : str = None) -> _T:
 
             validList = ["windows", "macos", "linux"]
             if system == None or system not in validList:
-                system = SystemInfo._hashtovalue(SystemInfo._strtohashid(id), validList)
+                system = SystemInfo._hashtovalue(SystemInfo._strtohashid(unique_id), validList)
             
             system = system.lower()
 
             if system == "windows":
-                deviceInfo = WindowsDevice.RandomDevice(id)
+                deviceInfo = WindowsDevice.RandomDevice(unique_id)
 
             elif system == "macos":
-                deviceInfo = macOSDevice.RandomDevice(id)
+                deviceInfo = macOSDevice.RandomDevice(unique_id)
 
             else:
-                deviceInfo = LinuxDevice.RandomDevice(id)
+                deviceInfo = LinuxDevice.RandomDevice(unique_id)
 
             return cls(device_model=deviceInfo.model, system_version=deviceInfo.version)
 

@@ -39,8 +39,12 @@ class SystemInfo(BaseObject):
 
     @classmethod
     def _strtohashid(cls, unique_id : str = None):
-        if unique_id != None: unique_id = str(unique_id)
+
+        if unique_id != None and not isinstance(unique_id, str):
+            unique_id = str(unique_id)
+
         byteid = os.urandom(32) if unique_id == None else unique_id.encode("utf-8")
+        
         return int(hashlib.sha1(byteid).hexdigest(), 16) % (10 ** 12)
 
     @classmethod
