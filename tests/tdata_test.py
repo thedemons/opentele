@@ -1,8 +1,6 @@
 
 
 import sys, pathlib
-
-from cv2 import logPolar
 base_dir = pathlib.Path(__file__).parent.parent.absolute().__str__()
 sys.path.insert(1, base_dir)
 
