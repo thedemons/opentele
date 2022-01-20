@@ -16,9 +16,19 @@ from _pytest._io import TerminalWriter
 
 @pytest.mark.asyncio
 async def test_entry_point(event_loop):
-    event_loop._close = event_loop.close
-    event_loop.close = lambda: None
-    await tdata_to_telethon()
+    try:
+
+        def safely_close(*args, **kwargs):
+            print("event_loop.is_closed():", event_loop.is_closed())
+
+        event_loop._close = event_loop.close
+        event_loop.close = safely_close
+
+        print("\n\n")
+        await tdata_to_telethon()
+    except asyncio.CancelledError as e:
+        pass
+    
 
 
 async def tdata_to_telethon():
@@ -38,25 +48,25 @@ async def tdata_to_telethon():
     await oldClient.PrintSessions()
     
 
-    newClient = await tdesk.ToTelethon(flag=CreateNewSession,  api=api_ios, password="!thedemons#opentele")
+    # newClient = await tdesk.ToTelethon(flag=CreateNewSession,  api=api_ios, password="!thedemons#opentele")
 
-    await newClient.connect()
-    assert await newClient.is_user_authorized()
-    await newClient.PrintSessions()
-
-
-    try: 
-        await oldClient.TerminateAllSessions()
-    except FreshResetAuthorisationForbiddenError as e:
-        pass
+    # await newClient.connect()
+    # assert await newClient.is_user_authorized()
+    # await newClient.PrintSessions()
 
 
-    tdesk = await oldClient.ToTDesktop(UseCurrentSession, api=api_desktop)
-    tdesk.SaveTData("tests/tdata_test_profile", "!thedemons#opentele", "opentele#thedemons!")
+    # try: 
+    #     await oldClient.TerminateAllSessions()
+    # except FreshResetAuthorisationForbiddenError as e:
+    #     pass
 
 
-    await oldClient.disconnect()
-    await newClient.disconnect()
-    await oldClient.disconnected
-    await newClient.disconnected
+    # tdesk = await oldClient.ToTDesktop(UseCurrentSession, api=api_desktop)
+    # tdesk.SaveTData("tests/tdata_test_profile", "!thedemons#opentele", "opentele#thedemons!")
+
+
+    # await oldClient.disconnect()
+    # await newClient.disconnect()
+    # await oldClient.disconnected
+    # await newClient.disconnected
 
