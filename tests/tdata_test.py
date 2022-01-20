@@ -23,6 +23,7 @@ async def test_entry_point(event_loop):
     event_loop.close = lambda: None
 
     ter.write("\n\n")
+    ter.write(sys.version)
     ter.sep("=", "Begin testing", cyan=True)
 
     try:
