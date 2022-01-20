@@ -1,7 +1,7 @@
 .vscode/*
 src/tests.py
 tests.py
-test*
+test.py
 __pycache__/
  *.pyc
 opentele.egg-info/*
