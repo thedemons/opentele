@@ -338,8 +338,8 @@ class StorageAccount(BaseObject):
         self.__owner = owner
         self.__keyFile = keyFile
         self.__dataNameKey = td.Storage.ComputeDataNameKey(self.__keyFile)
-        self.__baseGlobalPath = basePath
-        self.__basePath = basePath + td.Storage.ToFilePart(self.__dataNameKey) + "\\"
+        self.__baseGlobalPath = td.Storage.GetAbsolutePath(basePath)
+        self.__basePath = td.Storage.PathJoin(self.__baseGlobalPath, td.Storage.ToFilePart(self.__dataNameKey))
         self.__localKey = None
 
         self.__mapData = MapData(self.basePath)
@@ -380,9 +380,9 @@ class StorageAccount(BaseObject):
         return self.__baseGlobalPath
 
     @baseGlobalPath.setter
-    def baseGlobalPath(self, value):
-        self.__baseGlobalPath = td.Storage.GetAbsolutePath(value)
-        self.__basePath = value + td.Storage.ToFilePart(self.__dataNameKey) + "\\"
+    def baseGlobalPath(self, basePath):
+        self.__baseGlobalPath = td.Storage.GetAbsolutePath(basePath)
+        self.__basePath = td.Storage.PathJoin(self.__baseGlobalPath, td.Storage.ToFilePart(self.__dataNameKey))
 
     @property
     def basePath(self) -> str:
@@ -502,7 +502,7 @@ class StorageAccount(BaseObject):
         else:
             dataNameKey = self.__dataNameKey
 
-        basePath = baseGlobalPath + td.Storage.ToFilePart(dataNameKey) + "\\"
+        basePath = td.Storage.PathJoin(baseGlobalPath, td.Storage.ToFilePart(dataNameKey))
         self.writeMap(basePath)
         self.writeMtpConfig(basePath)
         self.writeMtpData(baseGlobalPath, dataNameKey)

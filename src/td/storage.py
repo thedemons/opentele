@@ -144,7 +144,7 @@ class Storage(BaseObject):
             self.init(fileName)
 
         def init(self, fileName : str):
-            self.base = self.basePath + fileName
+            self.base = Storage.PathJoin(self.basePath, fileName)
             self.safeData = QByteArray()
             self.buffer = QBuffer()
             self.buffer.setBuffer(self.safeData)
@@ -232,7 +232,7 @@ class Storage(BaseObject):
         if not dir.exists():
             dir.mkpath(basePath)
             
-        file = QFile(basePath + fileName + 's')
+        file = QFile(Storage.PathJoin(basePath, fileName + 's'))
         if file.open(QIODevice.OpenModeFlag.WriteOnly):
             file.write(TDF_MAGIC)
             file.write(APP_VERSION.to_bytes(4, 'little'))
@@ -250,7 +250,7 @@ class Storage(BaseObject):
         for chr in to_try:
             try:
 
-                file = QFile(basePath + fileName + chr)
+                file = QFile(Storage.PathJoin(basePath, fileName + chr))
                 if (not file.open(QIODevice.OpenModeFlag.ReadOnly)):
                     tries_exception = TFileNotFound(f"Could not open {fileName}")
                     continue
@@ -534,6 +534,10 @@ class Storage(BaseObject):
         if path == None or path == "":
             path = os.getcwd()
         
-        path = os.path.abspath(path) + "\\"
+        path = os.path.abspath(path)
         return path
+
+    @staticmethod
+    def PathJoin(path : str, filename : str) -> str:
+        return os.path.join(path, filename)
 
