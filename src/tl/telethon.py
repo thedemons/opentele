@@ -608,8 +608,9 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
                 resp = await self(functions.auth.AcceptLoginTokenRequest(qr_login.token))
                 await qr_login.wait()
                 # await qr_login.wait(30) # wait for 30 seconds
-                
 
+                break
+            
             except (AuthTokenAlreadyAcceptedError, AuthTokenExpiredError, AuthTokenInvalidError) as e:
                 # AcceptLoginTokenRequest exception handler
                 raise e
@@ -644,7 +645,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
 
                 except PasswordHashInvalidError as e:
                     raise PasswordIncorrect(e.__str__()) from e
-        
+
         if timeout_err: raise timeout_err
 
         return newClient
