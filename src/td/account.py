@@ -497,6 +497,7 @@ class StorageAccount(BaseObject):
         Expects(baseGlobalPath != None and baseGlobalPath != "", "baseGlobalPath can't be empty")
 
         if keyFile != None and self.keyFile != keyFile:
+            self.__keyFile = keyFile
             dataNameKey = td.Storage.ComputeDataNameKey(self.__keyFile)
         else:
             dataNameKey = self.__dataNameKey
