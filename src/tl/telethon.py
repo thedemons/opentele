@@ -595,43 +595,57 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
         if not self._self_id:
             oldMe = await self.get_me()
 
-        qr_login = await newClient.qr_login()
-
-        try:
-            resp = await self(functions.auth.AcceptLoginTokenRequest(qr_login.token))
-
-        except (AuthTokenAlreadyAcceptedError, AuthTokenExpiredError, AuthTokenInvalidError) as e:
-            # ! TO BE ADDED
-            # ERROR HANDLER
-            raise BaseException(e)
             
+        tries = 0
+        timeout_err = None
 
-        try:
-            await qr_login.wait(30) # wait for 30 seconds
+        # Try to generate the qr token muiltiple times to work around timeout error.
+        for tries in range(request_retries):
 
-        except (telethon.errors.SessionPasswordNeededError, TimeoutError, asyncio.TimeoutError) as e:
-            
-            if isinstance(e, TimeoutError) or isinstance(e, asyncio.TimeoutError):
-                raise TimeoutError("Something went wrong, i couldn't perform the QR login process")
 
-            Expects(password != None,
-            exception=NoPasswordProvided("Two-step verification is enabled for this account.\n"\
-                                        "You need to provide the `password` to argument"))
-            
-            # two-step verification
             try:
-                pwd : types.account.Password = await newClient(functions.account.GetPasswordRequest()) # type: ignore
-                result = await newClient(
-                    functions.auth.CheckPasswordRequest(
-                        pwd_mod.compute_check(pwd, password) # type: ignore
-                    )
-                )
-                    
-                newClient._on_login(result.user) # type: ignore
+                qr_login = await newClient.qr_login()
+                resp = await self(functions.auth.AcceptLoginTokenRequest(qr_login.token))
+                await qr_login.wait()
+                # await qr_login.wait(30) # wait for 30 seconds
                 
 
-            except PasswordHashInvalidError as e:
-                raise PasswordIncorrect(e.__str__()) from e
+            except (AuthTokenAlreadyAcceptedError, AuthTokenExpiredError, AuthTokenInvalidError) as e:
+                # AcceptLoginTokenRequest exception handler
+                raise e
+
+
+            except (TimeoutError, asyncio.TimeoutError) as e:
+
+                # qr_login.wait() exception handler
+                if isinstance(e, TimeoutError) or isinstance(e, asyncio.TimeoutError):
+                    timeout_err = TimeoutError("Something went wrong, i couldn't perform the QR login process")
+
+            except telethon.errors.SessionPasswordNeededError as e:
+                
+                # requires an 2fa password
+
+                Expects(password != None,
+                exception=NoPasswordProvided("Two-step verification is enabled for this account.\n"\
+                                            "You need to provide the `password` to argument"))
+                
+                # two-step verification
+                try:
+                    pwd : types.account.Password = await newClient(functions.account.GetPasswordRequest()) # type: ignore
+                    result = await newClient(
+                        functions.auth.CheckPasswordRequest(
+                            pwd_mod.compute_check(pwd, password) # type: ignore
+                        )
+                    )
+                    
+                    # successful log in
+                    newClient._on_login(result.user) # type: ignore
+                    break
+
+                except PasswordHashInvalidError as e:
+                    raise PasswordIncorrect(e.__str__()) from e
+        
+        if timeout_err: raise timeout_err
 
         return newClient
     
