@@ -7,7 +7,7 @@ from . import shared as tl
 
 from telethon.errors.rpcerrorlist import PasswordHashInvalidError, AuthTokenAlreadyAcceptedError, AuthTokenExpiredError, AuthTokenInvalidError, FreshResetAuthorisationForbiddenError, HashInvalidError
 from telethon.tl.types import TypeInputClientProxy, TypeJSONValue
-
+from telethon.tl.types.auth import LoginTokenMigrateTo
 import logging
 import warnings
 
@@ -597,17 +597,28 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
 
         timeout_err = None
 
-        # Try to generate the qr token muiltiple times to work around timeout error.
+        # try to generate the qr token muiltiple times to work around timeout error.
+        # this happens when we're logging in from a mismatched DC.
         for attemp in range(request_retries):
 
 
             try:
                 qr_login = await newClient.qr_login()
+                
+                # if we encountered timeout error in the first try, it might be because of mismatched DcId, we're gonna have to switch_dc
+                if isinstance(qr_login, types.auth.LoginTokenMigrateTo):
+                    await newClient._switch_dc(qr_login.dc_id)
+                    qr_login = await newClient(functions.auth.ImportLoginTokenRequest(qr_login.token))
+
+                # for the above reason, we should check if we're already authorized
+                if isinstance(qr_login, types.auth.LoginTokenSuccess):
+                    newClient._on_login(qr_login.authorization.user)
+                    break
 
                 # calculate when will the qr token expire
                 import datetime
                 time_now = datetime.datetime.now(datetime.timezone.utc)
-                time_out = (qr_login.expires - time_now).seconds
+                time_out = (qr_login.expires - time_now).seconds + 5
 
                 resp = await self(functions.auth.AcceptLoginTokenRequest(qr_login.token))
 
