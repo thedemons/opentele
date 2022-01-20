@@ -38,6 +38,27 @@ async def tdata_to_telethon():
     tdesk = await oldClient.ToTDesktop(UseCurrentSession, api=api_desktop)
     tdesk.SaveTData("tests/tdata_test_profile", "!thedemons#opentele", "opentele#thedemons!")
 
-def test_entry_point():
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(tdata_to_telethon())
+# Fix for "RuntimeError: Event loop is closed"
+# Thanks to https://github.com/pytest-dev/pytest-asyncio/issues/30
+@pytest.fixture 
+def event_loop():
+    """Create an instance of the default event loop for each test case."""
+    policy = asyncio.get_event_loop_policy()
+    res = policy.new_event_loop()
+    asyncio.set_event_loop(res)
+    res._close = res.close
+    res.close = lambda: None
+
+    yield res
+
+    res._close()
+
+@pytest.mark.asyncio
+async def test_entry_point(event_loop):
+    print(event_loop)
+    print(type(event_loop))
+    print(dir(event_loop))
+    event_loop.run_until_complete(tdata_to_telethon())
+    print(event_loop)
+    print(type(event_loop))
+    print(dir(event_loop))
