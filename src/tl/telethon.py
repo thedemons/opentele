@@ -551,12 +551,12 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
                                 raise_last_call_error=raise_last_call_error, loop=loop, base_logger=base_logger,
                                 receive_updates=receive_updates)
         
-        # switch DC for now because i can't handle LoginTokenMigrateTo...
-        if newClient.session.dc_id != self.session.dc_id:
-            await newClient._switch_dc(self.session.dc_id)
 
         try:
             await newClient.connect()
+            # switch DC for now because i can't handle LoginTokenMigrateTo...
+            if newClient.session.dc_id != self.session.dc_id:
+                await newClient._switch_dc(self.session.dc_id)
         except OSError as e:
             raise BaseException("Cannot connect")
         
@@ -604,12 +604,12 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
 
         # try to generate the qr token muiltiple times to work around timeout error.
         # this happens when we're logging in from a mismatched DC.
-        for attemp in range(request_retries):
+        for attempt in range(request_retries):
 
 
             try:
                 # we could have been already authorized, but it still raised an timeouterror (??!)
-                if attemp > 0 and await newClient.is_user_authorized(): break
+                if attempt > 0 and await newClient.is_user_authorized(): break
 
                 qr_login = await newClient.qr_login()
                 
@@ -642,7 +642,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
 
             except (TimeoutError, asyncio.TimeoutError) as e:
 
-                warnings.warn("\nQRLoginToNewClient attemp {} failed because {}".format(attemp, type(e)))
+                warnings.warn("\nQRLoginToNewClient attemp {} failed because {}".format(attempt + 1, type(e)))
                 timeout_err = TimeoutError("Something went wrong, i couldn't perform the QR login process")
 
             except telethon.errors.SessionPasswordNeededError as e:
@@ -669,7 +669,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
                 except PasswordHashInvalidError as e:
                     raise PasswordIncorrect(e.__str__()) from e
             
-            warnings.warn("\nQRLoginToNewClient attemp {} failed. Retrying..".format(attemp))
+            warnings.warn("\nQRLoginToNewClient attemp {} failed. Retrying..".format(attempt + 1))
 
 
         if timeout_err: raise timeout_err
