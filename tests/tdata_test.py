@@ -39,7 +39,7 @@ async def tdata_to_telethon():
     await oldClient.PrintSessions()
     
 
-    newClient = await tdesk.ToTelethon(flag=CreateNewSession,  api=api_ios, password="!thedemons#opentele")
+    newClient = await oldClient.QRLoginToNewClient(api=api_ios, password="!thedemons#opentele")
 
     await newClient.connect()
     assert await newClient.is_user_authorized()
