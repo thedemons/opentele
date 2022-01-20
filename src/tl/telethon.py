@@ -607,12 +607,12 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
             
 
         try:
-            await qr_login.wait()
+            await qr_login.wait(30) # wait for 30 seconds
 
-        except (telethon.errors.SessionPasswordNeededError, TimeoutError) as e:
+        except (telethon.errors.SessionPasswordNeededError, TimeoutError, asyncio.TimeoutError) as e:
             
-            if isinstance(e, TimeoutError):
-                raise TimeoutError("Something went wrong, i couldn't perform QR login process")
+            if isinstance(e, TimeoutError) or isinstance(e, asyncio.TimeoutError):
+                raise TimeoutError("Something went wrong, i couldn't perform the QR login process")
 
             Expects(password != None,
             exception=NoPasswordProvided("Two-step verification is enabled for this account.\n"\
