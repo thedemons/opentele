@@ -7,7 +7,7 @@ from ..utils import *
 from ..api import *
 from .. import tl
 
-from typing import Literal, Union, Callable, TypeVar, Type, Optional, List, Dict, Any, TYPE_CHECKING
+from typing import Union, Callable, TypeVar, Type, Optional, List, Dict, Any, TYPE_CHECKING
 from ctypes import sizeof, c_int32 as int32, c_int64 as int64, c_uint32 as uint32, c_uint64 as uint64, c_short as short, c_ushort as ushort
 from PyQt5.QtCore import QByteArray, QDataStream, QBuffer, QIODevice, QSysInfo, QDir, QFile
 from types import FunctionType
