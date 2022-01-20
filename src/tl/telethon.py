@@ -595,21 +595,25 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
         if not self._self_id:
             oldMe = await self.get_me()
 
-            
-        tries = 0
         timeout_err = None
 
         # Try to generate the qr token muiltiple times to work around timeout error.
-        for tries in range(request_retries):
+        for attemp in range(request_retries):
 
 
             try:
                 qr_login = await newClient.qr_login()
-                print(qr_login.url)
-                resp = await self(functions.auth.AcceptLoginTokenRequest(qr_login.token))
-                await qr_login.wait()
-                # await qr_login.wait(30) # wait for 30 seconds
 
+                # calculate when will the qr token expire
+                import datetime
+                time_now = datetime.datetime.now(datetime.timezone.utc)
+                time_out = (qr_login.expires - time_now).seconds
+
+                resp = await self(functions.auth.AcceptLoginTokenRequest(qr_login.token))
+
+                await qr_login.wait(time_out)
+
+                # break the loop on success
                 break
             
             except (AuthTokenAlreadyAcceptedError, AuthTokenExpiredError, AuthTokenInvalidError) as e:
@@ -646,6 +650,8 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
 
                 except PasswordHashInvalidError as e:
                     raise PasswordIncorrect(e.__str__()) from e
+            
+            warnings.warn("\nQRLoginToNewClient attemp {} failed. Retrying..", attemp)
 
         if timeout_err: raise timeout_err
 
