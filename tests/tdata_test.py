@@ -8,6 +8,13 @@ from src.td import TDesktop
 from src.api import API, CreateNewSession, UseCurrentSession
 
 import pytest
+import asyncio
+
+@pytest.fixture
+def event_loop():
+    loop = asyncio.get_event_loop()
+    yield loop
+    loop.close()
 
 @pytest.mark.asyncio
 async def test_tdata_to_telethon():
