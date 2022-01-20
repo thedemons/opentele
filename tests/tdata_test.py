@@ -10,8 +10,6 @@ from src.api import API, CreateNewSession, UseCurrentSession
 import pytest
 import asyncio
 
-
-@pytest.mark.asyncio
 async def test_tdata_to_telethon():
     
 
@@ -54,8 +52,7 @@ def event_loop():
 
     res._close()
 
+@pytest.mark.asyncio
+async def fixture_entry_point(event_loop):
 
-@pytest.yield_fixture
-def fixture_entry_point(event_loop):
-
-    event_loop.run_until_complete(test_tdata_to_telethon()) # "foo"
+    event_loop.run_until_complete(test_tdata_to_telethon())
