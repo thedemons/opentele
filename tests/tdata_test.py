@@ -14,29 +14,14 @@ import pytest
 import pytest_asyncio
 from _pytest._io import TerminalWriter
 
-@pytest.mark.asyncio
-async def test_entry_point(event_loop):
+def PythonVersion():
+    return "{}.{}.{}".format(sys.version_info.major, sys.version_info.minor, sys.version_info.micro)
 
-    ter = TerminalWriter(sys.stdout)
-    ter.hasmarkup = True
-    event_loop._close = event_loop.close
-    event_loop.close = lambda: None
-
-    ter.write("\n\n")
-    ter.write(sys.version)
-    ter.sep("=", "Begin testing", cyan=True)
-
-    try:
-        await tdata_to_telethon()
-
-    except (asyncio.CancelledError, asyncio.TimeoutError) as e:
-        ter.sep("-", "Catched Exception: {}".format(e.__str__()), red=True)
+def profile_path():
+    return "tests/test_profile{}".format(PythonVersion())
     
-
 async def tdata_to_telethon():
 
-    def profile_path():
-        return "tests/test_profile{}".format(sys.version.split(" ")[0])
 
 
     api_desktop = API.TelegramDesktop.Generate("windows", "!thedemons#opentele")
@@ -77,3 +62,22 @@ async def tdata_to_telethon():
     await newClient.disconnected
     
 
+
+@pytest.mark.asyncio
+async def test_entry_point(event_loop):
+
+    ter = TerminalWriter(sys.stdout)
+    ter.hasmarkup = True
+    event_loop._close = event_loop.close
+    event_loop.close = lambda: None
+
+    ter.write("\n\n")
+    ter.write(sys.version_info )
+    ter.sep("=", "Begin testing for Python {}".format(PythonVersion()), cyan=True)
+
+    try:
+        await tdata_to_telethon()
+
+    except (asyncio.CancelledError, asyncio.TimeoutError) as e:
+        ter.sep("-", "Catched Exception: {}".format(e.__str__()), red=True)
+    
