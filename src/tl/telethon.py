@@ -623,9 +623,8 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
 
             except (TimeoutError, asyncio.TimeoutError) as e:
 
-                # qr_login.wait() exception handler
-                if isinstance(e, TimeoutError) or isinstance(e, asyncio.TimeoutError):
-                    timeout_err = TimeoutError("Something went wrong, i couldn't perform the QR login process")
+                warnings.warn("\nQRLoginToNewClient attemp {} failed because {}".format(attemp, type(e)))
+                timeout_err = TimeoutError("Something went wrong, i couldn't perform the QR login process")
 
             except telethon.errors.SessionPasswordNeededError as e:
                 
@@ -651,7 +650,8 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
                 except PasswordHashInvalidError as e:
                     raise PasswordIncorrect(e.__str__()) from e
             
-            warnings.warn("\nQRLoginToNewClient attemp {} failed. Retrying..", attemp)
+            warnings.warn("\nQRLoginToNewClient attemp {} failed. Retrying..".format(attemp))
+
 
         if timeout_err: raise timeout_err
 
