@@ -10,21 +10,9 @@ from src.api import API, CreateNewSession, UseCurrentSession
 import pytest
 import asyncio
 
-@pytest.yield_fixture
-def event_loop():
-    """Create an instance of the default event loop for each test case."""
-    policy = asyncio.get_event_loop_policy()
-    res = policy.new_event_loop()
-    asyncio.set_event_loop(res)
-    res._close = res.close
-    res.close = lambda: None
-
-    yield res
-
-    res._close()
 
 @pytest.mark.asyncio
-async def test_tdata_to_telethon(event_loop):
+async def test_tdata_to_telethon():
     
 
     api_desktop = API.TelegramDesktop.Generate("windows", "!thedemons#opentele")
@@ -51,3 +39,23 @@ async def test_tdata_to_telethon(event_loop):
 
     tdesk = await oldClient.ToTDesktop(UseCurrentSession, api=api_desktop)
     tdesk.SaveTData("tests/tdata_test_profile", "!thedemons#opentele", "opentele#thedemons!")
+
+
+@pytest.yield_fixture
+def event_loop():
+    """Create an instance of the default event loop for each test case."""
+    policy = asyncio.get_event_loop_policy()
+    res = policy.new_event_loop()
+    asyncio.set_event_loop(res)
+    res._close = res.close
+    res.close = lambda: None
+
+    yield res
+
+    res._close()
+
+
+@pytest.yield_fixture
+def fixture_entry_point(event_loop):
+
+    event_loop.run_until_complete(test_tdata_to_telethon()) # "foo"
