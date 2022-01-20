@@ -15,7 +15,7 @@ import pytest_asyncio
 from _pytest._io import TerminalWriter
 
 def PythonVersion():
-    return "{}.{}.{}".format(sys.version_info.major, sys.version_info.minor, sys.version_info.micro)
+    return "{}.{}".format(sys.version_info.major, sys.version_info.minor)
 
 def profile_path():
     return "tests/test_profile{}".format(PythonVersion())
