@@ -5,7 +5,7 @@ import re
 README = (pathlib.Path(__file__).parent / "README.md").read_text()
 
 PACKAGE_NAME        = "opentele"
-VERSION             = "1.1.2"
+VERSION             = "1.1.3"
 SOURCE_DIRECTORY    = "src"
 
 with open("requirements.txt") as data:
