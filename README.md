@@ -4,8 +4,10 @@
 
 <p align="center">
     <img src="./theme/logo.png"/>
+    
+    <a href="https://pypi.org/project/opentele/"><img src="https://img.shields.io/pypi/v/opentele?logo=opentele"/></a>
+</p>
 
-<a href="https://pypi.org/project/opentele/"><img src="https://img.shields.io/pypi/v/opentele?logo=opentele"/></a>
 
 [![pypi version](https://img.shields.io/pypi/v/opentele?logo=opentele)](https://pypi.org/project/opentele/)
 [![pypi status](https://img.shields.io/pypi/status/opentele?logo=opentele&label=build)](https://pypi.org/project/opentele/)
@@ -18,7 +20,6 @@
 [![license](https://img.shields.io/pypi/l/opentele?color=brightgreen)](https://en.wikipedia.org/wiki/MIT_License)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-</p>
 
 <br>
 
