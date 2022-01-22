@@ -1,4 +1,4 @@
-// Configuration setting for pyright type checker
+// Configurations for pyright type checker
 {
     "include": [
         "src"
