@@ -6,7 +6,7 @@
 
 
 ---
-## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">LoginFlag</span></span><a href="https://github.com/thedemons/opentele/blob/27182a2a33dccf2dca79393653704e07600a1fbe/src/api.py#L588"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">LoginFlag</span></span><a href="https://github.com/thedemons/opentele/blob/a95cfb405c7817705bf2cd99cacae948f9e36f48/src/api.py#L620"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class LoginFlag(int)
@@ -37,7 +37,7 @@ Login flag for converting sessions between <a class="codehl codehl_obj" href="..
 
 
 ---
-## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">UseCurrentSession</span></span><a href="https://github.com/thedemons/opentele/blob/27182a2a33dccf2dca79393653704e07600a1fbe/src/api.py#L604"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">UseCurrentSession</span></span><a href="https://github.com/thedemons/opentele/blob/a95cfb405c7817705bf2cd99cacae948f9e36f48/src/api.py#L637"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class UseCurrentSession(LoginFlag)
@@ -61,7 +61,7 @@ Use the current session.<br>
 
 
 ---
-## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">CreateNewSession</span></span><a href="https://github.com/thedemons/opentele/blob/27182a2a33dccf2dca79393653704e07600a1fbe/src/api.py#L619"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">CreateNewSession</span></span><a href="https://github.com/thedemons/opentele/blob/a95cfb405c7817705bf2cd99cacae948f9e36f48/src/api.py#L653"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class CreateNewSession(LoginFlag)
