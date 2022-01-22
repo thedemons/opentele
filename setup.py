@@ -25,6 +25,9 @@ setup(
     author_email="thedemons@gmail.com",
     classifiers=[
         "License :: OSI Approved :: MIT License",
+        "Operating System :: Microsoft :: Windows",
+        "Operating System :: MacOS",
+        "Operating System :: POSIX :: Linux",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.7",
         "Development Status :: 5 - Production/Stable",
