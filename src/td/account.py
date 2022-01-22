@@ -14,15 +14,14 @@ import logging
 
 
 class MapData(BaseObject):
-
-    def __init__(self, basePath : str) -> None:
+    def __init__(self, basePath: str) -> None:
 
         self.basePath = basePath
 
-        self._draftsMap : Dict[PeerId, FileKey] = {}
-        self._draftCursorsMap : Dict[PeerId, FileKey] = {}
-        self._draftsNotReadMap : Dict[PeerId, bool] = {}
-        
+        self._draftsMap: Dict[PeerId, FileKey] = {}
+        self._draftCursorsMap: Dict[PeerId, FileKey] = {}
+        self._draftsNotReadMap: Dict[PeerId, bool] = {}
+
         self._locationsKey = FileKey(0)
         self._trustedBotsKey = FileKey(0)
         self._installedStickersKey = FileKey(0)
@@ -35,43 +34,57 @@ class MapData(BaseObject):
         self._recentStickersKeyOld = FileKey(0)
         self._legacyBackgroundKeyDay = FileKey(0)
         self._legacyBackgroundKeyNight = FileKey(0)
-        
+
         # self._settingsKey = FileKey(0)
-         # ! TO BE ADDED
+        # ! TO BE ADDED
         self._settingsKey = FileKey(1851671142505648812)
-        '''MUST HAVE OR CAN'T WRITE MAPDATA, I'M WOKRING TO FIX THIS'''
+        """MUST HAVE OR CAN'T WRITE MAPDATA, I'M WOKRING TO FIX THIS"""
 
         self._recentHashtagsAndBotsKey = FileKey(0)
         self._exportSettingsKey = FileKey(0)
         self._installedMasksKey = FileKey(0)
         self._recentMasksKey = FileKey(0)
 
-    def read(self, localKey : td.AuthKey, legacyPasscode : QByteArray) -> None:
-        
+    def read(self, localKey: td.AuthKey, legacyPasscode: QByteArray) -> None:
+
         try:
             mapData = td.Storage.ReadFile("map", self.basePath)
         except OpenTeleException as e:
-            raise TDataReadMapDataFailed("Could not read map data, find not found or couldn't be opened") from e
-        
-        legacySalt, legacyKeyEncrypted, mapEncrypted = QByteArray(), QByteArray(), QByteArray()
+            raise TDataReadMapDataFailed(
+                "Could not read map data, find not found or couldn't be opened"
+            ) from e
+
+        legacySalt, legacyKeyEncrypted, mapEncrypted = (
+            QByteArray(),
+            QByteArray(),
+            QByteArray(),
+        )
 
         mapData.stream >> legacySalt >> legacyKeyEncrypted >> mapEncrypted
 
         ExpectStreamStatus(mapData.stream, "Could not stream data from mapData")
 
-        if (not localKey):
+        if not localKey:
 
             # LocalEncryptSaltSize = 32
-            Expects(legacySalt.size() == 32,
-                        TDataReadMapDataFailed(f"Bad salt in map file, size: {legacySalt.size()}")) 
+            Expects(
+                legacySalt.size() == 32,
+                TDataReadMapDataFailed(
+                    f"Bad salt in map file, size: {legacySalt.size()}"
+                ),
+            )
 
-            legacyPasscodeKey = td.Storage.CreateLegacyLocalKey(legacySalt, legacyPasscode)
-                
+            legacyPasscodeKey = td.Storage.CreateLegacyLocalKey(
+                legacySalt, legacyPasscode
+            )
+
             try:
                 keyData = td.Storage.DecryptLocal(legacyKeyEncrypted, legacyPasscodeKey)
             except OpenTeleException as e:
-                raise TDataReadMapDataIncorrectPasscode("Could not decrypt pass-protected key from map file, maybe bad password...") from e
-                
+                raise TDataReadMapDataIncorrectPasscode(
+                    "Could not decrypt pass-protected key from map file, maybe bad password..."
+                ) from e
+
             localKey = td.AuthKey.FromStream(keyData.stream)
 
         try:
@@ -80,33 +93,33 @@ class MapData(BaseObject):
             raise TDataReadMapDataFailed("Could not decrypt map data") from e
 
         selfSerialized = QByteArray()
-        draftsMap : typing.Dict[PeerId, FileKey] = {}
-        draftCursorsMap : typing.Dict[PeerId, FileKey] = {}
-        draftsNotReadMap : typing.Dict[PeerId, bool] = {}
+        draftsMap: typing.Dict[PeerId, FileKey] = {}
+        draftCursorsMap: typing.Dict[PeerId, FileKey] = {}
+        draftsNotReadMap: typing.Dict[PeerId, bool] = {}
 
         locationsKey = 0
-        reportSpamStatusesKey = 0 
+        reportSpamStatusesKey = 0
         trustedBotsKey = 0
         recentStickersKeyOld = 0
-        installedStickersKey = 0 
-        featuredStickersKey = 0 
-        recentStickersKey = 0 
-        favedStickersKey = 0 
+        installedStickersKey = 0
+        featuredStickersKey = 0
+        recentStickersKey = 0
+        favedStickersKey = 0
         archivedStickersKey = 0
-        installedMasksKey = 0 
-        recentMasksKey = 0 
+        installedMasksKey = 0
+        recentMasksKey = 0
         archivedMasksKey = 0
         savedGifsKey = 0
-        legacyBackgroundKeyDay = 0 
+        legacyBackgroundKeyDay = 0
         legacyBackgroundKeyNight = 0
-        userSettingsKey = 0 
-        recentHashtagsAndBotsKey = 0 
+        userSettingsKey = 0
+        recentHashtagsAndBotsKey = 0
         exportSettingsKey = 0
 
         while not map.stream.atEnd():
             keyType = map.stream.readUInt32()
 
-            if (keyType == lskType.lskDraft):
+            if keyType == lskType.lskDraft:
                 count = map.stream.readUInt32()
                 for i in range(count):
                     key = FileKey(map.stream.readUInt64())
@@ -115,10 +128,10 @@ class MapData(BaseObject):
                     draftsMap[peerId] = key
                     draftsNotReadMap[peerId] = True
 
-            elif (keyType == lskType.lskSelfSerialized):
+            elif keyType == lskType.lskSelfSerialized:
                 map.stream >> selfSerialized
 
-            elif (keyType == lskType.lskDraftPosition):
+            elif keyType == lskType.lskDraftPosition:
                 count = map.stream.readUInt32()
                 for i in range(count):
                     key = FileKey(map.stream.readUInt64())
@@ -126,7 +139,11 @@ class MapData(BaseObject):
                     peerId = PeerId.FromSerialized(peerIdSerialized)
                     draftCursorsMap[peerId] = key
 
-            elif (keyType == lskType.lskLegacyImages) or (keyType == lskType.lskLegacyStickerImages) or (keyType == lskType.lskLegacyAudios):
+            elif (
+                (keyType == lskType.lskLegacyImages)
+                or (keyType == lskType.lskLegacyStickerImages)
+                or (keyType == lskType.lskLegacyAudios)
+            ):
                 count = map.stream.readUInt32()
                 for i in range(count):
                     filekey = map.stream.readUInt64()
@@ -134,72 +151,73 @@ class MapData(BaseObject):
                     second = map.stream.readUInt64()
                     size = map.stream.readInt32()
 
-            elif (keyType == lskType.lskLocations):
+            elif keyType == lskType.lskLocations:
                 locationsKey = map.stream.readUInt64()
 
-            elif (keyType == lskType.lskReportSpamStatusesOld):
+            elif keyType == lskType.lskReportSpamStatusesOld:
                 reportSpamStatusesKey = map.stream.readUInt64()
                 # ClearKey(reportSpamStatusesKey, _basePath);
 
-            elif (keyType == lskType.lskTrustedBots):
+            elif keyType == lskType.lskTrustedBots:
                 trustedBotsKey = map.stream.readUInt64()
-                
-            elif (keyType == lskType.lskRecentStickersOld):
+
+            elif keyType == lskType.lskRecentStickersOld:
                 recentStickersKeyOld = map.stream.readUInt64()
-                
-            elif (keyType == lskType.lskBackgroundOldOld):
+
+            elif keyType == lskType.lskBackgroundOldOld:
                 # TO BE ADDED
                 # map.stream >> (Window::Theme::IsNightMode()
                 #     ? legacyBackgroundKeyNight
                 #     : legacyBackgroundKeyDay);
                 map.stream >> legacyBackgroundKeyDay
                 pass
-                
-            elif (keyType == lskType.lskBackgroundOld):
+
+            elif keyType == lskType.lskBackgroundOld:
                 legacyBackgroundKeyDay = map.stream.readUInt64()
                 legacyBackgroundKeyNight = map.stream.readUInt64()
-                
-            elif (keyType == lskType.lskUserSettings):
+
+            elif keyType == lskType.lskUserSettings:
                 userSettingsKey = map.stream.readUInt64()
 
-            elif (keyType == lskType.lskRecentHashtagsAndBots):
+            elif keyType == lskType.lskRecentHashtagsAndBots:
                 recentHashtagsAndBotsKey = map.stream.readUInt64()
-                
-            elif (keyType == lskType.lskStickersOld):
+
+            elif keyType == lskType.lskStickersOld:
                 installedStickersKey = map.stream.readUInt64()
 
-            elif (keyType == lskType.lskStickersKeys):
+            elif keyType == lskType.lskStickersKeys:
                 installedStickersKey = map.stream.readUInt64()
                 featuredStickersKey = map.stream.readUInt64()
                 recentStickersKey = map.stream.readUInt64()
                 archivedStickersKey = map.stream.readUInt64()
 
-            elif (keyType == lskType.lskFavedStickers):
+            elif keyType == lskType.lskFavedStickers:
                 favedStickersKey = map.stream.readUInt64()
 
-            elif (keyType == lskType.lskSavedGifsOld):
+            elif keyType == lskType.lskSavedGifsOld:
                 key = map.stream.readUInt64()
 
-            elif (keyType == lskType.lskSavedGifs):
+            elif keyType == lskType.lskSavedGifs:
                 savedGifsKey = map.stream.readUInt64()
 
-            elif (keyType == lskType.lskSavedPeersOld):
+            elif keyType == lskType.lskSavedPeersOld:
                 key = map.stream.readUInt64()
 
-            elif (keyType == lskType.lskExportSettings):
+            elif keyType == lskType.lskExportSettings:
                 exportSettingsKey = map.stream.readUInt64()
 
-            elif (keyType == lskType.lskMasksKeys):
+            elif keyType == lskType.lskMasksKeys:
                 installedMasksKey = map.stream.readUInt64()
                 recentMasksKey = map.stream.readUInt64()
                 archivedMasksKey = map.stream.readUInt64()
-            
-            else:
-                raise TDataReadMapDataFailed(f"Unknown key type in encrypted map: {keyType}")
-            
-            ExpectStreamStatus(map.stream,"Could not stream data from mapData ")
 
-        
+            else:
+                raise TDataReadMapDataFailed(
+                    f"Unknown key type in encrypted map: {keyType}"
+                )
+
+            ExpectStreamStatus(map.stream, "Could not stream data from mapData ")
+
         self.__localKey = localKey
 
         self._draftsMap = draftsMap
@@ -224,89 +242,109 @@ class MapData(BaseObject):
         self._recentHashtagsAndBotsKey = recentHashtagsAndBotsKey
         self._exportSettingsKey = exportSettingsKey
         self._oldMapVersion = mapData.version
-        
-
 
     def prepareToWrite(self) -> td.Storage.EncryptedDescriptor:
         # Intended for internal usage only
-    
+
         mapSize = 0
 
         # TO BE ADDED
         # if (!self.isEmpty()) mapSize += sizeof(uint32) + Serialize::bytearraySize(self);
-        if (len(self._draftsMap) > 0): mapSize += sizeof(uint32) * 2 + len(self._draftsMap) * sizeof(uint64) * 2
-        if (len(self._draftCursorsMap) > 0): mapSize += sizeof(uint32) * 2 + len(self._draftCursorsMap) * sizeof(uint64) * 2
-        if (self._locationsKey): mapSize += sizeof(uint32) + sizeof(uint64)
-        if (self._trustedBotsKey): mapSize += sizeof(uint32) + sizeof(uint64)
-        if (self._recentStickersKeyOld): mapSize += sizeof(uint32) + sizeof(uint64)
-        if (self._installedStickersKey or self._featuredStickersKey or self._recentStickersKey or self._archivedStickersKey):
+        if len(self._draftsMap) > 0:
+            mapSize += sizeof(uint32) * 2 + len(self._draftsMap) * sizeof(uint64) * 2
+        if len(self._draftCursorsMap) > 0:
+            mapSize += (
+                sizeof(uint32) * 2 + len(self._draftCursorsMap) * sizeof(uint64) * 2
+            )
+        if self._locationsKey:
+            mapSize += sizeof(uint32) + sizeof(uint64)
+        if self._trustedBotsKey:
+            mapSize += sizeof(uint32) + sizeof(uint64)
+        if self._recentStickersKeyOld:
+            mapSize += sizeof(uint32) + sizeof(uint64)
+        if (
+            self._installedStickersKey
+            or self._featuredStickersKey
+            or self._recentStickersKey
+            or self._archivedStickersKey
+        ):
             mapSize += sizeof(uint32) + 4 * sizeof(uint64)
 
-        if (self._favedStickersKey): mapSize += sizeof(uint32) + sizeof(uint64)
-        if (self._savedGifsKey): mapSize += sizeof(uint32) + sizeof(uint64)
-        if (self._settingsKey): mapSize += sizeof(uint32) + sizeof(uint64)
-        if (self._recentHashtagsAndBotsKey): mapSize += sizeof(uint32) + sizeof(uint64)
-        if (self._exportSettingsKey): mapSize += sizeof(uint32) + sizeof(uint64)
-        if (self._installedMasksKey or self._recentMasksKey or self._archivedMasksKey):
+        if self._favedStickersKey:
+            mapSize += sizeof(uint32) + sizeof(uint64)
+        if self._savedGifsKey:
+            mapSize += sizeof(uint32) + sizeof(uint64)
+        if self._settingsKey:
+            mapSize += sizeof(uint32) + sizeof(uint64)
+        if self._recentHashtagsAndBotsKey:
+            mapSize += sizeof(uint32) + sizeof(uint64)
+        if self._exportSettingsKey:
+            mapSize += sizeof(uint32) + sizeof(uint64)
+        if self._installedMasksKey or self._recentMasksKey or self._archivedMasksKey:
             mapSize += sizeof(uint32) + 3 * sizeof(uint64)
 
         mapData = td.Storage.EncryptedDescriptor(mapSize)
         stream = mapData.stream
 
-        if (len(self._draftsMap) > 0):
+        if len(self._draftsMap) > 0:
             stream.writeUInt32(lskType.lskDraft)
             stream.writeUInt32(len(self._draftsMap))
             for key, value in self._draftsMap.items():
                 stream.writeUInt64(value)
                 stream.writeUInt64(PeerId(key).Serialize())
 
-        if (len(self._draftCursorsMap) > 0):
+        if len(self._draftCursorsMap) > 0:
             stream.writeUInt32(lskType.lskDraftPosition)
             stream.writeUInt32(len(self._draftCursorsMap))
             for key, value in self._draftCursorsMap.items():
                 stream.writeUInt64(value)
                 stream.writeUInt64(PeerId(key).Serialize())
 
-        if (self._locationsKey):
+        if self._locationsKey:
             stream.writeUInt32(lskType.lskLocations)
             stream.writeUInt64(self._locationsKey)
 
-        if (self._trustedBotsKey):
+        if self._trustedBotsKey:
             stream.writeUInt32(lskType.lskTrustedBots)
             stream.writeUInt64(self._trustedBotsKey)
 
-        if (self._recentStickersKeyOld):
+        if self._recentStickersKeyOld:
             stream.writeUInt32(lskType.lskRecentStickersOld)
             stream.writeUInt64(self._recentStickersKeyOld)
 
-        if (self._installedStickersKey or self._featuredStickersKey or self._recentStickersKey or self._archivedStickersKey):
+        if (
+            self._installedStickersKey
+            or self._featuredStickersKey
+            or self._recentStickersKey
+            or self._archivedStickersKey
+        ):
             stream.writeUInt32(lskType.lskStickersKeys)
             stream.writeUInt64(self._installedStickersKey)
             stream.writeUInt64(self._featuredStickersKey)
             stream.writeUInt64(self._recentStickersKey)
             stream.writeUInt64(self._archivedStickersKey)
-        
-        if (self._favedStickersKey):
+
+        if self._favedStickersKey:
             stream.writeUInt32(lskType.lskFavedStickers)
             stream.writeUInt64(self._favedStickersKey)
 
-        if (self._savedGifsKey):
+        if self._savedGifsKey:
             stream.writeUInt32(lskType.lskSavedGifs)
             stream.writeUInt64(self._savedGifsKey)
 
-        if (self._settingsKey):
+        if self._settingsKey:
             stream.writeUInt32(lskType.lskUserSettings)
             stream.writeUInt64(self._settingsKey)
 
-        if (self._recentHashtagsAndBotsKey):
+        if self._recentHashtagsAndBotsKey:
             stream.writeUInt32(lskType.lskRecentHashtagsAndBots)
             stream.writeUInt64(self._recentHashtagsAndBotsKey)
 
-        if (self._exportSettingsKey):
+        if self._exportSettingsKey:
             stream.writeUInt32(lskType.lskExportSettings)
             stream.writeUInt64(self._exportSettingsKey)
 
-        if (self._installedMasksKey or self._recentMasksKey or self._archivedMasksKey):
+        if self._installedMasksKey or self._recentMasksKey or self._archivedMasksKey:
             stream.writeUInt32(lskType.lskMasksKeys)
             stream.writeUInt64(self._installedMasksKey)
             stream.writeUInt64(self._recentMasksKey)
@@ -316,21 +354,21 @@ class MapData(BaseObject):
 
 
 class StorageAccount(BaseObject):
-    '''
+    """
     Storage account for reading and writing to tdata
-    '''    
+    """
 
-    def __init__(self, owner : Account, basePath : str, keyFile : str) -> None:
+    def __init__(self, owner: Account, basePath: str, keyFile: str) -> None:
         """
         Create an instance of StorageAccount
 
         ### Arguments
             1. owner (Account):\n
                 owner
-        
+
             2. basePath (str):\n
                 basePath
-        
+
             3. dataName (str):\n
                 dataName
         """
@@ -339,7 +377,9 @@ class StorageAccount(BaseObject):
         self.__keyFile = keyFile
         self.__dataNameKey = td.Storage.ComputeDataNameKey(self.__keyFile)
         self.__baseGlobalPath = td.Storage.GetAbsolutePath(basePath)
-        self.__basePath = td.Storage.PathJoin(self.__baseGlobalPath, td.Storage.ToFilePart(self.__dataNameKey))
+        self.__basePath = td.Storage.PathJoin(
+            self.__baseGlobalPath, td.Storage.ToFilePart(self.__dataNameKey)
+        )
         self.__localKey = None
 
         self.__mapData = MapData(self.basePath)
@@ -364,7 +404,7 @@ class StorageAccount(BaseObject):
     def localKey(self, value):
         # localKey setter is intended for internal usage
         self.__localKey = value
-        
+
     @property
     def keyFile(self) -> str:
         return self.__keyFile
@@ -382,7 +422,9 @@ class StorageAccount(BaseObject):
     @baseGlobalPath.setter
     def baseGlobalPath(self, basePath):
         self.__baseGlobalPath = td.Storage.GetAbsolutePath(basePath)
-        self.__basePath = td.Storage.PathJoin(self.__baseGlobalPath, td.Storage.ToFilePart(self.__dataNameKey))
+        self.__basePath = td.Storage.PathJoin(
+            self.__baseGlobalPath, td.Storage.ToFilePart(self.__dataNameKey)
+        )
 
     @property
     def basePath(self) -> str:
@@ -396,22 +438,21 @@ class StorageAccount(BaseObject):
     def mapData(self) -> MapData:
         return self.__mapData
 
-    def start(self, localKey : td.AuthKey) -> td.MTP.Config:
+    def start(self, localKey: td.AuthKey) -> td.MTP.Config:
         # Intended for internal usage only
 
         self.__localKey = localKey
         self.readMapWith(localKey)
         return self.readMtpConfig()
-        
 
     def readMtpData(self):
         # Intended for internal usage only
-        
+
         # mtp = ReadEncryptedFile(ToFilePart(self.__dataNameKey), self.__basePath, self.localKey)
-        mtp = td.Storage.ReadEncryptedFile(td.Storage.ToFilePart(self.__dataNameKey), self.__baseGlobalPath, self.localKey) # type: ignore
+        mtp = td.Storage.ReadEncryptedFile(td.Storage.ToFilePart(self.__dataNameKey), self.__baseGlobalPath, self.localKey)  # type: ignore
 
         blockId = mtp.stream.readInt32()
-        
+
         Expects(blockId == 75, TDataInvalidMagic("Not supported file version"))
 
         serialized = QByteArray()
@@ -420,15 +461,18 @@ class StorageAccount(BaseObject):
 
     def readMtpConfig(self) -> td.MTP.Config:
         # Intended for internal usage only
-        Expects(self.localKey != None, AccountAuthKeyNotFound("The localKey has not been initialized yet"))
-        
+        Expects(
+            self.localKey != None,
+            AccountAuthKeyNotFound("The localKey has not been initialized yet"),
+        )
+
         try:
-            file = td.Storage.ReadEncryptedFile("config", self.basePath, self.localKey) # type: ignore
+            file = td.Storage.ReadEncryptedFile("config", self.basePath, self.localKey)  # type: ignore
             serialized = QByteArray()
             file.stream >> serialized
 
             ExpectStreamStatus(file.stream, "Could not stream data from MtpConfig")
-            
+
             self.__config = td.MTP.Config.FromSerialized(serialized)
             return self.__config
         except OpenTeleException as e:
@@ -436,20 +480,24 @@ class StorageAccount(BaseObject):
 
         return td.MTP.Config(td.MTP.Environment.Production)
 
-    def readMapWith(self, localKey : td.AuthKey, legacyPasscode : QByteArray = QByteArray()):
+    def readMapWith(
+        self, localKey: td.AuthKey, legacyPasscode: QByteArray = QByteArray()
+    ):
         # Intended for internal usage only
         try:
             self.__mapData.read(localKey, legacyPasscode)
         except OpenTeleException:
             return False
-        
-        self.readMtpData()
-        
 
-    def writeMtpConfig(self, basePath : str) -> None:
+        self.readMtpData()
+
+    def writeMtpConfig(self, basePath: str) -> None:
         # Intended for internal usage only
 
-        Expects(self.localKey != None, "localKey not found, have you initialized me correctly?")
+        Expects(
+            self.localKey != None,
+            "localKey not found, have you initialized me correctly?",
+        )
         Expects(basePath != None and basePath != "", "basePath can't be empty")
 
         serialized = self.owner.MtpConfig.Serialize()
@@ -457,44 +505,58 @@ class StorageAccount(BaseObject):
         file = td.Storage.FileWriteDescriptor("config", basePath)
         data = td.Storage.EncryptedDescriptor(size)
         data.stream << serialized
-        file.writeEncrypted(data, self.localKey) # type: ignore
+        file.writeEncrypted(data, self.localKey)  # type: ignore
         file.finish()
 
-    def writeMap(self, basePath : str) -> None:
+    def writeMap(self, basePath: str) -> None:
         # Intended for internal usage only
 
-        Expects(self.localKey != None, "localKey not found, have you initialized me correctly?")
+        Expects(
+            self.localKey != None,
+            "localKey not found, have you initialized me correctly?",
+        )
         Expects(basePath != None and basePath != "", "basePath can't be empty")
 
         map = td.Storage.FileWriteDescriptor("map", basePath)
-        
+
         # i don't know what's the purpose of this, but it's in tdesktop source code
         map.writeData(QByteArray())
         map.writeData(QByteArray())
 
         mapDataEncrypted = self.mapData.prepareToWrite()
-        map.writeEncrypted(mapDataEncrypted, self.localKey) # type: ignore
+        map.writeEncrypted(mapDataEncrypted, self.localKey)  # type: ignore
         map.finish()
 
-    def writeMtpData(self, baseGlobalPath : str, dataNameKey : int) -> None:
+    def writeMtpData(self, baseGlobalPath: str, dataNameKey: int) -> None:
         # Intended for internal usage only
 
-        Expects(self.localKey != None, "localKey not found, have you initialized me correctly?")
-        Expects(baseGlobalPath != None and baseGlobalPath != "", "baseGlobalPath can't be empty")
+        Expects(
+            self.localKey != None,
+            "localKey not found, have you initialized me correctly?",
+        )
+        Expects(
+            baseGlobalPath != None and baseGlobalPath != "",
+            "baseGlobalPath can't be empty",
+        )
 
         serialized = self.owner.serializeMtpAuthorization()
         size = sizeof(uint32) + td.Serialize.bytearraySize(serialized)
-        mtp = td.Storage.FileWriteDescriptor(td.Storage.ToFilePart(dataNameKey), baseGlobalPath)
+        mtp = td.Storage.FileWriteDescriptor(
+            td.Storage.ToFilePart(dataNameKey), baseGlobalPath
+        )
         data = td.Storage.EncryptedDescriptor(size)
         data.stream.writeInt32(dbi.MtpAuthorization)
         data.stream << serialized
         mtp.writeEncrypted(data, self.localKey)  # type: ignore
         mtp.finish()
-    
-    def _writeData(self, baseGlobalPath : str, keyFile : str = None) -> None:
+
+    def _writeData(self, baseGlobalPath: str, keyFile: str = None) -> None:
         # Intended for internal usage only
 
-        Expects(baseGlobalPath != None and baseGlobalPath != "", "baseGlobalPath can't be empty")
+        Expects(
+            baseGlobalPath != None and baseGlobalPath != "",
+            "baseGlobalPath can't be empty",
+        )
 
         if keyFile != None and self.keyFile != keyFile:
             self.__keyFile = keyFile
@@ -502,15 +564,18 @@ class StorageAccount(BaseObject):
         else:
             dataNameKey = self.__dataNameKey
 
-        basePath = td.Storage.PathJoin(baseGlobalPath, td.Storage.ToFilePart(dataNameKey))
+        basePath = td.Storage.PathJoin(
+            baseGlobalPath, td.Storage.ToFilePart(dataNameKey)
+        )
         self.writeMap(basePath)
         self.writeMtpConfig(basePath)
         self.writeMtpData(baseGlobalPath, dataNameKey)
 
+
 class Account(BaseObject):
     """
     Telegram Desktop account
-    
+
     ### Attributes:
         api (`API`):
             The API this acount is using.
@@ -538,14 +603,16 @@ class Account(BaseObject):
 
     """
 
-    kWideIdsTag : int = int(~0)
+    kWideIdsTag: int = int(~0)
 
-    def __init__(self, 
-                owner    : td.TDesktop,
-                basePath : str = None, 
-                api      : Union[Type[APIData], APIData] = API.TelegramDesktop,
-                keyFile  : str = None,
-                index    : int = 0) -> None:
+    def __init__(
+        self,
+        owner: td.TDesktop,
+        basePath: str = None,
+        api: Union[Type[APIData], APIData] = API.TelegramDesktop,
+        keyFile: str = None,
+        index: int = 0,
+    ) -> None:
         """
         Initialized a `TDesktop` account.
 
@@ -555,22 +622,22 @@ class Account(BaseObject):
         ### Arguments:
             owner (`TDesktop`):
                 `TDesktop` client owner of this account.
-        
+
             basePath (`str`, default=None):
                 The folder where `tdata` is stored.
-        
+
             api (`API`, default=`TelegramDesktop`):
                 Which API to use. Read more `[here](API)`.
-        
+
             keyFile (`str`, default=None):
                 See `TDesktop.keyFile`.
-        
+
             index (`int`, default=0):
                 Index of this account in the `TDesktop` client.
-        
+
         ### Notes:
             TODO: `prepareToStart()` must be call after initalizing the object.
-        
+
         """
         self.__owner = owner
         self.__localKey = None
@@ -584,13 +651,14 @@ class Account(BaseObject):
         self.__basePath = td.Storage.GetAbsolutePath(basePath)
         self.__keyFile = keyFile if (keyFile != None) else td.TDesktop.kDefaultKeyFile
 
-        self.__mtpKeys : typing.List[td.AuthKey] = []
-        self.__mtpKeysToDestroy : typing.List[td.AuthKey] = []
+        self.__mtpKeys: typing.List[td.AuthKey] = []
+        self.__mtpKeysToDestroy: typing.List[td.AuthKey] = []
         self.api = api.copy()
 
-        self._local = StorageAccount(self, self.basePath, td.Storage.ComposeDataString(self.__keyFile, index))
+        self._local = StorageAccount(
+            self, self.basePath, td.Storage.ComposeDataString(self.__keyFile, index)
+        )
         self.index = index
-
 
     @property
     def api(self) -> APIData:
@@ -602,7 +670,8 @@ class Account(BaseObject):
     @api.setter
     def api(self, value) -> None:
         self.__api = value
-        if self.owner.api != self.api: self.owner.api = self.api
+        if self.owner.api != self.api:
+            self.owner.api = self.api
 
     @property
     def owner(self) -> td.TDesktop:
@@ -624,7 +693,7 @@ class Account(BaseObject):
         See `TDesktop.keyFile`
         """
         return self.__keyFile
-   
+
     @keyFile.setter
     def keyFile(self, value):
         self.__keyFile = value
@@ -636,7 +705,7 @@ class Account(BaseObject):
         Key used to encrypt and decrypt tdata.
         """
         return self.__localKey
-   
+
     @localKey.setter
     def localKey(self, value):
         self.__localKey = value
@@ -681,14 +750,14 @@ class Account(BaseObject):
         raise NotImplementedError()
         return self.isAuthorized()
 
-    def prepareToStart(self, localKey : td.AuthKey) -> td.MTP.Config:
+    def prepareToStart(self, localKey: td.AuthKey) -> td.MTP.Config:
         """
         Prepare the account before starting it
 
         ### Arguments:
             localKey (`AuthKey`):
                 `API`
-        
+
         ### Returns:
             `MTP.Config`: [description]
         """
@@ -696,59 +765,82 @@ class Account(BaseObject):
         self.__localKey = localKey
         self.__MtpConfig = self._local.start(localKey)
         return self.__MtpConfig
-    
-    def _setMtpAuthorizationCustom(self, dcId : DcId, userId : int, mtpKeys : List[td.AuthKey], mtpKeysToDestroy : List[td.AuthKey] = []):
+
+    def _setMtpAuthorizationCustom(
+        self,
+        dcId: DcId,
+        userId: int,
+        mtpKeys: List[td.AuthKey],
+        mtpKeysToDestroy: List[td.AuthKey] = [],
+    ):
         # Intended for internal usage only
-        
+
         self.__MainDcId = dcId
         self.__UserId = userId
         self.__mtpKeys = mtpKeys
-        
-        for key in self.__mtpKeys:
-            if key.dcId == self.MainDcId: self.__authKey = key; break
 
-        Expects(self.authKey != None,
-        exception=TDataAuthKeyNotFound("Could not find the main authKey, are you sure the data is correct?"))
+        for key in self.__mtpKeys:
+            if key.dcId == self.MainDcId:
+                self.__authKey = key
+                break
+
+        Expects(
+            self.authKey != None,
+            exception=TDataAuthKeyNotFound(
+                "Could not find the main authKey, are you sure the data is correct?"
+            ),
+        )
 
         self.__isLoaded = True
 
-    def _setMtpAuthorization(self, serialized : QByteArray):
+    def _setMtpAuthorization(self, serialized: QByteArray):
         # Intended for internal usage only
         stream = QDataStream(serialized)
         stream.setVersion(QDataStream.Version.Qt_5_1)
 
         self.__UserId = stream.readInt32()
         self.__MainDcId = DcId(stream.readInt32())
-        
+
         if ((self.__UserId << 32) | self.__MainDcId) == Account.kWideIdsTag:
             self.__UserId = stream.readUInt64()
             self.__MainDcId = DcId(stream.readInt32())
 
-        Expects(stream.status() == QDataStream.Status.Ok,
-                QDataStreamFailed("Could not read main fields from mtp authorization."))
-        
-        
-        def readKeys(keys : typing.List[td.AuthKey]):
+        Expects(
+            stream.status() == QDataStream.Status.Ok,
+            QDataStreamFailed("Could not read main fields from mtp authorization."),
+        )
+
+        def readKeys(keys: typing.List[td.AuthKey]):
 
             key_count = stream.readInt32()
-            Expects(stream.status() == QDataStream.Status.Ok,
-                    QDataStreamFailed("Could not read keys count from mtp authorization."))
+            Expects(
+                stream.status() == QDataStream.Status.Ok,
+                QDataStreamFailed("Could not read keys count from mtp authorization."),
+            )
 
             for i in range(key_count):
                 dcId = DcId(stream.readInt32())
-                keys.append(td.AuthKey.FromStream(stream, td.AuthKeyType.ReadFromFile, dcId))
-        
+                keys.append(
+                    td.AuthKey.FromStream(stream, td.AuthKeyType.ReadFromFile, dcId)
+                )
+
         self.__mtpKeys.clear()
         self.__mtpKeysToDestroy.clear()
 
         readKeys(self.__mtpKeys)
         readKeys(self.__mtpKeysToDestroy)
-        
-        for key in self.__mtpKeys:
-            if key.dcId == self.MainDcId: self.__authKey = key; break
 
-        Expects(self.__authKey != None,
-        exception=TDataAuthKeyNotFound("Could not find authKey, the data might has been corrupted"))
+        for key in self.__mtpKeys:
+            if key.dcId == self.MainDcId:
+                self.__authKey = key
+                break
+
+        Expects(
+            self.__authKey != None,
+            exception=TDataAuthKeyNotFound(
+                "Could not find authKey, the data might has been corrupted"
+            ),
+        )
 
         self.__isLoaded = True
         # TO BE ADDED
@@ -758,20 +850,20 @@ class Account(BaseObject):
         #         raise OpenTeleException(OpenTeleErrorCode.QDataStreamFailed, "Failed to stream mtpData")
         #     print(blockId)
 
-
     def serializeMtpAuthorization(self) -> QByteArray:
         # Intended for internal usage only
         Expects(self.isLoaded(), "Account data not loaded yet")
 
-        def keysSize(list : typing.List[td.AuthKey]):
+        def keysSize(list: typing.List[td.AuthKey]):
             return 4 + len(list) * (4 + td.AuthKey.kSize)
 
-        def writeKeys(stream : QDataStream, keys : typing.List[td.AuthKey]):
+        def writeKeys(stream: QDataStream, keys: typing.List[td.AuthKey]):
 
             stream.writeInt32(len(keys))
             for key in keys:
                 stream.writeInt32(key.dcId)
                 stream.writeRawData(key.key)
+
         result = QByteArray()
         stream = QDataStream(result, QIODevice.OpenModeFlag.WriteOnly)
         stream.setVersion(QDataStream.Version.Qt_5_1)
@@ -783,13 +875,15 @@ class Account(BaseObject):
         writeKeys(stream, self.__mtpKeys)
         writeKeys(stream, self.__mtpKeysToDestroy)
         return result
-    
-    def _writeData(self, baseGlobalPath : str, keyFile : str = None) -> None:
+
+    def _writeData(self, baseGlobalPath: str, keyFile: str = None) -> None:
         # Intended for internal usage only
-        
+
         self._local._writeData(baseGlobalPath, keyFile)
 
-    def SaveTData(self, basePath : str = None, passcode : str = None, keyFile : str = None) -> None:
+    def SaveTData(
+        self, basePath: str = None, passcode: str = None, keyFile: str = None
+    ) -> None:
         """
         Save this account to a folder
 
@@ -812,7 +906,7 @@ class Account(BaseObject):
             td.SaveTData()
         ```
         """
-        
+
         if basePath == None:
             basePath = self.basePath
 
@@ -822,102 +916,102 @@ class Account(BaseObject):
             self.__basePath = basePath
 
         self.owner.SaveTData(basePath, passcode, keyFile)
-    
 
-
-# @extend_class
-# class Account(Account):
+    # @extend_class
+    # class Account(Account):
 
     @typing.overload
-    async def ToTelethon(   self,
-                            session         : Union[str, Session] = None,
-                            flag            : Type[LoginFlag] = CreateNewSession,
-                            api             : Union[Type[APIData], APIData] = API.TelegramDesktop,
-                            password        : str = None) -> tl.TelegramClient:
+    async def ToTelethon(
+        self,
+        session: Union[str, Session] = None,
+        flag: Type[LoginFlag] = CreateNewSession,
+        api: Union[Type[APIData], APIData] = API.TelegramDesktop,
+        password: str = None,
+    ) -> tl.TelegramClient:
         pass
 
     @typing.overload
-    async def ToTelethon(   self,
-                            session         : Union[str, Session] = None,
-                            flag            : Type[LoginFlag] = CreateNewSession,
-                            api             : Union[Type[APIData], APIData] = API.TelegramDesktop,
-                            password        : str = None,
-                            *,
-                            connection              : typing.Type[Connection] = ConnectionTcpFull,
-                            use_ipv6                : bool = False,
-                            proxy                   : Union[tuple, dict] = None,
-                            local_addr              : Union[str, tuple] = None,
-                            timeout                 : int = 10,
-                            request_retries         : int = 5,
-                            connection_retries      : int = 5,
-                            retry_delay             : int = 1,
-                            auto_reconnect          : bool = True,
-                            sequential_updates      : bool = False,
-                            flood_sleep_threshold   : int = 60,
-                            raise_last_call_error   : bool = False,
-                            loop                    : asyncio.AbstractEventLoop = None,
-                            base_logger             : Union[str, logging.Logger] = None,
-                            receive_updates         : bool = True) -> tl.TelegramClient:
+    async def ToTelethon(
+        self,
+        session: Union[str, Session] = None,
+        flag: Type[LoginFlag] = CreateNewSession,
+        api: Union[Type[APIData], APIData] = API.TelegramDesktop,
+        password: str = None,
+        *,
+        connection: typing.Type[Connection] = ConnectionTcpFull,
+        use_ipv6: bool = False,
+        proxy: Union[tuple, dict] = None,
+        local_addr: Union[str, tuple] = None,
+        timeout: int = 10,
+        request_retries: int = 5,
+        connection_retries: int = 5,
+        retry_delay: int = 1,
+        auto_reconnect: bool = True,
+        sequential_updates: bool = False,
+        flood_sleep_threshold: int = 60,
+        raise_last_call_error: bool = False,
+        loop: asyncio.AbstractEventLoop = None,
+        base_logger: Union[str, logging.Logger] = None,
+        receive_updates: bool = True,
+    ) -> tl.TelegramClient:
         pass
 
-    async def ToTelethon(   self,
-                            session         : Union[str, Session] = None,
-                            flag            : Type[LoginFlag] = CreateNewSession,
-                            api             : Union[Type[APIData], APIData] = API.TelegramDesktop,
-                            password        : str = None,
-                            *,
-                            connection              : typing.Type[Connection] = ConnectionTcpFull,
-                            use_ipv6                : bool = False,
-                            proxy                   : Union[tuple, dict] = None,
-                            local_addr              : Union[str, tuple] = None,
-                            timeout                 : int = 10,
-                            request_retries         : int = 5,
-                            connection_retries      : int = 5,
-                            retry_delay             : int = 1,
-                            auto_reconnect          : bool = True,
-                            sequential_updates      : bool = False,
-                            flood_sleep_threshold   : int = 60,
-                            raise_last_call_error   : bool = False,
-                            loop                    : asyncio.AbstractEventLoop = None,
-                            base_logger             : Union[str, logging.Logger] = None,
-                            receive_updates         : bool = True) -> tl.TelegramClient:
+    async def ToTelethon(
+        self,
+        session: Union[str, Session] = None,
+        flag: Type[LoginFlag] = CreateNewSession,
+        api: Union[Type[APIData], APIData] = API.TelegramDesktop,
+        password: str = None,
+        **kwargs,
+    ) -> tl.TelegramClient:
 
-        Expects(self.isLoaded(), TDAccountNotLoaded("I'm not loaded yet, are you sure you're using me correctly?"))
-       
-        return await tl.TelegramClient.FromTDesktop(self, session=session, flag=flag, api=api, password=password,
-                                            connection=connection, use_ipv6=use_ipv6,
-                                            proxy=proxy, local_addr=local_addr, timeout=timeout, request_retries=request_retries,
-                                            connection_retries=connection_retries, retry_delay=retry_delay, auto_reconnect=auto_reconnect,
-                                            sequential_updates=sequential_updates, flood_sleep_threshold=flood_sleep_threshold,
-                                            raise_last_call_error=raise_last_call_error, loop=loop, base_logger=base_logger,
-                                            receive_updates=receive_updates)
-    
+        Expects(
+            self.isLoaded(),
+            TDAccountNotLoaded(
+                "I'm not loaded yet, are you sure you're using me correctly?"
+            ),
+        )
+
+        return await tl.TelegramClient.FromTDesktop(
+            self, session=session, flag=flag, api=api, password=password, **kwargs
+        )
 
     @staticmethod
-    async def FromTelethon( telethonClient : tl.TelegramClient,
-                            flag            : Type[LoginFlag] = CreateNewSession,
-                            api             : Union[Type[APIData], APIData] = API.TelegramDesktop,
-                            password        : str = None,
-                            owner           : td.TDesktop = None):
+    async def FromTelethon(
+        telethonClient: tl.TelegramClient,
+        flag: Type[LoginFlag] = CreateNewSession,
+        api: Union[Type[APIData], APIData] = API.TelegramDesktop,
+        password: str = None,
+        owner: td.TDesktop = None,
+    ):
 
-        Expects((flag == CreateNewSession) or (flag == UseCurrentSession), LoginFlagInvalid("LoginFlag invalid"))
-        
+        Expects(
+            (flag == CreateNewSession) or (flag == UseCurrentSession),
+            LoginFlagInvalid("LoginFlag invalid"),
+        )
+
         if not telethonClient.is_connected():
             try:
                 await telethonClient.connect()
             except OSError as e:
-                raise TelethonUnauthorized("Could not connect telethon client to the server, please try to connect manually") from e
-        
-        Expects(await telethonClient.is_user_authorized(),
-        exception=TelethonUnauthorized("Telethon client is unauthorized, it need to be authorized first"))
-        
+                raise TelethonUnauthorized(
+                    "Could not connect telethon client to the server, please try to connect manually"
+                ) from e
+
+        Expects(
+            await telethonClient.is_user_authorized(),
+            exception=TelethonUnauthorized(
+                "Telethon client is unauthorized, it need to be authorized first"
+            ),
+        )
+
         if flag == CreateNewSession:
             copy = await telethonClient.QRLoginToNewClient(api=api, password=password)
         else:
             copy = telethonClient
 
         ss = copy.session
-        authKey  = ss.auth_key.key
+        authKey = ss.auth_key.key
         dcId = DcId(ss.dc_id)
         userId = copy._self_id
         authKey = td.AuthKey(authKey, td.AuthKeyType.ReadFromFile, dcId)
@@ -926,26 +1020,34 @@ class Account(BaseObject):
             await copy.get_me()
             userId = copy._self_id
 
-
         newAccount = None
-
 
         if owner != None:
 
-            Expects(owner.accountsCount < td.TDesktop.kMaxAccounts,
-            exception=MaxAccountLimit("You can't have more than 3 accounts in one TDesktop clent.\n"\
-                                            "Please create another instance of TDesktop or use Account.FromTelethon() to create an Account() independently"))
-            
+            Expects(
+                owner.accountsCount < td.TDesktop.kMaxAccounts,
+                exception=MaxAccountLimit(
+                    "You can't have more than 3 accounts in one TDesktop clent.\n"
+                    "Please create another instance of TDesktop or use Account.FromTelethon() to create an Account() independently"
+                ),
+            )
+
             index = owner.accountsCount
-            newAccount = Account(owner=owner, basePath=owner.basePath, api=api, keyFile=owner.keyFile, index=index)
-            newAccount._setMtpAuthorizationCustom(dcId, userId, [authKey]) # type: ignore
+            newAccount = Account(
+                owner=owner,
+                basePath=owner.basePath,
+                api=api,
+                keyFile=owner.keyFile,
+                index=index,
+            )
+            newAccount._setMtpAuthorizationCustom(dcId, userId, [authKey])  # type: ignore
             owner._addSingleAccount(newAccount)
 
         else:
             index = 0
             newOwner = td.TDesktop()
             newAccount = Account(owner=newOwner, api=api, index=index)
-            newAccount._setMtpAuthorizationCustom(dcId, userId, [authKey]) # type: ignore
+            newAccount._setMtpAuthorizationCustom(dcId, userId, [authKey])  # type: ignore
             newOwner._addSingleAccount(newAccount)
 
         return newAccount
