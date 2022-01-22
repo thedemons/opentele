@@ -3,9 +3,9 @@
 # opentele
 
 <p align="center">
-    <img src="./theme/logo.png"/>
-    
-    <a href="https://pypi.org/project/opentele/"><img src="https://img.shields.io/pypi/v/opentele?logo=opentele"/></a>
+<img src="./theme/logo.png"/>
+
+<a href="https://pypi.org/project/opentele/"><img src="https://img.shields.io/pypi/v/opentele?logo=opentele"/></a>
 </p>
 
 
