@@ -10,6 +10,7 @@
 [![pypi version](https://img.shields.io/pypi/v/opentele?logo=opentele)](https://pypi.org/project/opentele/)
 [![pypi installs](https://img.shields.io/pypi/dm/opentele?color=brightgreen&label=installs&logo=opentele)](https://pypi.org/project/opentele/)
 [![license](https://img.shields.io/pypi/l/opentele?color=brightgreen)](https://en.wikipedia.org/wiki/MIT_License)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 <br>
 
@@ -81,6 +82,7 @@ Therefore, **there are no differences** between using opentele and official apps
 - [x] Writing data to tdata for converting telethon sessions to tdesktop.
 - [x] Random device information for [initConnection](https://core.telegram.org/method/initConnection) to avoid spam-detection.
 - [ ] Add support for [pyrogram](https://github.com/pyrogram/pyrogram).
+- [ ] Develop opentele-tui using [textual](https://github.com/Textualize/textual) for non-experience user.
 
 
 ## Documentation [![documentation](https://readthedocs.org/projects/opentele/badge/?version=latest&style=flat)](https://opentele.readthedocs.io/)
