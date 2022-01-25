@@ -545,7 +545,11 @@
 .highlight :is(.fm) {
     color: var(--md-code-hl-function-color);
 }
-
+.md-typeset code:not(.focus-visible) {
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    color: var(--md-code-hl-string-color) !important;
+}
 /* .highlight :-webkit-any(.k, .kd, .kn, .kp, .kr, .kt) {
     color: #ff0000;
   } */
