@@ -8,3 +8,4 @@ opentele.egg-info/*
 build/*
 pydoc-markdown.yml
 build_script*
+.generated-files.txt
