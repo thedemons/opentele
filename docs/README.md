@@ -3,7 +3,7 @@
 # opentele
 
 <p align="center">
-<img src="./theme/logo.png" alt="logo" width="200"/>
+<img src="./opentele.png" alt="logo" width="180"/>
 <br><br>
 <a href="https://pypi.org/project/opentele/"><img alt="pypi version" src="https://img.shields.io/pypi/v/opentele?logo=opentele"/></a>
 <a href="https://pypi.org/project/opentele/"><img alt="pypi status" src="https://img.shields.io/pypi/status/opentele?logo=opentele&label=build"/></a>
@@ -19,7 +19,7 @@
 
 <br>
 
-A **python** library created to make life easier for **Telegram API Developers**. [**Read the documentation**](https://opentele.readthedocs.io/en/latest/documentation/telegram-desktop/tdesktop/)
+A **Python Telegram API Library** for converting between **tdata** and **telethon** sessions, with built-in **official Telegram APIs**. [**Read the documentation**](https://opentele.readthedocs.io/en/latest/documentation/telegram-desktop/tdesktop/).
 
 ## Features
 - Convert [Telegram Desktop](https://github.com/telegramdesktop/tdesktop) **tdata** sessions to [telethon](https://github.com/LonamiWebs/Telethon) sessions and vice versa.
@@ -49,7 +49,7 @@ import asyncio
 async def main():
     
     # Load TDesktop client from tdata folder
-    tdataFolder = "Path\\To\\tdata"
+    tdataFolder = r"C:\Users\<username>\AppData\Roaming\Telegram Desktop\tdata"
     tdesktop = TDesktop(tdataFolder)
 
     # Using official iOS API with randomly generated device info
@@ -89,9 +89,12 @@ Therefore, **there are no differences** between using opentele and official apps
 - [ ] Add support for [pyrogram](https://github.com/pyrogram/pyrogram).
 - [ ] Develop opentele-tui using [textual](https://github.com/Textualize/textual) for non-experience user.
 
+## Examples
+The best way to learn anything is by looking at the examples. Am I right?
+
+- Example on [readthedocs](https://opentele.readthedocs.io/en/latest/examples/)
+- Example on [github](./examples)
 
 ## Documentation [![documentation](https://readthedocs.org/projects/opentele/badge/?version=latest&style=flat)](https://opentele.readthedocs.io/)
 - Read documentation on [readthedocs](https://opentele.readthedocs.io/en/latest/documentation/telegram-desktop/tdesktop/)
 - Read documentation on [github](https://github.com/thedemons/opentele/tree/main/docs-github)
-
-

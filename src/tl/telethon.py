@@ -311,6 +311,9 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
         api_hash: str = None,
         **kwargs,
     ):
+        # Use API.TelegramDesktop by default.
+        if api_id == 0 and api_hash == None:
+            api = API.TelegramDesktop
 
         if api != None:
             if isinstance(api, APIData) or APIData.__subclasscheck__(api):
