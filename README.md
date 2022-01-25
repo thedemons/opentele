@@ -13,8 +13,8 @@
 <a href="https://github.com/thedemons/opentele/commits/main"><img alt="github last commit" src="https://img.shields.io/github/last-commit/thedemons/opentele"/></a>
 <a href="https://github.com/thedemons/opentele/commits/main"><img alt="github commits" src="https://img.shields.io/github/commit-activity/m/thedemons/opentele?logo=opentele"/></a>
 <a href="https://pypi.org/project/opentele/"><img alt="pypi installs" src="https://img.shields.io/pypi/dm/opentele?color=brightgreen&label=installs&logo=opentele"/></a>
-<a href="https://en.wikipedia.org/wiki/MIT_License"><img alt="pypi installs" src="https://img.shields.io/pypi/l/opentele?color=brightgreen"/></a>
-<a href="https://github.com/psf/black"><img alt="pypi installs" src="https://img.shields.io/badge/code%20style-black-000000.svg"/></a>
+<a href="https://en.wikipedia.org/wiki/MIT_License"><img alt="pypi license" src="https://img.shields.io/pypi/l/opentele?color=brightgreen"/></a>
+<a href="https://github.com/psf/black"><img alt="code format" src="https://img.shields.io/badge/code%20style-black-000000.svg"/></a>
 </p>
 
 <br>
