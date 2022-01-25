@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 
 
+## Unreleased
+- TelegramClient will now use TelegramDesktop api by default.
+
 ## [v1.13](https://pypi.org/project/opentele/1.13/) - 2022-1-21
 
 - Fix unique_id not generated correctly in API.Generate()
