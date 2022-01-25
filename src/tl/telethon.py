@@ -312,14 +312,14 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
         **kwargs,
     ):
         # Use API.TelegramDesktop by default.
-        if api_id == 0 and api_hash == None:
-            api = API.TelegramDesktop
 
         if api != None:
             if isinstance(api, APIData) or APIData.__subclasscheck__(api):
                 api_id = api.api_id
                 api_hash = api.api_hash
-                kwargs["device_model"] = api.pid  # type: ignore # pass our hook id through the device_model
+
+                # pass our hook id through the device_model
+                kwargs["device_model"] = api.pid  # type: ignore
 
             else:
                 if isinstance(api, int) or isinstance(api, str):
@@ -327,6 +327,14 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
                         api_id = api
                         api_hash = api_id
                 api = None
+
+        elif api_id == 0 and api_hash == None:
+            api = API.TelegramDesktop
+            api_id = api.api_id
+            api_hash = api.api_hash
+
+            # pass our hook id through the device_model
+            kwargs["device_model"] = api.pid  # type: ignore
 
         self.__TelegramClient____init__(session, api_id, api_hash, **kwargs)
 
