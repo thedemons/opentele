@@ -68,18 +68,28 @@ markdown_extensions:
 - pymdownx.saneheaders: null
 nav:
 - Home: README.md
+- Examples:
+  - Home: examples/README.md
+  - Convert tdata to Telethon: examples/convert-tdata-to-telethon.md
+  - Convert Telethon to tdata: examples/convert-telethon-to-tdata.md
+  - Using official APIs: examples/using-official-apis.md
 - Documentation:
+  - Home: documentation/README.md
   - Telegram Desktop:
+    - Home: documentation/telegram-desktop/README.md
     - TDesktop: documentation/telegram-desktop/tdesktop.md
     - Account: documentation/telegram-desktop/account.md
     - AuthKey: documentation/telegram-desktop/authkey.md
     - MTP: documentation/telegram-desktop/mtp.md
   - Telethon:
+    - Home: documentation/telethon/README.md
     - TelegramClient: documentation/telethon/telegramclient.md
   - Authorization:
+    - Home: documentation/authorization/README.md
     - API: documentation/authorization/api.md
     - LoginFlag: documentation/authorization/loginflag.md
-  - Exceptions: documentation/exceptions.md
+  - Exceptions:
+    - Home: documentation/exceptions/README.md
 repo_url: https://github.com/thedemons/opentele
 site_author: thedemons
 site_description: A python library created to make life easier for Telegram API Developers.
