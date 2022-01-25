@@ -565,7 +565,7 @@ class TDesktop(BaseObject):
         )
 
         _self = TDesktop()
-        _self.__isLoaded = True
+        _self.__generateLocalKey()
 
         await td.Account.FromTelethon(
             telethonClient, flag=flag, api=api, password=password, owner=_self
