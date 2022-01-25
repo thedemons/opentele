@@ -101,6 +101,40 @@ for x in range(5):
     PrintAPI(API.TelegramAndroid.Generate())
 ```
 
+The result should look like this:
+```python
+Using opentele as unique_id
+         {'device_model': 'Samsung SM-A750FN', 'system_version': 'SDK 24'}
+         {'device_model': 'Samsung SM-A750FN', 'system_version': 'SDK 24'}
+         {'device_model': 'Samsung SM-A750FN', 'system_version': 'SDK 24'}
+         {'device_model': 'Samsung SM-A750FN', 'system_version': 'SDK 24'}
+         {'device_model': 'Samsung SM-A750FN', 'system_version': 'SDK 24'}
+Using library as unique_id
+         {'device_model': 'Samsung SM-J100G', 'system_version': 'SDK 30'}
+         {'device_model': 'Samsung SM-J100G', 'system_version': 'SDK 30'}
+         {'device_model': 'Samsung SM-J100G', 'system_version': 'SDK 30'}
+         {'device_model': 'Samsung SM-J100G', 'system_version': 'SDK 30'}
+         {'device_model': 'Samsung SM-J100G', 'system_version': 'SDK 30'}
+Using by as unique_id
+         {'device_model': 'Samsung GT-S6800', 'system_version': 'SDK 26'}
+         {'device_model': 'Samsung GT-S6800', 'system_version': 'SDK 26'}
+         {'device_model': 'Samsung GT-S6800', 'system_version': 'SDK 26'}
+         {'device_model': 'Samsung GT-S6800', 'system_version': 'SDK 26'}
+         {'device_model': 'Samsung GT-S6800', 'system_version': 'SDK 26'}
+Using thedemons as unique_id
+         {'device_model': 'Samsung SM-N930VL', 'system_version': 'SDK 29'}
+         {'device_model': 'Samsung SM-N930VL', 'system_version': 'SDK 29'}
+         {'device_model': 'Samsung SM-N930VL', 'system_version': 'SDK 29'}
+         {'device_model': 'Samsung SM-N930VL', 'system_version': 'SDK 29'}
+         {'device_model': 'Samsung SM-N930VL', 'system_version': 'SDK 29'}
+Not using unique_id
+         {'device_model': 'Samsung SC-02B', 'system_version': 'SDK 24'}
+         {'device_model': 'Samsung SPH-D700', 'system_version': 'SDK 26'}
+         {'device_model': 'Huawei HUAWEI Y600-U151', 'system_version': 'SDK 23'}
+         {'device_model': 'Samsung SCV41', 'system_version': 'SDK 28'}
+         {'device_model': 'Samsung SM-G920F', 'system_version': 'SDK 27'}
+```
+
 [APIDATA]: https://opentele.readthedocs.io/en/latest/documentation/authorization/api/#class-apidata
 [AndroidAPI]: https://opentele.readthedocs.io/en/latest/documentation/authorization/api/#class-telegramandroid
 [DesktopdAPI]: https://opentele.readthedocs.io/en/latest/documentation/authorization/api/#class-telegramdesktop
