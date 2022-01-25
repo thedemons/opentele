@@ -17,7 +17,7 @@ setup(
     name=PACKAGE_NAME,
     version=VERSION,
     license="MIT",
-    description="A python library created to make life easier for Telegram API Developers.",
+    description="A Python Telegram API Library for converting between tdata and telethon sessions, with built-in official Telegram APIs.",
     long_description=README,
     long_description_content_type="text/markdown",
     url="https://github.com/thedemons/opentele",

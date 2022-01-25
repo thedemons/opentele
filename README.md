@@ -3,7 +3,7 @@
 # opentele
 
 <p align="center">
-<img src="./theme/logo.png" alt="logo" width="200"/>
+<img src="./opentele.png" alt="logo" width="200"/>
 <br><br>
 <a href="https://pypi.org/project/opentele/"><img alt="pypi version" src="https://img.shields.io/pypi/v/opentele?logo=opentele"/></a>
 <a href="https://pypi.org/project/opentele/"><img alt="pypi status" src="https://img.shields.io/pypi/status/opentele?logo=opentele&label=build"/></a>
@@ -19,7 +19,7 @@
 
 <br>
 
-A **python** library created to make life easier for **Telegram API Developers**. [**Read the documentation**](https://opentele.readthedocs.io/en/latest/documentation/telegram-desktop/tdesktop/)
+A **Python Telegram API Library** for converting between **tdata** and **telethon** sessions, with built-in **official Telegram APIs**. [**Read the documentation**](https://opentele.readthedocs.io/en/latest/documentation/telegram-desktop/tdesktop/).
 
 ## Features
 - Convert [Telegram Desktop](https://github.com/telegramdesktop/tdesktop) **tdata** sessions to [telethon](https://github.com/LonamiWebs/Telethon) sessions and vice versa.
