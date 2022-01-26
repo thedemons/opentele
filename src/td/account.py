@@ -442,7 +442,10 @@ class StorageAccount(BaseObject):  # nocov
 
         self.__localKey = localKey
         self.readMapWith(localKey)
-        return self.readMtpConfig()
+
+        return (
+            self.__config if self.owner.owner.kPerformanceMode else self.readMtpConfig()
+        )
 
     def readMtpData(self):
         # Intended for internal usage only
@@ -567,7 +570,10 @@ class StorageAccount(BaseObject):  # nocov
             baseGlobalPath, td.Storage.ToFilePart(dataNameKey)
         )
         self.writeMap(basePath)
-        self.writeMtpConfig(basePath)
+
+        if not self.owner.owner.kPerformanceMode:
+            self.writeMtpConfig(basePath)
+
         self.writeMtpData(baseGlobalPath, dataNameKey)
 
 
@@ -989,35 +995,32 @@ class Account(BaseObject):
             LoginFlagInvalid("LoginFlag invalid"),
         )
 
-        if not telethonClient.is_connected():
-            try:
-                await telethonClient.connect()
-            except OSError as e:
-                raise TelethonUnauthorized(
-                    "Could not connect telethon client to the server, please try to connect manually"
-                ) from e
-
-        Expects(
-            await telethonClient.is_user_authorized(),
-            exception=TelethonUnauthorized(
-                "Telethon client is unauthorized, it need to be authorized first"
-            ),
-        )
-
         if flag == CreateNewSession:
+            if not telethonClient.is_connected():
+                try:
+                    await telethonClient.connect()
+                except OSError as e:
+                    raise TelethonUnauthorized(
+                        "Could not connect telethon client to the server, please try to connect manually"
+                    ) from e
+
+                Expects(
+                    await telethonClient.is_user_authorized(),
+                    exception=TelethonUnauthorized(
+                        "Telethon client is unauthorized, it need to be authorized first"
+                    ),
+                )
+
             copy = await telethonClient.QRLoginToNewClient(api=api, password=password)
+            await copy.get_me()
         else:
             copy = telethonClient
 
         ss = copy.session
         authKey = ss.auth_key.key
         dcId = DcId(ss.dc_id)
-        userId = copy._self_id
+        userId = copy.UserId
         authKey = td.AuthKey(authKey, td.AuthKeyType.ReadFromFile, dcId)
-
-        if userId == None:
-            await copy.get_me()
-            userId = copy._self_id
 
         newAccount = None
 

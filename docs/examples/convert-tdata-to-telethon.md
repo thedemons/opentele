@@ -25,10 +25,10 @@ This example will show you how to initialize a [TelegramClient][TelegramClient] 
     ```python
     # Load TDesktop client from tdata folder
     tdataFolder = r"C:\Users\<username>\AppData\Roaming\Telegram Desktop\tdata"
-    tdesktop = TDesktop(tdataFolder)
+    tdesk = TDesktop(tdataFolder)
     
     # Check if we have loaded any accounts
-    assert tdesktop.isLoaded()
+    assert tdesk.isLoaded()
     ```
 
 ## Converting [TDesktop][TDesktop] to [TelegramClient][TelegramClient]
@@ -71,10 +71,10 @@ async def main():
 
     # Load TDesktop client from tdata folder
     tdataFolder = r"C:\Users\<username>\AppData\Roaming\Telegram Desktop\tdata"
-    tdesktop = TDesktop(tdataFolder)
+    tdesk = TDesktop(tdataFolder)
     
     # Check if we have loaded any accounts
-    assert tdesktop.isLoaded()
+    assert tdesk.isLoaded()
 
     # flag=UseCurrentSession
     #

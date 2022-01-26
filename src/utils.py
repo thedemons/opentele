@@ -25,6 +25,7 @@ class BaseMetaClass(abc.ABCMeta):  # pragma: no cover
         if debug.IS_DEBUG_MODE:  # pragma: no cover
             ignore_list = [
                 "__new__",
+                "__del__",
                 "__get__",
                 "__call__",
                 "__set_name__",
@@ -38,10 +39,12 @@ class BaseMetaClass(abc.ABCMeta):  # pragma: no cover
                     and callable(val)
                     and not isinstance(val, type)
                 ):
-                    newVal = debug.HookClassMethod(val)
+                    newVal = debug.DebugMethod(val)
                     attrs[attr] = newVal
 
-        return super().__new__(cls, clsName, bases, attrs)
+        result = super().__new__(cls, clsName, bases, attrs)
+
+        return result
 
 
 class BaseObject(object, metaclass=BaseMetaClass):
@@ -181,7 +184,7 @@ class extend_override_class(extend_class):
         return super().__new__(cls, decorated_cls, True)
 
 
-class sharemethod(object):
+class sharemethod(type):
     def __get__(self, obj, cls):
         self.__owner__ = obj if obj else cls
         return self
@@ -192,7 +195,13 @@ class sharemethod(object):
     def __set_name__(self, owner, name):
         self.__owner__ = owner
 
-    def __new__(cls, func: _F) -> _F:
-        result = super().__new__(cls)
-        result.__fget__ = func  # type: ignore
-        return result  # type: ignore
+    def __new__(cls: Type[_T], func: _F) -> Type[_F]:
+
+        clsName = func.__class__.__name__
+        bases = func.__class__.__bases__
+        attrs = func.__dict__
+        # attrs = dict(func.__class__.__dict__)
+        result = super().__new__(cls, clsName, bases, attrs)
+        result.__fget__ = func
+
+        return result

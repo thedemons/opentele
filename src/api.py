@@ -15,7 +15,7 @@ _T = TypeVar("_T")
 _RT = TypeVar("_RT")
 
 
-class BaseAPIMetaClass(type):
+class BaseAPIMetaClass(BaseMetaClass):
     """Super high level tactic metaclass"""
 
     def __new__(
@@ -161,13 +161,13 @@ class APIData(object, metaclass=BaseAPIMetaClass):
         system_lang_code: str = None,
         lang_pack: str = None,
     ) -> None:
-
+    
         Expects(
             (self.__class__ != APIData) or (api_id != None and api_hash != None),
             NoInstanceMatched("No instace of API matches the arguments"),
         )
 
-        cls = self.__class__
+        cls = self.get_cls()
 
         self.api_id = api_id if api_id else cls.api_id
         self.api_hash = api_hash if api_hash else cls.api_hash
@@ -209,6 +209,10 @@ class APIData(object, metaclass=BaseAPIMetaClass):
         )  # type: ignore
 
     @sharemethod
+    def get_cls(glob: Union[Type[_T], _T]) -> Type[_T]:  # type: ignore
+        return glob if isinstance(glob, type) else glob.__class__
+
+    @sharemethod
     def destroy(glob: Union[Type[_T], _T]):  # type: ignore
         if isinstance(glob, type):
             return
@@ -239,8 +243,8 @@ class APIData(object, metaclass=BaseAPIMetaClass):
         cls.CustomInitConnectionList.append(cls)
 
     def _makePID(self):
-        self.pid = self.__class__._makePIDEnsure()
-        self.__class__.CustomInitConnectionList.append(self)
+        self.pid = self.get_cls()._makePIDEnsure()
+        self.get_cls().CustomInitConnectionList.append(self)
 
     @classmethod
     def Generate(cls: Type[_T], unique_id: str = None) -> _T:
@@ -267,7 +271,6 @@ class APIData(object, metaclass=BaseAPIMetaClass):
             client.start()
         ```
         """
-
         if cls == API.TelegramAndroid or cls == API.TelegramAndroidX:
             deviceInfo = AndroidDevice.RandomDevice(unique_id)
 

@@ -1,10 +1,34 @@
-from inspect import isclass
-import sys, pathlib
-from time import sleep
-
+import os, sys, pathlib
+import re
+import atexit
 
 base_dir = pathlib.Path(__file__).parent.parent.absolute().__str__()
 sys.path.insert(1, base_dir)
+
+debug_py = os.path.join(base_dir, "src", "debug.py")
+debug_bk_py = os.path.join(base_dir, "src", "debug_bk.py")
+
+
+def on_exit():
+    os.remove(debug_py)
+    os.rename(debug_bk_py, debug_py)
+
+
+def on_init():
+
+    print("??", debug_py)
+    os.rename(debug_py, debug_bk_py)
+    src = open(debug_bk_py, "r")
+    dst = open(debug_py, "w")
+    content = src.read()
+    content = re.sub(r"IS_DEBUG_MODE =(.*)", "IS_DEBUG_MODE = True", content)
+    dst.write(content)
+    src.close()
+    dst.close()
+    atexit.register(on_exit)
+
+
+on_init()
 
 
 from src.td import TDesktop
@@ -13,7 +37,6 @@ from src.tl.telethon import TelegramClient
 from src.api import API, APIData, CreateNewSession, UseCurrentSession
 from telethon.errors.rpcerrorlist import FreshResetAuthorisationForbiddenError
 
-import asyncio
 import pytest
 import typing as t
 from _pytest._io import TerminalWriter
