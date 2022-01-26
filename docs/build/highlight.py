@@ -21,6 +21,7 @@ All changes Copyright 2008-2014 The Python Markdown Project
 
 License: [BSD](http://www.opensource.org/licenses/bsd-license.php)
 """
+print("entry highlight")
 import re
 from chess import typing
 from markdown import Extension

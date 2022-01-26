@@ -1,37 +1,6 @@
 import os, sys
 
 
-from pygments import highlight, format, lex
-from pygments.lexers import get_lexer_by_name, guess_lexer
-from pygments.lexers.python import PythonLexer
-from pygments.formatters import find_formatter_class
-from pygments import __version__ as pygments_ver
-
-from vspythonlexer import VSPythonLexer
-from highlight_resolver import HighlightResolver
-
-import docspec
-from pydoc_markdown.contrib.loaders.python import PythonLoader
-from pydoc_markdown.interfaces import Context
-from pygments.formatters.html import _get_ttype_class
-from pygments.token import (
-    is_token_subtype,
-    _TokenType,
-    Text,
-    Comment,
-    Operator,
-    Keyword,
-    Name,
-    String,
-    Number,
-    Punctuation,
-    Generic,
-    Other,
-    Error,
-    Literal,
-)
-
-
 def getsitepackages():
     import subprocess, re
 
