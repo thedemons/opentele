@@ -1,4 +1,8 @@
 [report]
+omit =
+    tests/*
+    setup.py
+    src/debug.py
 exclude_lines =
     pragma: no cover
     nocov
