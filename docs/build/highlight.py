@@ -30,6 +30,7 @@ import copy
 from collections import OrderedDict
 
 
+print("entry")
 resolver = None
 
 from .highlight_resolver import HighlightResolver
