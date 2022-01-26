@@ -176,6 +176,10 @@ async def check_telegramclient():
     tdesk = TDesktop(profile_path(), api_ios, X1, X2)
     assert tdesk.isLoaded()
 
+    assert (
+        TelegramClient().api_id == API.TelegramDesktop.api_id
+        and TelegramClient().api_hash == API.TelegramDesktop.api_hash
+    )
     assert TelegramClient(None, 1234, "opentele").api_id == 1234
     assert TelegramClient(None, None, 1234, "opentele").api_id == 1234
 
@@ -184,9 +188,21 @@ async def check_telegramclient():
     )
 
     try:
-        oldClient.TerminateSession(0)
+        await oldClient.TerminateSession(0)
     except BaseException as e:
         pass
+
+    await oldClient.connect()
+
+    try:
+        await oldClient.TerminateSession(0)
+    except BaseException as e:
+        pass
+
+    await oldClient.TerminateAllSessions()
+
+    await oldClient.disconnect()
+    await oldClient.disconnected
 
 
 @pytest.mark.asyncio
