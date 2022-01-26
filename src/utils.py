@@ -16,13 +16,13 @@ _RT = TypeVar("_RT")
 _F = TypeVar("_F", bound=Callable[..., Any])
 
 
-class BaseMetaClass(abc.ABCMeta):
+class BaseMetaClass(abc.ABCMeta):  # pragma: no cover
     def __new__(
         cls: Type[_T], clsName: str, bases: Tuple[type], attrs: Dict[str, Any]
     ) -> _T:
 
         # Hook all subclass methods
-        if debug.IS_DEBUG_MODE:
+        if debug.IS_DEBUG_MODE:  # pragma: no cover
             ignore_list = [
                 "__new__",
                 "__get__",
