@@ -119,7 +119,6 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
             api (`API`, default=`TelegramDesktop`):
                 Which API to use. Read more `[here](API)`.
         """
-        pass
 
     @typing.overload
     def __init__(
@@ -300,7 +299,6 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
                 the amount of bandwidth used.
                 
         """
-        pass
 
     @override
     def __init__(
@@ -314,7 +312,11 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
         # Use API.TelegramDesktop by default.
 
         if api != None:
-            if isinstance(api, APIData) or APIData.__subclasscheck__(api):
+            if isinstance(api, APIData) or (
+                isinstance(api, type)
+                and APIData.__subclasscheck__(api)
+                and api != APIData
+            ):
                 api_id = api.api_id
                 api_hash = api.api_hash
 
@@ -322,10 +324,13 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
                 kwargs["device_model"] = api.pid  # type: ignore
 
             else:
-                if isinstance(api, int) or isinstance(api, str):
-                    if api_id and isinstance(api_id, str):
-                        api_id = api
-                        api_hash = api_id
+                if (
+                    (isinstance(api, int) or isinstance(api, str))
+                    and api_id
+                    and isinstance(api_id, str)
+                ):
+                    api_id = api
+                    api_hash = api_id
                 api = None
 
         elif api_id == 0 and api_hash == None:
@@ -356,17 +361,12 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
             None: Return `None` on failure.
         """
         results = await self.GetSessions()
-        if results == None:
-            return None
 
-        if results.authorizations[0].current:
-            return results.authorizations[0]
-
-        for auth in results.authorizations:
-            if auth.current:
-                return auth
-
-        return None
+        return (
+            next((auth for auth in results.authorizations if auth.current), None)
+            if results != None
+            else None
+        )
 
     async def TerminateSession(self, hash: int):
         """
@@ -384,17 +384,13 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
         try:
             await self(functions.account.ResetAuthorizationRequest(hash))
 
-        except (FreshResetAuthorisationForbiddenError, HashInvalidError) as e:
+        except FreshResetAuthorisationForbiddenError as e:
+            raise FreshResetAuthorisationForbiddenError(
+                "You can't logout other sessions if less than 24 hours have passed since you logged on the current session."
+            )
 
-            if isinstance(e, FreshResetAuthorisationForbiddenError):
-                raise FreshResetAuthorisationForbiddenError(
-                    "You can't logout other sessions if less than 24 hours have passed since you logged on the current session."
-                )
-
-            elif isinstance(e, HashInvalidError):
-                raise HashInvalidError("The provided hash is invalid.")
-
-            raise BaseException(e)
+        except HashInvalidError as e:
+            raise HashInvalidError("The provided hash is invalid.")
 
     async def TerminateAllSessions(self) -> bool:
         """
@@ -560,7 +556,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
         except OSError as e:
             raise BaseException("Cannot connect")
 
-        if await newClient.is_user_authorized():
+        if await newClient.is_user_authorized():  # nocov
 
             currentAuth = await newClient.GetCurrentSession()
             if currentAuth != None:
@@ -601,7 +597,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
         request_retries = (
             kwargs["request_retries"] if "request_retries" in kwargs else 5
         )  # default value for request_retries
-        for attempt in range(request_retries):
+        for attempt in range(request_retries):  # nocov
 
             try:
                 # we could have been already authorized, but it still raised an timeouterror (??!)
@@ -783,8 +779,6 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
         ```
         """
 
-        pass
-
     @typing.overload
     @staticmethod
     async def FromTDesktop(
@@ -845,7 +839,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
 
         if (flag == UseCurrentSession) and not (
             isinstance(api, APIData) or APIData.__subclasscheck__(api)
-        ):
+        ):  # nocov
 
             warnings.warn(  # type: ignore
                 "\nIf you use an existing Telegram Desktop session "

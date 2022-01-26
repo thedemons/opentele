@@ -13,7 +13,7 @@ import logging
 #     from ..opentele import *
 
 
-class MapData(BaseObject):
+class MapData(BaseObject):  # nocov
     def __init__(self, basePath: str) -> None:
 
         self.basePath = basePath
@@ -170,7 +170,6 @@ class MapData(BaseObject):
                 #     ? legacyBackgroundKeyNight
                 #     : legacyBackgroundKeyDay);
                 map.stream >> legacyBackgroundKeyDay
-                pass
 
             elif keyType == lskType.lskBackgroundOld:
                 legacyBackgroundKeyDay = map.stream.readUInt64()
@@ -353,7 +352,7 @@ class MapData(BaseObject):
         return mapData
 
 
-class StorageAccount(BaseObject):
+class StorageAccount(BaseObject):  # nocov
     """
     Storage account for reading and writing to tdata
     """

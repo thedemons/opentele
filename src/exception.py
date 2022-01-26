@@ -5,7 +5,7 @@ import typing
 from PyQt5.QtCore import QDataStream
 
 
-class OpenTeleException(BaseException):
+class OpenTeleException(BaseException):  # nocov
     """
     Base exception of the library.
     """
@@ -246,7 +246,6 @@ def Expects(
     ### Raises:
         `OpenTeleException`: exception
     """
-    pass
 
 
 @typing.overload
@@ -283,7 +282,6 @@ def Expects(
     ### Raises:
         `OpenTeleException`: exception
     """
-    pass
 
 
 def Expects(
@@ -293,7 +291,7 @@ def Expects(
     fail: typing.Callable[[OpenTeleException], None] = None,
     silent: bool = False,
     stack_index: int = 1,
-) -> bool:
+) -> bool:  # nocov
 
     if condition:
         if done != None:
@@ -302,9 +300,8 @@ def Expects(
 
     if isinstance(exception, str):
         exception = OpenTeleException(exception, 2)
-    elif exception == None or isinstance(exception, OpenTeleException):
-        pass
-    else:
+
+    elif exception != None and not isinstance(exception, OpenTeleException):
         raise OpenTeleException("No instance of Expects() match the arguments given", 2)
 
     if exception == None:

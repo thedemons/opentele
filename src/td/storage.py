@@ -25,7 +25,7 @@ class Serialize(BaseObject):
 
 
 class Storage(BaseObject):
-    class ReadSettingsContext(BaseObject):
+    class ReadSettingsContext(BaseObject):  # pragma: no cover
         def __init__(self) -> None:
 
             self.fallbackConfigLegacyDcOptions: td.MTP.DcOptions = td.MTP.DcOptions(
@@ -114,9 +114,6 @@ class Storage(BaseObject):
                 self.__buffer.seek(4)
                 self.__stream.setDevice(self.__buffer)
                 self.__stream.setVersion(QDataStream.Version.Qt_5_1)
-
-        def __del__(self):
-            pass
 
         def finish(self) -> None:
             if self.__stream.device():
@@ -312,7 +309,7 @@ class Storage(BaseObject):
                 pass
 
         raise tries_exception if tries_exception else TFileNotFound(
-            "Could not open {fileName}"
+            f"Could not open {fileName}"
         )
 
     @staticmethod
@@ -352,7 +349,7 @@ class Storage(BaseObject):
     @staticmethod
     def ReadSetting(
         blockId: int, stream: QDataStream, version: int, context: ReadSettingsContext
-    ) -> bool:
+    ) -> bool:  # pragma: no cover
 
         if blockId == dbi.DcOptionOldOld:
             dcId = DcId(stream.readUInt32())

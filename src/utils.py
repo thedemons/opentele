@@ -16,13 +16,13 @@ _RT = TypeVar("_RT")
 _F = TypeVar("_F", bound=Callable[..., Any])
 
 
-class BaseMetaClass(abc.ABCMeta):
+class BaseMetaClass(abc.ABCMeta):  # pragma: no cover
     def __new__(
         cls: Type[_T], clsName: str, bases: Tuple[type], attrs: Dict[str, Any]
     ) -> _T:
 
         # Hook all subclass methods
-        if debug.IS_DEBUG_MODE:
+        if debug.IS_DEBUG_MODE:  # pragma: no cover
             ignore_list = [
                 "__new__",
                 "__get__",
@@ -48,7 +48,7 @@ class BaseObject(object, metaclass=BaseMetaClass):
     pass
 
 
-class override(object):
+class override(object):  # nocov
     """
     To use inside a class decorated with @extend_class\n
     Any attributes decorated with @override will be replaced
@@ -72,7 +72,7 @@ class override(object):
         return func.__isOverride__
 
 
-class extend_class(object):
+class extend_class(object):  # nocov
     """
     Extend a class, all attributes will be added to its parents\n
     This won't override attributes that are already existed, please refer to @override or @extend_override_class to do this
@@ -191,7 +191,6 @@ class sharemethod(object):
 
     def __set_name__(self, owner, name):
         self.__owner__ = owner
-        pass
 
     def __new__(cls, func: _F) -> _F:
         result = super().__new__(cls)

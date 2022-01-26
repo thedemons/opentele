@@ -6,10 +6,10 @@ from typing import Any
 IS_DEBUG_MODE = False
 
 if IS_DEBUG_MODE:
-    from rich import print
+    from rich import print  # pragma: no cover
 
 
-class HookClassMethod(type):
+class HookClassMethod(type):  # pragma: no cover
     def __get__(self, obj, cls):
         self.__owner__ = obj if obj else cls
         return self
@@ -36,7 +36,6 @@ class HookClassMethod(type):
         self.__owner__ = owner
         self.__ownername__ = owner.__name__
         self.__fname__ = name
-        pass
 
     def __new__(cls, decorated_func):
 
@@ -51,7 +50,7 @@ class HookClassMethod(type):
         return result
 
 
-def parse_arg(value) -> str:
+def parse_arg(value) -> str:  # pragma: no cover
     if isinstance(value, type):
         return value.__name__
     elif isinstance(value, str):
