@@ -170,7 +170,6 @@ class MapData(BaseObject):
                 #     ? legacyBackgroundKeyNight
                 #     : legacyBackgroundKeyDay);
                 map.stream >> legacyBackgroundKeyDay
-                pass
 
             elif keyType == lskType.lskBackgroundOld:
                 legacyBackgroundKeyDay = map.stream.readUInt64()

@@ -36,7 +36,6 @@ class HookClassMethod(type):
         self.__owner__ = owner
         self.__ownername__ = owner.__name__
         self.__fname__ = name
-        pass
 
     def __new__(cls, decorated_func):
 

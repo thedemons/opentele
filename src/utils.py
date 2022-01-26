@@ -191,7 +191,6 @@ class sharemethod(object):
 
     def __set_name__(self, owner, name):
         self.__owner__ = owner
-        pass
 
     def __new__(cls, func: _F) -> _F:
         result = super().__new__(cls)

@@ -115,9 +115,6 @@ class Storage(BaseObject):
                 self.__stream.setDevice(self.__buffer)
                 self.__stream.setVersion(QDataStream.Version.Qt_5_1)
 
-        def __del__(self):
-            pass
-
         def finish(self) -> None:
             if self.__stream.device():
                 self.__stream.setDevice(None)  # type: ignore
@@ -312,7 +309,7 @@ class Storage(BaseObject):
                 pass
 
         raise tries_exception if tries_exception else TFileNotFound(
-            "Could not open {fileName}"
+            f"Could not open {fileName}"
         )
 
     @staticmethod

@@ -119,7 +119,6 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
             api (`API`, default=`TelegramDesktop`):
                 Which API to use. Read more `[here](API)`.
         """
-        pass
 
     @typing.overload
     def __init__(
@@ -300,7 +299,6 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
                 the amount of bandwidth used.
                 
         """
-        pass
 
     @override
     def __init__(
@@ -782,8 +780,6 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
             await client.PrintSessions()
         ```
         """
-
-        pass
 
     @typing.overload
     @staticmethod
