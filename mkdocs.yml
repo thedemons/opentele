@@ -1,6 +1,6 @@
 copyright: <a href="https://github.com/thedemons/opentele/" target="_blank" rel="noopener">thedemons.opentele</a>
 docs_dir: docs
-edit_uri: https://github.com/thedemons/opentele/tree/main/docs/content
+edit_uri: https://github.com/thedemons/opentele/tree/main/docs/
 extra_css:
 - assets/pymdownx-extras/extra-c12baed3e0.css
 extra_javascript:
