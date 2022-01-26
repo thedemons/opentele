@@ -556,7 +556,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
         except OSError as e:
             raise BaseException("Cannot connect")
 
-        if await newClient.is_user_authorized():
+        if await newClient.is_user_authorized():  # nocov
 
             currentAuth = await newClient.GetCurrentSession()
             if currentAuth != None:
@@ -597,7 +597,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
         request_retries = (
             kwargs["request_retries"] if "request_retries" in kwargs else 5
         )  # default value for request_retries
-        for attempt in range(request_retries):
+        for attempt in range(request_retries):  # nocov
 
             try:
                 # we could have been already authorized, but it still raised an timeouterror (??!)
@@ -839,7 +839,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
 
         if (flag == UseCurrentSession) and not (
             isinstance(api, APIData) or APIData.__subclasscheck__(api)
-        ):
+        ):  # nocov
 
             warnings.warn(  # type: ignore
                 "\nIf you use an existing Telegram Desktop session "

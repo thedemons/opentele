@@ -198,7 +198,7 @@ async def check_telegramclient():
     except BaseException as e:
         pass
 
-    await oldClient.TerminateAllSessions()
+    assert await oldClient.TerminateAllSessions()
 
     await oldClient.disconnect()
     await oldClient.disconnected
