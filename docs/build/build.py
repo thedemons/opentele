@@ -1,15 +1,18 @@
-import site, os, sys
+import os, sys
 
 
 def getsitepackages():
-    return next(
-        (
-            os.path.abspath(path)
-            for path in site.getsitepackages()
-            if path.endswith("site-packages")
-        ),
-        None,
-    )
+    import subprocess, re
+
+    command = "pip show mkdocs-material"
+    process = subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
+    output = process.communicate()[0].decode("utf-8").replace("\\", "\\\\")
+
+    search = re.search(r"Location: (?P<location>.+)", output)
+    if search == None:
+        return None
+
+    return os.path.abspath(search.group("location"))
 
 
 def pre_build():
