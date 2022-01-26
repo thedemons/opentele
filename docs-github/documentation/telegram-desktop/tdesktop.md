@@ -6,7 +6,7 @@
 
 
 ---
-## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDesktop</span></span><a href="https://github.com/thedemons/opentele/blob/bbea81a6aacb7309e04f89946f702ff54cda858e/src/td/tdesktop.py#L16"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+## <span class="highlight"><span class="k">class </span></span><span class="highlight"><span class="nc">TDesktop</span></span><a href="https://github.com/thedemons/opentele/blob/6d71952bfddcad7a1a30e7335df9b3027eb7849b/src/td/tdesktop.py#L16"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 class TDesktop(BaseObject)
@@ -28,6 +28,7 @@ A client can have multiple accounts, up to 3 - according to official Telegram De
 | <a class="codehl codehl_name" href="tdesktop.md#kmaxaccounts"><b>kMaxAccounts</b></a> | <span class="highlight"><span class="bp">int</span></span> | See <a class="codehl codehl_name" href="tdesktop.md#kmaxaccounts"><b>kMaxAccounts</b></a>. |
 | <a class="codehl codehl_name" href="tdesktop.md#keyfile"><b>keyFile</b></a> | <span class="highlight"><span class="bp">str</span></span> | See <a class="codehl codehl_name" href="tdesktop.md#keyfile"><b>keyFile</b></a>. |
 | <a class="codehl codehl_name" href="tdesktop.md#kdefaultkeyfile"><b>kDefaultKeyFile</b></a> | <span class="highlight"><span class="bp">str</span></span> | Default value for <a class="codehl codehl_name" href="tdesktop.md#keyfile"><b>keyFile</b></a>. |
+| <a class="codehl codehl_name" href="tdesktop.md#kperformancemode"><b>kPerformanceMode</b></a> | <span class="highlight"><span class="bp">bool</span></span> | Performance mode. When enabled, <span class="highlight"><span class="nf">SavaTData</span></span><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span> will be 200x faster.<br/>See <a class="codehl codehl_name" href="tdesktop.md#kperformancemode"><b>kPerformanceMode</b></a>. |
 
 <h3>Methods:</h3>
 
@@ -42,6 +43,8 @@ Return <span class="highlight"><span class="kc">True</span></span> if the client
 Convert this session to <a class="codehl codehl_obj" href="../../documentation/telethon/telegramclient.md#class-telegramclient"><b>TelegramClient</b></a>.
 - <a class="codehl codehl_function" href="tdesktop.md#fromtelethon"><b>FromTelethon</b></a><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span><span class="highlight"><span class="p">:</span></span>\
 Create a new session from <a class="codehl codehl_obj" href="../../documentation/telethon/telegramclient.md#class-telegramclient"><b>TelegramClient</b></a>.
+- <a class="codehl codehl_function" href="tdesktop.md#performancemode"><b>PerformanceMode</b></a><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span><span class="highlight"><span class="p">:</span></span>\
+Enable/disable performance mode. When enabled, <span class="highlight"><span class="nf">SavaTData</span></span><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span> will be 5000x faster.
 
 
 
@@ -49,7 +52,7 @@ Create a new session from <a class="codehl codehl_obj" href="../../documentation
 
 
 ---
-### <span class="highlight"><span class="nc">TDesktop</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/bbea81a6aacb7309e04f89946f702ff54cda858e/src/td/tdesktop.py#L95"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="nc">TDesktop</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/6d71952bfddcad7a1a30e7335df9b3027eb7849b/src/td/tdesktop.py#L102"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 def __init__(basePath: str = None, api: Union[Type[APIData], APIData] = API.TelegramDesktop, passcode: str = None, keyFile: str = None) -> None
@@ -71,7 +74,7 @@ Initialize a <a class="codehl codehl_obj" href="tdesktop.md#class-tdesktop"><b>T
 
 
 ---
-### <span class="highlight"><span class="nf">isLoaded</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/bbea81a6aacb7309e04f89946f702ff54cda858e/src/td/tdesktop.py#L136"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="nf">isLoaded</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/6d71952bfddcad7a1a30e7335df9b3027eb7849b/src/td/tdesktop.py#L143"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 def isLoaded() -> bool
@@ -84,7 +87,7 @@ Return <span class="highlight"><span class="kc">True</span></span> if the client
 
 
 ---
-### <span class="highlight"><span class="nf">LoadTData</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/bbea81a6aacb7309e04f89946f702ff54cda858e/src/td/tdesktop.py#L142"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="nf">LoadTData</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/6d71952bfddcad7a1a30e7335df9b3027eb7849b/src/td/tdesktop.py#L149"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 def LoadTData(basePath: str = None, passcode: str = None, keyFile: str = None)
@@ -130,7 +133,7 @@ tdesk.SaveTData("new_tdata")
 
 
 ---
-### <span class="highlight"><span class="nf">SaveTData</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/bbea81a6aacb7309e04f89946f702ff54cda858e/src/td/tdesktop.py#L213"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="nf">SaveTData</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/6d71952bfddcad7a1a30e7335df9b3027eb7849b/src/td/tdesktop.py#L220"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 def SaveTData(basePath: str = None, passcode: str = None, keyFile: str = None) -> bool
@@ -169,7 +172,7 @@ tdesk.SaveTData("new_tdata")
 
 
 ---
-### <span class="highlight"><span class="nf">ToTelethon</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/bbea81a6aacb7309e04f89946f702ff54cda858e/src/td/tdesktop.py#L426"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="nf">ToTelethon</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/6d71952bfddcad7a1a30e7335df9b3027eb7849b/src/td/tdesktop.py#L449"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 @typing.overload
@@ -211,7 +214,7 @@ await client.PrintSessions()
 
 
 ---
-### <span class="highlight"><span class="nf">FromTelethon</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/bbea81a6aacb7309e04f89946f702ff54cda858e/src/td/tdesktop.py#L522"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="nf">FromTelethon</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/6d71952bfddcad7a1a30e7335df9b3027eb7849b/src/td/tdesktop.py#L545"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 @staticmethod
@@ -248,11 +251,32 @@ tdesk.SaveTData("new_tdata")
 ```
 
 
+<a id="td.tdesktop.TDesktop.PerformanceMode"></a>
+
+
+---
+### <span class="highlight"><span class="nf">PerformanceMode</span></span><span class="highlight"><span class="o">()</span></span><a href="https://github.com/thedemons/opentele/blob/6d71952bfddcad7a1a30e7335df9b3027eb7849b/src/td/tdesktop.py#L600"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+
+```python
+@classmethod
+def PerformanceMode(cls, enabled: bool = True)
+```
+
+Enable or disable performance mode. See <a class="codehl codehl_name" href="tdesktop.md#kperformancemode"><b>kPerformanceMode</b></a>.<br>
+It is enabled by default.<br>
+<h3>Arguments:</h3>
+
+| Name | Type | Default | Description |
+| :--- | :--: | :-----: | :---------- |
+| <span class="highlight"><span class="n">enabled</span></span> | <span class="highlight"><span class="bp">bool</span></span> | <span class="highlight"><span class="kc">True</span></span> | Either enable or disable performance mode. |
+
+
+
 <a id="td.tdesktop.TDesktop.kMaxAccounts"></a>
 
 
 ---
-### <span class="highlight"><span class="n">kMaxAccounts</span></span><a href="https://github.com/thedemons/opentele/blob/bbea81a6aacb7309e04f89946f702ff54cda858e/src/td/tdesktop.py#L576"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="n">kMaxAccounts</span></span><a href="https://github.com/thedemons/opentele/blob/6d71952bfddcad7a1a30e7335df9b3027eb7849b/src/td/tdesktop.py#L612"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 The maximum amount of accounts a client can have<br>
 
@@ -261,16 +285,38 @@ The maximum amount of accounts a client can have<br>
 
 
 ---
-### <span class="highlight"><span class="n">kDefaultKeyFile</span></span><a href="https://github.com/thedemons/opentele/blob/bbea81a6aacb7309e04f89946f702ff54cda858e/src/td/tdesktop.py#L579"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="n">kDefaultKeyFile</span></span><a href="https://github.com/thedemons/opentele/blob/6d71952bfddcad7a1a30e7335df9b3027eb7849b/src/td/tdesktop.py#L615"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 See <a class="codehl codehl_obj" href="tdesktop.md#class-tdesktop"><b>TDesktop</b></a><span class="highlight"><span class="o">.</span></span><a class="codehl codehl_name" href="tdesktop.md#keyfile"><b>keyFile</b></a><br>
+
+
+<a id="td.tdesktop.TDesktop.kPerformanceMode"></a>
+
+
+---
+### <span class="highlight"><span class="n">kPerformanceMode</span></span><a href="https://github.com/thedemons/opentele/blob/6d71952bfddcad7a1a30e7335df9b3027eb7849b/src/td/tdesktop.py#L618"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+
+When enabled, <a class="codehl codehl_function" href="tdesktop.md#savetdata"><b>SaveTData</b></a><span class="highlight"><span class="o">(</span></span><span class="highlight"><span class="p">)</span></span> will be 5000x faster.<br>
+
+- What is does is using a constant <a class="codehl codehl_name" href="tdesktop.md#localkey"><b>localKey</b></a> rather than generating it everytime saving tdata.
+
+- The average time for generating <a class="codehl codehl_name" href="tdesktop.md#localkey"><b>localKey</b></a> is about <span class="highlight"><span class="mi">250</span></span> to <span class="highlight"><span class="mi">350</span></span> ms, depend on your CPU.
+
+- When in performance mode, the average time to generate <a class="codehl codehl_name" href="tdesktop.md#localkey"><b>localKey</b></a> is <span class="highlight"><span class="mf">0.0628</span></span> ms. Which is 5000x faster
+
+- Of course this comes with a catch, your <span class="highlight"><span class="n">tdata</span></span> <span class="highlight"><span class="n">files</span></span> will use the same constant <a class="codehl codehl_name" href="tdesktop.md#localkey"><b>localKey</b></a>. Basicly no protection, but who cares?
+
+| :blue_book: Note |
+| :--- |
+|     Performance mode will be disabled if <a class="codehl codehl_name" href="tdesktop.md#passcode"><b>passcode</b></a> is set. |
+
 
 
 <a id="td.tdesktop.TDesktop.api"></a>
 
 
 ---
-### <span class="highlight"><span class="n">api</span></span><a href="https://github.com/thedemons/opentele/blob/bbea81a6aacb7309e04f89946f702ff54cda858e/src/td/tdesktop.py#L583"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="n">api</span></span><a href="https://github.com/thedemons/opentele/blob/6d71952bfddcad7a1a30e7335df9b3027eb7849b/src/td/tdesktop.py#L631"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 @property
@@ -284,7 +330,7 @@ The API this client is using.<br>
 
 
 ---
-### <span class="highlight"><span class="n">basePath</span></span><a href="https://github.com/thedemons/opentele/blob/bbea81a6aacb7309e04f89946f702ff54cda858e/src/td/tdesktop.py#L596"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="n">basePath</span></span><a href="https://github.com/thedemons/opentele/blob/6d71952bfddcad7a1a30e7335df9b3027eb7849b/src/td/tdesktop.py#L644"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 @property
@@ -299,7 +345,7 @@ Same as tdata folder of <span class="highlight"><span class="n">Telegram</span><
 
 
 ---
-### <span class="highlight"><span class="n">passcode</span></span><a href="https://github.com/thedemons/opentele/blob/bbea81a6aacb7309e04f89946f702ff54cda858e/src/td/tdesktop.py#L604"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="n">passcode</span></span><a href="https://github.com/thedemons/opentele/blob/6d71952bfddcad7a1a30e7335df9b3027eb7849b/src/td/tdesktop.py#L652"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 @property
@@ -315,7 +361,7 @@ Same as the Local Passcode of <span class="highlight"><span class="n">Telegram</
 
 
 ---
-### <span class="highlight"><span class="n">keyFile</span></span><a href="https://github.com/thedemons/opentele/blob/bbea81a6aacb7309e04f89946f702ff54cda858e/src/td/tdesktop.py#L613"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="n">keyFile</span></span><a href="https://github.com/thedemons/opentele/blob/6d71952bfddcad7a1a30e7335df9b3027eb7849b/src/td/tdesktop.py#L661"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 @property
@@ -331,7 +377,7 @@ I don't know what's the use cases of it, maybe this was a legacy feature of <spa
 
 
 ---
-### <span class="highlight"><span class="n">localKey</span></span><a href="https://github.com/thedemons/opentele/blob/bbea81a6aacb7309e04f89946f702ff54cda858e/src/td/tdesktop.py#L626"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="n">localKey</span></span><a href="https://github.com/thedemons/opentele/blob/6d71952bfddcad7a1a30e7335df9b3027eb7849b/src/td/tdesktop.py#L674"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 @property
@@ -345,7 +391,7 @@ The key used to encrypt/decrypt data<br>
 
 
 ---
-### <span class="highlight"><span class="n">AppVersion</span></span><a href="https://github.com/thedemons/opentele/blob/bbea81a6aacb7309e04f89946f702ff54cda858e/src/td/tdesktop.py#L633"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="n">AppVersion</span></span><a href="https://github.com/thedemons/opentele/blob/6d71952bfddcad7a1a30e7335df9b3027eb7849b/src/td/tdesktop.py#L681"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 @property
@@ -359,7 +405,7 @@ App version of TDesktop client<br>
 
 
 ---
-### <span class="highlight"><span class="n">accountsCount</span></span><a href="https://github.com/thedemons/opentele/blob/bbea81a6aacb7309e04f89946f702ff54cda858e/src/td/tdesktop.py#L645"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="n">accountsCount</span></span><a href="https://github.com/thedemons/opentele/blob/6d71952bfddcad7a1a30e7335df9b3027eb7849b/src/td/tdesktop.py#L693"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 @property
@@ -373,7 +419,7 @@ The number of accounts this client has<br>
 
 
 ---
-### <span class="highlight"><span class="n">accounts</span></span><a href="https://github.com/thedemons/opentele/blob/bbea81a6aacb7309e04f89946f702ff54cda858e/src/td/tdesktop.py#L653"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="n">accounts</span></span><a href="https://github.com/thedemons/opentele/blob/6d71952bfddcad7a1a30e7335df9b3027eb7849b/src/td/tdesktop.py#L701"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 @property
@@ -388,7 +434,7 @@ If you want to get the main account, please use .mainAccount instead<br>
 
 
 ---
-### <span class="highlight"><span class="n">mainAccount</span></span><a href="https://github.com/thedemons/opentele/blob/bbea81a6aacb7309e04f89946f702ff54cda858e/src/td/tdesktop.py#L661"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
+### <span class="highlight"><span class="n">mainAccount</span></span><a href="https://github.com/thedemons/opentele/blob/6d71952bfddcad7a1a30e7335df9b3027eb7849b/src/td/tdesktop.py#L709"><img align="right" style="float:right;" src="https://img.shields.io/badge/view-source-green"></a>
 
 ```python
 @property
