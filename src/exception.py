@@ -17,18 +17,19 @@ class OpenTeleException(BaseException):  # nocov
         self.message = message
         self.desc = self.__class__.__name__
 
-        stack = inspect.stack()
+        self.frame = inspect.currentframe()
+        for i in range(stack_index):
+            self.frame = self.frame.f_back
 
         self._caller_class = (
-            stack[stack_index][0].f_locals["self"].__class__
-            if "self" in stack[stack_index][0].f_locals
+            self.frame.f_locals["self"].__class__
+            if "self" in self.frame.f_locals
             else None
         )
-        self._caller_method = stack[stack_index][0].f_code.co_name
-        self.stack = stack
+        self._caller_method = self.frame.f_code.co_name
 
         if self._caller_method != "<module>":
-            args, _, _, locals = inspect.getargvalues(self.stack[stack_index][0])
+            args, _, _, locals = inspect.getargvalues(self.frame)
             parameters = {arg: locals[arg] for arg in args}
             self._caller_method_params = "".join(
                 f"{i}={parameters[i]}, " for i in parameters
