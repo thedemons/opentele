@@ -30,6 +30,8 @@ import copy
 from collections import OrderedDict
 
 
+resolver = None
+
 from .highlight_resolver import HighlightResolver
 
 try:
@@ -39,6 +41,41 @@ try:
     from .vspythonlexer import VSPythonLexer
     from pygments.formatters import find_formatter_class
     from pygments import __version__ as pygments_ver
+
+    import os
+    import docspec
+    import docspec_python
+    from pydoc_markdown.contrib.loaders.python import PythonLoader
+    from pydoc_markdown.interfaces import Context
+    from pygments.formatters.html import _get_ttype_class
+    from pygments.token import (
+        is_token_subtype,
+        _TokenType,
+        Text,
+        Comment,
+        Operator,
+        Keyword,
+        Name,
+        String,
+        Number,
+        Punctuation,
+        Generic,
+        Other,
+        Error,
+        Literal,
+    )
+
+    def init_resolver():
+        global resolver
+        loader = PythonLoader()
+        loader.init(Context(directory="."))
+
+        modules = list(loader.load())
+        print("modules", modules)
+        resolver = HighlightResolver(modules)
+
+    init_resolver()
+    print("init_resolver")
 
     p_ver = tuple([int(n) for n in pygments_ver.split(".")[:2]])
     HtmlFormatter = find_formatter_class("html")
@@ -117,43 +154,6 @@ DEFAULT_CONFIG = {
     ],
 }
 
-import os
-import docspec
-import docspec_python
-from pydoc_markdown.contrib.loaders.python import PythonLoader
-from pydoc_markdown.interfaces import Context
-from pygments.formatters.html import _get_ttype_class
-from pygments.token import (
-    is_token_subtype,
-    _TokenType,
-    Text,
-    Comment,
-    Operator,
-    Keyword,
-    Name,
-    String,
-    Number,
-    Punctuation,
-    Generic,
-    Other,
-    Error,
-    Literal,
-)
-
-
-resolver = None
-
-
-def init_resolver():
-    global resolver
-    loader = PythonLoader()
-    loader.init(Context(directory="."))
-
-    modules = list(loader.load())
-    resolver = HighlightResolver(modules)
-
-
-init_resolver()
 
 if pygments:
 
