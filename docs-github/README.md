@@ -5,16 +5,19 @@
 <p align="center">
 <img src="./opentele.png" alt="logo" width="180"/>
 <br><br>
-<a href="https://pypi.org/project/opentele/"><img alt="pypi version" src="https://img.shields.io/pypi/v/opentele?logo=opentele"/></a>
-<a href="https://pypi.org/project/opentele/"><img alt="pypi status" src="https://img.shields.io/pypi/status/opentele?logo=opentele&label=build"/></a>
-<a href="https://opentele.readthedocs.io/"><img alt="documentation" src="https://readthedocs.org/projects/opentele/badge/?version=latest&style=flat"/></a>
-<a href="https://github.com/thedemons/opentele/actions/workflows/package.yml"><img alt="workflow tests" src="https://github.com/thedemons/opentele/actions/workflows/package.yml/badge.svg"/></a>
-<a href="https://github.com/thedemons/opentele/issues"><img alt="issues" src="https://img.shields.io/github/issues/thedemons/opentele"/></a>
-<a href="https://github.com/thedemons/opentele/commits/main"><img alt="github last commit" src="https://img.shields.io/github/last-commit/thedemons/opentele"/></a>
-<a href="https://github.com/thedemons/opentele/commits/main"><img alt="github commits" src="https://img.shields.io/github/commit-activity/m/thedemons/opentele?logo=opentele"/></a>
-<a href="https://pypi.org/project/opentele/"><img alt="pypi installs" src="https://img.shields.io/pypi/dm/opentele?color=brightgreen&label=installs&logo=opentele"/></a>
-<a href="https://en.wikipedia.org/wiki/MIT_License"><img alt="pypi license" src="https://img.shields.io/pypi/l/opentele?color=brightgreen"/></a>
-<a href="https://github.com/psf/black"><img alt="code format" src="https://img.shields.io/badge/code%20style-black-000000.svg"/></a>
+<a href="https://pypi.org/project/opentele/"><img alt="pypi version" src="https://img.shields.io/pypi/v/opentele?logo=pypi&logoColor=%232d93c1"/></a>
+<a href="https://pypi.org/project/opentele/"><img alt="pypi status" src="https://img.shields.io/pypi/status/opentele?color=%2331c754&logo=pypi&logoColor=%232d93c1"/></a>
+<a href="https://opentele.readthedocs.io/"><img alt="documentation" src="https://img.shields.io/readthedocs/opentele.svg?color=%2331c754&logo=readthedocs"/></a>
+<a href="https://codecov.io/gh/thedemons/opentele">
+<img src="https://img.shields.io/codecov/c/github/thedemons/opentele?color=%2331c754&label=codecov&logo=codecov&token=H2IWGEJ5LN"/>
+</a>
+<a href="https://github.com/thedemons/opentele/actions/workflows/package.yml"><img alt="workflow tests" src="https://img.shields.io/github/workflow/status/thedemons/opentele/package?logo=github&color=%2331c754"/></a>
+<a href="https://github.com/thedemons/opentele/issues"><img alt="issues" src="https://img.shields.io/github/issues/thedemons/opentele?color=%2331c754&logo=github"/></a>
+<a href="https://github.com/thedemons/opentele/commits/main"><img alt="github last commit" src="https://img.shields.io/github/last-commit/thedemons/opentele?color=%2331c754&logo=github"/></a>
+<a href="https://github.com/thedemons/opentele/commits/main"><img alt="github commits" src="https://img.shields.io/github/commit-activity/m/thedemons/opentele?logo=github"/></a>
+<a href="https://pypi.org/project/opentele/"><img alt="pypi installs" src="https://img.shields.io/pypi/dm/opentele?label=installs&color=%2331c754&logo=docusign"/></a>
+<a href="https://en.wikipedia.org/wiki/MIT_License"><img alt="pypi license" src="https://img.shields.io/pypi/l/opentele?color=%2331c754&logo=gitbook&logoColor=white"/></a>
+<a href="https://github.com/psf/black"><img alt="code format" src="https://img.shields.io/badge/code%20style-black-000000.svg?logo=python&logoColor=%232d93c1"/></a>
 </p>
 
 <br>
