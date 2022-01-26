@@ -1,0 +1,9 @@
+[report]
+exclude_lines =
+    pragma: no cover
+    nocov
+    pass
+    def __repr__
+    def __str__
+    raise
+    except
