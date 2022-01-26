@@ -618,10 +618,10 @@ class TDesktop(BaseObject):
     kPerformanceMode: bool = True
     """
     When enabled, `SaveTData()` will be 5000x faster.
-    - What is does is using a constant `localKey` rather than generating it everytime saving tdata.
+    - What it does is using a constant `localKey` rather than generating it everytime when saving tdata.
     - The average time for generating `localKey` is about `250` to `350` ms, depend on your CPU.
     - When in performance mode, the average time to generate `localKey` is `0.0628` ms. Which is 5000x faster
-    - Of course this comes with a catch, your `tdata files` will use the same constant `localKey`. Basicly no protection, but who cares?
+    - Of course this comes with a catch, your `tdata files` will always use a same constant `localKey`. Basicly no protection at all, but who cares?
     
     ### Notes:
         Note: Performance mode will be disabled if `passcode` is set.
@@ -651,7 +651,6 @@ class TDesktop(BaseObject):
     @property
     def passcode(self) -> str:
         """
-        Passcode
         Passcode used to encrypt and decrypt data
         Same as the Local Passcode of `Telegram Desktop`
         """

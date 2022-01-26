@@ -16,7 +16,6 @@ def on_exit():
 
 def on_init():
 
-    print("??", debug_py)
     os.rename(debug_py, debug_bk_py)
     src = open(debug_bk_py, "r")
     dst = open(debug_py, "w")
