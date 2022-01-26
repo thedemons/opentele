@@ -25,45 +25,45 @@ class Serialize(BaseObject):
 
 
 class Storage(BaseObject):
-    class ReadSettingsContext(BaseObject):
-        def __init__(self) -> None:
+    # class ReadSettingsContext(BaseObject):
+    #     def __init__(self) -> None:
 
-            self.fallbackConfigLegacyDcOptions: td.MTP.DcOptions = td.MTP.DcOptions(
-                td.MTP.Environment.Production
-            )
-            self.fallbackConfigLegacyChatSizeMax = 0
-            self.fallbackConfigLegacySavedGifsLimit = 0
-            self.fallbackConfigLegacyStickersRecentLimit = 0
-            self.fallbackConfigLegacyStickersFavedLimit = 0
-            self.fallbackConfigLegacyMegagroupSizeMax = 0
-            self.fallbackConfigLegacyTxtDomainString = str()
-            self.fallbackConfig = QByteArray()
+    #         self.fallbackConfigLegacyDcOptions: td.MTP.DcOptions = td.MTP.DcOptions(
+    #             td.MTP.Environment.Production
+    #         )
+    #         self.fallbackConfigLegacyChatSizeMax = 0
+    #         self.fallbackConfigLegacySavedGifsLimit = 0
+    #         self.fallbackConfigLegacyStickersRecentLimit = 0
+    #         self.fallbackConfigLegacyStickersFavedLimit = 0
+    #         self.fallbackConfigLegacyMegagroupSizeMax = 0
+    #         self.fallbackConfigLegacyTxtDomainString = str()
+    #         self.fallbackConfig = QByteArray()
 
-            self.cacheTotalSizeLimit = 0
-            self.cacheTotalTimeLimit = 0
-            self.cacheBigFileTotalSizeLimit = 0
-            self.cacheBigFileTotalTimeLimit = 0
+    #         self.cacheTotalSizeLimit = 0
+    #         self.cacheTotalTimeLimit = 0
+    #         self.cacheBigFileTotalSizeLimit = 0
+    #         self.cacheBigFileTotalTimeLimit = 0
 
-            self.themeKeyLegacy = FileKey(0)
-            self.themeKeyDay = FileKey(0)
-            self.themeKeyNight = FileKey(0)
-            self.backgroundKeyDay = FileKey(0)
-            self.backgroundKeyNight = FileKey(0)
+    #         self.themeKeyLegacy = FileKey(0)
+    #         self.themeKeyDay = FileKey(0)
+    #         self.themeKeyNight = FileKey(0)
+    #         self.backgroundKeyDay = FileKey(0)
+    #         self.backgroundKeyNight = FileKey(0)
 
-            self.backgroundKeysRead = False
-            self.tileDay = False
-            self.tileNight = True
-            self.tileRead = False
+    #         self.backgroundKeysRead = False
+    #         self.tileDay = False
+    #         self.tileNight = True
+    #         self.tileRead = False
 
-            self.langPackKey = FileKey(0)
-            self.languagesKey = FileKey(0)
+    #         self.langPackKey = FileKey(0)
+    #         self.languagesKey = FileKey(0)
 
-            self.mtpAuthorization = QByteArray()
-            self.mtpLegacyKeys: typing.List[td.AuthKey] = []
+    #         self.mtpAuthorization = QByteArray()
+    #         self.mtpLegacyKeys: typing.List[td.AuthKey] = []
 
-            self.mtpLegacyMainDcId = 0
-            self.mtpLegacyUserId = 0
-            self.legacyRead = False
+    #         self.mtpLegacyMainDcId = 0
+    #         self.mtpLegacyUserId = 0
+    #         self.legacyRead = False
 
     class FileReadDescriptor(BaseObject):
         def __init__(self) -> None:
@@ -346,111 +346,111 @@ class Storage(BaseObject):
 
         return result
 
-    @staticmethod
-    def ReadSetting(
-        blockId: int, stream: QDataStream, version: int, context: ReadSettingsContext
-    ) -> bool:
+    # @staticmethod
+    # def ReadSetting(
+    #     blockId: int, stream: QDataStream, version: int, context: ReadSettingsContext
+    # ) -> bool:
 
-        if blockId == dbi.DcOptionOldOld:
-            dcId = DcId(stream.readUInt32())
-            host = stream.readQString()
-            ip = stream.readQString()
-            port = stream.readUInt32()
-            ExpectStreamStatus(stream)
+    #     if blockId == dbi.DcOptionOldOld:
+    #         dcId = DcId(stream.readUInt32())
+    #         host = stream.readQString()
+    #         ip = stream.readQString()
+    #         port = stream.readUInt32()
+    #         ExpectStreamStatus(stream)
 
-            context.fallbackConfigLegacyDcOptions.constructAddOne(
-                dcId, td.MTP.DcOptions.Flag(0), ip, port, bytes()
-            )
-            context.legacyRead = True
+    #         context.fallbackConfigLegacyDcOptions.constructAddOne(
+    #             dcId, td.MTP.DcOptions.Flag(0), ip, port, bytes()
+    #         )
+    #         context.legacyRead = True
 
-        elif blockId == dbi.DcOptionOld:
-            dcIdWithShift = ShiftedDcId(stream.readUInt32())
-            flags = td.MTP.DcOptions.Flag(stream.readInt32())
-            ip = stream.readQString()
-            port = stream.readUInt32()
+    #     elif blockId == dbi.DcOptionOld:
+    #         dcIdWithShift = ShiftedDcId(stream.readUInt32())
+    #         flags = td.MTP.DcOptions.Flag(stream.readInt32())
+    #         ip = stream.readQString()
+    #         port = stream.readUInt32()
 
-            ExpectStreamStatus(stream)
+    #         ExpectStreamStatus(stream)
 
-            context.fallbackConfigLegacyDcOptions.constructAddOne(
-                dcIdWithShift, flags, ip, port, bytes()
-            )
-            context.legacyRead = True
+    #         context.fallbackConfigLegacyDcOptions.constructAddOne(
+    #             dcIdWithShift, flags, ip, port, bytes()
+    #         )
+    #         context.legacyRead = True
 
-        elif blockId == dbi.DcOptionsOld:
-            serialized = QByteArray()
-            stream >> serialized
-            ExpectStreamStatus(stream)
+    #     elif blockId == dbi.DcOptionsOld:
+    #         serialized = QByteArray()
+    #         stream >> serialized
+    #         ExpectStreamStatus(stream)
 
-            context.fallbackConfigLegacyDcOptions.constructFromSerialized(serialized)
-            context.legacyRead = True
+    #         context.fallbackConfigLegacyDcOptions.constructFromSerialized(serialized)
+    #         context.legacyRead = True
 
-        elif blockId == dbi.ApplicationSettings:
-            serialized = QByteArray()
-            stream >> serialized
-            ExpectStreamStatus(stream)
+    #     elif blockId == dbi.ApplicationSettings:
+    #         serialized = QByteArray()
+    #         stream >> serialized
+    #         ExpectStreamStatus(stream)
 
-            # TO BE ADDED
+    #         # TO BE ADDED
 
-        elif blockId == dbi.ChatSizeMaxOld:
-            maxSize = stream.readInt32()
-            ExpectStreamStatus(stream)
+    #     elif blockId == dbi.ChatSizeMaxOld:
+    #         maxSize = stream.readInt32()
+    #         ExpectStreamStatus(stream)
 
-            context.fallbackConfigLegacyChatSizeMax = maxSize
-            context.legacyRead = True
+    #         context.fallbackConfigLegacyChatSizeMax = maxSize
+    #         context.legacyRead = True
 
-        elif blockId == dbi.SavedGifsLimitOld:
-            limit = stream.readInt32()
-            ExpectStreamStatus(stream)
+    #     elif blockId == dbi.SavedGifsLimitOld:
+    #         limit = stream.readInt32()
+    #         ExpectStreamStatus(stream)
 
-            context.fallbackConfigLegacySavedGifsLimit = limit
-            context.legacyRead = True
+    #         context.fallbackConfigLegacySavedGifsLimit = limit
+    #         context.legacyRead = True
 
-        elif blockId == dbi.StickersRecentLimitOld:
-            limit = stream.readInt32()
-            ExpectStreamStatus(stream)
+    #     elif blockId == dbi.StickersRecentLimitOld:
+    #         limit = stream.readInt32()
+    #         ExpectStreamStatus(stream)
 
-            context.fallbackConfigLegacyStickersRecentLimit = limit
-            context.legacyRead = True
+    #         context.fallbackConfigLegacyStickersRecentLimit = limit
+    #         context.legacyRead = True
 
-        elif blockId == dbi.StickersFavedLimitOld:
-            limit = stream.readInt32()
-            ExpectStreamStatus(stream)
+    #     elif blockId == dbi.StickersFavedLimitOld:
+    #         limit = stream.readInt32()
+    #         ExpectStreamStatus(stream)
 
-            context.fallbackConfigLegacyStickersFavedLimit = limit
-            context.legacyRead = True
+    #         context.fallbackConfigLegacyStickersFavedLimit = limit
+    #         context.legacyRead = True
 
-        elif blockId == dbi.MegagroupSizeMaxOld:
-            maxSize = stream.readInt32()
-            ExpectStreamStatus(stream)
+    #     elif blockId == dbi.MegagroupSizeMaxOld:
+    #         maxSize = stream.readInt32()
+    #         ExpectStreamStatus(stream)
 
-            context.fallbackConfigLegacyMegagroupSizeMax = maxSize
-            context.legacyRead = True
+    #         context.fallbackConfigLegacyMegagroupSizeMax = maxSize
+    #         context.legacyRead = True
 
-        elif blockId == dbi.User:
-            userId = stream.readInt32()
-            dcId = stream.readUInt32()
-            ExpectStreamStatus(stream)
+    #     elif blockId == dbi.User:
+    #         userId = stream.readInt32()
+    #         dcId = stream.readUInt32()
+    #         ExpectStreamStatus(stream)
 
-            context.mtpLegacyMainDcId = dcId
-            context.mtpLegacyUserId = userId
+    #         context.mtpLegacyMainDcId = dcId
+    #         context.mtpLegacyUserId = userId
 
-        elif blockId == dbi.Key:
-            dcId = DcId(stream.readInt32())
-            key = stream.readRawData(256)
-            ExpectStreamStatus(stream)
+    #     elif blockId == dbi.Key:
+    #         dcId = DcId(stream.readInt32())
+    #         key = stream.readRawData(256)
+    #         ExpectStreamStatus(stream)
 
-            context.mtpLegacyKeys.append(
-                td.AuthKey(key, td.AuthKeyType.ReadFromFile, dcId)
-            )
+    #         context.mtpLegacyKeys.append(
+    #             td.AuthKey(key, td.AuthKeyType.ReadFromFile, dcId)
+    #         )
 
-        elif blockId == dbi.MtpAuthorization:
-            serialized = QByteArray()
-            stream >> serialized
-            ExpectStreamStatus(stream)
+    #     elif blockId == dbi.MtpAuthorization:
+    #         serialized = QByteArray()
+    #         stream >> serialized
+    #         ExpectStreamStatus(stream)
 
-            context.mtpAuthorization = serialized
+    #         context.mtpAuthorization = serialized
 
-        return True
+    #     return True
 
     @staticmethod
     def CreateLocalKey(
