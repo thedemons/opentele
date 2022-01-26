@@ -389,17 +389,13 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
         try:
             await self(functions.account.ResetAuthorizationRequest(hash))
 
-        except (FreshResetAuthorisationForbiddenError, HashInvalidError) as e:
+        except FreshResetAuthorisationForbiddenError as e:
+            raise FreshResetAuthorisationForbiddenError(
+                "You can't logout other sessions if less than 24 hours have passed since you logged on the current session."
+            )
 
-            if isinstance(e, FreshResetAuthorisationForbiddenError):
-                raise FreshResetAuthorisationForbiddenError(
-                    "You can't logout other sessions if less than 24 hours have passed since you logged on the current session."
-                )
-
-            elif isinstance(e, HashInvalidError):
-                raise HashInvalidError("The provided hash is invalid.")
-
-            raise BaseException(e)
+        except HashInvalidError as e:
+            raise HashInvalidError("The provided hash is invalid.")
 
     async def TerminateAllSessions(self) -> bool:
         """
