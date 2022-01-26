@@ -312,7 +312,11 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
         # Use API.TelegramDesktop by default.
 
         if api != None:
-            if isinstance(api, APIData) or APIData.__subclasscheck__(api):
+            if isinstance(api, APIData) or (
+                isinstance(api, type)
+                and APIData.__subclasscheck__(api)
+                and api != APIData
+            ):
                 api_id = api.api_id
                 api_hash = api.api_hash
 
@@ -320,10 +324,13 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
                 kwargs["device_model"] = api.pid  # type: ignore
 
             else:
-                if isinstance(api, int) or isinstance(api, str):
-                    if api_id and isinstance(api_id, str):
-                        api_id = api
-                        api_hash = api_id
+                if (
+                    (isinstance(api, int) or isinstance(api, str))
+                    and api_id
+                    and isinstance(api_id, str)
+                ):
+                    api_id = api
+                    api_hash = api_id
                 api = None
 
         elif api_id == 0 and api_hash == None:
