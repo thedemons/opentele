@@ -341,7 +341,16 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
             # pass our hook id through the device_model
             kwargs["device_model"] = api.pid  # type: ignore
 
+        self._user_id = None
         self.__TelegramClient____init__(session, api_id, api_hash, **kwargs)
+
+    @property
+    def UserId(self):
+        return self._self_id if self._self_id else self._user_id
+
+    @UserId.setter
+    def UserId(self, id):
+        self._user_id = id
 
     async def GetSessions(self) -> Optional[types.account.Authorizations]:
         """
@@ -890,6 +899,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
         client = TelegramClient(auth_session, api=account.api, **kwargs)
 
         if flag == UseCurrentSession:
+            client.UserId = account.UserId
             return client
 
         await client.connect()

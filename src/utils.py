@@ -195,7 +195,7 @@ class sharemethod(type):
     def __set_name__(self, owner, name):
         self.__owner__ = owner
 
-    def __new__(cls: Type[_T], func: _F) -> _F:
+    def __new__(cls: Type[_T], func: _F) -> Type[_F]:
 
         clsName = func.__class__.__name__
         bases = func.__class__.__bases__
