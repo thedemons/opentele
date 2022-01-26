@@ -12,6 +12,10 @@ IS_DEBUG_MODE = False
 if IS_DEBUG_MODE:
     from rich import print  # pragma: no cover
 
+    _F = t.TypeVar("_F")
+    _T = t.TypeVar("_T")
+    _R = t.TypeVar("_R")
+
     class DebugInfo(object):
         def __init__(self) -> None:
             self.list: t.List[t.List[str, int, int, int]] = []
@@ -107,7 +111,7 @@ if IS_DEBUG_MODE:
             if self.__fname__.startswith(f"_{self.__ownername__}__"):
                 self.__fname__ = self.__fname__[len(self.__ownername__) + 1 :]
 
-        def __new__(cls, decorated_func):
+        def __new__(cls, decorated_func: _F) -> _F:
 
             firstdct = dict(decorated_func.__dict__)
             for i, x in cls.__dict__.items():
