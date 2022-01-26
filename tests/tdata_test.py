@@ -31,9 +31,10 @@ def profile_path():
 
 
 def test_random_api():
-    def cmp(
-        src: t.Union[APIData, t.Type[APIData]], dst: t.Union[APIData, t.Type[APIData]]
-    ) -> bool:
+
+    API_TYPE = t.Union[APIData, t.Type[APIData]]
+
+    def cmp(src: API_TYPE, dst: API_TYPE) -> bool:
         return (
             src.api_id == dst.api_id
             and src.api_hash == dst.api_hash
@@ -45,23 +46,31 @@ def test_random_api():
             and src.lang_pack == dst.lang_pack
         )
 
-    assert cmp(API.TelegramDesktop, API.TelegramDesktop())
-    assert cmp(API.TelegramAndroid, API.TelegramAndroid())
-    assert cmp(API.TelegramAndroidX, API.TelegramAndroidX())
-    assert cmp(API.TelegramIOS, API.TelegramIOS())
-    assert cmp(API.TelegramMacOS, API.TelegramMacOS())
-    assert cmp(API.TelegramWeb_Z, API.TelegramWeb_Z())
-    assert cmp(API.TelegramWeb_K, API.TelegramWeb_K())
-    assert cmp(API.Webogram, API.Webogram())
+    apis: t.List[API_TYPE] = [
+        API.TelegramDesktop,
+        API.TelegramAndroid,
+        API.TelegramAndroidX,
+        API.TelegramIOS,
+        API.TelegramMacOS,
+        API.TelegramWeb_Z,
+        API.TelegramWeb_K,
+        API.Webogram,
+    ]
+    for api in apis:
+        assert cmp(api, api())
 
-    assert not cmp(API.TelegramDesktop.Generate(), API.TelegramDesktop.Generate())
-    assert not cmp(API.TelegramAndroid.Generate(), API.TelegramAndroid.Generate())
-    assert not cmp(API.TelegramAndroidX.Generate(), API.TelegramAndroidX.Generate())
-    assert not cmp(API.TelegramIOS.Generate(), API.TelegramIOS.Generate())
-    assert not cmp(API.TelegramMacOS.Generate(), API.TelegramMacOS.Generate())
-    # assert not cmp(API.TelegramWeb_Z.Generate(), API.TelegramWeb_Z.Generate())
-    # assert not cmp(API.TelegramWeb_K.Generate(), API.TelegramWeb_K.Generate())
-    # assert not cmp(API.Webogram.Generate(), API.Webogram.Generate())
+        # not support .Generate() yet
+        if (
+            api != API.TelegramWeb_Z
+            and api != API.TelegramWeb_K
+            and api != API.Webogram
+        ):
+            check = False
+
+            for x in range(10):
+                check |= not cmp(api.Generate(), api.Generate())
+
+            assert check
 
     assert cmp(
         API.TelegramDesktop.Generate("windows", "opentele"),
