@@ -1,0 +1,3 @@
+mkdocs-material
+pydoc-markdown
+readthedocs-custom-steps
