@@ -361,8 +361,12 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
             None: Return `None` on failure.
         """
         results = await self.GetSessions()
-        
-        return next(auth for auth in results.authorizations if auth.current, None) if results != None else None
+
+        return (
+            next((auth for auth in results.authorizations if auth.current), None)
+            if results != None
+            else None
+        )
 
     async def TerminateSession(self, hash: int):
         """
