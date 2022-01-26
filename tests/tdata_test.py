@@ -94,12 +94,9 @@ async def tdata_to_telethon():
 
     oldClient = await tdesk.ToTelethon(flag=UseCurrentSession, api=api_ios)
     tdesk = await oldClient.ToTDesktop(UseCurrentSession, api=api_ios)
-    account = await Account.FromTelethon(oldClient, flag=UseCurrentSession, api=api_ios)
 
     await oldClient.connect()
     assert await oldClient.is_user_authorized()
-    assert await oldClient.is_official_app()
-    assert await oldClient.GetCurrentSession()
     await oldClient.PrintSessions()
 
     newClient = await oldClient.QRLoginToNewClient(api=api_android, password=X1)
@@ -137,12 +134,9 @@ async def telethon_from_tdata():
         tdesk, flag=UseCurrentSession, api=api_ios
     )
     tdesk = await TDesktop.FromTelethon(oldClient, UseCurrentSession, api=api_ios)
-    account = await Account.FromTelethon(oldClient, flag=UseCurrentSession, api=api_ios)
 
     await oldClient.connect()
     assert await oldClient.is_user_authorized()
-    assert await oldClient.is_official_app()
-    assert await oldClient.GetCurrentSession()
     await oldClient.PrintSessions()
 
     newClient = await oldClient.QRLoginToNewClient(api=api_android, password=X1)
@@ -193,6 +187,11 @@ async def check_telegramclient():
         pass
 
     await oldClient.connect()
+    assert await oldClient.is_user_authorized()
+    assert await oldClient.is_official_app()
+    assert await oldClient.GetCurrentSession()
+
+    account = await Account.FromTelethon(oldClient, flag=UseCurrentSession, api=api_ios)
 
     try:
         await oldClient.TerminateSession(0)
