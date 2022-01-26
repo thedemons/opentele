@@ -6,8 +6,16 @@ name: package
 on:
   push:
     branches: [ main, develop ]
+    paths:
+    - 'src/**'
+    - 'tests/**'
+    - '.github/**'
   pull_request:
     branches: [ main ]
+    paths:
+    - 'src/**'
+    - 'tests/**'
+    - '.github/**'
 
 jobs:
   build:
