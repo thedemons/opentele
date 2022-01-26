@@ -340,89 +340,89 @@ class BotTrustFlag(int):
     Payment = 1 << 1
 
 
-class QByteArray(QByteArray):
-    def dump(self):
+# class QByteArray(QByteArray):
+#     def dump(self):
 
-        print(f"  ---- hexdump ----: [0x{hex(self.size())}:{self.size()}] ({id(self)})")
+#         print(f"  ---- hexdump ----: [0x{hex(self.size())}:{self.size()}] ({id(self)})")
 
-        size = self.size()
-        data = self.data()
-        out = ""
-        asc = ""
+#         size = self.size()
+#         data = self.data()
+#         out = ""
+#         asc = ""
 
-        for i in range(size):
+#         for i in range(size):
 
-            if i % 16 == 0:
-                if i != 0:
-                    out += " |  "
-                    out += asc + "\n"
-                    asc = ""
+#             if i % 16 == 0:
+#                 if i != 0:
+#                     out += " |  "
+#                     out += asc + "\n"
+#                     asc = ""
 
-                out += "  %0.4x " % i
+#                 out += "  %0.4x " % i
 
-            out += " %0.2x" % data[i]
+#             out += " %0.2x" % data[i]
 
-            if (i > 0) and ((i % 8) == 7) and ((i % 16) != 15):
-                out += " "
+#             if (i > 0) and ((i % 8) == 7) and ((i % 16) != 15):
+#                 out += " "
 
-            if (data[i] < 0x20) or (data[i] > 0x7E):
-                asc += "."
-            else:
-                asc += chr(data[i])
+#             if (data[i] < 0x20) or (data[i] > 0x7E):
+#                 asc += "."
+#             else:
+#                 asc += chr(data[i])
 
-        i = size - 1
-        if ((i % 16) != 0) and ((i % 16) == (i % 8)):
-            out += " "
+#         i = size - 1
+#         if ((i % 16) != 0) and ((i % 16) == (i % 8)):
+#             out += " "
 
-        while (i % 16) != 0:
-            out += "   "
-            i += 1
+#         while (i % 16) != 0:
+#             out += "   "
+#             i += 1
 
-        out += " |  "
-        print(out)
+#         out += " |  "
+#         print(out)
 
 
-def hexdump(byte: bytes):
+# def hexdump(byte: bytes):
 
-    if isinstance(byte, QByteArray):
-        byte = byte.data()
+#     if isinstance(byte, QByteArray):
+#         byte = byte.data()
 
-    print(
-        f"  ---- hexdump ----: [0x{hex(byte.__len__())}:{byte.__len__()}] ({id(byte)})"
-    )
+#     print(
+#         f"  ---- hexdump ----: [0x{hex(byte.__len__())}:{byte.__len__()}] ({id(byte)})"
+#     )
 
-    size = byte.__len__()
-    data = byte
-    out = ""
-    asc = ""
+#     size = byte.__len__()
+#     data = byte
+#     out = ""
+#     asc = ""
 
-    for i in range(size):
+#     for i in range(size):
 
-        if i % 16 == 0:
-            if i != 0:
-                out += " |  "
-                out += asc + "\n"
-                asc = ""
+#         if i % 16 == 0:
+#             if i != 0:
+#                 out += " |  "
+#                 out += asc + "\n"
+#                 asc = ""
 
-            out += "  %0.4x " % i
+#             out += "  %0.4x " % i
 
-        out += " %0.2x" % data[i]
+#         out += " %0.2x" % data[i]
 
-        if (i > 0) and ((i % 8) == 7) and ((i % 16) != 15):
-            out += " "
+#         if (i > 0) and ((i % 8) == 7) and ((i % 16) != 15):
+#             out += " "
 
-        if (data[i] < 0x20) or (data[i] > 0x7E):
-            asc += "."
-        else:
-            asc += chr(data[i])
+#         if (data[i] < 0x20) or (data[i] > 0x7E):
+#             asc += "."
+#         else:
+#             asc += chr(data[i])
 
-    i = size - 1
-    if ((i % 16) != 0) and ((i % 16) == (i % 8)):
-        out += " "
+#     i = size - 1
+#     if ((i % 16) != 0) and ((i % 16) == (i % 8)):
+#         out += " "
 
-    while (i % 16) != 0:
-        out += "   "
-        i += 1
+#     while (i % 16) != 0:
+#         out += "   "
+#         i += 1
 
-    out += " |  "
-    print(out)
+#     out += " |  "
+#     print(out)
