@@ -4,7 +4,7 @@ from .configs import *
 from . import shared as td
 
 
-class MTP(BaseObject):
+class MTP(BaseObject):  # nocov
     """
     [MTProto Protocal](https://core.telegram.org/mtproto)
 
