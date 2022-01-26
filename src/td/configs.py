@@ -53,13 +53,13 @@ _RT = TypeVar("_RT")
 _F = TypeVar("_F", bound=Callable[..., Any])
 
 
-class BareId(int):
+class BareId(int):  # nocov
     """
     BareId
     """
 
 
-class ChatIdType(BaseObject):
+class ChatIdType(BaseObject):  # nocov
     """
     ChatIdType
     """
@@ -72,23 +72,23 @@ class ChatIdType(BaseObject):
         self.bare = value
 
 
-class UserId(ChatIdType):
+class UserId(ChatIdType):  # nocov
     kShift = BareId(0)
 
 
-class ChatId(ChatIdType):
+class ChatId(ChatIdType):  # nocov
     kShift = BareId(1)
 
 
-class ChannelId(ChatIdType):
+class ChannelId(ChatIdType):  # nocov
     kShift = BareId(2)
 
 
-class FakeChatId(ChatIdType):
+class FakeChatId(ChatIdType):  # nocov
     kShift = BareId(0x7F)
 
 
-class PeerId(int):
+class PeerId(int):  # nocov
     """
     PeerId
     """
@@ -138,11 +138,11 @@ class PeerId(int):
         return PeerId(0)
 
 
-class FileKey(int):
+class FileKey(int):  # nocov
     pass
 
 
-class DcId(int):
+class DcId(int):  # nocov
     """
     Data Center ID
     """
@@ -161,7 +161,7 @@ class DcId(int):
         return DcId(shiftedDcId % DcId.kDcShift)
 
 
-class ShiftedDcId(DcId):
+class ShiftedDcId(DcId):  # nocov
     """
     Shifted Data Center ID
     """
@@ -171,7 +171,7 @@ class ShiftedDcId(DcId):
         return ShiftedDcId(dcId + DcId.kDcShift * value)
 
 
-class BuiltInDc(BaseObject):  # type: ignore
+class BuiltInDc(BaseObject):  # type: ignore # nocov
     """
     Default DC that is hard-coded
     """
@@ -182,7 +182,7 @@ class BuiltInDc(BaseObject):  # type: ignore
         self.port = port
 
 
-class BuiltInDc(BuiltInDc):
+class BuiltInDc(BuiltInDc):  # nocov
     kBuiltInDcs = [
         BuiltInDc(DcId._1, "149.154.175.50", 443),
         BuiltInDc(DcId._2, "149.154.167.51", 443),
@@ -213,7 +213,7 @@ class BuiltInDc(BuiltInDc):
     ]
 
 
-class dbi(int):
+class dbi(int):  # nocov
     Key = 0x00
     User = 0x01
     DcOptionOldOld = 0x02
@@ -309,7 +309,7 @@ class dbi(int):
     Version = 666
 
 
-class lskType(int):
+class lskType(int):  # nocov
     lskUserMap = 0x00
     lskDraft = 0x01  # data: PeerId peer
     lskDraftPosition = 0x02  # data: PeerId peer
@@ -335,7 +335,7 @@ class lskType(int):
     lskMasksKeys = 0x16  # no data
 
 
-class BotTrustFlag(int):
+class BotTrustFlag(int):  # nocov
     NoOpenGame = 1 << 0
     Payment = 1 << 1
 
