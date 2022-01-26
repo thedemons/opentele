@@ -200,6 +200,6 @@ async def test_entry_point(event_loop):
     ter.write("\n\n")
     ter.sep("=", "Begin testing for Python {}".format(PythonVersion()), cyan=True)
 
-    # await tdata_to_telethon()
-    # await telethon_from_tdata()
+    await tdata_to_telethon()
+    await telethon_from_tdata()
     await check_telegramclient()
