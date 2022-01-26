@@ -30,22 +30,20 @@ import copy
 from collections import OrderedDict
 
 
-print("entry")
 resolver = None
 
-from .highlight_resolver import HighlightResolver
 
 try:
     from pygments import highlight, format, lex
     from pygments.lexers import get_lexer_by_name, guess_lexer
     from pygments.lexers.python import PythonLexer
-    from .vspythonlexer import VSPythonLexer
     from pygments.formatters import find_formatter_class
     from pygments import __version__ as pygments_ver
 
-    import os
+    from .vspythonlexer import VSPythonLexer
+    from .highlight_resolver import HighlightResolver
+
     import docspec
-    import docspec_python
     from pydoc_markdown.contrib.loaders.python import PythonLoader
     from pydoc_markdown.interfaces import Context
     from pygments.formatters.html import _get_ttype_class
