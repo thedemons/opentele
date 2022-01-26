@@ -1,13 +1,14 @@
+from inspect import isclass
 import sys, pathlib
 from time import sleep
 
-from src.td.account import Account
 
 base_dir = pathlib.Path(__file__).parent.parent.absolute().__str__()
 sys.path.insert(1, base_dir)
 
 
 from src.td import TDesktop
+from src.td.account import Account
 from src.tl.telethon import TelegramClient
 from src.api import API, APIData, CreateNewSession, UseCurrentSession
 from telethon.errors.rpcerrorlist import FreshResetAuthorisationForbiddenError
@@ -16,6 +17,9 @@ import asyncio
 import pytest
 import typing as t
 from _pytest._io import TerminalWriter
+
+X1 = "!thedemons#opentele"
+X2 = "opentele#thedemons!"
 
 
 def PythonVersion():
@@ -82,12 +86,10 @@ def test_random_api():
 
 async def tdata_to_telethon():
 
-    api_ios = API.TelegramIOS.Generate("!thedemons#opentele")
+    api_ios = API.TelegramIOS.Generate(X1)
     api_android = API.TelegramAndroid.Generate()
 
-    tdesk = TDesktop(
-        profile_path(), api_ios, "!thedemons#opentele", "opentele#thedemons!"
-    )
+    tdesk = TDesktop(profile_path(), api_ios, X1, X2)
     assert tdesk.isLoaded()
 
     oldClient = await tdesk.ToTelethon(flag=UseCurrentSession, api=api_ios)
@@ -96,12 +98,11 @@ async def tdata_to_telethon():
 
     await oldClient.connect()
     assert await oldClient.is_user_authorized()
+    assert await oldClient.is_official_app()
     assert await oldClient.GetCurrentSession()
     await oldClient.PrintSessions()
 
-    newClient = await oldClient.QRLoginToNewClient(
-        api=api_android, password="!thedemons#opentele"
-    )
+    newClient = await oldClient.QRLoginToNewClient(api=api_android, password=X1)
 
     await newClient.connect()
     assert await newClient.is_user_authorized()
@@ -113,7 +114,10 @@ async def tdata_to_telethon():
     #     pass
 
     tdesk = await oldClient.ToTDesktop(UseCurrentSession, api=api_ios)
-    tdesk.SaveTData(profile_path(), "!thedemons#opentele", "opentele#thedemons!")
+    oldClient = await tdesk.ToTelethon(flag=UseCurrentSession, api=api_ios)
+
+    tdesk = await oldClient.ToTDesktop(UseCurrentSession, api=api_ios)
+    tdesk.SaveTData(profile_path(), X1, X2)
 
     await oldClient.disconnect()
     await newClient.disconnect()
@@ -123,12 +127,10 @@ async def tdata_to_telethon():
 
 async def telethon_from_tdata():
 
-    api_ios = API.TelegramIOS.Generate("!thedemons#opentele")
+    api_ios = API.TelegramIOS.Generate(X1)
     api_android = API.TelegramAndroid.Generate()
 
-    tdesk = TDesktop(
-        profile_path(), api_ios, "!thedemons#opentele", "opentele#thedemons!"
-    )
+    tdesk = TDesktop(profile_path(), api_ios, X1, X2)
     assert tdesk.isLoaded()
 
     oldClient = await TelegramClient.FromTDesktop(
@@ -139,11 +141,11 @@ async def telethon_from_tdata():
 
     await oldClient.connect()
     assert await oldClient.is_user_authorized()
+    assert await oldClient.is_official_app()
+    assert await oldClient.GetCurrentSession()
     await oldClient.PrintSessions()
 
-    newClient = await oldClient.QRLoginToNewClient(
-        api=api_android, password="!thedemons#opentele"
-    )
+    newClient = await oldClient.QRLoginToNewClient(api=api_android, password=X1)
 
     await newClient.connect()
     assert await newClient.is_user_authorized()
@@ -155,12 +157,36 @@ async def telethon_from_tdata():
     #     pass
 
     tdesk = await TDesktop.FromTelethon(oldClient, UseCurrentSession, api=api_ios)
-    tdesk.SaveTData(profile_path(), "!thedemons#opentele", "opentele#thedemons!")
+    oldClient = await TelegramClient.FromTDesktop(
+        tdesk, flag=UseCurrentSession, api=api_ios
+    )
+
+    tdesk = await TDesktop.FromTelethon(oldClient, UseCurrentSession, api=api_ios)
+    tdesk.SaveTData(profile_path(), X1, X2)
 
     await oldClient.disconnect()
     await newClient.disconnect()
     await oldClient.disconnected
     await newClient.disconnected
+
+
+async def check_telegramclient():
+    api_ios = API.TelegramIOS.Generate(X1)
+
+    tdesk = TDesktop(profile_path(), api_ios, X1, X2)
+    assert tdesk.isLoaded()
+
+    assert TelegramClient(None, 1234, "opentele").api_id == 1234
+    assert TelegramClient(None, None, 1234, "opentele").api_id == 1234
+
+    oldClient = await TelegramClient.FromTDesktop(
+        tdesk, flag=UseCurrentSession, api=api_ios
+    )
+
+    try:
+        oldClient.TerminateSession(0)
+    except BaseException as e:
+        pass
 
 
 @pytest.mark.asyncio
@@ -174,9 +200,6 @@ async def test_entry_point(event_loop):
     ter.write("\n\n")
     ter.sep("=", "Begin testing for Python {}".format(PythonVersion()), cyan=True)
 
-    try:
-        await tdata_to_telethon()
-        await telethon_from_tdata()
-
-    except asyncio.CancelledError as e:
-        ter.sep("-", "Catched Exception: {}".format(e.__str__()), red=True)
+    # await tdata_to_telethon()
+    # await telethon_from_tdata()
+    await check_telegramclient()
