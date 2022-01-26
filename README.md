@@ -53,7 +53,7 @@ async def main():
     
     # Load TDesktop client from tdata folder
     tdataFolder = r"C:\Users\<username>\AppData\Roaming\Telegram Desktop\tdata"
-    tdesktop = TDesktop(tdataFolder)
+    tdesk = TDesktop(tdataFolder)
 
     # Using official iOS API with randomly generated device info
     # print(api) to see more
@@ -62,7 +62,7 @@ async def main():
     # Convert TDesktop session to telethon client
     # CreateNewSession flag will use the current existing session to
     # authorize the new client by `Login via QR code`.
-    client = await tdesktop.ToTelethon("newSession.session", CreateNewSession, api)
+    client = await tdesk.ToTelethon("newSession.session", CreateNewSession, api)
 
     # Although Telegram Desktop doesn't let you authorize other
     # sessions via QR Code (or it doesn't have that feature),
