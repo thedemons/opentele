@@ -70,11 +70,9 @@ try:
         loader.init(Context(directory="."))
 
         modules = list(loader.load())
-        print("modules", modules)
         resolver = HighlightResolver(modules)
 
     init_resolver()
-    print("init_resolver")
 
     p_ver = tuple([int(n) for n in pygments_ver.split(".")[:2]])
     HtmlFormatter = find_formatter_class("html")

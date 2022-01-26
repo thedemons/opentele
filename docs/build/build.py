@@ -16,6 +16,8 @@ def getsitepackages():
 
 
 def pre_build():
+    print("Running build.py pre_build")
+
     sitepackages_path = getsitepackages()
     assert sitepackages_path
 
@@ -45,6 +47,7 @@ def pre_build():
 
 
 def post_build():
+    print("Running build.py post_build")
     # we don't need to check for errors because if something's wrong, it's already raised in pre_build
     pymdownx_dir = os.path.join(getsitepackages(), "pymdownx")
     build_dir = os.path.join(os.path.abspath(os.path.curdir), "docs", "build")
@@ -66,10 +69,8 @@ def post_build():
 def main():
     assert len(sys.argv) == 2
     if sys.argv[1] == "pre":
-        print("prebuild")
         pre_build()
     elif sys.argv[1] == "post":
-        print("postbuild")
         post_build()
     else:
         raise Exception("Invalid arguments")
