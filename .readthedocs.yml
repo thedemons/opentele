@@ -7,3 +7,4 @@ python:
   install:
   - method: pip
     path: .
+  - requirements: docs/build/requirements.txt

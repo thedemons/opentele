@@ -1,5 +1,4 @@
 steps:
-- pip install -r docs/build/requirements.txt
 - python docs/build/build.py pre
 - python -m "$@"
 - python docs/build/build.py post
