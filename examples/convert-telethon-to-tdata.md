@@ -78,5 +78,5 @@ asyncio.run(main())
 ```
 
 
-[TelegramClient]: https://opentele.readthedocs.io/en/latest/documentation/telethon/telegramclient/
-[TDesktop]: https://opentele.readthedocs.io/en/latest/documentation/telethon/telegramclient/
+[TelegramClient]: https://opentele.readthedocs.io/en/latest/documentation/telethon/telegramclient/#class-telegramclient
+[TDesktop]: https://opentele.readthedocs.io/en/latest/documentation/telegram-desktop/tdesktop/#class-tdesktop
