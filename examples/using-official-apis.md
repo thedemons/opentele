@@ -84,55 +84,59 @@ asyncio.run(main())
 ## Extra: Demonstrate the behavior of unique_id
 ```python
 def PrintAPI(api):
-    print("\t", {"device_model": api.device_model, "system_version": api.system_version})
+    print("    ", {"device_model": api.device_model, "system_version": api.system_version})
 
 # Randomize using ["opentele", "library", "by", "thedemons"] as unique_ids
 unique_string = "opentele library by thedemons"
 
 for unique_id in unique_string.split(" "):
-    print(f"Using {unique_id} as unique_id")
+    print(f'\nunique_id = "{unique_id}"')
 
     for x in range(5):
         PrintAPI(API.TelegramAndroid.Generate(unique_id))
 
 # Randomize without unique_id
-print("Not using unique_id")
+print("\nNot using unique_id")
 for x in range(5):
     PrintAPI(API.TelegramAndroid.Generate())
 ```
 
 The result should look like this:
 ```python
-Using opentele as unique_id
-         {'device_model': 'Samsung SM-A750FN', 'system_version': 'SDK 24'}
-         {'device_model': 'Samsung SM-A750FN', 'system_version': 'SDK 24'}
-         {'device_model': 'Samsung SM-A750FN', 'system_version': 'SDK 24'}
-         {'device_model': 'Samsung SM-A750FN', 'system_version': 'SDK 24'}
-         {'device_model': 'Samsung SM-A750FN', 'system_version': 'SDK 24'}
-Using library as unique_id
-         {'device_model': 'Samsung SM-J100G', 'system_version': 'SDK 30'}
-         {'device_model': 'Samsung SM-J100G', 'system_version': 'SDK 30'}
-         {'device_model': 'Samsung SM-J100G', 'system_version': 'SDK 30'}
-         {'device_model': 'Samsung SM-J100G', 'system_version': 'SDK 30'}
-         {'device_model': 'Samsung SM-J100G', 'system_version': 'SDK 30'}
-Using by as unique_id
-         {'device_model': 'Samsung GT-S6800', 'system_version': 'SDK 26'}
-         {'device_model': 'Samsung GT-S6800', 'system_version': 'SDK 26'}
-         {'device_model': 'Samsung GT-S6800', 'system_version': 'SDK 26'}
-         {'device_model': 'Samsung GT-S6800', 'system_version': 'SDK 26'}
-         {'device_model': 'Samsung GT-S6800', 'system_version': 'SDK 26'}
-Using thedemons as unique_id
-         {'device_model': 'Samsung SM-N930VL', 'system_version': 'SDK 29'}
-         {'device_model': 'Samsung SM-N930VL', 'system_version': 'SDK 29'}
-         {'device_model': 'Samsung SM-N930VL', 'system_version': 'SDK 29'}
-         {'device_model': 'Samsung SM-N930VL', 'system_version': 'SDK 29'}
-         {'device_model': 'Samsung SM-N930VL', 'system_version': 'SDK 29'}
+unique_id = "opentele"
+    {'device_model': 'Samsung SM-A750FN', 'system_version': 'SDK 24'}
+    {'device_model': 'Samsung SM-A750FN', 'system_version': 'SDK 24'}
+    {'device_model': 'Samsung SM-A750FN', 'system_version': 'SDK 24'}
+    {'device_model': 'Samsung SM-A750FN', 'system_version': 'SDK 24'}
+    {'device_model': 'Samsung SM-A750FN', 'system_version': 'SDK 24'}
+
+unique_id = "library"
+    {'device_model': 'Samsung SM-J100G', 'system_version': 'SDK 30'}
+    {'device_model': 'Samsung SM-J100G', 'system_version': 'SDK 30'}
+    {'device_model': 'Samsung SM-J100G', 'system_version': 'SDK 30'}
+    {'device_model': 'Samsung SM-J100G', 'system_version': 'SDK 30'}
+    {'device_model': 'Samsung SM-J100G', 'system_version': 'SDK 30'}
+
+unique_id = "by"
+    {'device_model': 'Samsung GT-S6800', 'system_version': 'SDK 26'}
+    {'device_model': 'Samsung GT-S6800', 'system_version': 'SDK 26'}
+    {'device_model': 'Samsung GT-S6800', 'system_version': 'SDK 26'}
+    {'device_model': 'Samsung GT-S6800', 'system_version': 'SDK 26'}
+    {'device_model': 'Samsung GT-S6800', 'system_version': 'SDK 26'}
+
+unique_id = "thedemons"
+    {'device_model': 'Samsung SM-N930VL', 'system_version': 'SDK 29'}
+    {'device_model': 'Samsung SM-N930VL', 'system_version': 'SDK 29'}
+    {'device_model': 'Samsung SM-N930VL', 'system_version': 'SDK 29'}
+    {'device_model': 'Samsung SM-N930VL', 'system_version': 'SDK 29'}
+    {'device_model': 'Samsung SM-N930VL', 'system_version': 'SDK 29'}
+
 Not using unique_id
-         {'device_model': 'Samsung SC-02B', 'system_version': 'SDK 24'}
-         {'device_model': 'Samsung SPH-D700', 'system_version': 'SDK 26'}
-         {'device_model': 'Huawei HUAWEI Y600-U151', 'system_version': 'SDK 23'}
-         {'device_model': 'Samsung SCV41', 'system_version': 'SDK 28'}
-         {'device_model': 'Samsung SM-G920F', 'system_version': 'SDK 27'}
+    {'device_model': 'Samsung SM-A705FN', 'system_version': 'SDK 29'}
+    {'device_model': 'Samsung SM-T330', 'system_version': 'SDK 30'}
+    {'device_model': 'Huawei HUAWEI C8860E', 'system_version': 'SDK 23'}
+    {'device_model': 'Huawei HUAWEI C8860E', 'system_version': 'SDK 29'}
+    {'device_model': 'Huawei HUAWEI Y625-U32', 'system_version': 'SDK 25'}
 ```
 
 [APIDATA]: https://opentele.readthedocs.io/en/latest/documentation/authorization/api/#class-apidata
@@ -140,5 +144,5 @@ Not using unique_id
 [DesktopdAPI]: https://opentele.readthedocs.io/en/latest/documentation/authorization/api/#class-telegramdesktop
 [APITemplates]: https://opentele.readthedocs.io/en/latest/documentation/authorization/api/#class-api
 [APIGenerate]: https://opentele.readthedocs.io/en/latest/documentation/authorization/api/#generate
-[TelegramClient]: https://opentele.readthedocs.io/en/latest/documentation/telethon/telegramclient/
-[TDesktop]: https://opentele.readthedocs.io/en/latest/documentation/telethon/telegramclient/
+[TelegramClient]: https://opentele.readthedocs.io/en/latest/documentation/telethon/telegramclient/#class-telegramclient
+[TDesktop]: https://opentele.readthedocs.io/en/latest/documentation/telegram-desktop/tdesktop/#class-tdesktop
