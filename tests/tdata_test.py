@@ -1,6 +1,8 @@
 import sys, pathlib
 from time import sleep
 
+from src.td.account import Account
+
 base_dir = pathlib.Path(__file__).parent.parent.absolute().__str__()
 sys.path.insert(1, base_dir)
 
@@ -89,6 +91,8 @@ async def tdata_to_telethon():
     assert tdesk.isLoaded()
 
     oldClient = await tdesk.ToTelethon(flag=UseCurrentSession, api=api_ios)
+    tdesk = await oldClient.ToTDesktop(UseCurrentSession, api=api_ios)
+    account = await Account.FromTelethon(oldClient, flag=UseCurrentSession, api=api_ios)
 
     await oldClient.connect()
     assert await oldClient.is_user_authorized()
@@ -130,6 +134,8 @@ async def telethon_from_tdata():
     oldClient = await TelegramClient.FromTDesktop(
         tdesk, flag=UseCurrentSession, api=api_ios
     )
+    tdesk = await TDesktop.FromTelethon(oldClient, UseCurrentSession, api=api_ios)
+    account = await Account.FromTelethon(oldClient, flag=UseCurrentSession, api=api_ios)
 
     await oldClient.connect()
     assert await oldClient.is_user_authorized()
