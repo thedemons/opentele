@@ -48,7 +48,7 @@ class BaseObject(object, metaclass=BaseMetaClass):
     pass
 
 
-class override(object):
+class override(object):  # nocov
     """
     To use inside a class decorated with @extend_class\n
     Any attributes decorated with @override will be replaced
@@ -72,7 +72,7 @@ class override(object):
         return func.__isOverride__
 
 
-class extend_class(object):
+class extend_class(object):  # nocov
     """
     Extend a class, all attributes will be added to its parents\n
     This won't override attributes that are already existed, please refer to @override or @extend_override_class to do this
