@@ -37,6 +37,8 @@ def pre_build():
         mv_from = os.path.join(build_dir, file)
         mv_to = os.path.join(pymdownx_dir, file)
 
+        print("Renaming {} to {}".format(mv_from, mv_to))
+
         assert os.path.isfile(mv_from)
         os.rename(mv_from, mv_to)
         assert os.path.isfile(mv_to)
@@ -51,6 +53,8 @@ def post_build():
     for file in moves:
         mv_from = os.path.join(pymdownx_dir, file)
         mv_to = os.path.join(build_dir, file)
+
+        print("Renaming {} to {}".format(mv_from, mv_to))
         os.rename(mv_from, mv_to)
 
     highlight_py = os.path.join(pymdownx_dir, "highlight.py")
@@ -62,8 +66,10 @@ def post_build():
 def main():
     assert len(sys.argv) == 2
     if sys.argv[1] == "pre":
+        print("prebuild")
         pre_build()
     elif sys.argv[1] == "post":
+        print("postbuild")
         post_build()
     else:
         raise Exception("Invalid arguments")
