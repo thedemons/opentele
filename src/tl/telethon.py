@@ -65,7 +65,7 @@ class CustomInitConnectionRequest(functions.InitConnectionRequest):
 @extend_class
 class TelegramClient(telethon.TelegramClient, BaseObject):
     """
-    Extended version of [telethon.TelegramClient](https://github.com/LonamiWebs/Telethon/blob/master/telethon/client/telegramclient.py#L8)
+    Extended version of [telethon.TelegramClient](https://github.com/LonamiWebs/Telethon/blob/master/telethon/_client/telegramclient.py#L23)
 
     ### Methods:
         FromTDesktop():
@@ -366,8 +366,8 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
         Get current logged-in session.
 
         ### Returns:
-            Authorization: On success it will returns `telethon.types.Authorization`.
-            None: Return `None` on failure.
+            Return `telethon.types.Authorization` on success.
+            Return `None` on failure.
         """
         results = await self.GetSessions()
 
