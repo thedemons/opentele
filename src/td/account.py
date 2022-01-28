@@ -1021,7 +1021,12 @@ class Account(BaseObject):
         dcId = DcId(ss.dc_id)
         userId = copy.UserId
         authKey = td.AuthKey(authKey, td.AuthKeyType.ReadFromFile, dcId)
-
+        
+        if userId == None:
+            await copy.connect()
+            await copy.get_me()
+            userId = copy.UserId
+            
         newAccount = None
 
         if owner != None:
