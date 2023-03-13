@@ -1,5 +1,5 @@
 import pathlib
-from setuptools import find_packages, setup
+from setuptools import setup
 import re
 
 README = (pathlib.Path(__file__).parent / "README.md").read_text()
@@ -12,8 +12,6 @@ with open("requirements.txt") as data:
     requirements = [
         line for line in data.read().split("\n") if line and not line.startswith("#")
     ]
-    
-raise Exception(find_packages(where='.'))
 
 setup(
     name=PACKAGE_NAME,
@@ -42,7 +40,7 @@ setup(
         "opentele",
     ],
     include_package_data=True,
-    packages=find_packages(where=SOURCE_DIRECTORY),
-    package_dir={"": SOURCE_DIRECTORY},
+    packages=[PACKAGE_NAME, PACKAGE_NAME+'.td', PACKAGE_NAME+'.tl'],
+    package_dir={PACKAGE_NAME: SOURCE_DIRECTORY},
     install_requires=requirements,
 )
