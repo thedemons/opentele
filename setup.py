@@ -12,8 +12,6 @@ with open("requirements.txt") as data:
     requirements = [
         line for line in data.read().split("\n") if line and not line.startswith("#")
     ]
-    
-raise Exception(find_packages(where=SOURCE_DIRECTORY))
 
 setup(
     name=PACKAGE_NAME,
@@ -42,7 +40,7 @@ setup(
         "opentele",
     ],
     include_package_data=True,
-    packages=find_packages(where=SOURCE_DIRECTORY),
+    packages=find_packages(where='.'),
     package_dir={"": SOURCE_DIRECTORY},
     install_requires=requirements,
 )
