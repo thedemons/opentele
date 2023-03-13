@@ -40,7 +40,7 @@ setup(
         "opentele",
     ],
     include_package_data=True,
-    packages=find_packages(where=PACKAGE_NAME),
+    packages=find_packages(where=SOURCE_DIRECTORY),
     package_dir={PACKAGE_NAME: SOURCE_DIRECTORY},
     install_requires=requirements,
 )
