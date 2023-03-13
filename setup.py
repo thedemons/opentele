@@ -13,7 +13,7 @@ with open("requirements.txt") as data:
         line for line in data.read().split("\n") if line and not line.startswith("#")
     ]
     
-print(find_packages(where=SOURCE_DIRECTORY))
+raise Exception(find_packages(where=SOURCE_DIRECTORY))
 
 setup(
     name=PACKAGE_NAME,
