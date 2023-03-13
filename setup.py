@@ -12,6 +12,8 @@ with open("requirements.txt") as data:
     requirements = [
         line for line in data.read().split("\n") if line and not line.startswith("#")
     ]
+    
+print(find_packages(where=SOURCE_DIRECTORY))
 
 setup(
     name=PACKAGE_NAME,
@@ -41,6 +43,6 @@ setup(
     ],
     include_package_data=True,
     packages=find_packages(where=SOURCE_DIRECTORY),
-    package_dir={PACKAGE_NAME: SOURCE_DIRECTORY},
+    package_dir={"": SOURCE_DIRECTORY},
     install_requires=requirements,
 )
