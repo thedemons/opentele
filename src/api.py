@@ -222,7 +222,7 @@ class APIData(object, metaclass=BaseAPIMetaClass):
         #     API.CustomInitConnectionList.remove(self)
 
     def __eq__(self, __o: APIData) -> bool:
-        if type(__o) != APIData:
+        if not isinstance(__o, APIData):
             return False
         return self.pid == __o.pid
 
