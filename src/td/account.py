@@ -235,9 +235,7 @@ class MapData(BaseObject):  # nocov
                 webviewStorageTokenOther = map.stream.readUInt64()
 
             else:
-                raise TDataReadMapDataFailed(
-                    f"Unknown key type in encrypted map: {keyType}"
-                )
+                logging.warning(f"Unknown key type in encrypted map: {keyType}")
 
             ExpectStreamStatus(map.stream, "Could not stream data from mapData ")
 
