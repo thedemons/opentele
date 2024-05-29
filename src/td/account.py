@@ -30,6 +30,12 @@ class MapData(BaseObject):  # nocov
         self._favedStickersKey = FileKey(0)
         self._archivedStickersKey = FileKey(0)
         self._archivedMasksKey = FileKey(0)
+        self._installedCustomEmojiKey = FileKey(0)
+        self._featuredCustomEmojiKey = FileKey(0)
+        self._archivedCustomEmojiKey = FileKey(0)
+        self._searchSuggestionsKey = FileKey(0)
+        self._webviewStorageTokenBots = FileKey(0)
+        self._webviewStorageTokenOther = FileKey(0)
         self._savedGifsKey = FileKey(0)
         self._recentStickersKeyOld = FileKey(0)
         self._legacyBackgroundKeyDay = FileKey(0)
@@ -109,6 +115,12 @@ class MapData(BaseObject):  # nocov
         installedMasksKey = 0
         recentMasksKey = 0
         archivedMasksKey = 0
+        installedCustomEmojiKey = 0
+        featuredCustomEmojiKey = 0
+        archivedCustomEmojiKey = 0
+        searchSuggestionsKey = 0
+        webviewStorageTokenBots = 0
+        webviewStorageTokenOther = 0
         savedGifsKey = 0
         legacyBackgroundKeyDay = 0
         legacyBackgroundKeyNight = 0
@@ -210,8 +222,22 @@ class MapData(BaseObject):  # nocov
                 recentMasksKey = map.stream.readUInt64()
                 archivedMasksKey = map.stream.readUInt64()
 
+            elif keyType == lskType.lskCustomEmojiKeys:
+                installedCustomEmojiKey = map.stream.readUInt64()
+                featuredCustomEmojiKey = map.stream.readUInt64()
+                archivedCustomEmojiKey = map.stream.readUInt64()
+
+            elif keyType == lskType.lskSearchSuggestions:
+                searchSuggestionsKey = map.stream.readUInt64()
+
+            elif keyType == lskType.lskWebviewTokens:
+                webviewStorageTokenBots = map.stream.readUInt64()
+                webviewStorageTokenOther = map.stream.readUInt64()
+
             else:
-                logging.warning(f"Unknown key type in encrypted map: {keyType}")
+                raise TDataReadMapDataFailed(
+                    f"Unknown key type in encrypted map: {keyType}"
+                )
 
             ExpectStreamStatus(map.stream, "Could not stream data from mapData ")
 
@@ -233,6 +259,12 @@ class MapData(BaseObject):  # nocov
         self._installedMasksKey = installedMasksKey
         self._recentMasksKey = recentMasksKey
         self._archivedMasksKey = archivedMasksKey
+        self._installedCustomEmojiKey = installedCustomEmojiKey
+        self._featuredCustomEmojiKey = featuredCustomEmojiKey
+        self._archivedCustomEmojiKey = archivedCustomEmojiKey
+        self._searchSuggestionsKey = searchSuggestionsKey
+        self._webviewStorageTokenBots = webviewStorageTokenBots
+        self._webviewStorageTokenOther = webviewStorageTokenOther
         self._legacyBackgroundKeyDay = legacyBackgroundKeyDay
         self._legacyBackgroundKeyNight = legacyBackgroundKeyNight
         self._settingsKey = userSettingsKey
@@ -279,6 +311,12 @@ class MapData(BaseObject):  # nocov
             mapSize += sizeof(uint32) + sizeof(uint64)
         if self._installedMasksKey or self._recentMasksKey or self._archivedMasksKey:
             mapSize += sizeof(uint32) + 3 * sizeof(uint64)
+        if self._installedCustomEmojiKey or self._featuredCustomEmojiKey or self._archivedCustomEmojiKey:
+            mapSize += sizeof(uint32) + 3 * sizeof(uint64)
+        if self._searchSuggestionsKey:
+            mapSize += sizeof(uint32) + sizeof(uint64)
+        if self._webviewStorageTokenBots or self._webviewStorageTokenOther:
+            mapSize += sizeof(uint32) + 2 * sizeof(uint64)
 
         mapData = td.Storage.EncryptedDescriptor(mapSize)
         stream = mapData.stream
@@ -346,6 +384,21 @@ class MapData(BaseObject):  # nocov
             stream.writeUInt64(self._installedMasksKey)
             stream.writeUInt64(self._recentMasksKey)
             stream.writeUInt64(self._archivedMasksKey)
+
+        if self._installedCustomEmojiKey or self._featuredCustomEmojiKey or self._archivedCustomEmojiKey:
+            stream.writeUInt32(lskType.lskCustomEmojiKeys)
+            stream.writeUInt64(self._installedCustomEmojiKey)
+            stream.writeUInt64(self._featuredCustomEmojiKey)
+            stream.writeUInt64(self._archivedCustomEmojiKey)
+        
+        if self._searchSuggestionsKey:
+            stream.writeUInt32(lskType.lskSearchSuggestions)
+            stream.writeUInt64(self._searchSuggestionsKey)
+
+        if self._webviewStorageTokenBots or self._webviewStorageTokenOther:
+            stream.writeUInt32(lskType.lskWebviewTokens)
+            stream.writeUInt64(self._webviewStorageTokenBots)
+            stream.writeUInt64(self._webviewStorageTokenOther)
 
         return mapData
 
