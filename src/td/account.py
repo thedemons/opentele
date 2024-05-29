@@ -54,7 +54,6 @@ class MapData(BaseObject):  # nocov
     def read(self, localKey: td.AuthKey, legacyPasscode: QByteArray) -> None:
 
         try:
-            print(self.basePath)
             mapData = td.Storage.ReadFile("map", self.basePath)
         except OpenTeleException as e:
             raise TDataReadMapDataFailed(
@@ -545,8 +544,7 @@ class StorageAccount(BaseObject):  # nocov
         # Intended for internal usage only
         try:
             self.__mapData.read(localKey, legacyPasscode)
-        except OpenTeleException as e:
-            print(e)
+        except OpenTeleException:
             return False
 
         self.readMtpData()
@@ -716,11 +714,8 @@ class Account(BaseObject):
 
         self.__mtpKeys: typing.List[td.AuthKey] = []
         self.__mtpKeysToDestroy: typing.List[td.AuthKey] = []
-        print(1)
-        import sys
-        print(sys.gettrace())
+        # somehow, this line causes recursion error for multiple accounts so I removed it
         # self.api = api
-        print(2)
 
         self._local = StorageAccount(
             self, self.basePath, td.Storage.ComposeDataString(self.__keyFile, index)
