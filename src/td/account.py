@@ -132,7 +132,6 @@ class MapData(BaseObject):  # nocov
 
         while not is_finished and not map.stream.atEnd():
             keyType = map.stream.readUInt32()
-            print(keyType)
 
             if keyType == lskType.lskDraft:
                 count = map.stream.readUInt32()
@@ -237,12 +236,10 @@ class MapData(BaseObject):  # nocov
                 'TO BE ADDED'
                 is_finished = True
                 # webviewStorageTokenBots = map.stream.readBytes()
-                # webviewStorageTokenOther = map.stream.readBytes()
+                # webviewStorageTokenOther = map.stream.readBytes()s
 
             else:
-                raise TDataReadMapDataFailed(
-                    f"Unknown key type in encrypted map: {keyType}"
-                )
+                logging.warning(f"Unknown key type in encrypted map: {keyType}")
 
             ExpectStreamStatus(map.stream, "Could not stream data from mapData ")
 
