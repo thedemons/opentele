@@ -54,12 +54,13 @@ class MapData(BaseObject):  # nocov
     def read(self, localKey: td.AuthKey, legacyPasscode: QByteArray) -> None:
 
         try:
+            print(self.basePath)
             mapData = td.Storage.ReadFile("map", self.basePath)
         except OpenTeleException as e:
             raise TDataReadMapDataFailed(
                 "Could not read map data, find not found or couldn't be opened"
             ) from e
-
+        
         legacySalt, legacyKeyEncrypted, mapEncrypted = (
             QByteArray(),
             QByteArray(),
@@ -128,8 +129,11 @@ class MapData(BaseObject):  # nocov
         recentHashtagsAndBotsKey = 0
         exportSettingsKey = 0
 
-        while not map.stream.atEnd():
+        is_finished = False
+
+        while not is_finished and not map.stream.atEnd():
             keyType = map.stream.readUInt32()
+            print(keyType)
 
             if keyType == lskType.lskDraft:
                 count = map.stream.readUInt32()
@@ -231,11 +235,15 @@ class MapData(BaseObject):  # nocov
                 searchSuggestionsKey = map.stream.readUInt64()
 
             elif keyType == lskType.lskWebviewTokens:
-                webviewStorageTokenBots = map.stream.readUInt64()
-                webviewStorageTokenOther = map.stream.readUInt64()
+                'TO BE ADDED'
+                is_finished = True
+                # webviewStorageTokenBots = map.stream.readBytes()
+                # webviewStorageTokenOther = map.stream.readBytes()
 
             else:
-                logging.warning(f"Unknown key type in encrypted map: {keyType}")
+                raise TDataReadMapDataFailed(
+                    f"Unknown key type in encrypted map: {keyType}"
+                )
 
             ExpectStreamStatus(map.stream, "Could not stream data from mapData ")
 
@@ -537,7 +545,8 @@ class StorageAccount(BaseObject):  # nocov
         # Intended for internal usage only
         try:
             self.__mapData.read(localKey, legacyPasscode)
-        except OpenTeleException:
+        except OpenTeleException as e:
+            print(e)
             return False
 
         self.readMtpData()
@@ -707,7 +716,11 @@ class Account(BaseObject):
 
         self.__mtpKeys: typing.List[td.AuthKey] = []
         self.__mtpKeysToDestroy: typing.List[td.AuthKey] = []
-        self.api = api.copy()
+        print(1)
+        import sys
+        print(sys.gettrace())
+        # self.api = api
+        print(2)
 
         self._local = StorageAccount(
             self, self.basePath, td.Storage.ComposeDataString(self.__keyFile, index)
