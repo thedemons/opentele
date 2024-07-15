@@ -333,6 +333,9 @@ class lskType(int):  # nocov
     lskBackgroundOld = 0x14  # no data
     lskSelfSerialized = 0x15  # serialized self
     lskMasksKeys = 0x16  # no data
+    lskCustomEmojiKeys = 0x17  # no data
+    lskSearchSuggestions = 0x18  # no data
+    lskWebviewTokens = 0x19  # data: QByteArray bots, QByteArray other
 
 
 class BotTrustFlag(int):  # nocov
