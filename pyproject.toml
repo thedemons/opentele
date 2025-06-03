@@ -1,6 +1,6 @@
 [project]
 name = "opentele"
-version = "0.1.0"
+version = "1.2.0"
 description = "opentele"
 authors = [
     {name = "Your Name",email = "you@example.com"}
