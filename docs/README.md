@@ -33,7 +33,7 @@ A **Python Telegram API Library** for converting between **tdata** and **teletho
 
 - [telethon](https://github.com/LonamiWebs/Telethon) - Widely used Telegram's API library for Python.
 - [tgcrypto](https://github.com/pyrogram/tgcrypto) - AES-256-IGE encryption to works with `tdata`.
-- [pyQt5](https://www.riverbankcomputing.com/software/pyqt/) - Used by Telegram Desktop to streams data from files.
+- [pyQt6](https://www.riverbankcomputing.com/software/pyqt/) - Used by Telegram Desktop to streams data from files.
 
 ## Installation
 - Install from [PyPI](https://pypi.org/project/opentele/):
