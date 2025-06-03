@@ -27,7 +27,7 @@ from ctypes import (
     c_short as short,
     c_ushort as ushort,
 )
-from PyQt5.QtCore import (
+from PyQt6.QtCore import (
     QByteArray,
     QDataStream,
     QBuffer,
@@ -36,6 +36,7 @@ from PyQt5.QtCore import (
     QDir,
     QFile,
 )
+
 from types import FunctionType
 
 import asyncio
