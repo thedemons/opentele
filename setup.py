@@ -43,4 +43,6 @@ setup(
     packages=[PACKAGE_NAME, PACKAGE_NAME+'.td', PACKAGE_NAME+'.tl'],
     package_dir={PACKAGE_NAME: SOURCE_DIRECTORY},
     install_requires=requirements,
+    extras_require={"tui": ["textual>=0.58"]},
+    entry_points={"console_scripts": ["opentele-tui=opentele.tui:main"]},
 )
