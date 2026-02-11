@@ -10,8 +10,6 @@ IS_DEBUG_MODE = False
 # IS_DEBUG_MODE = True
 
 if IS_DEBUG_MODE:
-    from rich import print  # pragma: no cover
-
     _F = t.TypeVar("_F")
     _T = t.TypeVar("_T")
     _R = t.TypeVar("_R")
