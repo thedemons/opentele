@@ -621,6 +621,44 @@ class TDesktop(BaseObject):
 
         return _self
 
+    def ToPyrogram(
+        self,
+        session_name: str = "opentele_pyrogram",
+        api: Union[Type[APIData], APIData] = API.TelegramDesktop,
+        **kwargs,
+    ):
+        Expects(
+            self.isLoaded(),
+            TDesktopNotLoaded("You need to load accounts from a tdata folder first"),
+        )
+        Expects(
+            self.accountsCount > 0,
+            TDesktopHasNoAccount("There is no account in this instance of TDesktop"),
+        )
+        assert self.mainAccount
+
+        return tl.PyrogramClient.FromTDesktop(
+            self.mainAccount,
+            session_name=session_name,
+            api=api,
+            **kwargs,
+        )
+
+    @staticmethod
+    async def FromPyrogram(
+        pyrogramClient,
+        flag: Type[LoginFlag] = UseCurrentSession,
+        api: Union[Type[APIData], APIData] = API.TelegramDesktop,
+    ) -> TDesktop:
+        Expects(flag == UseCurrentSession, LoginFlagInvalid("Pyrogram only supports UseCurrentSession"))
+
+        _self = TDesktop()
+        _self.__generateLocalKey()
+
+        await td.Account.FromPyrogram(pyrogramClient, flag=flag, api=api, owner=_self)
+
+        return _self
+
     @classmethod
     def PerformanceMode(cls, enabled: bool = True):
         """
