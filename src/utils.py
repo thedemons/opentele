@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from . import debug
 
-from typing import Coroutine, Tuple, Type, Callable, TypeVar, Optional, List, Any, Dict
+from typing import Tuple, Type, Callable, TypeVar, Optional, List, Any, Dict
 from types import FunctionType
 
 import abc
@@ -61,7 +61,7 @@ class override(object):  # nocov
 
         # check if decorated_cls really is a function
         if not isinstance(decorated_func, FunctionType):
-            raise BaseException(
+            raise TypeError(
                 "@override decorator is only for functions, not classes"
             )
 
@@ -70,9 +70,7 @@ class override(object):  # nocov
 
     @staticmethod
     def isOverride(func: _F) -> bool:
-        if not hasattr(func, "__isOverride__"):
-            return False
-        return func.__isOverride__
+        return bool(getattr(func, "__isOverride__", False))
 
 
 class extend_class(object):  # nocov
@@ -84,8 +82,8 @@ class extend_class(object):  # nocov
     def __new__(cls, decorated_cls: _TCLS, isOverride: bool = False) -> _TCLS:
 
         # check if decorated_cls really is a class (type)
-        if not isinstance(cls, type):
-            raise BaseException(
+        if not isinstance(decorated_cls, type):
+            raise TypeError(
                 "@extend_class decorator is only for classes, not functions"
             )
 
@@ -103,10 +101,8 @@ class extend_class(object):  # nocov
             "__annotate__",
             "__type_params__",
         ]
-        [
-            (newAttributes.pop(cross) if cross in newAttributes else None)
-            for cross in crossDelete
-        ]
+        for cross in crossDelete:
+            newAttributes.pop(cross, None)
 
         crossDelete = {}
 
@@ -120,7 +116,7 @@ class extend_class(object):  # nocov
                 # check if class base already has this attribute
                 result = extend_class.getattr(base, attributeName)
 
-                if result != None:
+                if result is not None:
                     if id(result["value"]) == id(attributeValue):
                         crossDelete[attributeName] = attributeValue
                     else:
@@ -130,16 +126,17 @@ class extend_class(object):  # nocov
                             print(
                                 f"[{attributeName}] {id(result['value'])} - {id(attributeValue)}"
                             )
-                            raise BaseException("err")
+                            raise RuntimeError("Class extension conflict")
 
-            [newAttributes.pop(cross) for cross in crossDelete]
+            for cross in crossDelete:
+                newAttributes.pop(cross, None)
 
         for attributeName, attributeValue in newAttributes.items():
 
             # let's backup this attribute for future uses
             result = extend_class.getattr(base, attributeName)
 
-            if result != None:
+            if result is not None:
                 # ! dirty code, gonna fix it later, it's okay for now
                 setattr(
                     base,
@@ -182,7 +179,7 @@ class extend_class(object):  # nocov
         try:
             value = getattr(obj, attributeName)
             return {"owner": obj, "value": value}
-        except BaseException as e:
+        except Exception:
             return None
 
 
