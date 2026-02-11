@@ -1108,3 +1108,65 @@ class Account(BaseObject):
             newOwner._addSingleAccount(newAccount)
 
         return newAccount
+
+    @staticmethod
+    async def FromPyrogram(
+        pyrogramClient,
+        flag: Type[LoginFlag] = UseCurrentSession,
+        api: Union[Type[APIData], APIData] = API.TelegramDesktop,
+        owner: td.TDesktop = None,
+    ):
+
+        Expects(flag == UseCurrentSession, LoginFlagInvalid("Pyrogram only supports UseCurrentSession"))
+
+        Expects(
+            hasattr(pyrogramClient, "storage"),
+            exception=OpenTeleException("Invalid pyrogram.Client instance"),
+        )
+
+        needs_close = False
+        storage = pyrogramClient.storage
+        if getattr(storage, "conn", None) is None:
+            await storage.open()
+            needs_close = True
+
+        try:
+            dcId = DcId(await storage.dc_id())
+            userId = await storage.user_id()
+            authKeyRaw = await storage.auth_key()
+            authKey = td.AuthKey(authKeyRaw, td.AuthKeyType.ReadFromFile, dcId)
+        finally:
+            if needs_close:
+                await storage.close()
+
+        newAccount = None
+
+        if owner != None:
+
+            Expects(
+                owner.accountsCount < td.TDesktop.kMaxAccounts,
+                exception=MaxAccountLimit(
+                    "You can't have more than 3 accounts in one TDesktop clent.\n"
+                    "Please create another instance of TDesktop or use Account.FromPyrogram() to create an Account() independently"
+                ),
+            )
+
+            index = owner.accountsCount
+            newAccount = Account(
+                owner=owner,
+                basePath=owner.basePath,
+                api=api,
+                keyFile=owner.keyFile,
+                index=index,
+            )
+            newAccount._setMtpAuthorizationCustom(dcId, userId, [authKey])  # type: ignore
+            owner._addSingleAccount(newAccount)
+
+        else:
+            index = 0
+            newOwner = td.TDesktop()
+            newAccount = Account(owner=newOwner, api=api, index=index)
+            newAccount._setMtpAuthorizationCustom(dcId, userId, [authKey])  # type: ignore
+            newOwner._addSingleAccount(newAccount)
+
+        return newAccount

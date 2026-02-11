@@ -94,8 +94,17 @@ Therefore, **there are no differences** between using opentele and official apps
 ## Incoming Features
 - [x] Writing data to tdata for converting telethon sessions to tdesktop.
 - [x] Random device information for [initConnection](https://core.telegram.org/method/initConnection) to avoid spam-detection.
-- [ ] Add support for [pyrogram](https://github.com/pyrogram/pyrogram).
+- [x] Add support for [pyrogram](https://github.com/pyrogram/pyrogram).
 - [ ] Develop opentele-tui using [textual](https://github.com/Textualize/textual) for non-experience user.
+
+### Pyrogram support
+
+```python
+from opentele.td import TDesktop
+
+tdesk = TDesktop("tdata")
+app = tdesk.ToPyrogram("my_account")
+```
 
 ## Examples
 The best way to learn anything is by looking at the examples. Am I right?
