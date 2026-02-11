@@ -1,10 +1,16 @@
 from __future__ import annotations
 
+import asyncio
 import base64
 import struct
 from typing import Type, Union
 
 from .configs import *
+
+try:
+    asyncio.get_running_loop()
+except RuntimeError:  # pragma: no cover - no loop in current thread
+    asyncio.set_event_loop(asyncio.new_event_loop())
 
 try:
     from pyrogram import Client as _PyrogramNativeClient

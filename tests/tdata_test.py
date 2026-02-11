@@ -1,4 +1,5 @@
 import os, sys, pathlib
+import asyncio
 import re
 import atexit
 
@@ -49,7 +50,15 @@ def PythonVersion():
 
 
 def profile_path():
-    return "tests/test_profile{}".format(PythonVersion())
+    profile = pathlib.Path("tests") / "test_profile{}".format(PythonVersion())
+    if profile.exists():
+        return profile.as_posix()
+
+    fallback = sorted(pathlib.Path("tests").glob("test_profile*"))
+    if fallback:
+        return fallback[-1].as_posix()
+
+    return profile.as_posix()
 
 
 def test_random_api():
@@ -236,10 +245,11 @@ async def check_telegramclient():
 
 
 @pytest.mark.asyncio
-async def test_entry_point(event_loop):
+async def test_entry_point():
 
     ter = TerminalWriter(sys.stdout)
     ter.hasmarkup = True
+    event_loop = asyncio.get_running_loop()
     event_loop._close = event_loop.close
     event_loop.close = lambda: None
 
