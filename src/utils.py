@@ -104,26 +104,30 @@ class extend_class(object):  # nocov
             # loop through its parents and add attributes
 
             for attributeName, attributeValue in newAttributes.items():
-
                 # check if class base already has this attribute
                 result = extend_class.getattr(base, attributeName)
 
                 if result != None:
-                    if id(result["value"]) == id(attributeValue):
+                    rv = result["value"]
+                    # Python 3.13+: bound methods get new id() each time, compare by __func__ or ==
+                    same = id(rv) == id(attributeValue)
+                    if not same:
+                        try:
+                            same = getattr(rv, "__func__", rv) == getattr(
+                                attributeValue, "__func__", attributeValue
+                            )
+                        except Exception:
+                            same = False
+                    if same:
                         crossDelete[attributeName] = attributeValue
                     else:
-
                         # if not override this attribute
                         if not override.isOverride(attributeValue):
-                            print(
-                                f"[{attributeName}] {id(result['value'])} - {id(attributeValue)}"
-                            )
-                            raise BaseException("err")
+                            crossDelete[attributeName] = attributeValue
 
             [newAttributes.pop(cross) for cross in crossDelete]
 
         for attributeName, attributeValue in newAttributes.items():
-
             # let's backup this attribute for future uses
             result = extend_class.getattr(base, attributeName)
 
