@@ -109,7 +109,6 @@ class extend_class(object):  # nocov
 
                 if result != None:
                     rv = result["value"]
-                    # Python 3.13+: bound methods get new id() each time, compare by __func__ or ==
                     same = id(rv) == id(attributeValue)
                     if not same:
                         try:
