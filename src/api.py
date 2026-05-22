@@ -222,7 +222,7 @@ class APIData(object, metaclass=BaseAPIMetaClass):
         #     API.CustomInitConnectionList.remove(self)
 
     def __eq__(self, __o: APIData) -> bool:
-        if not isinstance(__o, APIData):
+        if type(__o) != APIData:
             return False
         return self.pid == __o.pid
 
@@ -247,7 +247,7 @@ class APIData(object, metaclass=BaseAPIMetaClass):
         self.get_cls().CustomInitConnectionList.append(self)
 
     @classmethod
-    def Generate(cls: Type[_T], unique_id: str = None) -> _T:
+    def Generate(cls: Type[_T], unique_id: str = None, device_info: DeviceInfo = None) -> _T:
         """
         Generate random device model and system version
 
@@ -272,7 +272,7 @@ class APIData(object, metaclass=BaseAPIMetaClass):
         ```
         """
         if cls == API.TelegramAndroid or cls == API.TelegramAndroidX:
-            deviceInfo = AndroidDevice.RandomDevice(unique_id)
+            deviceInfo = AndroidDevice.ResolveDevice(unique_id, device_info)
 
         elif cls == API.TelegramIOS:
             deviceInfo = iOSDeivce.RandomDevice(unique_id)
@@ -449,7 +449,7 @@ class API(BaseObject):
             api_hash (`str`)         : `"eb06d4abfb49dc3eeb1aeb98ae0f581e"`
             device_model (`str`)     : `"Samsung SM-G998B"`
             system_version (`str`)   : `"SDK 31"`
-            app_version (`str`)      : `"8.4.1 (2522)"`
+            app_version (`str`)      : `"12.5.1 (2522)"`
             lang_code (`str`)        : `"en"`
             system_lang_code (`str`) : `"en-US"`
             lang_pack (`str`)        : `"android"`
@@ -458,8 +458,8 @@ class API(BaseObject):
         api_id = 6
         api_hash = "eb06d4abfb49dc3eeb1aeb98ae0f581e"
         device_model = "Samsung SM-G998B"
-        system_version = "SDK 31"
-        app_version = "8.4.1 (2522)"
+        system_version = "SDK 32"
+        app_version = "12.5.1 (2522)"
         lang_code = "en"
         system_lang_code = "en-US"
         lang_pack = "android"
@@ -474,7 +474,7 @@ class API(BaseObject):
             api_hash (`str`)         : `"3e0cb5efcd52300aec5994fdfc5bdc16"`
             device_model (`str`)     : `"Samsung SM-G998B"`
             system_version (`str`)   : `"SDK 31"`
-            app_version (`str`)      : `"8.4.1 (2522)"`
+            app_version (`str`)      : `"12.5.1 (2522)"`
             lang_code (`str`)        : `"en"`
             system_lang_code (`str`) : `"en-US"`
             lang_pack (`str`)        : `"android"`

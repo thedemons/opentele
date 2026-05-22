@@ -15,7 +15,6 @@ from telethon.tl.types import TypeInputClientProxy, TypeJSONValue
 from telethon.tl.types.auth import LoginTokenMigrateTo
 import logging
 import warnings
-from typing import Awaitable
 
 
 @extend_override_class
@@ -625,9 +624,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
 
                 # for the above reason, we should check if we're already authorized
                 if isinstance(qr_login._resp, types.auth.LoginTokenSuccess):
-                    coro = newClient._on_login(qr_login._resp.authorization.user)
-                    if isinstance(coro, Awaitable):
-                        await coro
+                    await newClient._on_login(qr_login._resp.authorization.user)
                     break
 
                 # calculate when will the qr token expire
@@ -686,9 +683,7 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
                     )
 
                     # successful log in
-                    coro = newClient._on_login(result.user)  # type: ignore
-                    if isinstance(coro, Awaitable):
-                        await coro
+                    await newClient._on_login(result.user)  # type: ignore
                     break
 
                 except PasswordHashInvalidError as e:
@@ -897,8 +892,6 @@ class TelegramClient(telethon.TelegramClient, BaseObject):
                 raise TypeError(
                     "The given session must be a str or a Session instance."
                 )
-            else:  # session is instance of Session
-                auth_session = session
 
         auth_session.set_dc(endpoint.id, endpoint.ip, endpoint.port)  # type: ignore
         auth_session.auth_key = AuthKey(account.authKey.key)  # type: ignore

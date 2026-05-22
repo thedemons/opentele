@@ -236,12 +236,10 @@ async def check_telegramclient():
 
 
 @pytest.mark.asyncio
-async def test_entry_point(event_loop):
+async def test_entry_point():
 
     ter = TerminalWriter(sys.stdout)
     ter.hasmarkup = True
-    event_loop._close = event_loop.close
-    event_loop.close = lambda: None
 
     ter.write("\n\n")
     ter.sep("=", "Begin testing for Python {}".format(PythonVersion()), cyan=True)

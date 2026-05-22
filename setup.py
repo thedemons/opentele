@@ -5,7 +5,7 @@ import re
 README = (pathlib.Path(__file__).parent / "README.md").read_text()
 
 PACKAGE_NAME = "opentele"
-VERSION = "1.15.1"
+VERSION = "1.15.2"
 SOURCE_DIRECTORY = "src"
 
 with open("requirements.txt") as data:
@@ -29,7 +29,10 @@ setup(
         "Operating System :: MacOS",
         "Operating System :: POSIX :: Linux",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
         "Development Status :: 5 - Production/Stable",
     ],
     keywords=[
@@ -39,6 +42,7 @@ setup(
         "telethon",
         "opentele",
     ],
+    python_requires=">=3.10",
     include_package_data=True,
     packages=[PACKAGE_NAME, PACKAGE_NAME+'.td', PACKAGE_NAME+'.tl'],
     package_dir={PACKAGE_NAME: SOURCE_DIRECTORY},
