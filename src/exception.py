@@ -5,7 +5,7 @@ import typing
 from PyQt5.QtCore import QDataStream
 
 
-class OpenTeleException(BaseException):  # nocov
+class OpenTeleException(Exception):  # nocov
     """
     Base exception of the library.
     """
