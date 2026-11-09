@@ -539,7 +539,7 @@ class StorageAccount(BaseObject):  # nocov
         try:
             self.__mapData.read(localKey, legacyPasscode)
         except OpenTeleException:
-            return False
+            pass  # Peer/media map may fail (e.g. unknown map key types), auth is independent
 
         self.readMtpData()
 

@@ -90,7 +90,7 @@ class extend_class(object):  # nocov
             )
 
         newAttributes = dict(decorated_cls.__dict__)
-        crossDelete = ["__abstractmethods__", "__module__", "_abc_impl", "__doc__"]
+        crossDelete = ["__abstractmethods__", "__module__", "_abc_impl", "__doc__", "__firstlineno__", "__static_attributes__", "__dict__", "__weakref__"]
         [
             (newAttributes.pop(cross) if cross in newAttributes else None)
             for cross in crossDelete
